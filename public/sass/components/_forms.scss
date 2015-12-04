@@ -1,0 +1,122 @@
+/**
+  * Forms Partial SASS
+  * This SASS file has all
+  * forms used on the app
+**/
+
+/* Form Login */
+.form {
+  @extend %margin-center;
+  padding: 18px 20px;
+  width: 80%;
+
+}
+
+.submit {
+  @include styling_wrapper_content($brown, center, $w: bold);
+  width: auto;
+  float: right;
+  padding: 10px 25px;
+  border: none;
+  background-color: $form-buttons;
+  &:hover {
+    background: $form-buttons-hover;
+  }
+}
+
+textarea {
+  @extend %form-inputs;
+  height: 100px;
+}
+input {
+  @extend %form-inputs;
+  background-size: 0 2px, 100% 1px;
+  font-size: $base__font-size;
+  padding-left: 15px;
+}
+
+.field {
+  border: 0;
+  margin: 30px auto;
+  text-align: center;
+}
+
+select {
+  @extend %form-inputs;
+}
+
+/* style label */
+input[type=radio]:empty ~ label {
+  @include position(relative, $values: left -40px);
+  float: left;
+  line-height: 2.5em;
+  margin-top: 2em;
+  cursor: pointer;
+  margin-right: 2px;
+  background-color: $form-buttons;
+}
+
+/* toggle hover */
+
+input[type=radio]:hover:not(:checked) ~ label {
+  color: $brown;
+}
+
+/* toggle on */
+
+input[type=radio]:checked ~ label {
+  color: $brown;
+  background-color: $form-buttons-hover;
+}
+
+label {
+  width: 50px;
+}
+
+/* Admin FORMS */
+
+#type {
+  @extend %list-no-style;
+  li {
+    float: left;
+  }
+  input[type=radio]:empty {
+    @extend %margin-left_out;
+  }
+  label {
+    width: 100px;
+    margin: 10px 2px;
+  }
+}
+
+ .options-check-buttons,
+ .options-radio-buttons {
+    width: 20px;
+    height: 15px;
+}
+
+ #serv-1,
+ #serv-2,
+ #model {
+   .options-admin-label {
+     width: auto;
+     float: none;
+     position: initial;
+     background-color: inherit;
+     font-weight: 300;
+     &:hover {
+       background-color: inherit;
+     }
+
+   }
+ }
+
+ .cd-tabs-navigation a.selected-admin {
+  background-color: #F3F3F4 !important;
+  padding-top: 15px;
+  height: 100px;
+ }
+
+ label#models-error {
+   background-color: $color-error;
+ }

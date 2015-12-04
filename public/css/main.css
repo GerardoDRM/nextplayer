@@ -1,0 +1,479 @@
+/**
+  * Main SASS file gets all partials
+  * this sass file will be compiled at
+  * the beginning
+**/
+/**
+  * Variables Partial SASS
+  * This SASS file has the palette color
+  * the media queries break points and fonts attributes.
+**/
+/**
+  * Utils Partial SASS
+  * This SASS file has all the functions used
+  * on the partials.
+**/
+@import url("http://fonts.googleapis.com/css?family=Open+Sans|Yeseva+One|Pathway+Gothic+One|Alegreya+Sans+SC:300,500");
+/**
+  * Mixin Partial SASS
+  * This SASS file make groups of CSS declarations
+  * that are reuse throughout the site.
+**/
+/**
+  * Extend Partial SASS
+  * This SASS file has all common
+  * styles that are presented on some
+  * classes
+**/
+.header-simple, .header-others {
+  width: 100%;
+  z-index: 2;
+  top: 0; }
+
+.notification, .user, .circular_user, .form {
+  margin: 0 auto; }
+
+textarea, input, select {
+  width: 100%;
+  border: none;
+  height: 40px;
+  background-color: #E7E8E9; }
+
+.btn-shadow {
+  border-radius: 0;
+  margin: 10px 2px; }
+
+.no-padding {
+  padding: 0; }
+
+.success, .error {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 98%;
+  padding: 10px; }
+
+/* Buttons */
+.file-photos--admin {
+  overflow: hidden;
+  cursor: pointer; }
+
+#type input[type=radio]:empty {
+  margin-left: -9999px; }
+
+#type {
+  list-style-type: none; }
+
+/**
+  * Index Partial SASS
+  * This SASS file is the manifest on
+  * components folder
+  * !Important import order is relevant while compiling SASS
+**/
+/**
+  * BASE Partial SASS
+  * This SASS file has general components
+  * used on the app
+**/
+/*General*/
+html {
+  height: 100%; }
+
+.pos-absolute {
+  position: absolute; }
+
+a:hover, a:link, a:visited, a:active {
+  text-decoration: none;
+  color: white; }
+
+.logoIndex {
+  height: 400px; }
+
+.logo_contact {
+  width: 70%;
+  margin: 25% auto; }
+
+.logo-box-index {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  top: 20%; }
+
+/*Menu color*/
+.maroon {
+  background: #fbb040; }
+
+.brown {
+  background: rgba(96, 57, 19, 0.9); }
+
+.green {
+  background: #2bb673; }
+
+.blue {
+  background: #66cbee; }
+
+.gray {
+  background: #e9eaed; }
+
+/*Notifications*/
+.center_notification {
+  width: 32%;
+  z-index: 4;
+  position: absolute;
+  top: 100px;
+  left: 32%; }
+
+.notification {
+  font-size: 1em;
+  color: #FFF;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  padding: 10px 20px;
+  width: 80%; }
+
+.success {
+  background-color: #70DA8B;
+  color: #4DA463; }
+
+.error {
+  background-color: #FFE6B2;
+  color: #C5A14E; }
+
+/* Wrappers */
+.wrapper {
+  width: auto;
+  margin-left: 20px;
+  background: #FFF;
+  background: rgba(255, 255, 255, 0.45);
+  margin-top: 200px; }
+
+.model-responsive {
+  width: 100%; }
+
+.text-left {
+  text-align: left; }
+
+/**
+  * Footer Partial SASS
+  * This SASS file has all footers style
+**/
+footer {
+  width: 100%;
+  background: #707070; }
+  footer .contact-foot {
+    font-size: 1.25em;
+    color: #FFF;
+    text-align: center;
+    margin: 2% 0;
+    opacity: 0.7; }
+
+/**
+  * Header Partial SASS
+  * This SASS file has the header components
+  * used on the app
+**/
+/* Header */
+.header-simple {
+  position: absolute; }
+.header-others {
+  position: relative; }
+
+/*Login/Sing up buttons*/
+.labelAccess {
+  font-size: 1em;
+  color: #603913;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold; }
+
+/* User */
+.user {
+  width: 40%;
+  text-align: center; }
+
+.circular_user {
+  width: 50px;
+  height: 50px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  border-radius: 25px;
+  background-repeat: no-repeat;
+  border: 2px solid #707070; }
+
+/*******************************************************/
+/****************Admin Hotel/Restaurant*****************/
+/*******************************************************/
+.wrapper-head-title {
+  color: #603913;
+  text-align: center;
+  font-family: "Open Sans", sans-serif; }
+
+/**
+  * Index Partial SASS
+  * This SASS file is the manifest on
+  * components folder
+  * !Important import order is relevant while compiling SASS
+**/
+/**
+  * Backgrounds Partial SASS
+  * This SASS file create
+  * multiple backgrounds (colors/img)
+**/
+/**
+  * Buttons Partial SASS
+  * This SASS file has all
+  * buttons style on the web app
+**/
+/* General */
+.btn-shadow {
+  background-color: rgba(255, 255, 255, 0.4); }
+  .btn-shadow:hover {
+    background-color: rgba(255, 255, 255, 0.8); }
+
+/* LOGIN */
+.btn-container {
+  width: 150px;
+  display: flex;
+  margin-left: auto; }
+
+.file-photos--admin {
+  font-size: 1.25em;
+  color: #FFF;
+  text-align: center;
+  -webkit-transition: background 0.45s ease-in-out;
+  -moz-transition: background 0.45s ease-in-out;
+  -o-transition: background 0.45s ease-in-out;
+  transition: background 0.45s ease-in-out;
+  width: 22%;
+  position: relative;
+  background: #F8B451;
+  border: 5px solid #fbb040;
+  height: 45px;
+  display: inline-block; }
+
+.file-photos--admin:hover {
+  background: #fbb040; }
+
+.file-photos--admin input {
+  opacity: 0;
+  position: relative;
+  margin-top: -33px; }
+
+/*  Buttom-public */
+.btn-publish {
+  color: #FED190;
+  border-color: #FED190;
+  border: 5px solid #FED190; }
+
+/**
+  * Forms Partial SASS
+  * This SASS file has all
+  * forms used on the app
+**/
+/* Form Login */
+.form {
+  padding: 18px 20px;
+  width: 80%; }
+
+.submit {
+  font-size: 1em;
+  color: #603913;
+  text-align: center;
+  font-weight: bold;
+  width: auto;
+  float: right;
+  padding: 10px 25px;
+  border: none;
+  background-color: #E7E8E9; }
+  .submit:hover {
+    background: #BCBCBC; }
+
+textarea {
+  height: 100px; }
+
+input {
+  background-size: 0 2px, 100% 1px;
+  font-size: 16px;
+  padding-left: 15px; }
+
+.field {
+  border: 0;
+  margin: 30px auto;
+  text-align: center; }
+
+/* style label */
+input[type=radio]:empty ~ label {
+  position: relative;
+  left: -40px;
+  float: left;
+  line-height: 2.5em;
+  margin-top: 2em;
+  cursor: pointer;
+  margin-right: 2px;
+  background-color: #E7E8E9; }
+
+/* toggle hover */
+input[type=radio]:hover:not(:checked) ~ label {
+  color: #603913; }
+
+/* toggle on */
+input[type=radio]:checked ~ label {
+  color: #603913;
+  background-color: #BCBCBC; }
+
+label {
+  width: 50px; }
+
+/* Admin FORMS */
+#type li {
+  float: left; }
+#type label {
+  width: 100px;
+  margin: 10px 2px; }
+
+.options-check-buttons,
+.options-radio-buttons {
+  width: 20px;
+  height: 15px; }
+
+#serv-1 .options-admin-label,
+#serv-2 .options-admin-label,
+#model .options-admin-label {
+  width: auto;
+  float: none;
+  position: initial;
+  background-color: inherit;
+  font-weight: 300; }
+  #serv-1 .options-admin-label:hover,
+  #serv-2 .options-admin-label:hover,
+  #model .options-admin-label:hover {
+    background-color: inherit; }
+
+.cd-tabs-navigation a.selected-admin {
+  background-color: #F3F3F4 !important;
+  padding-top: 15px;
+  height: 100px; }
+
+label#models-error {
+  background-color: #FFE6B2; }
+
+/**
+  * Icons Partial SASS
+  * This SASS file has most of the icons
+  * used on the app
+**/
+/* These are general rules for logos */
+/* Logo */
+.logo_hor {
+  width: 200px;
+  height: 66px;
+  text-align: center;
+  margin-left: 20%; }
+
+.icons-login {
+  margin: 50px auto 15px;
+  width: 85%; }
+
+/**
+  * Modals Partial SASS
+  * This SASS has the modals dialogs
+**/
+/**
+  * Wrappers Partial SASS
+  * This SASS has all the wrappers used on the app
+  * This file is the most important because all boxes format
+  * are predefined here
+**/
+.right {
+  right: 0;
+  left: auto; }
+
+.left {
+  right: auto;
+  left: 0; }
+
+.navbar-default {
+  background-color: #333;
+  border-color: #e7e7e7;
+  height: 80px; }
+
+.carousel-images {
+  background: url("../img/slide_1.jpg") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 500px; }
+
+.carousel-images-dos {
+  background: url("../img/slide_2.jpg") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 500px; }
+
+.carousel-images-tres {
+  background: url("../img/slide_3.jpg") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 500px; }
+
+.midtern-header {
+  background-color: #2ae92e;
+  height: 100px; }
+  .midtern-header h1 {
+    text-align: center;
+    padding-top: 2%;
+    margin: 0; }
+  .midtern-header p {
+    text-align: center; }
+
+.middle-body {
+  text-align: center; }
+  .middle-body img {
+    width: 80%; }
+
+.nike-img {
+  padding-top: 2%; }
+  .nike-img img {
+    width: 100%;
+    height: 350px; }
+
+.middle-middle {
+  height: 300px; }
+  .middle-middle img {
+    width: 80%; }
+
+.row-middle {
+  margin-top: 65px; }
+
+.row-middle {
+  margin-top: 45px; }
+
+.middle-counter {
+  height: 300px;
+  text-align: center; }
+  .middle-counter img {
+    width: 100%; }
+
+.mision-vision {
+  height: 300px;
+  text-align: center; }
+  .mision-vision h2 {
+    text-align: center; }
+
+/**
+  * Media queries Partial SASS
+  * This SASS file has the break points
+  * for each media query used on the app
+  * !Important Sass extend cannot be used
+  * on media queries, just include and functions
+**/
+/*Media Queries*/
+
+/*# sourceMappingURL=main.css.map */

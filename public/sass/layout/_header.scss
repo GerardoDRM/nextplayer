@@ -1,0 +1,47 @@
+/**
+  * Header Partial SASS
+  * This SASS file has the header components
+  * used on the app
+**/
+
+/* Header */
+.header {
+  &-simple {
+    @extend %header;
+    position: absolute;
+  }
+  &-others {
+    @extend %header;
+    position: relative;
+  }
+}
+
+/*Login/Sing up buttons*/
+
+.labelAccess {
+  @include styling_wrapper_content($color-footer, center, $font: $font-family--primary, $w:bold);
+}
+
+/* User */
+.user {
+  @extend %margin-center;
+  width: 40%;
+  text-align: center;
+}
+
+.circular_user {
+  @include box(50px, 50px, null);
+  @include border-radius(25px);
+  @extend %margin-center;
+  background-repeat: no-repeat;
+  border: 2px solid $gray;
+}
+
+/*******************************************************/
+/****************Admin Hotel/Restaurant*****************/
+/*******************************************************/
+.wrapper-head-title {
+  @include styling_wrapper_content($brown, center, null, $font-family--primary)
+}
+
+

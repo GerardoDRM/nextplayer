@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+      <link rel="stylesheet" href="../css/main.css">
   </head>
   <body>
-    <nav class="navbar navbar-default">
-    <div class="container-fluid">
+    <nav class="navbar navbar-default ">
+    <div class="container-fluid ">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -19,13 +20,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">  <img class="logo" alt="Brand" src="../img/logo.png"> </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a href="#">Home</a></li>
+            <li><a href="#">Registro</a></li>
+                <li><a href="#">Contacto</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -34,5 +37,37 @@
   <h1>Bienvenidos a NextPlayers</h1>
   <p>Esto es una prueba</p>
   {% block content %}{% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <footer class="footer">
+      <div class="container">
+          <div class="col-xs-12">
+              <div class="row contact-foot">
+                  <div class="col-xs-4">
+                      <p>
+                          Tel. 01 2222 61 90 30
+                      </p>
+                      <p> Email:info@nextplayers.mx </p>
+                  </div>
+                  <div class="col-xs-4">
+                      <p>NextPlayers.mx</p>
+                  </div>
+                  <div class="col-xs-4">
+                      <p>Términos de privacidad y política</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-xs-12">
+              <div class="icons-social">
+                  <a href="#" class="facebookF" title="Facebook"></a>
+                  <a href="#" class="twitterF" title="Twitter"></a>
+                  <a href="#" class="instagramF" title="Instagram"></a>
+              </div>
+          </div>
+      </div>
+  </footer>
+
   </body>
 </html>

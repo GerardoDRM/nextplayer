@@ -1,0 +1,106 @@
+/**
+  * Wrappers Partial SASS
+  * This SASS has all the wrappers used on the app
+  * This file is the most important because all boxes format
+  * are predefined here
+**/
+
+.right {
+  right: 0;
+  left: auto;
+}
+
+.left {
+  right: auto;
+  left: 0;
+}
+
+.navbar-default {
+    background-color: #333;
+    border-color: #e7e7e7;
+    height: 80px;
+}
+
+.carousel-images {
+  background: url("../img/slide_1.jpg")no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+}
+
+.carousel-images-dos {
+  background: url("../img/slide_2.jpg")no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+}
+
+.carousel-images-tres {
+  background: url("../img/slide_3.jpg")no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+}
+
+.midtern-header {
+  background-color: $green;
+  height: 100px;
+
+  h1 {
+    text-align: center;
+    padding-top: 2%;
+    margin: 0;
+  }
+
+  p {
+    text-align: center;
+
+  }
+}
+
+.middle-body {
+  text-align: center;
+  img {
+    width: 80%;
+  }
+}
+
+.nike-img {
+  padding-top: 2%;
+  img {
+    width: 100%;
+    height: 350px;
+  }
+}
+
+.middle-middle {
+  height: 300px;
+  img {
+    width: 80%;
+  }
+
+}
+
+.row-middle {
+  margin-top: 65px;
+}
+
+.row-middle {
+  margin-top: 45px;
+}
+
+.middle-counter {
+  height: 300px;
+text-align: center;
+  img {
+    width: 100%;
+  }
+}
+
+.mision-vision {
+  height: 300px;
+text-align: center;
+  h2 {
+    text-align: center;
+  }
+}
