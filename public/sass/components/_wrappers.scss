@@ -14,93 +14,183 @@
   right: auto;
   left: 0;
 }
-
+ .logo {
+   width: 80%;
+ }
 .navbar-default {
     background-color: #333;
     border-color: #e7e7e7;
-    height: 80px;
+    height: auto;
+    margin: 0;
+    border: 0 solid transparent;
+    border-radius: 1px;
 }
 
+/* Index */
 .carousel-images {
   background: url("../img/slide_1.jpg")no-repeat center;
   background-size: cover;
   width: 100%;
-  height: 500px;
+  height: 350px;
+
+  h1 {
+    color: $white;
+    text-align: right;
+    font-size: 65px;
+    padding-right: 15%;
+    margin: 0;
+  }
+
+  h2 {
+    color: $green;
+    text-align: right;
+    font-size: 45px;
+    padding-right: 15%;
+    margin-top: 3%;
+  }
+
+  h3 {
+      color: $white;
+      text-align: right;
+      font-size: 30px;
+      padding-right: 20%;
+
+  }
+
+  p {
+    color: $white;
+    text-align: right;
+    font-size: 20px;
+    padding-right: 10%;
+
+  }
 }
 
 .carousel-images-dos {
   background: url("../img/slide_2.jpg")no-repeat center;
   background-size: cover;
   width: 100%;
-  height: 500px;
+  height: 350px;
 }
 
 .carousel-images-tres {
   background: url("../img/slide_3.jpg")no-repeat center;
   background-size: cover;
   width: 100%;
-  height: 500px;
+  height: 350px;
 }
 
 .midtern-header {
   background-color: $green;
-  height: 100px;
+  height: 200px;
 
   h1 {
     text-align: center;
     padding-top: 2%;
     margin: 0;
+    font-size: em(50px);
+    font-style: italic;
+    font-weight: bold;
   }
 
   p {
     text-align: center;
+    font-size: em(20px);
 
   }
 }
 
 .middle-body {
+  margin: 20px;
   text-align: center;
   img {
     width: 80%;
+  }
+
+  h1 {
+    font-size: 40px;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-style: italic;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  p {
+    color: $black;
+    font-size: em(10px);
+    font-style: italic;
+    font-weight: bold;
   }
 }
 
 .nike-img {
   padding-top: 2%;
   img {
-    width: 100%;
-    height: 350px;
+    width: 80%;
   }
 }
 
 .middle-middle {
-  height: 300px;
+  background-color: $gray-material;
+  margin: 20px;
+  height: auto;
   img {
-    width: 80%;
+    width: 100%;
+    margin-top: 5%;
+    box-shadow: 12px 9px 25px $gray;
   }
 
+  h2 {
+    font-size: 40px;
+    color: $black;
+    font-style: italic;
+    font-weight: bold;
+  }
 }
 
-.row-middle {
-  margin-top: 65px;
-}
 
 .row-middle {
   margin-top: 45px;
+  text-align: center;
 }
 
 .middle-counter {
-  height: 300px;
+  margin: 20px;
+  height: auto;
 text-align: center;
   img {
     width: 100%;
   }
+
+  h2 {
+    color: $black;
+    font-size: 64px;
+    font-weight: bold;
+  }
 }
 
 .mision-vision {
-  height: 300px;
+  height: auto;
 text-align: center;
+background-color: $gray-material;
   h2 {
+    color: $green;
     text-align: center;
+    font-size: em(64px);
+    font-weight: bold;
   }
+
+  p {
+    font-style: italic;
+    font-weight: bold;
+    font-size: em(16px);
+  }
+}
+
+.dissapear {
+  display: none;
 }

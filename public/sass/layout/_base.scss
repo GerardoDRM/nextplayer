@@ -39,16 +39,6 @@ a {
 
 /*Menu color*/
 
-@each $name, $color in ("maroon",  $light-soft-maroon),
-        ("brown", $light-soft-brown),
-        ("green", $light-soft-green),
-        ("blue", $light-soft-blue),
-        ("gray", $gray-material) {
-
-    .#{$name} {
-        background: $color;
-    }
-}
 
 
 /*Notifications*/
@@ -66,14 +56,10 @@ a {
 }
 
 .success {
-  background-color: $color-success;
-  color: $color-success-letter;
   @extend %messages;
 }
 
 .error {
-  background-color: $color-error;
-  color: $color-error-letter;
   @extend %messages;
 }
 
@@ -83,7 +69,6 @@ a {
     width: auto;
     margin-left: 20px;
     background: $white;
-    background: $color-box-top;
     margin-top: 200px;
 }
 
