@@ -3,3 +3,96 @@
   * This SASS file has all
   * forms used on the app
 **/
+
+
+
+
+
+
+
+
+.sign-list {
+  background-color: $new-green;
+  text-align: center;
+  width: 85%;
+  font-weight: bold;
+  margin-bottom: 4%;
+  margin-top: 40px;
+
+}
+
+  .select-box {
+    top: 70%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    @include transition(all 0.2s ease-in);
+    background-color: $new-green;
+    padding: 8px 15px;
+
+
+
+}
+  .select-options {
+    @include position(absolute, $values: top 100% right 0 left 0);
+    @include box(null, $height: 150px, $z-index: 999, $display: none);
+    @extend %no-margin, %no-padding;
+    list-style: none;
+    background-color: $new-green;
+    overflow-y: scroll;
+    li {
+      @include transition(all 0.15s ease-in);
+      @extend %no-margin;
+      padding: 5px 0;
+      font-size: 12px;
+      text-indent: 15px;
+      color: $green;
+      border-top: 1px solid $new-green;
+      &:hover {
+        color: $green;
+        background: $white;
+      }
+      &[rel="hide"] {
+        display: none;
+      }
+    }
+  }
+  .select-hidden {
+    display: none;
+    visibility: hidden;
+  }
+
+  .select {
+    @include box(55%, 40px, relative);
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+
+  .select-styled {
+    @include box(50%, 65%);
+    @include styling_wrapper_content($green, justify, $size: 15px, $font: $font-family--primary);
+    @include transition(all 0.2s ease-in);
+    @extend %no-padding;
+    background-color: $new-green;
+    margin: 0 auto;
+    &:after {
+      @include box(0, 0);
+      @include position(absolute, $values: top 16px right 10px);
+      content: "";
+      border: 7px solid transparent;
+      border-color: $green transparent transparent transparent;
+      &:hover {
+        background-color: $green;
+        &:active, .active {
+          background-color: $green;
+          &:after {
+            top: 9px;
+            border-color: transparent transparent $green transparent;
+          }
+        }
+      }
+    }
+
+}
