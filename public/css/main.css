@@ -418,6 +418,11 @@ footer {
     color: #000;
     font-weight: bold; }
 
+.input-space {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px; }
+
 .input-sign {
   width: 100%;
   margin: 0 auto; }
@@ -487,7 +492,7 @@ footer {
       font-size: 22px; }
 
   .top-sign img {
-    width: 60%; }
+    width: 30%; }
   .top-sign h1 {
     font-size: 40px; } }
 
