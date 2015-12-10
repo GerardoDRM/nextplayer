@@ -28,10 +28,10 @@
 .notification {
   margin: 0 auto; }
 
-.no-padding, .select-styled, .select-options {
+.no-padding, .select-sport .select-options {
   padding: 0; }
 
-.select-options, .select-options li {
+.select-sport .select-options, .select-sport .select-options li {
   margin: 0; }
 
 .success, .error {
@@ -160,82 +160,51 @@ footer {
   display: none;
   visibility: hidden; }
 
-.select {
+.select-sport {
   width: 55%;
   height: 40px;
   position: relative;
   cursor: pointer;
   margin-top: 15px;
   margin-left: 10px; }
-
-.select-styled {
-  width: 90%;
-  height: 95%;
-  font-size: 0.9375em;
-  color: #2ae92e;
-  text-align: justify;
-  font-family: "Open Sans", sans-serif;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-  background-color: #2ae92e; }
-  .select-styled:after {
-    width: 0;
-    height: 0;
+  .select-sport .select-box {
     position: absolute;
-    top: 16px;
-    right: 10px;
-    content: "";
-    border: 7px solid transparent;
-    border-color: #2ae92e transparent transparent transparent; }
-    .select-styled:after:hover {
-      background-color: #2ae92e; }
-      .select-styled:after:hover:active, .select-styled:after:hover .active {
-        background-color: #2ae92e; }
-        .select-styled:after:hover:active:after, .select-styled:after:hover .active:after {
-          top: 9px;
-          border-color: transparent transparent #2ae92e transparent; }
-
-.select-options {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  left: 0;
-  height: 150px;
-  display: none;
-  z-index: 999;
-  list-style: none;
-  background-color: #2ae92e;
-  overflow-y: scroll; }
-  .select-options li {
-    -webkit-transition: all 0.15s ease-in;
-    -moz-transition: all 0.15s ease-in;
-    -o-transition: all 0.15s ease-in;
-    transition: all 0.15s ease-in;
-    padding: 5px 0;
-    font-size: 12px;
-    text-indent: 15px;
-    color: #2ae92e;
-    border-top: 1px solid #2ae92e; }
-    .select-options li:hover {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    background-color: #2ae92e;
+    padding: 8px 15px; }
+  .select-sport .select-options {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    height: 150px;
+    display: none;
+    z-index: 999;
+    list-style: none;
+    background-color: #2ae92e;
+    overflow-y: scroll; }
+    .select-sport .select-options li {
+      -webkit-transition: all 0.15s ease-in;
+      -moz-transition: all 0.15s ease-in;
+      -o-transition: all 0.15s ease-in;
+      transition: all 0.15s ease-in;
+      padding: 5px 0;
+      font-size: 12px;
+      text-indent: 15px;
       color: #2ae92e;
-      background: #FFF; }
-    .select-options li[rel="hide"] {
-      display: none; }
-
-.select-box {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-  background-color: #2ae92e;
-  padding: 8px 15px; }
+      border-top: 1px solid #2ae92e; }
+      .select-sport .select-options li:hover {
+        color: #2ae92e;
+        background: #FFF; }
+      .select-sport .select-options li[rel="hide"] {
+        display: none; }
 
 /**
   * Icons Partial SASS
