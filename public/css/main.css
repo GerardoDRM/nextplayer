@@ -28,7 +28,7 @@
 .notification {
   margin: 0 auto; }
 
-.no-padding, .select-options, .select-styled {
+.no-padding, .select-styled, .select-options {
   padding: 0; }
 
 .select-options, .select-options li {
@@ -156,54 +156,6 @@ footer {
   * This SASS file has all
   * forms used on the app
 **/
-.sign-list {
-  background-color: #9bee9d;
-  text-align: center;
-  width: 85%;
-  font-weight: bold;
-  margin-bottom: 4%;
-  margin-top: 40px; }
-
-.select-box {
-  top: 70%;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  position: absolute;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-  background-color: #9bee9d;
-  padding: 8px 15px; }
-
-.select-options {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  left: 0;
-  height: 150px;
-  display: none;
-  z-index: 999;
-  list-style: none;
-  background-color: #9bee9d;
-  overflow-y: scroll; }
-  .select-options li {
-    -webkit-transition: all 0.15s ease-in;
-    -moz-transition: all 0.15s ease-in;
-    -o-transition: all 0.15s ease-in;
-    transition: all 0.15s ease-in;
-    padding: 5px 0;
-    font-size: 12px;
-    text-indent: 15px;
-    color: #2ae92e;
-    border-top: 1px solid #9bee9d; }
-    .select-options li:hover {
-      color: #2ae92e;
-      background: #FFF; }
-    .select-options li[rel="hide"] {
-      display: none; }
-
 .select-hidden {
   display: none;
   visibility: hidden; }
@@ -217,8 +169,8 @@ footer {
   margin-left: 10px; }
 
 .select-styled {
-  width: 50%;
-  height: 65%;
+  width: 90%;
+  height: 95%;
   font-size: 0.9375em;
   color: #2ae92e;
   text-align: justify;
@@ -227,8 +179,7 @@ footer {
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
-  background-color: #9bee9d;
-  margin: 0 auto; }
+  background-color: #2ae92e; }
   .select-styled:after {
     width: 0;
     height: 0;
@@ -245,6 +196,46 @@ footer {
         .select-styled:after:hover:active:after, .select-styled:after:hover .active:after {
           top: 9px;
           border-color: transparent transparent #2ae92e transparent; }
+
+.select-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: 150px;
+  display: none;
+  z-index: 999;
+  list-style: none;
+  background-color: #2ae92e;
+  overflow-y: scroll; }
+  .select-options li {
+    -webkit-transition: all 0.15s ease-in;
+    -moz-transition: all 0.15s ease-in;
+    -o-transition: all 0.15s ease-in;
+    transition: all 0.15s ease-in;
+    padding: 5px 0;
+    font-size: 12px;
+    text-indent: 15px;
+    color: #2ae92e;
+    border-top: 1px solid #2ae92e; }
+    .select-options li:hover {
+      color: #2ae92e;
+      background: #FFF; }
+    .select-options li[rel="hide"] {
+      display: none; }
+
+.select-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  background-color: #2ae92e;
+  padding: 8px 15px; }
 
 /**
   * Icons Partial SASS

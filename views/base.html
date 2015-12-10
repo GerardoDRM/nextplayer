@@ -36,10 +36,6 @@
 
 
   {% block content %}{% endblock %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-
   <footer class="footer">
       <div class="container">
           <div class="col-xs-12">
@@ -67,6 +63,51 @@
           </div>
       </div>
   </footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <script>
+  // Clone select list data in a custom select list
+  // Replicate info
+  $('select').each(function () {
+  var $this = $(this), numberOfOptions = $(this).children('option').length;
+
+  $this.addClass('select-hidden');
+  $this.wrap('<div class="select"></div>');
+  $this.after('<div class="select-box"><div class="select-styled"></div></div>');
+
+  var $styledSelect = $('.select-styled');
+  $styledSelect.text($this.children('option').eq(0).text());
+
+  var $list = $('<ul />', {
+      'class': 'select-options'
+  }).insertAfter($styledSelect);
+
+  for (var i = 0; i < numberOfOptions; i++) {
+      $('<li />', {
+          text: $this.children('option').eq(i).text(),
+          rel: $this.children('option').eq(i).val()
+      }).appendTo($list);
+  }
+
+  var $listItems = $list.children('li');
+
+  $styledSelect.click(function (e) {
+      e.stopPropagation();
+      $('.select-box.select-styled.active').each(function () {
+          $(this).removeClass('active').next('ul.select-options').hide();
+      });
+      $(this).toggleClass('active').next('ul.select-options').toggle();
+  });
+
+  $(document).click(function () {
+      $styledSelect.removeClass('active');
+      $list.hide();
+  });
+
+  });
+  </script>
 
   </body>
 </html>
