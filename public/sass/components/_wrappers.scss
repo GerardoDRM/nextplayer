@@ -165,6 +165,7 @@
 .dissapear {
   display: none;
 }
+
 //////////////////Sign up !! ////////////
 .top-sign {
   text-align: center;
@@ -191,6 +192,22 @@
     font-weight: bold;
     color: $black;
     font-size: 18px;
+     ::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: #fff;
+    }
+     :-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: #fff;
+    }
+     ::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #fff;
+    }
+     :-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: #fff;
+    }
   }
 }
 .sign-facebook {
