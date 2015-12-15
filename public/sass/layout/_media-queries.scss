@@ -5,23 +5,18 @@
   * !Important Sass extend cannot be used
   * on media queries, just include and functions
 **/
-
-
 /*Media Queries*/
 @include mq($brk-less-lg) {
 
 }
-
 @include mq($brk-less-md) {
 
 }
-
 @include mq($brk-less-sm) {
   .midtern-header {
     h1 {
       font-size: em(64px);
     }
-
     p {
       font-size: em(40px);
     }
@@ -29,60 +24,66 @@
   .dissapear {
     display: block;
   }
-
   .middle-body {
-
     p {
       font-size: em(24px);
     }
   }
-
   .middle-middle {
     height: 300px;
   }
-
   .middle-counter {
     height: 300px;
   }
-
-.mision-vision {
-  height: 300px;
-  font-size: em(24px);
+  .mision-vision {
+    height: 300px;
+    font-size: em(24px);
   }
-.navbar-default {
-  height: em(100px);
-
-}
-.logo {
-  width: 100%;
-}
-.carousel-images {
-  height: 500px;
-}
-
-.carousel-images-dos {
-  height: 500px;
-}
-.carousel-images-tres {
-  height: 500px;
-}
-
-/////////  Sign up ////////
-
-.input-sign {
-  width: 50%;
-  input {
-    font-size: 22px;
+  .navbar-default {
+    height: em(100px);
+  }
+  .logo {
+    width: 100%;
+  }
+  .carousel-images {
+    height: 500px;
+  }
+  .carousel-images-dos {
+    height: 500px;
+  }
+  .carousel-images-tres {
+    height: 500px;
   }
 
-}
-
-.top-sign {
-  img {
-    width: 30%;
+  /////////  Sign up ////////
+  .input-sign {
+    height: 460px;
+    input {
+      font-size: 22px;
+    }
   }
-  h1 {
-    font-size: 40px;
+  .top-sign {
+    img {
+      width: 30%;
+    }
+    h1 {
+      font-size: 40px;
+    }
   }
-}
+  .function {
+    h1 {
+      font-size: 40px;
+    }
+    h2 {
+      font-size: 40px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+  .more-info {
+    p {
+      font-size: 20px;
+    }
+  }
 }

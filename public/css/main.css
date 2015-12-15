@@ -161,12 +161,11 @@ footer {
   visibility: hidden; }
 
 .select-sport {
-  width: 100%;
+  width: 90%;
   height: 40px;
   position: relative;
   cursor: pointer;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin: 10px auto;
   color: #999999;
   font-size: 22px;
   font-weight: bold; }
@@ -388,7 +387,7 @@ footer {
   .top-sign h1 {
     text-align: center;
     font-size: 20px;
-    color: #000;
+    color: #FFF;
     font-weight: bold; }
 
 .input-space {
@@ -398,7 +397,10 @@ footer {
 
 .input-sign {
   width: 100%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  background: url("../img/slide_2.jpg") no-repeat center;
+  background-size: cover;
+  height: auto; }
   .input-sign input {
     background-color: #2ae92e;
     font-weight: bold;
@@ -418,13 +420,58 @@ footer {
       color: #fff; }
 
 .sign-facebook {
-  width: 100%;
+  width: 90%;
   background-color: blue;
   margin-bottom: 15%;
-  font-weight: normal; }
+  font-weight: normal;
+  border: none; }
   .sign-facebook input {
     background-color: blue;
     color: #FFF; }
+
+.advisement {
+  height: 190px; }
+
+.input-signup {
+  width: 90%;
+  margin-bottom: 10px;
+  border: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  padding: 10px; }
+
+.text-center {
+  text-align: center; }
+
+.function h1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+  margin-top: 60px; }
+.function h2 {
+  font-size: 20px;
+  text-align: center;
+  color: #000; }
+.function p {
+  text-align: center;
+  color: #000;
+  font-size: 15px; }
+
+.more-info {
+  width: 100%;
+  background-color: #e9eaed;
+  height: 350px;
+  align-items: center;
+  display: flex; }
+  .more-info p {
+    text-align: center;
+    color: #000;
+    font-size: 15px;
+    margin: 0 auto;
+    width: 80%; }
 
 /**
   * Media queries Partial SASS
@@ -472,13 +519,23 @@ footer {
     height: 500px; }
 
   .input-sign {
-    width: 50%; }
+    height: 460px; }
     .input-sign input {
       font-size: 22px; }
 
   .top-sign img {
     width: 30%; }
   .top-sign h1 {
-    font-size: 40px; } }
+    font-size: 40px; }
+
+  .function h1 {
+    font-size: 40px; }
+  .function h2 {
+    font-size: 40px; }
+  .function p {
+    font-size: 20px; }
+
+  .more-info p {
+    font-size: 20px; } }
 
 /*# sourceMappingURL=main.css.map */
