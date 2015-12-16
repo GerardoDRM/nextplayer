@@ -16,7 +16,7 @@
 
   margin: 10px auto;
   color: #999999;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
   .select-box {
     @include position(absolute, true, 0);
@@ -35,7 +35,52 @@
       @include transition(all 0.15s ease-in);
       @extend %no-margin;
       padding: 5px 0;
-      font-size: 22px;
+      font-size: 18px;
+      text-indent: 15px;
+      color: $black;
+      font-weight: bold;
+      border-top: 1px solid $new-green;
+      &:hover {
+        color: $green;
+        background: $white;
+      }
+      &[rel="hide"] {
+        display: none;
+      }
+    }
+  }
+
+}
+
+//////LOGIN////////
+
+
+.select-login-s {
+  @include box(90%, 40px, relative);
+  cursor: pointer;
+
+  margin: 10px auto;
+  color: #999999;
+  font-size: 18px;
+  font-weight: bold;
+  .select-box-login {
+    @include position(absolute, true, 0);
+    @include transition(all 0.2s ease-in);
+    background-color: $green;
+    padding: 8px 15px;
+  }
+  .select-options-login {
+    @include position(absolute, $values: top 100% right 0 left 0);
+    @include box(null, $height: 150px, $z-index: 999, $display: none);
+    @extend %no-margin, %no-padding;
+    list-style: none;
+    background-color: $new-green;
+    overflow-y: scroll;
+    li {
+      @include transition(all 0.15s ease-in);
+      @extend %no-margin;
+      padding: 5px 0;
+      font-size: 18px;
       text-indent: 15px;
       color: $black;
       font-weight: bold;

@@ -13,6 +13,7 @@
 
     <div class="item active">
       <div class="carousel-images">
+        <div class="margin-top">
         <h1 class="dissapear"> DARE </h1>
         <h3 class="dissapear"> TO </h3>
         <h2 class="dissapear"> DREAM </h2>
@@ -21,6 +22,7 @@
         <p class="dissapear"> todos tus datos, fotos y vídeos. </p>
 
         <h3 class="dissapear"> ¡ES GRATIS! </h3>
+      </div>
       </div>
     </div>
     <div class="item">

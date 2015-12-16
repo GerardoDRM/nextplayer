@@ -1,14 +1,14 @@
 {% extends 'base.swig' %} {% block content %}
 <div class="container">
-  <div class="top-sign">
-    <img src="../img/jugador_escudo.png" alt="...">
-    <h1> Jugador </h1>
-    <h1> Selecciona tu deporte </h1>
+  <div class="top-sign-login">
+    <img src="../images/jugador_escudo.png" alt="...">
+    
+    <h1> Selecciona tipo de usuario </h1>
 
   </div>
 
 
-  <div class="input-sign">
+  <div class="input-sign-login">
     <form>
       <select id="select-sport" class="select-hidden">
         <option value="0">Jugador</option>
@@ -16,14 +16,15 @@
         <option value="2">Organización</option>
 
       </select>
-      <div class="form-group">
+      <div class="form-group-login">
 
-        <input type="email" class="form-control input-space" id="exampleInputEmail1" placeholder="Nombre" style="color:black;">
+        <input type="email" class="input-signup-login "  placeholder="E-mail" style="color:black;">
       </div>
-      <div class="form-group">
+      <div class="form-group-login">
 
-        <input type="password" class="form-control input-space" id="exampleInputPassword1" placeholder="Contraseña">
-        <input class="form-buttom sign-facebook input-space" type="button" ng-click="update()" value="Login con facebook" style="color: white; background-color: #3b5999;   font-weight: normal;" />
+        <input type="password" class="input-signup-login"  placeholder="Contraseña">
+        <input type="submit" value="Iniciar sesión" class="input-signup-login" placeholder="Iniciar sesión" name="log in" ng-model="signupForm.password">
+
       </div>
 
   </div>
