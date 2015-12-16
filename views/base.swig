@@ -42,7 +42,7 @@
     <!-- /.container-fluid -->
   </nav>
 
-
+  <input type="hidden" id="user-type">
   {% block content %}{% endblock %}
   <footer class="footer">
     <div class="container">
@@ -72,6 +72,7 @@
     </div>
   </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
@@ -101,8 +102,11 @@
           text: $(this).children('option').eq(i).text(),
           rel: $(this).children('option').eq(i).val(),
           click: function() {
-            console.log($(this).text());
             $styledSelect.text($(this).text());
+            //remove selected one
+            $('#select-sport').find('option:selected').removeAttr('selected');
+            //Using the value
+            $('#select-sport').find('option[value="'+ $(this).text() +'"]').attr("selected",true);
           }
         }).appendTo($list);
       }
@@ -122,7 +126,20 @@
         $list.hide();
       });
 
+    }); // End custom select
+
+    // Check user type
+    // Coach and Player are reusable
+    $("#anchor-signcoach").click(function(){
+      $("#user-type").val("coach");
     });
+    $("#anchor-signplayer").click(function(){
+      $("#user-type").val("player");
+    });
+    // $("#anchor-signcoach").click(function(){
+    //   $("#user-type").val();
+    // });
+
   });
   </script>
 

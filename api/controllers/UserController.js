@@ -33,7 +33,8 @@ module.exports = {
           email: req.param('email'),
           encryptedPassword: encryptedPassword,
           lastLoggedIn: new Date(),
-          sport: req.param('sport')
+          sport: req.param('sport'),
+          role: req.param('role')
         }, function userCreated(err, newUser) {
           if (err) {
 

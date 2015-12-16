@@ -1,7 +1,6 @@
 {% extends 'base.swig' %} {% block content %}
 <div class="advisement">
 
-
 </div>
 <div class="input-sign"  ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
   <form  ng-submit="submitSignupForm()" name="signup">
@@ -14,13 +13,13 @@
             <h1> Selecciona tu deporte </h1>
 
           </div>
-          <select id="select-sport" class="select-hidden"  name="sport" ng-options="option.name for option in signupForm.availableSports track by option.id" ng-model="signupForm.sport">
-            <!-- <option value="Fútbol americano">Fútbol americano</option>
+          <select id="select-sport" class="select-hidden">
+            <option value="Fútbol americano" selected="selected">Fútbol americano</option>
             <option value="Fútbol soccer">Fútbol soccer</option>
             <option value="Basquetball">Basquetball</option>
             <option value="Tennis">Tennis</option>
             <option value="Atletismo">Atletismo</option>
-            <option value="Voleiball">Voleiball</option> -->
+            <option value="Voleiball">Voleiball</option>
           </select>
         </div>
         <div class="col-sm-6 text-center ">

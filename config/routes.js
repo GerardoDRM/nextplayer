@@ -33,7 +33,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /': {view: 'index'},
-  'GET /signup': {view: 'signup'},
+  'GET /signup/player': {view: 'signup'},
+  'GET /signup/coach': {view: 'signup'},
   'POST /signup': 'UserController.signup'
 
 

@@ -61,7 +61,7 @@
           <h1> CREA TU PERFIL </h1>
           <div class="row">
             <div class="col-sm-4">
-              <a href="/">
+              <a id="anchor-signcoach" href="/signup">
                 <img src="../images/coach_escudo.png" alt="...">
               </a>
               <h2>COACHES </h2>
@@ -71,7 +71,7 @@
               <h2>EQUIPOS </h2>
             </div>
             <div class=" col-sm-4">
-              <a href="/signup">
+              <a id="anchor-signplayer" href="/signup">
                 <img src="../images/jugador_escudo.png" alt="...">
               </a>
               <h2>JUGADORES </h2>
