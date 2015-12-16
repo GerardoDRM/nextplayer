@@ -13,6 +13,7 @@
 
     <div class="item active">
       <div class="carousel-images">
+        <div class="margin-top">
         <h1 class="dissapear"> DARE </h1>
         <h3 class="dissapear"> TO </h3>
         <h2 class="dissapear"> DREAM </h2>
@@ -21,6 +22,7 @@
         <p class="dissapear"> todos tus datos, fotos y vídeos. </p>
 
         <h3 class="dissapear"> ¡ES GRATIS! </h3>
+      </div>
       </div>
     </div>
     <div class="item">
@@ -61,7 +63,7 @@
           <h1> CREA TU PERFIL </h1>
           <div class="row">
             <div class="col-sm-4">
-              <a id="anchor-signcoach" href="/signup">
+              <a href="/signup/coach">
                 <img src="../images/coach_escudo.png" alt="...">
               </a>
               <h2>COACHES </h2>
@@ -71,7 +73,7 @@
               <h2>EQUIPOS </h2>
             </div>
             <div class=" col-sm-4">
-              <a id="anchor-signplayer" href="/signup">
+              <a href="/signup/player">
                 <img src="../images/jugador_escudo.png" alt="...">
               </a>
               <h2>JUGADORES </h2>

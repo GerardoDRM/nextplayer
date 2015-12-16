@@ -27,7 +27,3 @@ angular.module('SignupModule').controller('SignupController', ['$scope', '$http'
       })
   }
 }]);
-
-test: function(req, res) {
-          res.view({message:'hello world'});
-}

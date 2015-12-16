@@ -42,7 +42,6 @@
     <!-- /.container-fluid -->
   </nav>
 
-  <input type="hidden" id="user-type">
   {% block content %}{% endblock %}
   <footer class="footer">
     <div class="container">
@@ -80,6 +79,8 @@
   <script src="/js/dependencies/sails.io.js"></script>
   <script src="/js/public/signup/SignupModule.js"></script>
   <script src="/js/public/signup/SignupController.js"></script>
+  <script src="/js/public/login/LoginModule.js"></script>
+  <script src="/js/public/login/LoginController.js"></script>
   <!--SCRIPTS END-->
   <script>
   $(document).ready(function() {
@@ -127,19 +128,6 @@
       });
 
     }); // End custom select
-
-    // Check user type
-    // Coach and Player are reusable
-    $("#anchor-signcoach").click(function(){
-      $("#user-type").val("coach");
-    });
-    $("#anchor-signplayer").click(function(){
-      $("#user-type").val("player");
-    });
-    // $("#anchor-signcoach").click(function(){
-    //   $("#user-type").val();
-    // });
-
   });
   </script>
 

@@ -21,6 +21,7 @@
             <option value="Atletismo">Atletismo</option>
             <option value="Voleiball">Voleiball</option>
           </select>
+          <input type="hidden" id="user-type" value="player">
         </div>
         <div class="col-sm-6 text-center ">
           <input type="text" class="input-signup" placeholder="Nombre" style="margin-top:30px" name="name" ng-model="signupForm.name">
@@ -30,6 +31,8 @@
           <input type="email" class="input-signup" placeholder="Correo"  name="email" ng-model="signupForm.email">
 
           <input type="password" class="input-signup" placeholder="Contraseña" name="password" ng-model="signupForm.password">
+
+            <input type="submit" value="Registrarse" class="input-signup" placeholder="Registrarse" name="log in" ng-model="signupForm.password">
 
           <input class="form-buttom sign-facebook input-space" type="submit" value="Login con facebook" style="color: white; background-color: #3b5999;   font-weight: normal;" />
           <input type="hidden" name="_csrf" value="<%= _csrf %>" />
