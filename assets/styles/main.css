@@ -134,6 +134,17 @@ footer {
   * used on the app
 **/
 /* Header */
+.navbar-default .navbar-nav > li > a {
+  color: #f5f5f5; }
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+  color: #2ae92e;
+  background-color: transparent; }
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+  color: #2ae92e;
+  background-color: transparent; }
+
 /**
   * Index Partial SASS
   * This SASS file is the manifest on
@@ -162,7 +173,7 @@ footer {
 
 .select-sport {
   width: 90%;
-  height: 40px;
+  height: 50px;
   position: relative;
   cursor: pointer;
   margin: 10px auto;
@@ -170,6 +181,10 @@ footer {
   font-size: 18px;
   font-weight: bold; }
   .select-sport .select-box {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
     position: absolute;
     top: 0;
     right: 0;
@@ -303,6 +318,10 @@ footer {
   margin: 0;
   border: 0 solid transparent;
   border-radius: 1px; }
+
+.navbar-text {
+  font-size: 22px;
+  color: #FFF; }
 
 /* Index */
 .margin-top {
@@ -521,7 +540,8 @@ footer {
 .top-sign-login {
   text-align: center; }
   .top-sign-login img {
-    width: 33%; }
+    width: 33%;
+    margin-top: 5%; }
   .top-sign-login h1 {
     text-align: center;
     font-size: 20px;
@@ -629,9 +649,9 @@ footer {
     font-size: 20px; }
 
   .top-sign-login img {
-    width: 30%; }
+    width: 20%; }
   .top-sign-login h1 {
-    font-size: 40px; }
+    font-size: 30px; }
 
   .input-sign-login {
     height: 460px;

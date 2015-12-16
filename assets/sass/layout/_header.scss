@@ -5,3 +5,16 @@
 **/
 
 /* Header */
+.navbar-default .navbar-nav>li>a {
+    color: #f5f5f5;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #2ae92e;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #2ae92e;
+    background-color: transparent;
+}

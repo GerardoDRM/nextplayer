@@ -22,6 +22,11 @@
   margin: 0;
   border: 0 solid transparent;
   border-radius: 1px;
+
+}
+.navbar-text {
+  font-size: 22px;
+  color: $white;
 }
 /* Index */
 .margin-top {
@@ -294,6 +299,7 @@
   text-align: center;
   img {
     width: 33%;
+    margin-top: 5%;
   }
   h1 {
     text-align: center;
