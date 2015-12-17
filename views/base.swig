@@ -37,14 +37,14 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registro <span class="caret"></span></a>
           <ul class="dropdown-menu">
 
-            <li><a href="#">Jugador</a></li>
+            <li><a href="/signup/player">Jugador</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Coach</a></li>
+            <li><a href="/signup/coach">Coach</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Organización</a></li>
           </ul>
         </li>
-          <li><a href="#">Login</a></li>
+          <li><a href="/login">Login</a></li>
           <li><a href="#">Contacto</a></li>
         </ul>
       </div>
@@ -139,6 +139,22 @@
       });
 
     }); // End custom select
+
+    // Login Image update
+    $(".select-options").children().click(function(){
+      //Get val
+      var userType = $('#select-sport').find('option:selected').val();
+      if(userType == "Jugador") {
+        $("#img-login").attr("src", "../images/jugador_escudo.png");
+      }
+      else if(userType == "Coach") {
+        $("#img-login").attr("src", "../images/coach_escudo.png");
+      }
+      else if(userType == "Organización") {
+        $("#img-login").attr("src", "../images/equipo_escudo.png");
+      }
+
+    });
   });
   </script>
 
