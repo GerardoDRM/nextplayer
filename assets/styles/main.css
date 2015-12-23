@@ -25,10 +25,17 @@
   * styles that are presented on some
   * classes
 **/
+.dl-menuwrapper-admin li {
+  text-align: center; }
+
+.dl-menuwrapper-admin, .dl-menuwrapper-admin .dl-menu {
+  width: 100%;
+  height: 100%; }
+
 .notification {
   margin: 0 auto; }
 
-.no-padding, .select-sport .select-options, .select-login-s .select-options-login {
+.no-padding, .select-sport .select-options, .select-login-s .select-options-login, .dl-menuwrapper-admin ul {
   padding: 0; }
 
 .select-sport .select-options, .select-sport .select-options li, .select-login-s .select-options-login, .select-login-s .select-options-login li {
@@ -583,6 +590,172 @@ footer {
     margin: 0 auto;
     text-align: center; }
 
+.top-title-player {
+  text-align: center;
+  color: #FFF;
+  font-size: 35px;
+  background-color: #337ab7; }
+
+.dl-menuwrapper-admin {
+  -webkit-transition: opacity 0.4s ease-in-out;
+  -moz-transition: opacity 0.4s ease-in-out;
+  -o-transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+  z-index: 2;
+  text-align: left; }
+  .dl-menuwrapper-admin ul {
+    background: #FFF;
+    list-style: none; }
+  .dl-menuwrapper-admin li {
+    padding: 0;
+    border: 1px solid #e9eaed; }
+    .dl-menuwrapper-admin li h3 {
+      font-size: 18px; }
+    .dl-menuwrapper-admin li a {
+      font-size: 1.75em;
+      color: #e9eaed;
+      line-height: 20px;
+      font-weight: 300;
+      display: block;
+      position: relative;
+      padding: 15px 20px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      color: #9bee9d; }
+      .dl-menuwrapper-admin li a:hover, .dl-menuwrapper-admin li a.selected {
+        color: #2ae92e; }
+        .dl-menuwrapper-admin li a:hover::before, .dl-menuwrapper-admin li a.selected::before {
+          content: close-quote; }
+  .dl-menuwrapper-admin .dl-menu {
+    -webkit-transition: opacity 0.4s ease-in-out, left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    -moz-transition: opacity 0.4s ease-in-out, left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    -o-transition: opacity 0.4s ease-in-out, left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: opacity 0.4s ease-in-out, left 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
+
+/* Tab container*/
+.cd-tabs-content {
+  background: #FFF;
+  height: 400px;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding: 0; }
+  .cd-tabs-content li {
+    display: none;
+    padding: 1.4em; }
+    .cd-tabs-content li.selected {
+      display: block;
+      -webkit-animation: cd-fade-in 0.5s;
+      -moz-animation: cd-fade-in 0.5s;
+      animation: cd-fade-in 0.5s; }
+    .cd-tabs-content li p {
+      font-size: 1em;
+      color: #000;
+      font-family: "Open Sans", sans-serif;
+      line-height: 1.6;
+      margin-bottom: 2em; }
+
+.container {
+  padding: 0;
+  box-shadow: -4px 21px 59px gray; }
+
+.font-basic {
+  font-size: 16px;
+  font-weight: bold; }
+
+.image-picture-two img {
+  margin-top: 20%;
+  padding-left: 5%;
+  padding-top: 4%; }
+
+.images-profile {
+  margin-bottom: 0;
+  text-align: center;
+  width: 100%;
+  background-color: #e9eaed;
+  height: 250px; }
+  .images-profile h2 {
+    color: #FFF;
+    margin-top: 71px;
+    font-weight: bold;
+    font-size: 36px; }
+  .images-profile input {
+    background-color: #2ae92e;
+    color: #000;
+    margin-top: 0;
+    font-weight: bold;
+    width: 100px;
+    font-size: 22px; }
+
+.middle-image {
+  margin-top: 15%;
+  margin-left: 156px;
+  height: 180px;
+  width: 200px; }
+
+.form-group-modified-input {
+  border: none;
+  background-color: #e9eaed;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  margin-bottom: 5%;
+  width: 100%; }
+
+.photo {
+  text-align: center;
+  width: 200px;
+  height: 150px;
+  background-color: #9bee9d; }
+  .photo img {
+    margin-top: 10%; }
+
+.margin-position {
+  margin-top: -10%; }
+
+.p-sport {
+  margin-top: 20%;
+  font-size: 16px; }
+  .p-sport a {
+    color: #9bee9d; }
+    .p-sport a:hover {
+      color: #9bee9d; }
+
+.margin-gallery {
+  margin-top: 5%; }
+
+.gallery-video p {
+  font-size: 16px; }
+
+.countries-eff select {
+  width: 95%;
+  height: 34px;
+  padding: 6px 12px;
+  margin-bottom: 5%; }
+
+.buttom-member-one {
+  color: white;
+  background-color: red;
+  width: 180px;
+  margin-bottom: 5%; }
+
+.buttom-member-two {
+  color: #000;
+  background-color: #2ae92e;
+  width: 180px; }
+
+.contador {
+  width: 300px; }
+
+.background-img-profile {
+  background: linear-gradient(transparent, transparent 50%), linear-gradient(0deg, rgba(0, 0, 0, 0.7), transparent), url("../images/slide_2.jpg") no-repeat center;
+  background-size: cover; }
+
+.align-labels {
+  text-align: center; }
+
 /**
   * Media queries Partial SASS
   * This SASS file has the break points
@@ -660,6 +833,36 @@ footer {
       font-size: 22px; }
 
   .select-sport {
-    font-size: 22px; } }
+    font-size: 22px; }
+
+  .images-profile {
+    margin-bottom: 20px;
+    height: 240px; }
+    .images-profile h2 {
+      color: #000;
+      margin-top: 50%; }
+    .images-profile input {
+      margin-top: 54%;
+      width: 180px; }
+
+  .container {
+    margin-top: 0; }
+
+  .middle-image {
+    margin-top: 31%;
+    margin-left: 14px;
+    width: 100%; }
+
+  .background-img-profile {
+    background: #e9eaed; }
+
+  .align-labels {
+    text-align: left; }
+
+  .form-group-modified {
+    text-align: left; }
+
+  .buttom-member-one {
+    margin-bottom: 0; } }
 
 /*# sourceMappingURL=main.css.map */

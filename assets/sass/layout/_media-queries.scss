@@ -107,4 +107,43 @@
   .select-sport {
   font-size: 22px;
   }
+  //// Edit Profile //////
+  .images-profile {
+    margin-bottom: 20px;
+    height: 240px;
+
+    h2 {
+      color: $black;
+    margin-top: 50%;
+    }
+    input {
+      margin-top: 54%;
+      width: 180px;
+    }
+  }
+  .container {
+    margin-top: 0;
+  }
+  .middle-image {
+    margin-top: 31%;
+    margin-left:14px;
+width: 100%;
+  }
+  .background-img-profile {
+    background: $gray-material;
+  }
+  .align-labels {
+    text-align: left;
+  }
+  .cd-tabs-content {
+
+  }
+
+  .form-group-modified {
+    text-align: left;
+  }
+
+  .buttom-member-one {
+    margin-bottom: 0;
+  }
 }
