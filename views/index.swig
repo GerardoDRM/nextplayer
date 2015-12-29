@@ -140,7 +140,7 @@
           <h2> MISIÓN </h2>
           <p>
 
-            Nuestra misión es ayudar a todos los atletas de México que buscan una oportunidad de poder estudiar y por medio de sus habilidades tanto deportivas poder obtener una beca universitaria en las mejores escuelas de México </p>
+            Nuestra misión es ayudar a todos los atletas de México que buscan una oportunidad de poder estudiar y por medio de sus habilidades tanto deportivas poder obtener una beca universitaria en las mejores escuelas de México. </p>
         </div>
         <div class="col-sm-6">
           <h2> VISIÓN </h2>

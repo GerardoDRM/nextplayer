@@ -50,15 +50,15 @@
     <div class="row">
       <div class="col-sm-4">
         <h2> 1 </h2>
-        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et </p>
+        <p> Crea tu perfil gratuito - Ingresa tus datos, sube fotos y videos de tus mejores jugadas.</p>
       </div>
       <div class="col-sm-4">
         <h2> 2 </h2>
-        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et </p>
+        <p> Conéctate con coaches/reclutadores - Equipos registrados tendrán acceso a toda tú información y se pondrán en contacto contigo si les llamas la atención. </p>
       </div>
       <div class="col-sm-4">
         <h2> 3 </h2>
-        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et </p>
+        <p> Firma con un equipo o universidad - Cumple tu sueño de jugar al próximo nivel! </p>
       </div>
 
     </div>

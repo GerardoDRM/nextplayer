@@ -1,6 +1,6 @@
 {% extends 'base.swig' %} {% block content %}
 
-<div class="container">
+<div class="container-dash">
   <div class="top-title-player">
     <h1 class="dissapear"> Sube PLAYERS CLUB y
       <br> obten beneficios exclusivos </br>

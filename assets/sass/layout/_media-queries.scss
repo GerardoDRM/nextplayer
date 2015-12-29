@@ -12,6 +12,13 @@
 @include mq($brk-less-md) {
 
 }
+@include mq($brk-less-max-sm) {
+  .special-two-col {
+    float: left;
+    width: 45%;
+  }
+}
+
 @include mq($brk-less-sm) {
   .midtern-header {
     h1 {
@@ -146,4 +153,49 @@ width: 100%;
   .buttom-member-one {
     margin-bottom: 0;
   }
+
+  //////Profile edit ////////
+  .left-profile {
+
+    h1 {
+      text-align: left;
+    }
+  }
+  .paragraph-up {
+    text-align: left;
+  }
+  .body-paragraph-green {
+    text-align: left;
+  }
+  .head-paragraph {
+  text-align: left;
+  }
+  .body-paragraph-left {
+    text-align: left;
+
+  }
+  .anchor-profile {
+    text-align: left;
+    margin-top: 82px;
+    margin-bottom: 10%;
+
+    a {
+    margin: 0;
+  display: none;
+
+    }
+  }
+  .profile-photos-slide {
+
+        height: 70px;
+
+  }
+  .head-body-bottom {
+    text-align: left;
+  }
+  .body-paragraph-bottom {
+    text-align: left;
+  }
+
+
 }
