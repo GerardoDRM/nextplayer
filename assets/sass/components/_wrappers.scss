@@ -594,6 +594,25 @@
     padding-top: 1%;
   }
 }
+.anchor-profile-coach {
+  text-align: center;
+
+  font-weight: bold;
+
+  margin-top: 0;
+  margin-bottom: 0;
+  a {
+    margin: 0 auto;
+  display: block;
+    color: $black;
+    width: 120px;
+    background-color: $green;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1%;
+  }
+}
 .input-profile {
 
   margin-top: 82px;
@@ -637,8 +656,51 @@
       padding-top: 5%;
       text-align: center;
 }
+
+.head-body-coach {
+  font-size: 24px;
+  font-weight: bold;
+      padding-top: 5%;
+      text-align: center;
+}
 .body-paragraph-bottom {
   text-align: center;
   font-size: 20px;
   font-weight: normal;
+}
+ .color-textarea {
+   background-color: $gray-material;
+ }
+
+ .border-coach-one {
+   border-bottom: 3px solid $new-green;
+     margin-bottom: 3%;
+ }
+
+ .border-coach-two {
+    border-bottom: 3px solid $gray;
+    margin-bottom: 3%;
+ }
+.anchor-coach {
+
+  color: $new-green;
+  font-weight: bold;
+
+}
+.years {
+  display: inline;
+
+}
+
+.margin-years {
+  margin-bottom: 5%;
+}
+.experience {
+  text-align: center;
+}
+
+.border-column-botom {
+  border-bottom: 1px solid;
+  padding-bottom: 3%;
+
 }

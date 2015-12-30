@@ -32,20 +32,10 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right navbar-text">
-          <li><a href="/">Home</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registro <span class="caret"></span></a>
-            <ul class="dropdown-menu">
 
-              <li><a href="/signup/player">Jugador</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="/signup/coach">Coach</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Organización</a></li>
-            </ul>
-          </li>
-          <li><a href="/login">Login</a></li>
-          <li><a href="#">Contacto</a></li>
+          <li><a href="/login">Blog</a></li>
+          <li><a href="#">Combines</a></li>
+            <li><a href="#">Log out</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->

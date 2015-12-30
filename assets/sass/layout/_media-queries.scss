@@ -176,7 +176,7 @@ width: 100%;
   }
   .anchor-profile {
     text-align: left;
-    margin-top: 82px;
+    margin-top: 0;
     margin-bottom: 10%;
 
     a {
@@ -193,9 +193,14 @@ width: 100%;
   .head-body-bottom {
     text-align: left;
   }
+  .head-body-coach {
+    text-align: left;
+  }
   .body-paragraph-bottom {
     text-align: left;
   }
-
+  .experience {
+    text-align: left;
+  }
 
 }
