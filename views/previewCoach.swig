@@ -1,4 +1,4 @@
-{% extends 'base.swig' %} {% block content %}
+{% extends 'baseProfile.swig' %} {% block content %}
 <div class="container">
   <div class="row">
     <div class="col-sm-4 border-right-column">

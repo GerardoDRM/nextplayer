@@ -50,6 +50,11 @@
   margin: 0;
 }
 
+%no-margin--side {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 %messages {
   @include border-radius(5px);
   margin-bottom: 20px;

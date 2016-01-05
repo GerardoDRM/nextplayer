@@ -53,6 +53,50 @@
 
 }
 
+// Sign Up //
+.input-space {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+.input-sign {
+  width: 100%;
+  margin: 0 auto;
+  background: url("../images/slide_2.jpg")no-repeat center;
+  background-size: cover;
+  height: auto;
+  input {
+    background-color: $green;
+    font-weight: bold;
+    color: $black;
+    font-size: 18px;
+     ::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: #fff;
+    }
+     :-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: #fff;
+    }
+     ::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #fff;
+    }
+     :-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: #fff;
+    }
+  }
+}
+
+.input-signup {
+  width: 90%;
+  margin-bottom: 10px;
+  border: none;
+  @include border-radius(4px);
+  padding: 10px;
+}
+
 //////LOGIN////////
 
 
@@ -96,4 +140,44 @@
     }
   }
 
+}
+
+.input-sign-login {
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+  input {
+    background-color: $green;
+    font-weight: bold;
+    color: $black;
+    font-size: 18px;
+     ::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: #fff;
+    }
+     :-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: #fff;
+    }
+     ::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #fff;
+    }
+     :-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: #fff;
+    }
+  }
+  .input-signup-login {
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+    @include border-radius(4px);
+    padding: 10px;
+  }
+  .form-group-login {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
 }

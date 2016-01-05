@@ -4,51 +4,52 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+var passport = require('passport');
 
 module.exports = {
 
   /**
- * Check the provided email address and password, and if they
- * match a real user in the database, sign in to Activity Overlord.
- */
-login: function (req, res) {
+   * Check the provided email address and password, and if they
+   * match a real user in the database, sign in to Activity Overlord.
+   */
+  login: function(req, res) {
 
-  // Try to look up user using the provided email address
-  User.findOne({
-    email: req.param('email')
-  }, function foundUser(err, user) {
-    if (err) return res.negotiate(err);
-    if (!user) return res.notFound();
+    // Try to look up user using the provided email address
+    User.findOne({
+      email: req.param('email')
+    }, function foundUser(err, user) {
+      if (err) return res.negotiate(err);
+      if (!user) return res.notFound();
 
-    // Compare password attempt from the form params to the encrypted password
-    // from the database (`user.password`)
-    require('machinepack-passwords').checkPassword({
-      passwordAttempt: req.param('password'),
-      encryptedPassword: user.encryptedPassword
-    }).exec({
+      // Compare password attempt from the form params to the encrypted password
+      // from the database (`user.password`)
+      require('machinepack-passwords').checkPassword({
+        passwordAttempt: req.param('password'),
+        encryptedPassword: user.encryptedPassword
+      }).exec({
 
-      error: function (err){
-        return res.negotiate(err);
-      },
+        error: function(err) {
+          return res.negotiate(err);
+        },
 
-      // If the password from the form params doesn't checkout w/ the encrypted
-      // password from the database...
-      incorrect: function (){
-        return res.notFound();
-      },
+        // If the password from the form params doesn't checkout w/ the encrypted
+        // password from the database...
+        incorrect: function() {
+          return res.notFound();
+        },
 
-      success: function (){
+        success: function() {
 
-        // Store user id in the user session
-        req.session.me = user.id;
+          // Store user id in the user session
+          req.session.me = user.id;
 
-        // All done- let the client know that everything worked.
-        return res.ok();
-      }
+          // All done- let the client know that everything worked.
+          return res.ok();
+        }
+      });
     });
-  });
 
-},
+  },
 
 
   signup: function(req, res) {
@@ -75,7 +76,7 @@ login: function (req, res) {
         }, function userCreated(err, newUser) {
           if (err) {
 
-            console.log("err: "+ err);
+            console.log("err: " + err);
             console.log("err.invalidAttributes: ");
 
             // If this is a uniqueness error about the email attribute,
@@ -99,29 +100,57 @@ login: function (req, res) {
       },
     });
   }, // end signup
-/**
- * Log out of Activity Overlord.
- * (wipes `me` from the sesion)
- */
-logout: function (req, res) {
+  /**
+   * Log out of Activity Overlord.
+   * (wipes `me` from the sesion)
+   */
+  logout: function(req, res) {
 
-  // Look up the user record from the database which is
-  // referenced by the id in the user session (req.session.me)
-  User.findOne(req.session.me, function foundUser(err, user) {
-    if (err) return res.negotiate(err);
+    // Look up the user record from the database which is
+    // referenced by the id in the user session (req.session.me)
+    User.findOne(req.session.me, function foundUser(err, user) {
+      if (err) return res.negotiate(err);
 
-    // If session refers to a user who no longer exists, still allow logout.
-    if (!user) {
-      sails.log.verbose('Session refers to a user who no longer exists.');
+      // If session refers to a user who no longer exists, still allow logout.
+      if (!user) {
+        sails.log.verbose('Session refers to a user who no longer exists.');
+        return res.backToHomePage();
+      }
+
+      // Wipe out the session (log out)
+      req.session.me = null;
+
+      // Either send a 200 OK or redirect to the home page
       return res.backToHomePage();
-    }
 
-    // Wipe out the session (log out)
-    req.session.me = null;
+    });
+  },
 
-    // Either send a 200 OK or redirect to the home page
-    return res.backToHomePage();
+  'facebook': function(req, res, next) {
+    passport.authenticate('facebook', {
+        scope: ['email']
+      },
+      function(err, user) {
+        req.logIn(user, function(err) {
+          if (err) {
+            req.session.flash = 'There was an error';
+            res.redirect('/login');
+          } else {
+            req.session.me = user;
+            res.redirect('/');
+          }
+        });
+      })(req, res, next);
+  },
 
-  });
-}
+  'facebook/callback': function(req, res, next) {
+    passport.authenticate('facebook',
+      function(req, res) {
+        res.redirect('/');
+      })(req, res, next);
+  },
+
+  'user/basicinfo' : function(req, res) {
+    console.log(req);
+  }
 };

@@ -25,15 +25,26 @@ module.exports = {
 				return res.view('index');
 			}
 
-			return res.view('dashboard', {
-				message: {
-					id: user.id,
-					name: user.name,
-					email: user.email,
-					lastname: user.lastname
-				}
-			});
-
+			if (user.role == undefined) {
+				return res.view('dashboard', {
+					message: {
+						id: user.id,
+						name: user.name,
+						email: user.email,
+						lastname: user.lastname
+					}
+				});
+			}
+			else {
+				return res.view('dashboardCoach', {
+					message: {
+						id: user.id,
+						name: user.name,
+						email: user.email,
+						lastname: user.lastname
+					}
+				});
+			}
 		});
 	},// End home page
 };

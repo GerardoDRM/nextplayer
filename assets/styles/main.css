@@ -28,7 +28,7 @@
 .dl-menuwrapper-admin li {
   text-align: center; }
 
-.dl-menuwrapper-admin, .dl-menuwrapper-admin .dl-menu {
+.full-wrapper, .dl-menuwrapper-admin, .dl-menuwrapper-admin .dl-menu {
   width: 100%;
   height: 100%; }
 
@@ -38,8 +38,12 @@
 .no-padding, .select-sport .select-options, .select-login-s .select-options-login, .dl-menuwrapper-admin ul {
   padding: 0; }
 
-.select-sport .select-options, .select-sport .select-options li, .select-login-s .select-options-login, .select-login-s .select-options-login li {
+.no-margin, .select-sport .select-options, .select-sport .select-options li, .select-login-s .select-options-login, .select-login-s .select-options-login li, .middle-image {
   margin: 0; }
+
+.no-margin--sides {
+  margin-left: 0;
+  margin-right: 0; }
 
 .success, .error {
   -webkit-border-radius: 5px;
@@ -86,6 +90,9 @@ a:hover, a:link, a:visited, a:active {
   z-index: 1;
   text-align: center;
   top: 20%; }
+
+.text-center {
+  text-align: center; }
 
 /*Menu color*/
 /*Notifications*/
@@ -162,12 +169,73 @@ footer {
   * This SASS file create
   * multiple backgrounds (colors/img)
 **/
+.carousel-images {
+  background: url("../images/slide_1.jpg") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 350px; }
+
+.carousel-images-dos {
+  background: url("../images/slide_2.jpg") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 350px; }
+
+.carousel-images-tres {
+  background: url("../images/slide_3.jpg") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 350px; }
+
+.profile-picture {
+  background: url("../images/slide_1.jpg") no-repeat center;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  margin-bottom: 10%; }
+
+.profile-photos-slide {
+  background: url("../images/slide_1.jpg") no-repeat center;
+  width: 80%;
+  height: 154px;
+  background-size: cover; }
+
+.profile-photos-slide-exclusive {
+  background: url("../images/slide_1.jpg") no-repeat center;
+  width: 60px;
+  height: 70px;
+  background-size: cover; }
+
 /**
   * Buttons Partial SASS
   * This SASS file has all
   * buttons style on the web app
 **/
 /* General */
+.button-member--cancel {
+  color: white;
+  background-color: red;
+  width: 180px;
+  margin-bottom: 5%;
+  border: none; }
+
+.button-member--confirm {
+  color: #000;
+  background-color: #2ae92e;
+  width: 180px;
+  border: none; }
+
+.facebook {
+  color: #FFF;
+  background-color: #3b5999;
+  font-weight: normal;
+  display: block;
+  margin: 0 auto;
+  font-size: 1.125em;
+  padding: 20px 0; }
+  .facebook:hover {
+    color: #FFF; }
+
 /**
   * Forms Partial SASS
   * This SASS file has all
@@ -230,6 +298,45 @@ footer {
       .select-sport .select-options li[rel="hide"] {
         display: none; }
 
+.input-space {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px; }
+
+.input-sign {
+  width: 100%;
+  margin: 0 auto;
+  background: url("../images/slide_2.jpg") no-repeat center;
+  background-size: cover;
+  height: auto; }
+  .input-sign input {
+    background-color: #2ae92e;
+    font-weight: bold;
+    color: #000;
+    font-size: 18px; }
+    .input-sign input ::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: #fff; }
+    .input-sign input :-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: #fff; }
+    .input-sign input ::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #fff; }
+    .input-sign input :-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: #fff; }
+
+.input-signup {
+  width: 90%;
+  margin-bottom: 10px;
+  border: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  padding: 10px; }
+
 .select-login-s {
   width: 90%;
   height: 40px;
@@ -279,6 +386,41 @@ footer {
       .select-login-s .select-options-login li[rel="hide"] {
         display: none; }
 
+.input-sign-login {
+  width: 90%;
+  margin: 0 auto;
+  height: auto; }
+  .input-sign-login input {
+    background-color: #2ae92e;
+    font-weight: bold;
+    color: #000;
+    font-size: 18px; }
+    .input-sign-login input ::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: #fff; }
+    .input-sign-login input :-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: #fff; }
+    .input-sign-login input ::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #fff; }
+    .input-sign-login input :-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: #fff; }
+  .input-sign-login .input-signup-login {
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    padding: 10px; }
+  .input-sign-login .form-group-login {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center; }
+
 /**
   * Icons Partial SASS
   * This SASS file has most of the icons
@@ -295,6 +437,15 @@ footer {
 .icons-login {
   margin: 50px auto 15px;
   width: 85%; }
+
+.icons-sport {
+  width: 90%; }
+
+.photo-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px; }
 
 /**
   * Modals Partial SASS
@@ -347,24 +498,6 @@ footer {
   .margin-top p {
     color: #FFF;
     font-size: 20px; }
-
-.carousel-images {
-  background: url("../images/slide_1.jpg") no-repeat center;
-  background-size: cover;
-  width: 100%;
-  height: 350px; }
-
-.carousel-images-dos {
-  background: url("../images/slide_2.jpg") no-repeat center;
-  background-size: cover;
-  width: 100%;
-  height: 350px; }
-
-.carousel-images-tres {
-  background: url("../images/slide_3.jpg") no-repeat center;
-  background-size: cover;
-  width: 100%;
-  height: 350px; }
 
 .midtern-header {
   background-color: #2ae92e;
@@ -460,60 +593,8 @@ footer {
     color: #FFF;
     font-weight: bold; }
 
-.input-space {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 20px; }
-
-.input-sign {
-  width: 100%;
-  margin: 0 auto;
-  background: url("../images/slide_2.jpg") no-repeat center;
-  background-size: cover;
-  height: auto; }
-  .input-sign input {
-    background-color: #2ae92e;
-    font-weight: bold;
-    color: #000;
-    font-size: 18px; }
-    .input-sign input ::-webkit-input-placeholder {
-      /* WebKit browsers */
-      color: #fff; }
-    .input-sign input :-moz-placeholder {
-      /* Mozilla Firefox 4 to 18 */
-      color: #fff; }
-    .input-sign input ::-moz-placeholder {
-      /* Mozilla Firefox 19+ */
-      color: #fff; }
-    .input-sign input :-ms-input-placeholder {
-      /* Internet Explorer 10+ */
-      color: #fff; }
-
-.sign-facebook {
-  width: 90%;
-  background-color: blue;
-  margin-bottom: 15%;
-  font-weight: normal;
-  border: none; }
-  .sign-facebook input {
-    background-color: blue;
-    color: #FFF; }
-
 .advisement {
   height: 190px; }
-
-.input-signup {
-  width: 90%;
-  margin-bottom: 10px;
-  border: none;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
-  padding: 10px; }
-
-.text-center {
-  text-align: center; }
 
 .function h1 {
   font-size: 20px;
@@ -553,41 +634,6 @@ footer {
     font-size: 20px;
     color: #000;
     font-weight: bold; }
-
-.input-sign-login {
-  width: 90%;
-  margin: 0 auto;
-  height: auto; }
-  .input-sign-login input {
-    background-color: #2ae92e;
-    font-weight: bold;
-    color: #000;
-    font-size: 18px; }
-    .input-sign-login input ::-webkit-input-placeholder {
-      /* WebKit browsers */
-      color: #fff; }
-    .input-sign-login input :-moz-placeholder {
-      /* Mozilla Firefox 4 to 18 */
-      color: #fff; }
-    .input-sign-login input ::-moz-placeholder {
-      /* Mozilla Firefox 19+ */
-      color: #fff; }
-    .input-sign-login input :-ms-input-placeholder {
-      /* Internet Explorer 10+ */
-      color: #fff; }
-  .input-sign-login .input-signup-login {
-    width: 100%;
-    margin-bottom: 10px;
-    border: none;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    border-radius: 4px;
-    padding: 10px; }
-  .input-sign-login .form-group-login {
-    width: 90%;
-    margin: 0 auto;
-    text-align: center; }
 
 .top-title-player {
   text-align: center;
@@ -636,8 +682,6 @@ footer {
 .cd-tabs-content {
   background: #FFF;
   height: 400px;
-  overflow: scroll;
-  overflow-x: hidden;
   padding: 0; }
   .cd-tabs-content li {
     display: none;
@@ -663,12 +707,11 @@ footer {
   font-weight: bold; }
 
 .image-picture-two img {
-  margin-top: 20%;
+  margin-top: 0;
   padding-left: 5%;
   padding-top: 4%; }
 
 .images-profile {
-  margin-bottom: 0;
   text-align: center;
   width: 100%;
   background-color: #e9eaed;
@@ -684,13 +727,24 @@ footer {
     margin-top: 0;
     font-weight: bold;
     width: 100px;
-    font-size: 22px; }
+    font-size: 22px;
+    border: none; }
 
 .middle-image {
-  margin-top: 15%;
-  margin-left: 156px;
-  height: 180px;
-  width: 200px; }
+  height: 200px;
+  width: 100%; }
+
+.profile-photo {
+  background: #000; }
+  .profile-photo .default-photo {
+    background: url("../images/slide_2.jpg") no-repeat center;
+    background-size: cover;
+    -webkit-transition: opacity ease-in-out 0.2s;
+    -moz-transition: opacity ease-in-out 0.2s;
+    -o-transition: opacity ease-in-out 0.2s;
+    transition: opacity ease-in-out 0.2s; }
+    .profile-photo .default-photo:hover {
+      opacity: 0.5; }
 
 .form-group-modified-input {
   border: none;
@@ -705,7 +759,7 @@ footer {
 
 .photo {
   text-align: center;
-  width: 200px;
+  width: 100%;
   height: 150px;
   background-color: #9bee9d; }
   .photo img {
@@ -734,17 +788,6 @@ footer {
   padding: 6px 12px;
   margin-bottom: 5%; }
 
-.buttom-member-one {
-  color: white;
-  background-color: red;
-  width: 180px;
-  margin-bottom: 5%; }
-
-.buttom-member-two {
-  color: #000;
-  background-color: #2ae92e;
-  width: 180px; }
-
 .contador {
   width: 300px; }
 
@@ -754,25 +797,6 @@ footer {
 
 .align-labels {
   text-align: center; }
-
-.profile-picture {
-  background: url("../images/slide_1.jpg") no-repeat center;
-  width: 100%;
-  height: 300px;
-  background-size: cover;
-  margin-bottom: 10%; }
-
-.profile-photos-slide {
-  background: url("../images/slide_1.jpg") no-repeat center;
-  width: 80%;
-  height: 154px;
-  background-size: cover; }
-
-.profile-photos-slide-exclusive {
-  background: url("../images/slide_1.jpg") no-repeat center;
-  width: 60px;
-  height: 70px;
-  background-size: cover; }
 
 .left-profile img {
   width: 80%;
@@ -821,10 +845,7 @@ footer {
     color: #000;
     width: 120px;
     background-color: #2ae92e;
-    padding-bottom: 1%;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-top: 1%; }
+    padding: 1% 2%; }
 
 .anchor-profile-coach {
   text-align: center;
@@ -837,10 +858,7 @@ footer {
     color: #000;
     width: 120px;
     background-color: #2ae92e;
-    padding-bottom: 1%;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-top: 1%; }
+    padding: 1% 2%; }
 
 .input-profile {
   margin-top: 82px;
@@ -851,10 +869,7 @@ footer {
     width: 120px;
     background-color: #2ae92e;
     color: #000;
-    padding-bottom: 1%;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-top: 1%; }
+    padding: 1% 2%; }
 
 .width-profile {
   width: 100%; }
@@ -990,6 +1005,9 @@ footer {
   .more-info p {
     font-size: 20px; }
 
+  .facebook {
+    font-size: 1.375em; }
+
   .top-sign-login img {
     width: 20%; }
   .top-sign-login h1 {
@@ -1005,22 +1023,16 @@ footer {
     font-size: 22px; }
 
   .images-profile {
-    margin-bottom: 20px;
-    height: 240px; }
+    height: auto; }
     .images-profile h2 {
       color: #000;
-      margin-top: 50%; }
+      margin-top: 35%; }
     .images-profile input {
-      margin-top: 54%;
-      width: 180px; }
+      margin-top: 30%;
+      width: 160px; }
 
   .container {
     margin-top: 0; }
-
-  .middle-image {
-    margin-top: 31%;
-    margin-left: 14px;
-    width: 100%; }
 
   .background-img-profile {
     background: #e9eaed; }

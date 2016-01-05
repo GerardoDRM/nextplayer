@@ -6,19 +6,14 @@
   * on media queries, just include and functions
 **/
 /*Media Queries*/
-@include mq($brk-less-lg) {
-
-}
-@include mq($brk-less-md) {
-
-}
+@include mq($brk-less-lg) {}
+@include mq($brk-less-md) {}
 @include mq($brk-less-max-sm) {
   .special-two-col {
     float: left;
     width: 45%;
   }
 }
-
 @include mq($brk-less-sm) {
   .midtern-header {
     h1 {
@@ -61,7 +56,6 @@
   .carousel-images-tres {
     height: 500px;
   }
-
   /////////  Sign up ////////
   .input-sign {
     height: 460px;
@@ -94,6 +88,9 @@
     }
   }
   ///////LOGIN/////
+  .facebook {
+    font-size: em(22px);
+  }
 
   .top-sign-login {
     img {
@@ -107,34 +104,26 @@
     height: 460px;
     width: 50%;
     input {
-
       font-size: 22px;
     }
   }
   .select-sport {
-  font-size: 22px;
+    font-size: 22px;
   }
   //// Edit Profile //////
   .images-profile {
-    margin-bottom: 20px;
-    height: 240px;
-
+    height: auto;
     h2 {
       color: $black;
-    margin-top: 50%;
+      margin-top: 35%;
     }
     input {
-      margin-top: 54%;
-      width: 180px;
+      margin-top: 30%;
+      width: 160px;
     }
   }
   .container {
     margin-top: 0;
-  }
-  .middle-image {
-    margin-top: 31%;
-    margin-left:14px;
-width: 100%;
   }
   .background-img-profile {
     background: $gray-material;
@@ -142,21 +131,15 @@ width: 100%;
   .align-labels {
     text-align: left;
   }
-  .cd-tabs-content {
-
-  }
-
+  .cd-tabs-content {}
   .form-group-modified {
     text-align: left;
   }
-
   .buttom-member-one {
     margin-bottom: 0;
   }
-
   //////Profile edit ////////
   .left-profile {
-
     h1 {
       text-align: left;
     }
@@ -168,27 +151,22 @@ width: 100%;
     text-align: left;
   }
   .head-paragraph {
-  text-align: left;
+    text-align: left;
   }
   .body-paragraph-left {
     text-align: left;
-
   }
   .anchor-profile {
     text-align: left;
     margin-top: 0;
     margin-bottom: 10%;
-
     a {
-    margin: 0;
-  display: none;
-
+      margin: 0;
+      display: none;
     }
   }
   .profile-photos-slide {
-
-        height: 70px;
-
+    height: 70px;
   }
   .head-body-bottom {
     text-align: left;
@@ -202,5 +180,4 @@ width: 100%;
   .experience {
     text-align: left;
   }
-
 }

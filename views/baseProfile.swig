@@ -33,9 +33,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right navbar-text">
 
-          <li><a href="/login">Blog</a></li>
+          <li><a href="#">Blog</a></li>
           <li><a href="#">Combines</a></li>
-            <li><a href="#">Log out</a></li>
+          <li><a href="/logout">Log out</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -83,6 +83,20 @@
   <script src="/js/public/login/LoginModule.js"></script>
   <script src="/js/public/login/LoginController.js"></script>
   <!--SCRIPTS END-->
+  <!--Profiles-->
+  <script src="/js/public/players/BasicInfoModule.js"></script>
+  <script src="/js/public/players/BasicInfoController.js"></script>
+  <script src="/js/public/players/ExclusiveModule.js"></script>
+  <script src="/js/public/players/ExclusiveController.js"></script>
+  <script src="/js/public/players/GalleryModule.js"></script>
+  <script src="/js/public/players/GalleryController.js"></script>
+  <script src="/js/public/players/MembershipModule.js"></script>
+  <script src="/js/public/players/MembershipController.js"></script>
+  <script src="/js/public/players/SportModule.js"></script>
+  <script src="/js/public/players/SportController.js"></script>
+  <script src="/js/public/coachs/CoachInfoModule.js"></script>
+  <script src="/js/public/coachs/CoachInfoController.js"></script>
+
   <script>
     var states = ["Aguascalientes", "Baja California", "Baja California Sur",
       "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal",
@@ -112,14 +126,16 @@
       "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka",
       "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania",
       "Tayikistán", "Timor Orienta", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania",
-      "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia",  "Zimbabue"
+      "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue"
     ];
 
-    var years = ["1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001",
-"2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016"];
+    var years = ["1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001",
+      "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"
+    ];
 
-  var twenty = ["1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001",
-"2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016"];
+    var twenty = ["1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001",
+      "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"
+    ];
 
     $(document).ready(function() {
       // Clone select list data in a custom select list

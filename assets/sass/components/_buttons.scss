@@ -5,3 +5,31 @@
 **/
 
 /* General */
+
+// Membership
+.button-member--cancel {
+  color: white;
+  background-color: red;
+  width: 180px;
+  margin-bottom: 5%;
+  border: none;
+}
+.button-member--confirm {
+  color: $black;
+  background-color: $green;
+  width: 180px;
+  border: none;
+}
+
+.facebook {
+  color: $white;
+  background-color: #3b5999;
+  font-weight: normal;
+  display: block;
+  margin: 0 auto;
+  font-size: em(18px);
+  padding: 20px 0;
+  &:hover {
+    color: $white;
+  }
+}

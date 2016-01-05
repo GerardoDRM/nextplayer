@@ -8,6 +8,7 @@
  * For more information on configuration, check out:
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
  */
+ var passport = require('passport');
 
 module.exports.http = {
 
@@ -22,6 +23,19 @@ module.exports.http = {
   ****************************************************************************/
 
   // middleware: {
+
+  customMiddleware: function(app){
+    console.log('Express Middleware -- Start Facebook Passport Strategy');
+      // Passport
+      app.use(passport.initialize());
+      app.use(passport.session());
+
+      // app.use(function(req, res, next){
+      //     res.locals.user = req.session.user;
+      //     next();
+      // });
+
+  }
 
   /***************************************************************************
   *                                                                          *

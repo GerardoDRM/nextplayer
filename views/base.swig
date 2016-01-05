@@ -85,6 +85,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+
 
   <!--SCRIPTS-->
   <script src="/js/dependencies/sails.io.js"></script>
@@ -235,6 +237,10 @@
           text: twenty[n]
         }));
       }
+
+      // Validate
+      $("#form-signup").validate();
+      $("#form-login").validate();
 
     });
   </script>
