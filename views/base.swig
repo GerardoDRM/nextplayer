@@ -142,6 +142,9 @@
         var $styledSelect = $('.select-box');
         $styledSelect.text($(this).children('option').eq(0).text());
 
+        // Adding glyficon
+        $('<span class="glyphicon glyphicon-triangle-bottom glyphicon-direction" aria-hidden="true"></span>').appendTo($(".select-sport"));
+
         var $list = $('<ul />', {
           'class': 'select-options'
         }).insertAfter($styledSelect);

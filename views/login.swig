@@ -10,8 +10,8 @@
 
   <div class="input-sign-login" ng-app="LoginModule" ng-controller="LoginController" ng-cloak>
     <form ng-submit="submitLoginForm()" name="login">
-      <select id="select-sport" class="select-hidden">
-        <option value="Jugador">Jugador</option>
+      <select  id="select-sport"  class="select-hidden"> 
+        <option  value="Jugador">Jugador</option>
         <option value="Coach">Coach</option>
         <option value="Organización">Organización</option>
       </select>

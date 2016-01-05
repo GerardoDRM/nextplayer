@@ -921,10 +921,6 @@ footer {
   border-bottom: 1px solid;
   padding-bottom: 3%; }
 
-.glyphicon-direction {
-  left: 485px;
-  top: 13px; }
-
 /**
   * Media queries Partial SASS
   * This SASS file has the break points

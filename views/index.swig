@@ -51,8 +51,8 @@
 <!-- After carousel -->
 
 <div class="midtern-header">
-  <h1> BIENVENIDO A NEXTPLAYER! </h1>
-  <p> la única red social de reclutamiento deportivo en México </p>
+  <h1> BIENVENIDO A NEXTPLAYERS! </h1>
+  <p> la única plataforma de reclutamiento deportivo en México </p>
 
 </div>
 <div class="container-fluid">
