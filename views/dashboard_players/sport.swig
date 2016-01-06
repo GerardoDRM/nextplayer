@@ -1,5 +1,5 @@
-<div ng-app="SportModule" ng-controller="SportController">
-  <form class="form-inline" ng-submit="submitPlayersForm()">
+<div ng-controller="SportController">
+  <form class="form-inline" ng-submit="submitSportForm()">
     <div class="col-md-6">
       <div class="row">
         <div class="col-sm-6">
@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" type="number">
+          <input class="form-group-modified-input" type="number" name="height"  ng-model="sport.height">
           <span>m.</span>
         </div>
       </div>
@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" type="text">
+          <input class="form-group-modified-input" type="text" name="team" ng-model="sport.team">
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" type="text">
+          <input class="form-group-modified-input" type="text" name="weight" ng-model="sport.weight">
           <span>kg.</span>
         </div>
       </div>
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <input class="form-group-modified-input" type="email">
+        <input class="form-group-modified-input" type="email" name="measure" ng-model="sport.measure">
       </div>
     </div>
   </div>
@@ -64,49 +64,15 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6">
-        <label>
-          <input type="checkbox" value="">
-          Quarterback
-        </label>
-        <label>
-          <input type="checkbox" value="">
-          Linebacker
-        </label>
-        <label>
-          <input type="checkbox" value="">
-          Runningback
-        </label>
-        <label>
-          <input type="checkbox" value="">
-          Safety
-        </label>
-        <label>
-          <input type="checkbox" value="">
-          Wide receiver
-        </label>
-        <label>
-          <input type="checkbox" value="">
-          Cornerback
-        </label>
+      <div class="col-sm-6"  id="firstPositions">
+
       </div>
-      <div class="col-sm-6">
-        <label>
-          <input type="checkbox" value="">
-          Tight Endt
-        </label>
-        <label>
-          <input type="checkbox" value="">
-          Línea ofensivo
-        </label>
-        <label>
-          <input type="checkbox" value="">
-          Línea defensivo
-        </label>
+      <div class="col-sm-6" id="secondPositions">
+
       </div>
     </div>
   </div>
-  <input type="submit" value="Guardar" class="input-signup">
+  <input type="submit" value="Guardar" class="input-signup" >
 
 </form>
 </div>

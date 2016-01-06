@@ -46,7 +46,7 @@
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <input class="form-group-modified-input" id="exampleInputEmail2" placeholder="" type="email">
+                    <input class="form-group-modified-input" name="name"  type="text" ng-model="user.name">
                   </div>
                 </div>
                 <div class="row">
@@ -56,7 +56,7 @@
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <input class="form-group-modified-input" id="exampleInputName2" placeholder="" type="text">
+                    <input class="form-group-modified-input"  type="text" name="lastname" ng-model="user.lastname">
                   </div>
                 </div>
                 <div class="row">
@@ -66,7 +66,7 @@
                     </div>
                   </div>
                   <div class="col-sm-6 countries-eff">
-                    <select id="states-list"></select>
+                    <select id="states-list" name="states" ng-model="user.state"></select>
                   </div>
                 </div>
 
@@ -80,7 +80,7 @@
                     </div>
                   </div>
                   <div class="col-sm-6 countries-eff">
-                    <select id="countries-list"></select>
+                    <select id="countries-list" name="country" ng-model="user.country"></select>
                   </div>
                 </div>
                 <div class="row">
@@ -90,7 +90,7 @@
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <input class="form-group-modified-input" id="exampleInputName2" placeholder="" type="text">
+                    <input class="form-group-modified-input" type="text" name="born" ng-model="player.born">
                   </div>
                 </div>
                 <div class="row">
@@ -100,7 +100,7 @@
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <input class="form-group-modified-input" id="exampleInputEmail2" placeholder="" type="email">
+                    <input class="form-group-modified-input"  type="text" name="phone" ng-model="user.phone">
 
                   </div>
                 </div>
@@ -129,7 +129,7 @@
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <input class="form-group-modified-input" id="exampleInputEmail2" placeholder="" type="email">
+                      <input class="form-group-modified-input"  type="text" name="team" ng-model="coach.team">
                     </div>
                   </div>
                   <div class="row">
@@ -139,7 +139,7 @@
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <input class="form-group-modified-input" id="exampleInputName2" placeholder="" type="text">
+                      <input class="form-group-modified-input"  type="text" name="position" ng-model="coach.position">
                     </div>
                   </div>
 
@@ -155,8 +155,8 @@
                     </div>
                     <div class="col-sm-6 margin-years">
                       <div class="years">
-                        <select id="years-list"></select>
-                        <select id="twenties-list"></select>
+                        <select id="years-list" name="years" ng-model="coach.year"></select>
+                        <select id="twenties-list" name="twenties" ng-model="coach.twentie"></select>
                       </div>
                     </div>
                   </div>
@@ -167,7 +167,7 @@
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <textarea class="form-control color-textarea" rows="3"></textarea>
+                      <textarea class="form-control color-textarea text-height-two" rows="3"  type="text" name="awards" ng-model="coach.award"></textarea>
 
                     </div>
                   </div>

@@ -1,4 +1,4 @@
-angular.module('ExclusiveModule').controller('ExclusiveController', ['$scope', '$http', function($scope, $http) {
+angular.module('PlayerModule').controller('ExclusiveController', ['$scope', '$http', function($scope, $http) {
   $scope.exclusiveInfoForm = {};
   $scope.submitPlayersForm = function() {
 

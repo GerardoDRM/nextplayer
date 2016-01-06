@@ -1,4 +1,4 @@
-angular.module('GalleryModule').controller('GalleryController', ['$scope', '$http', function($scope, $http) {
+angular.module('PlayerModule').controller('GalleryController', ['$scope', '$http', function($scope, $http) {
   $scope.galleryForm = {};
   $scope.submitPlayersForm = function() {
 

@@ -84,15 +84,11 @@
   <script src="/js/public/login/LoginController.js"></script>
   <!--SCRIPTS END-->
   <!--Profiles-->
-  <script src="/js/public/players/BasicInfoModule.js"></script>
+  <script src="/js/public/players/PlayersModule.js"></script>
   <script src="/js/public/players/BasicInfoController.js"></script>
-  <script src="/js/public/players/ExclusiveModule.js"></script>
   <script src="/js/public/players/ExclusiveController.js"></script>
-  <script src="/js/public/players/GalleryModule.js"></script>
   <script src="/js/public/players/GalleryController.js"></script>
-  <script src="/js/public/players/MembershipModule.js"></script>
   <script src="/js/public/players/MembershipController.js"></script>
-  <script src="/js/public/players/SportModule.js"></script>
   <script src="/js/public/players/SportController.js"></script>
   <script src="/js/public/coachs/CoachInfoModule.js"></script>
   <script src="/js/public/coachs/CoachInfoController.js"></script>

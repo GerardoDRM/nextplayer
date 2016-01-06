@@ -1,4 +1,4 @@
-<div  ng-app="BasicInfoModule" ng-controller="BasicInfoController" ng-cloak>
+<div  ng-controller="BasicInfoController">
 <form ng-submit="submitPlayersForm()" class="form-inline align-labels">
   <div class="col-sm-12 col-md-6">
     <div class="row">

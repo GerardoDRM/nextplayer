@@ -1,6 +1,6 @@
-angular.module('MembershipModule').controller('MembershipController', ['$scope', '$http', function($scope, $http) {
+angular.module('PlayerModule').controller('MembershipController', ['$scope', '$http', function($scope, $http) {
   $scope.membershipForm = {};
-  $scope.submitPlayersForm = function() {
+  $scope.submitMembershipForm = function() {
 
     console.log($scope.membership);
 

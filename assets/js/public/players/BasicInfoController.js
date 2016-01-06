@@ -1,4 +1,4 @@
-angular.module('BasicInfoModule').controller('BasicInfoController', ['$scope', '$http', function($scope, $http) {
+angular.module('PlayerModule').controller('BasicInfoController', ['$scope', '$http', function($scope, $http) {
   $scope.basicInfoForm = {};
   $scope.submitPlayersForm = function() {
 

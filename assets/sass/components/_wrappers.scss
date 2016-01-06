@@ -286,6 +286,9 @@
 }
 
 // Dashboard //
+.text-height-one {
+  height: 200px;
+}
 .container-dash {
   padding: 0;
   box-shadow: -4px 21px 59px gray;
@@ -293,6 +296,8 @@
 .font-basic {
   font-size: 16px;
   font-weight: bold;
+
+
 }
 .image-picture-two {
   img {
@@ -548,6 +553,14 @@
 }
 
 .glyphicon-direction {
-  left: 485px;
+  right: 5%;
   top: 13px;
+  position: absolute;
+}
+
+.margin-controller {
+  margin-left: 14px;
+}
+.text-height-two {
+  height: 100px;
 }

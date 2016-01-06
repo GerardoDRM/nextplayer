@@ -335,7 +335,11 @@ footer {
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
-  padding: 10px; }
+  padding: 10px;
+  background-color: #2ae92e;
+  margin-left: 7%;
+  margin-top: 5%;
+  font-weight: bold; }
 
 .select-login-s {
   width: 90%;
@@ -698,6 +702,9 @@ footer {
       line-height: 1.6;
       margin-bottom: 2em; }
 
+.text-height-one {
+  height: 200px; }
+
 .container-dash {
   padding: 0;
   box-shadow: -4px 21px 59px gray; }
@@ -937,8 +944,15 @@ footer {
   padding-bottom: 3%; }
 
 .glyphicon-direction {
-  left: 485px;
-  top: 13px; }
+  right: 5%;
+  top: 13px;
+  position: absolute; }
+
+.margin-controller {
+  margin-left: 14px; }
+
+.text-height-two {
+  height: 100px; }
 
 /**
   * Media queries Partial SASS
