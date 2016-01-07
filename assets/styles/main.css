@@ -954,6 +954,43 @@ footer {
 .text-height-two {
   height: 100px; }
 
+.organization-advisement {
+  height: 150px; }
+
+.middle-organization {
+  background: url("../images/pagos.jpg") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 450px; }
+
+.font-organization {
+  text-align: center;
+  font-size: 36px;
+  color: #FFF;
+  margin-top: 10%;
+  font-weight: bolder; }
+
+.recuitrers {
+  margin: 5% auto;
+  width: 300px;
+  height: 350px;
+  background-color: #2ae92e;
+  text-align: center;
+  padding: 5px; }
+  .recuitrers h3 {
+    font-weight: bold;
+    font-size: 20px; }
+  .recuitrers h2 {
+    font-size: 30px; }
+  .recuitrers p {
+    margin-bottom: 5%;
+    font-size: 15px; }
+
+.pay-organization {
+  width: 100%;
+  text-align: center;
+  margin: auto; }
+
 /**
   * Media queries Partial SASS
   * This SASS file has the break points
@@ -1100,6 +1137,13 @@ footer {
     text-align: left; }
 
   .experience {
-    text-align: left; } }
+    text-align: left; }
+
+  .recuitrers {
+    margin-top: 5%;
+    padding: 0; }
+
+  .pay-organization {
+    width: 50%; } }
 
 /*# sourceMappingURL=main.css.map */

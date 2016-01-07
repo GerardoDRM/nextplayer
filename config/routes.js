@@ -42,7 +42,9 @@ module.exports.routes = {
   'GET /logout': 'UserController.logout',
   'GET /coach': {view: 'dashboardCoach'},
   'GET /player': {view: 'dashboard'},
-  'GET /coach/preview': {view: 'previewCoach'}
+  'GET /coach/preview': {view: 'previewCoach'},
+  'GET /organization': {view: 'tempOrganization'},
+  'GET /signup/organization': {view: 'signupOrganization'}
 
 
 
