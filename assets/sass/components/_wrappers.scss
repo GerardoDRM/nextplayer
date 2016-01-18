@@ -609,3 +609,63 @@ p {
   text-align: center;
   margin: auto;
 }
+
+.interest {
+  background-color: $green;
+  width: 100%;
+}
+.photo-icon-interest {
+    width: 55px;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.photo-icon-catalogue {
+  width: 144px;
+  list-style-type: none;
+}
+.li-description {
+  list-style-type: none;
+}
+
+.catalogue-image {
+  background: url("../images/equipo.png")no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 100px;
+}
+
+.chat {
+  background: url("../images/chat.png") no-repeat 6px center;
+  width: 90px;
+  height: 90px;
+  display: block;
+  right: 45px;
+  position: fixed;
+  bottom: 45px;
+}
+
+.chat-code {
+
+  text-align: right;
+  display: none;
+  height: 500px;
+  background-color: $white;
+}
+
+.prospects-image {
+  background: url("../images/jugador.png") no-repeat 6px center;
+  background-size: cover;
+  height: 120px;
+  width: 100%;
+  margin-bottom: 34px;
+}
+
+.message-image {
+  width: 21px;
+  margin-left: 110px;
+
+}
+.prospects-description {
+  height: 120px;
+}

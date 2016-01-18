@@ -44,7 +44,9 @@ module.exports.routes = {
   'GET /player': {view: 'dashboard'},
   'GET /coach/preview': {view: 'previewCoach'},
   'GET /organization': {view: 'tempOrganization'},
-  'GET /signup/organization': {view: 'signupOrganization'}
+  'GET /signup/organization': {view: 'signupOrganization'},
+  'GET /homePlayerCoach': {view: 'homePlayerCoach'},
+  'GET /homeUniversity': {view: 'homeUniversity'}
 
 
 

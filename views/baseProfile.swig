@@ -14,7 +14,7 @@
   <!--STYLES END-->
 </head>
 
-<body>
+<body class="color-profile">
   <nav class="navbar navbar-default ">
     <div class="container-fluid ">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -134,6 +134,23 @@
     ];
 
     $(document).ready(function() {
+
+	$('#live-chat header').on('click', function() {
+
+		$('.chat').slideToggle(300, 'swing');
+		$('.chat-message-counter').fadeToggle(300, 'swing');
+
+	});
+
+	$('.chat-close').on('click', function(e) {
+
+		e.preventDefault();
+		$('#live-chat').fadeOut(300);
+
+	});
+
+
+
       // Clone select list data in a custom select list
       // Replicate info
       $('#select-sport').each(function() {
