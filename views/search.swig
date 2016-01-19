@@ -4,7 +4,7 @@
     <h2> Búsqueda </h2>
   </div>
   <div class="row" style="margin-left:0px;">
-    <div class="col-sm-3" style="height:600px; background-color:white;">
+    <div class="col-sm-3" style="height:650px; background-color:white;">
       <div class="filter">
         <h2> Filtros </h2>
         <p> Estado </p>
