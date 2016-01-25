@@ -47,7 +47,8 @@ module.exports.routes = {
   'GET /signup/organization': {view: 'signupOrganization'},
   'GET /homePlayerCoach': {view: 'homePlayerCoach'},
   'GET /homeUniversity': {view: 'homeUniversity'},
-  'GET /search': {view: 'search'}
+  'GET /search': {view: 'search'},
+  'GET /teamPreview': {view: 'teamPreview'}
 
 
 

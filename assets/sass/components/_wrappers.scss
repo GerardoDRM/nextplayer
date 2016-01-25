@@ -434,6 +434,7 @@
 .body-paragraph {
   font-size: 20px;
   font-weight: normal;
+  text-align: center;
 }
 .body-paragraph-left {
   text-align: center;
@@ -688,4 +689,11 @@ p {
   height: 150px;
   width: 80%;
   margin-bottom: 34px;
+}
+
+.team-photos {
+  border-radius: 30px;
+  margin-bottom: 10px;
+  width: 73px;
+height: 80px;
 }

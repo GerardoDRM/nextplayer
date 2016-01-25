@@ -975,7 +975,8 @@ p {
 
 .body-paragraph {
   font-size: 20px;
-  font-weight: normal; }
+  font-weight: normal;
+  text-align: center; }
 
 .body-paragraph-left {
   text-align: center;
@@ -1201,6 +1202,12 @@ p {
   width: 80%;
   margin-bottom: 34px; }
 
+.team-photos {
+  border-radius: 30px;
+  margin-bottom: 10px;
+  width: 73px;
+  height: 80px; }
+
 /**
   * Media queries Partial SASS
   * This SASS file has the break points
@@ -1312,6 +1319,11 @@ p {
     margin-bottom: 0; }
 
   .left-profile h1 {
+    text-align: left; }
+
+  .body-paragraph {
+    font-size: 20px;
+    font-weight: normal;
     text-align: left; }
 
   .paragraph-up {
