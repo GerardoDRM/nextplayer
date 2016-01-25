@@ -11,6 +11,8 @@
   <!--STYLES-->
   <link rel="stylesheet" href="/styles/importer.css">
   <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/jquery-ui.min.css">
+
   <!--STYLES END-->
 </head>
 
@@ -42,7 +44,8 @@
     </div>
     <!-- /.container-fluid -->
   </nav>
-
+  <input type="hidden" id="userSport"/>
+  
   {% block content %}{% endblock %}
   <footer class="footer">
     <div class="container">
@@ -75,6 +78,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="/js/dependencies/jquery-ui.min.js"></script>
 
   <!--SCRIPTS-->
   <script src="/js/dependencies/sails.io.js"></script>

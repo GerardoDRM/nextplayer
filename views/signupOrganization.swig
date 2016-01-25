@@ -2,18 +2,18 @@
 <div class="advisement">
 
 </div>
-<div class="input-sign"  ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
+<div class="form-sign"  ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
   <form  ng-submit="submitSignupForm()" name="signup" id="form-signup">
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
           <div class="top-sign">
-            <img src="../images/coach_escudo.png" alt="...">
+            <img src="../images/equipo_escudo.png" alt="...">
             <h1> Organización </h1>
 
           </div>
-          <input type="text" class="input-signup" placeholder="Escuela" style="margin-top:30px" name="school" ng-model="signupForm.school" required>
-          <input type="text" class="input-signup" placeholder="Puesto" style="margin-top:30px" name="post" ng-model="signupForm.post" required>
+          <input type="text" class="input-signup" placeholder="Escuela"  name="school" ng-model="signupForm.school" required>
+          <input type="text" class="input-signup" placeholder="Puesto"  name="post" ng-model="signupForm.post" required>
 
           <input type="hidden" id="user-type" value="coach">
         </div>

@@ -96,42 +96,7 @@
   <script src="/js/public/login/LoginController.js"></script>
   <!--SCRIPTS END-->
   <script>
-    var states = ["Aguascalientes", "Baja California", "Baja California Sur",
-      "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal",
-      "Durango", "Estado de México", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco",
-      "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla",
-      "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora",
-      "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán"
-    ];
 
-    var countries = ["Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda",
-      "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas",
-      "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia",
-      "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután",
-      "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano",
-      "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba",
-      "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia",
-      "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón",
-      "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea - Bisáu",
-      "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón",
-      "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto",
-      "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Madagascar", "Malasia", "Malaui", "Maldivas",
-      "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro",
-      "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos",
-      "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricanaç",
-      "República Checa", "República de Macedonia", "República del Congo", "República Democrática del Congo", "República Dominicana", "República Sudafricana",
-      "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía",
-      "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka",
-      "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania",
-      "Tayikistán", "Timor Orienta", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania",
-      "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia",  "Zimbabue"
-    ];
-
-    var years = ["1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001",
-"2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016"];
-
-  var twenty = ["1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001",
-"2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016"];
 
     $(document).ready(function() {
       // Clone select list data in a custom select list
@@ -211,35 +176,27 @@
         }
       });
 
-      // Selection states
-      for (i in states) {
-        $("#states-list").append($("<option>", {
-          value: states[i],
-          text: states[i]
-        }));
-      }
 
-      // Selection country
-      for (j in countries) {
-        $("#countries-list").append($("<option>", {
-          value: countries[j],
-          text: countries[j]
-        }));
-      }
 
-      for (k in years) {
+      for (var k=1985; k<=2016 ; k++) {
         $("#years-list").append($("<option>", {
-          value: years[k],
-          text: years[k]
+          value: k,
+          text: k
         }));
       }
 
-      for (n in twenty) {
+      for (var n=1985; n<=2016 ; n++) {
         $("#twenties-list").append($("<option>", {
-          value: twenty[n],
-          text: twenty[n]
+          value: n,
+          text: n
         }));
       }
+
+      jQuery.extend(jQuery.validator.messages, {
+            required: "Este campo es requerido",
+            minlength: jQuery.validator.format("Por favor debe de haber almenos {0} caracteres."),
+            email: "Ingresa un correo valido"
+        });
 
       // Validate
       $("#form-signup").validate();

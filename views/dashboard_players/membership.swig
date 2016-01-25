@@ -1,11 +1,11 @@
 <div class="row" ng-controller="MembershipController">
-  <form ng-submit="submitMembershipForm()" class="form-inline align-labels">
+  <form class="form-inline align-labels">
     <div class="col-sm-12 col-md-6" style="font-weight: bold;
 margin-top: 10%;
 font-size: 25px;">
       <div class="checkbox align-labels">
         <label>
-          <input type="checkbox" value=""> Membresía Players Club
+          <input type="checkbox" value="players club" ng-model="membership.accept.s1"> Membresía Players Club
           <br> $1500.00
           </br>
         </label>
@@ -18,21 +18,11 @@ font-size: 25px;">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <label for="exampleInputName2">Nombre</label>
+            <label for="exampleInputName2">Nombre del Propietario</label>
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" type="text" name="name" ng-model="membership.name">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="form-group-modified align-labels">
-            <label for="exampleInputName2">Apellidos</label>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <input class="form-group-modified-input" type="text" name="lastname" ng-model="membership.lastname">
+          <input class="form-group-modified-input" type="text" name="name" ng-model="membership.name" required>
         </div>
       </div>
       <div class="row">
@@ -42,7 +32,7 @@ font-size: 25px;">
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" type="number" name="card" ng-model="membership.card">
+          <input class="form-group-modified-input" type="text" minlenght="16" maxlength="16" name="card" ng-model="membership.card" required>
         </div>
       </div>
       <div class="row">
@@ -52,7 +42,7 @@ font-size: 25px;">
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" type="text" name="cv" ng-model="membership.cv">
+          <input class="form-group-modified-input" type="number" maxlength="4" name="cv" ng-model="membership.cv" required>
         </div>
       </div>
       <div class="row">
@@ -64,10 +54,10 @@ font-size: 25px;">
         <div class="col-sm-6">
           <div class="row">
             <div class="col-sm-6">
-              <input class="form-group-modified-input" placeholder="mm" type="number" name="month" ng-model="membership.month">
+              <input class="form-group-modified-input" placeholder="mm" type="number" name="month" ng-model="membership.month" required>
             </div>
             <div class="col-sm-6">
-              <input class="form-group-modified-input" placeholder="yyyy" type="number" name="year" ng-model="membership.year">
+              <input class="form-group-modified-input" placeholder="yyyy" type="number" min="2016" max="2050"  name="year" ng-model="membership.year" required>
             </div>
 
           </div>
@@ -81,7 +71,7 @@ font-size: 25px;">
         </div>
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <input class="form-buttom button-member--confirm" type="submit" value="Comprar" name="buy">
+            <button class="form-buttom button-member--confirm" ng-click="buy()">Comprar</button>
           </div>
         </div>
       </div>

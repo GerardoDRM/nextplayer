@@ -25,7 +25,7 @@ module.exports = {
 				return res.view('index');
 			}
 
-			if (user.role == undefined) {
+			if (user.role == "player") {
 				return res.view('dashboard', {
 					message: {
 						id: user.id,

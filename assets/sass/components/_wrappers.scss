@@ -153,6 +153,7 @@
   text-align: center;
   img {
     width: 33%;
+    margin: 0 auto;
   }
   h1 {
     text-align: center;
@@ -202,11 +203,11 @@
   }
 }
 ///////////LOGIN//////////////
-.top-sign-login {
+.top-login {
   text-align: center;
   img {
     width: 33%;
-    margin-top: 5%;
+    margin: 5% auto;
   }
   h1 {
     text-align: center;
@@ -233,6 +234,7 @@
     @extend %no-padding;
     background: $white;
     list-style: none;
+    height: auto;
   }
   li {
     h3 {
@@ -267,11 +269,13 @@
 /* Tab container*/
 .cd-tabs-content {
   background: $white;
-  height: 400px;
+  height: auto;
   padding: 0;
   li {
     display: none;
     padding: 1.4em;
+    height: auto;
+    overflow-y: scroll;
     &.selected {
       display: block;
       -webkit-animation: cd-fade-in 0.5s;
@@ -291,13 +295,8 @@
 }
 .container-dash {
   padding: 0;
-  box-shadow: -4px 21px 59px gray;
-}
-.font-basic {
-  font-size: 16px;
-  font-weight: bold;
-
-
+  box-shadow: 0 6px 19px gray;
+  margin-bottom: 50px;
 }
 .image-picture-two {
   img {

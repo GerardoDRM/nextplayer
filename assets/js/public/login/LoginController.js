@@ -1,5 +1,5 @@
 angular.module('LoginModule').controller('LoginController', ['$scope', '$http', function($scope, $http){
-
+	$scope.loginForm = {};
 	$scope.submitLoginForm = function (){
 
     // Submit request to Sails.

@@ -41,7 +41,7 @@
 
         <ul class="dl-menu-admin" id="titles">
           <li>
-            <a class="menu-click selected" data-content="basic" href="javascript:void(0)">
+            <a class="menu-click selected" data-content="basic" href="javascript:void(0)" id="basic-btn">
 
               <h3>
 
@@ -64,7 +64,7 @@
           <li class="dissapear">
             <a class="menu-click" data-content="exclusive" href="javascript:void(0)" id="exclusive-btn">
               <h3>
-                ¿Por qué quiero ser reclutado?
+                Beneficios Playes Club
               </h3>
             </a>
           </li>
@@ -79,7 +79,8 @@
       </div>
 
     </div>
-    <div class="col-sm-9  font-basic">
+    <div class="col-sm-9 no-padding">
+    <input type="hidden" value="<%= message.id %>" id="userId">
       <ul class="cd-tabs-content" style="height: auto;">
         <li class="selected" data-content="basic" id="basic">
           {% include "dashboard_players/basic_info.swig" %}
@@ -91,12 +92,7 @@
           {% include "dashboard_players/gallery.swig"%}
         </li>
         <li data-content="exclusive" id="exclusive">
-          <div>
-            <form>
-              <textarea class="form-control text-height-one" rows="3" name="area" ng-model="exclusive.area"></textarea>
-              <input type="submit" value="Guardar" class="input-signup">
-            </form>
-          </div>
+          {% include "dashboard_players/players_club.swig" %}
         </li>
         <li data-content="membership" id="membership">
           {% include "dashboard_players/membership.swig"%}

@@ -57,9 +57,8 @@
     height: 500px;
   }
   /////////  Sign up ////////
-  .input-sign {
-    height: 460px;
-    input {
+  .form-sign {
+    .input-signup  {
       font-size: 22px;
     }
   }
@@ -88,11 +87,7 @@
     }
   }
   ///////LOGIN/////
-  .facebook {
-    font-size: em(22px);
-  }
-
-  .top-sign-login {
+  .top-login {
     img {
       width: 20%;
     }
@@ -100,10 +95,10 @@
       font-size: 30px;
     }
   }
-  .input-sign-login {
+  .form-login {
     height: 460px;
     width: 50%;
-    input {
+    .input-login {
       font-size: 22px;
     }
   }
@@ -186,5 +181,17 @@
   }
   .pay-organization {
     width: 50%;
+  }
+
+  .dl-menuwrapper-admin {
+    ul {
+      height: 600px;
+    }
+  }
+  .cd-tabs-content {
+    height: 600px;
+    li {
+      height: 600px;
+    }
   }
 }

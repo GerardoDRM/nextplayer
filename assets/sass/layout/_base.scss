@@ -64,11 +64,15 @@ a {
     width: 80%;
 }
 
-.success {
+.error {
+  background-color: $color-error;
+  color: $color-error-letter;
   @extend %messages;
 }
 
-.error {
+.success {
+  background-color: $color-success;
+  color: $color-success-letter;
   @extend %messages;
 }
 

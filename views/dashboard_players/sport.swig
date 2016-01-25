@@ -72,7 +72,7 @@
       </div>
     </div>
   </div>
-  <input type="submit" value="Guardar" class="input-signup" >
+  <button class="input-signup" ng-click="update()">Guardar</button>
 
 </form>
 </div>

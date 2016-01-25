@@ -1,23 +1,37 @@
 angular.module('PlayerModule').controller('ExclusiveController', ['$scope', '$http', function($scope, $http) {
-  $scope.exclusiveInfoForm = {};
-  $scope.submitPlayersForm = function() {
+  $scope.exclusive = {};
+  $scope.user = {};
 
+  $("#exclusive-btn").click(function() {
+    $http({
+      method: 'GET',
+      url: '/user/exclusive',
+      params: {
+        "user": $("#userId").val()
+      }
+    }).then(function successCallback(response) {
+      console.log(response);
+      $scope.exclusive = response.data;
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+  });
+
+  $scope.update = function() {
     console.log($scope.exclusive);
-
-    // Submit request to Sails.
-    // $http.post('/signup', {
-    //     name: $scope.signupForm.name,
-    //     lastname: $scope.signupForm.lastname,
-    //     email: $scope.signupForm.email,
-    //     password: $scope.signupForm.password,
-    //     sport: $('#select-sport').find('option:selected').val(),
-    //     role: $("#user-type").val()
-    //   })
-    //   .then(function onSuccess(sailsResponse) {
-    //     console.log(sailsResponse);
-    //   })
-    //   .catch(function onError(sailsResponse) {
-    //     console.log(sailsResponse);
-    //   })
+    // PUT data
+    $scope.user.id = $("#userId").val();
+    $http({
+      method: 'PUT',
+      url: '/user/exclusive',
+      data: {
+        "exclusive": $scope.exclusive,
+        "user": $scope.user
+      }
+    }).then(function successCallback(response) {
+      console.log(response);
+    }, function errorCallback(response) {
+      console.log(response);
+    });
   }
 }]);

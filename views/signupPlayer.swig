@@ -2,7 +2,7 @@
 <div class="advisement">
 
 </div>
-<div class="input-sign"  ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
+<div class="form-sign"  ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
   <form  ng-submit="submitSignupForm()" name="signup" id="form-signup">
     <div class="container">
       <div class="row">

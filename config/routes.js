@@ -41,8 +41,27 @@ module.exports.routes = {
   'PUT /login': 'UserController.login',
   'GET /logout': 'UserController.logout',
   'GET /coach': {view: 'dashboardCoach'},
-  'GET /player': {view: 'dashboard'},
   'GET /coach/preview': {view: 'previewCoach'},
+  /***************************************************************************
+  *                                                                          *
+  * User routes (Players and Coaches)...                                     *
+  *                                                                          *
+  ***************************************************************************/
+  'GET /user/basicinfo': 'UserController.getUserBasic',
+  'PUT /user/basicinfo': 'UserController.basicinfo',
+  'GET /user/sport': 'UserController.getUserSport',
+  'PUT /user/sport': 'UserController.sport',
+  'GET /user/exclusive': 'UserController.getUserClub',
+  'PUT /user/exclusive': 'UserController.club',
+  'GET /user/exclusive': 'UserController.getUserClub',
+  'PUT /user/exclusive': 'UserController.club',
+  'GET /user/membership': 'UserController.getUserStripe',
+  'PUT /user/membership': 'UserController.membership',
+  /***************************************************************************
+  *                                                                          *
+  * Team or University routes ...                                            *
+  *                                                                          *
+  ***************************************************************************/
   'GET /organization': {view: 'tempOrganization'},
   'GET /signup/organization': {view: 'signupOrganization'},
   'GET /homePlayerCoach': {view: 'homePlayerCoach'},

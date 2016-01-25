@@ -1,5 +1,5 @@
 <div  ng-controller="BasicInfoController">
-<form ng-submit="submitPlayersForm()" class="form-inline align-labels">
+<form class="form-inline align-labels">
   <div class="col-sm-12 col-md-6">
     <div class="row">
       <div class="col-sm-6">
@@ -28,7 +28,8 @@
         </div>
       </div>
       <div class="col-sm-6 countries-eff">
-        <select id="states-list" name="states" ng-model="user.state"></select>
+        <select id="states-list" name="states" ng-model="user.state" ng-options="s for s in states">
+        </select>
       </div>
     </div>
     <div class="row">
@@ -38,7 +39,9 @@
         </div>
       </div>
       <div class="col-sm-6 countries-eff">
-        <select id="countries-list" name="country" ng-model="user.country"></select>
+        <select id="countries-list" name="country" ng-model="user.country">
+          <option ng-repeat="country in countries" value="{{ country }}">{{ country }}</option>
+        </select>
       </div>
     </div>
     <div class="row">
@@ -48,7 +51,7 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <input class="form-group-modified-input" type="text" name="born" ng-model="player.born">
+        <input class="form-group-modified-input" id="datepicker" type="text" name="born" ng-model="user.born" calendar>
       </div>
     </div>
     <!-- End Firts Col-->
@@ -71,7 +74,7 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <input class="form-group-modified-input" type="number" name="grade" ng-model="player.grade">
+        <input class="form-group-modified-input" type="number" name="grade" ng-model="player.schoolGrade">
       </div>
     </div>
     <div class="row">
@@ -85,7 +88,7 @@
       </div>
     </div>
     <div class="col-sm-6 countries-eff">
-      <select style="margin-bottom:10%;" name="year" ng-model="player.year">
+      <select style="margin-bottom:10%;" name="year" ng-model="player.schoolYear">
         <option selected="selected" value="2012">2012</option>
         <option value="2013">2013</option>
         <option value="2014">2014</option>
@@ -107,7 +110,7 @@
     </div>
   </div>
 </div>
-<input type="submit" value="Guardar" class="input-signup">
+<button class="input-signup" ng-click="update()">Guardar</button>
 
 </form>
 </div>
