@@ -433,6 +433,7 @@
 .body-paragraph {
   font-size: 20px;
   font-weight: normal;
+  text-align: center;
 }
 .body-paragraph-left {
   text-align: center;
@@ -667,4 +668,31 @@ p {
 }
 .prospects-description {
   height: 120px;
+
+}
+
+
+///// SEARCH
+
+.filter {
+
+  background-color: white;
+
+  p {
+    font-size: 20px;
+  }
+}
+.prospects-image-search {
+  background: url("../images/jugador.png") no-repeat 6px center;
+  background-size: cover;
+  height: 150px;
+  width: 80%;
+  margin-bottom: 34px;
+}
+
+.team-photos {
+  border-radius: 30px;
+  margin-bottom: 10px;
+  width: 73px;
+height: 80px;
 }
