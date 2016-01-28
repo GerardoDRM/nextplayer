@@ -12,6 +12,11 @@
 
     <div class="row margin-gallery" id="space-for-videos"></div>
   </div>
+  <form action="http://localhost:1337/user/gallery/photos" enctype="multipart/form-data" method="post">
+    <input type="text" name="title"><br>
+    <input type="file" name="photo" multiple="multiple"><br>
+    <input type="submit" value="Upload">
+    </form>
   <p class="p-sport">No tienes video de tus jugadas? Nosotros te podemos hacer uno.
     <br>
     <a>
