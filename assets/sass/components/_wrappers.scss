@@ -50,7 +50,6 @@
     font-size: 20px;
   }
 }
-
 .midtern-header {
   background-color: $green;
   height: 200px;
@@ -72,6 +71,7 @@
   text-align: center;
   img {
     width: 80%;
+    @extend %margin-center;
   }
   h1 {
     font-size: 40px;
@@ -94,6 +94,7 @@
   padding-top: 2%;
   img {
     width: 80%;
+    @extend %margin-center;
   }
 }
 .middle-middle {
@@ -104,6 +105,7 @@
     width: 100%;
     margin-top: 5%;
     box-shadow: 12px 9px 25px $gray;
+    @extend %margin-center;
   }
   h2 {
     font-size: 40px;
@@ -153,7 +155,7 @@
   text-align: center;
   img {
     width: 33%;
-    margin: 0 auto;
+    @extend %margin-center;
   }
   h1 {
     text-align: center;
@@ -162,13 +164,9 @@
     font-weight: bold;
   }
 }
-
-
 .advisement {
   height: 190px;
 }
-
-
 .function {
   h1 {
     font-size: 20px;
@@ -216,7 +214,6 @@
     font-weight: bold;
   }
 }
-
 ////////////////////////////Profile player coach info //////////////
 .top-title-player {
   text-align: center;
@@ -288,7 +285,6 @@
     }
   }
 }
-
 // Dashboard //
 .text-height-one {
   height: 200px;
@@ -316,7 +312,7 @@
     font-weight: bold;
     font-size: 36px;
   }
-  input {
+  a {
     background-color: $green;
     color: $black;
     margin-top: 0;
@@ -331,7 +327,6 @@
   height: 200px;
   width: 100%;
 }
-
 // Image photo profile
 .profile-photo {
   background: $black;
@@ -344,7 +339,6 @@
     }
   }
 }
-
 .form-group-modified-input {
   border: none;
   background-color: $gray-material;
@@ -394,7 +388,6 @@
     margin-bottom: 5%;
   }
 }
-
 .contador {
   width: 300px;
 }
@@ -402,14 +395,40 @@
   background: linear-gradient(rgba(0, 0, 0, 0), transparent 50%), linear-gradient(0deg, rgba(0, 0, 0, 0.70), transparent), url("../images/slide_2.jpg")no-repeat center;
   background-size: cover;
 }
-.align-labels {
+///////// Dashboard coach ////////////////////
+.coach-container {
+  padding-bottom: 35px;
+  background-color: $white;
+  .coach-row {
+    width: 100%;
+    padding: 0;
+    border-bottom: 3px solid $new-green;
+    margin: 0 auto;
+    h3 {
+      padding-left: 15px;
+    }
+    textarea {
+      height: 150px;
+    }
+    .years {
+      display: inline;
+      margin-bottom: 5%;
+    }
+  }
+}
+.head-body-coach {
+  font-size: 24px;
+  font-weight: bold;
+  padding-top: 5%;
   text-align: center;
 }
-////////////////PLAYER PROFILE ////////////////
+//////////////// PROFILES VIEW ////////////////
 .left-profile {
+  overflow: auto;
   img {
     width: 80%;
     height: 250px;
+    @extend %margin-center;
   }
   h1 {
     text-align: center;
@@ -418,72 +437,119 @@
     font-weight: bold;
   }
 }
-.paragraph-up {
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: $gray;
-}
-.head-paragraph {
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  padding-top: 5%;
-}
-.body-paragraph {
-  font-size: 20px;
-  font-weight: normal;
-  text-align: center;
-}
-.body-paragraph-left {
-  text-align: center;
-  font-size: 20px;
-  font-weight: normal;
-}
-.body-paragraph-green {
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: $green;
-}
-.anchor-profile {
-  text-align: center;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 0;
-  a {
-    margin: 0 auto;
+.profile-view-container {
+  p {
+    font-size: 20px;
+    font-weight: normal;
+    &.green-title {
+      font-weight: bold;
+      color: $green;
+    }
+  }
+  .head-title {
+    font-weight: bold;
+    padding-top: 5%;
+  }
+  .sub-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: $gray;
+  }
+  .responsive-button {
     display: block;
-    color: $black;
-    width: 120px;
+    margin-bottom: 5%;
+    @extend %center-items;
+    @extend %margin-center;
+  }
+  a {
+    width: 148px;
     background-color: $green;
-    padding: 1% 2%;
+    color: $black;
+    padding: 5%;
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
   }
 }
-.anchor-profile-coach {
-  text-align: center;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 0;
-  a {
-    margin: 0 auto;
-    display: block;
-    color: $black;
-    width: 120px;
-    background-color: $green;
-    padding: 1% 2%;
+////// Customer Card on Catalogues ////////////
+.profile-card {
+  margin-top: 10px;
+  .card {
+    box-shadow: 0 4px 6px gray;
+    p {
+      text-align: center;
+      font-weight: bold;
+    }
+    .shield {
+      width: 30px;
+      position: absolute;
+      top: 58%;
+      left: 10%;
+    }
+    .catalogue-image {
+      background: gray;
+      width: 100%;
+      height: 120px;
+    }
   }
 }
-.input-profile {
-  margin-top: 82px;
-  font-weight: bold;
-  margin-bottom: 10%;
-  a {
-    margin-left: 85%;
-    width: 120px;
-    background-color: $green;
-    color: $black;
-    padding: 1% 2%;
+//////// INNER HOME //////
+.container-inner-main {
+  margin: 20px 0;
+  .inner-block {
+    background-color: $white;
+    box-shadow: 0 6px 19px gray;
+    margin: 10px 5px;
+    @include border-radius(5px);
+    &.full-box {
+      height: 900px;
+    }
+    &.semi-full-box {
+      height: 600px;
+    }
+    &.quarter-box {
+      height: 300px;
+    }
+    &.half-box {
+      height: 450px;
+    }
+    .interest {
+      background-color: $green;
+      width: 100%;
+      padding: 6px 0;
+      h2 {
+        margin: 0;
+        padding-left: 10px;
+        font-weight: bold;
+      }
+    }
+    .advicement {
+      width: 100%;
+      border-bottom: 1px solid $gray-material;
+      padding-bottom: 5px;
+      h3 {
+        font-weight: bold;
+      }
+    }
+  }
+  .interest-team {
+    margin-top: 5px;
+    ul {
+      padding-left: 10px;
+      li {
+        list-style-type: none;
+        border-bottom: 1px solid $gray-material;
+        img {
+          width: 100%;
+        }
+        p {
+          font-size: em(18px);
+          &.title {
+            font-weight: bold;
+          }
+        }
+      }
+    }
   }
 }
 .width-profile {
@@ -510,54 +576,23 @@
   font-size: 36px;
   font-weight: bold;
   padding-top: 5%;
-  text-align: center;
-}
-.head-body-coach {
-  font-size: 24px;
-  font-weight: bold;
-  padding-top: 5%;
-  text-align: center;
 }
 .body-paragraph-bottom {
-  text-align: center;
   font-size: 20px;
   font-weight: normal;
 }
 .color-textarea {
   background-color: $gray-material;
 }
-.border-coach-one {
-  border-bottom: 3px solid $new-green;
-  margin-bottom: 3%;
-}
-.border-coach-two {
-  border-bottom: 3px solid $gray;
-  margin-bottom: 3%;
-}
-.anchor-coach {
-  color: $new-green;
-  font-weight: bold;
-}
-.years {
-  display: inline;
-}
-.margin-years {
-  margin-bottom: 5%;
-}
-.experience {
-  text-align: center;
-}
 .border-column-botom {
   border-bottom: 1px solid;
   padding-bottom: 3%;
 }
-
 .glyphicon-direction {
   right: 5%;
   top: 13px;
   position: absolute;
 }
-
 .margin-controller {
   margin-left: 14px;
 }
@@ -567,132 +602,78 @@
 .organization-advisement {
   height: 150px;
 }
-
 .middle-organization {
   background: url("../images/pagos.jpg")no-repeat center;
   background-size: cover;
   width: 100%;
   height: 450px;
 }
-
 .font-organization {
   text-align: center;
-    font-size: 36px;
-    color: $white;
-    margin-top: 10%;
-    font-weight: bolder;
+  font-size: 36px;
+  color: $white;
+  margin-top: 10%;
+  font-weight: bolder;
 }
-
 .recuitrers {
-  margin:5% auto;
+  margin: 5% auto;
   width: 300px;
   height: 350px;
   background-color: $green;
   text-align: center;
   padding: 5px;
-h3 {
-  font-weight: bold;
-  font-size: 20px;
+  h3 {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  p {
+    margin-bottom: 5%;
+    font-size: 15px;
+  }
 }
-h2 {
-  font-size: 30px;
-}
-p {
-  margin-bottom: 5%;
-  font-size: 15px;
-
-}
-}
-
 .pay-organization {
   width: 100%;
   text-align: center;
   margin: auto;
 }
 
-.interest {
-  background-color: $green;
-  width: 100%;
-}
-.photo-icon-interest {
-    width: 55px;
-    text-decoration: none;
-    list-style-type: none;
-}
-
-.photo-icon-catalogue {
-  width: 144px;
-  list-style-type: none;
-}
-.li-description {
-  list-style-type: none;
-}
-
-.catalogue-image {
-  background: url("../images/equipo.png")no-repeat center;
-  background-size: cover;
-  width: 100%;
-  height: 100px;
-}
-
-.chat {
-  background: url("../images/chat.png") no-repeat 6px center;
-  width: 90px;
-  height: 90px;
-  display: block;
-  right: 45px;
-  position: fixed;
-  bottom: 45px;
-}
-
-.chat-code {
-
-  text-align: right;
-  display: none;
-  height: 500px;
-  background-color: $white;
-}
 
 .prospects-image {
-  background: url("../images/jugador.png") no-repeat 6px center;
+  background: url(../images/jugador.png) no-repeat 6px center;
   background-size: cover;
   height: 120px;
   width: 100%;
   margin-bottom: 34px;
 }
-
 .message-image {
   width: 21px;
   margin-left: 110px;
-
 }
 .prospects-description {
   height: 120px;
-
 }
 
 
 ///// SEARCH
-
 .filter {
-
   background-color: white;
-
   p {
     font-size: 20px;
   }
 }
 .prospects-image-search {
-  background: url("../images/jugador.png") no-repeat 6px center;
+  background: url(../images/jugador.png) no-repeat 6px center;
   background-size: cover;
   height: 150px;
   width: 80%;
   margin-bottom: 34px;
 }
-
 .team-photos {
   border-radius: 30px;
   margin-bottom: 10px;
   width: 73px;
-height: 80px;
+  height: 80px;
 }

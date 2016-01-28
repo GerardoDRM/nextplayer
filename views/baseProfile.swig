@@ -34,7 +34,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right navbar-text">
-
+          <li><a href="/user/home">Home</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Combines</a></li>
           <li><a href="/logout">Log out</a></li>
@@ -44,9 +44,8 @@
     </div>
     <!-- /.container-fluid -->
   </nav>
-  <input type="hidden" id="userSport"/>
-  
-  {% block content %}{% endblock %}
+  <input type="hidden" id="userSport" />
+  <input type="hidden" value="<%= message.id %>" id="userId"> {% block content %}{% endblock %}
   <footer class="footer">
     <div class="container">
       <div class="col-xs-12">
@@ -79,7 +78,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="/js/dependencies/jquery-ui.min.js"></script>
-
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
   <!--SCRIPTS-->
   <script src="/js/dependencies/sails.io.js"></script>
   <script src="/js/public/signup/SignupModule.js"></script>
@@ -89,6 +88,8 @@
   <!--SCRIPTS END-->
   <!--Profiles-->
   <script src="/js/public/players/PlayersModule.js"></script>
+  <script src="/js/public/players/ProfileViewController.js"></script>
+  <script src="/js/public/players/PlayerUpperBody.js"></script>
   <script src="/js/public/players/BasicInfoController.js"></script>
   <script src="/js/public/players/ExclusiveController.js"></script>
   <script src="/js/public/players/GalleryController.js"></script>
@@ -97,63 +98,10 @@
   <script src="/js/public/coachs/CoachInfoModule.js"></script>
   <script src="/js/public/coachs/CoachInfoController.js"></script>
 
+  {% block custom-scripts %} {% endblock custom-scripts %}
+
   <script>
-    var states = ["Aguascalientes", "Baja California", "Baja California Sur",
-      "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal",
-      "Durango", "Estado de México", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco",
-      "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla",
-      "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora",
-      "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán"
-    ];
-
-    var countries = ["Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda",
-      "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas",
-      "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia",
-      "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután",
-      "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano",
-      "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba",
-      "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia",
-      "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón",
-      "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea - Bisáu",
-      "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón",
-      "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto",
-      "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Madagascar", "Malasia", "Malaui", "Maldivas",
-      "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro",
-      "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos",
-      "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricanaç",
-      "República Checa", "República de Macedonia", "República del Congo", "República Democrática del Congo", "República Dominicana", "República Sudafricana",
-      "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía",
-      "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka",
-      "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania",
-      "Tayikistán", "Timor Orienta", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania",
-      "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue"
-    ];
-
-    var years = ["1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001",
-      "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"
-    ];
-
-    var twenty = ["1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001",
-      "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"
-    ];
-
     $(document).ready(function() {
-
-	$('#live-chat header').on('click', function() {
-
-		$('.chat').slideToggle(300, 'swing');
-		$('.chat-message-counter').fadeToggle(300, 'swing');
-
-	});
-
-	$('.chat-close').on('click', function(e) {
-
-		e.preventDefault();
-		$('#live-chat').fadeOut(300);
-
-	});
-
-
 
       // Clone select list data in a custom select list
       // Replicate info
@@ -229,35 +177,46 @@
         }
       });
 
-      // Selection states
-      for (i in states) {
-        $("#states-list").append($("<option>", {
-          value: states[i],
-          text: states[i]
-        }));
-      }
+      // Validate Forms
+      // Validate Checkbox
+      $('#membership-form').validate({
+        rules: {
+          'group': {
+            required: true
+          }
+        },
+        messages: {
+          'group': {
+            required: "Debes de seleccionar el tipo de membresia"
+          }
+        }
+      });
+      jQuery.extend(jQuery.validator.messages, {
+        required: "Este campo es requerido",
+        minlength: jQuery.validator.format("Por favor debe de haber almenos {0} caracteres."),
+        email: "Ingresa un correo valido"
+      });
 
-      // Selection country
-      for (j in countries) {
-        $("#countries-list").append($("<option>", {
-          value: countries[j],
-          text: countries[j]
-        }));
-      }
+      // Chat UI animation
+      $("#button-chat").click(function() {
+        if ($("#chat-structure").css('display') == 'block') {
+          $("#chat-structure").hide(500);
+        } else {
+          $("#chat-structure").show(500);
+          $("#conversation").hide(500);
+          $("#inbox").show(500);
+        }
+      });
 
-      for (k in years) {
-        $("#years-list").append($("<option>", {
-          value: years[k],
-          text: years[k]
-        }));
-      }
+      $(".inbox-contact").click(function() {
+        $("#inbox").hide(500);
+        $("#conversation").show(500);
+      });
 
-      for (n in twenty) {
-        $("#twenties-list").append($("<option>", {
-          value: twenty[n],
-          text: twenty[n]
-        }));
-      }
+      $("#return-inbox").click(function() {
+        $("#conversation").hide(500);
+        $("#inbox").show(500);
+      });
 
     });
   </script>

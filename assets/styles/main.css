@@ -25,14 +25,14 @@
   * styles that are presented on some
   * classes
 **/
-.dl-menuwrapper-admin li {
+.dl-menuwrapper-admin li, .profile-view-container .responsive-button {
   text-align: center; }
 
 .full-wrapper, .dl-menuwrapper-admin, .dl-menuwrapper-admin .dl-menu {
   width: 100%;
   height: 100%; }
 
-.notification {
+.notification, .middle-body img, .nike-img img, .middle-middle img, .top-sign img, .left-profile img, .profile-view-container .responsive-button {
   margin: 0 auto; }
 
 .no-padding, .select-sport .select-options, .dl-menuwrapper-admin ul {
@@ -337,6 +337,13 @@ footer {
     margin: 15px auto;
     text-align: center; }
 
+.input-profile {
+  font-weight: bold;
+  width: auto;
+  position: absolute;
+  top: 50%;
+  right: 0; }
+
 /**
   * Icons Partial SASS
   * This SASS file has most of the icons
@@ -367,6 +374,73 @@ footer {
   * Modals Partial SASS
   * This SASS has the modals dialogs
 **/
+.modalChat {
+  display: none;
+  z-index: 99;
+  width: 400px;
+  height: 800px;
+  background-color: #FFF;
+  top: 5%;
+  position: fixed;
+  right: 0;
+  box-shadow: 0 6px 19px gray; }
+  .modalChat .header {
+    padding: 16px;
+    background-color: #e9eaed;
+    display: flex; }
+    .modalChat .header h2 {
+      margin: 0;
+      padding-left: 10px;
+      width: 100%;
+      text-align: center; }
+    .modalChat .header span {
+      font-size: 2em; }
+  .modalChat ul {
+    width: 100%;
+    height: 700px;
+    list-style: none;
+    padding: 0;
+    overflow-y: scroll;
+    overflow-x: hidden; }
+    .modalChat ul.message-list li {
+      border-bottom: 1px solid #e9eaed;
+      cursor: pointer; }
+      .modalChat ul.message-list li:hover {
+        background-color: gray; }
+      .modalChat ul.message-list li img {
+        width: 100%; }
+      .modalChat ul.message-list li p {
+        font-size: 1.125em; }
+    .modalChat ul .message {
+      width: 300px;
+      height: auto;
+      border: 2px solid #e9eaed;
+      margin: 5px 0;
+      float: left;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      border-radius: 10px; }
+      .modalChat ul .message p {
+        padding: 10px; }
+      .modalChat ul .message.own-message {
+        float: right;
+        background-color: #9bee9d; }
+  .modalChat .message-input {
+    width: 100%;
+    height: 40px;
+    background-color: #e9eaed;
+    display: flex;
+    justify-content: center;
+    margin-top: -15px; }
+    .modalChat .message-input input {
+      width: 95%;
+      align-self: center;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      border-radius: 5px; }
+
 /**
   * Wrappers Partial SASS
   * This SASS has all the wrappers used on the app
@@ -502,8 +576,7 @@ footer {
 .top-sign {
   text-align: center; }
   .top-sign img {
-    width: 33%;
-    margin: 0 auto; }
+    width: 33%; }
   .top-sign h1 {
     text-align: center;
     font-size: 20px;
@@ -641,7 +714,7 @@ footer {
     margin-top: 71px;
     font-weight: bold;
     font-size: 36px; }
-  .images-profile input {
+  .images-profile a {
     background-color: #2ae92e;
     color: #000;
     margin-top: 0;
@@ -715,82 +788,126 @@ footer {
   background: linear-gradient(transparent, transparent 50%), linear-gradient(0deg, rgba(0, 0, 0, 0.7), transparent), url("../images/slide_2.jpg") no-repeat center;
   background-size: cover; }
 
-.align-labels {
+.coach-container {
+  padding-bottom: 35px;
+  background-color: #FFF; }
+  .coach-container .coach-row {
+    width: 100%;
+    padding: 0;
+    border-bottom: 3px solid #9bee9d;
+    margin: 0 auto; }
+    .coach-container .coach-row h3 {
+      padding-left: 15px; }
+    .coach-container .coach-row textarea {
+      height: 150px; }
+    .coach-container .coach-row .years {
+      display: inline;
+      margin-bottom: 5%; }
+
+.head-body-coach {
+  font-size: 24px;
+  font-weight: bold;
+  padding-top: 5%;
   text-align: center; }
 
-.left-profile img {
-  width: 80%;
-  height: 250px; }
-.left-profile h1 {
-  text-align: center;
-  color: #2ae92e;
-  font-size: 36px;
-  font-weight: bold; }
+.left-profile {
+  overflow: auto; }
+  .left-profile img {
+    width: 80%;
+    height: 250px; }
+  .left-profile h1 {
+    text-align: center;
+    color: #2ae92e;
+    font-size: 36px;
+    font-weight: bold; }
 
-.paragraph-up {
-  text-align: center;
+.profile-view-container p {
+  font-size: 20px;
+  font-weight: normal; }
+  .profile-view-container p.green-title {
+    font-weight: bold;
+    color: #2ae92e; }
+.profile-view-container .head-title {
+  font-weight: bold;
+  padding-top: 5%; }
+.profile-view-container .sub-title {
   font-size: 24px;
   font-weight: bold;
   color: #707070; }
-
-.head-paragraph {
-  text-align: center;
-  font-size: 20px;
+.profile-view-container .responsive-button {
+  display: block;
+  margin-bottom: 5%; }
+.profile-view-container a {
+  width: 148px;
+  background-color: #2ae92e;
+  color: #000;
+  padding: 5%;
+  margin: 0;
   font-weight: bold;
-  padding-top: 5%; }
-
-.body-paragraph {
-  font-size: 20px;
-  font-weight: normal;
   text-align: center; }
 
-.body-paragraph-left {
-  text-align: center;
-  font-size: 20px;
-  font-weight: normal; }
+.profile-card {
+  margin-top: 10px; }
+  .profile-card .card {
+    box-shadow: 0 4px 6px gray; }
+    .profile-card .card p {
+      text-align: center;
+      font-weight: bold; }
+    .profile-card .card .shield {
+      width: 30px;
+      position: absolute;
+      top: 58%;
+      left: 10%; }
+    .profile-card .card .catalogue-image {
+      background: gray;
+      width: 100%;
+      height: 120px; }
 
-.body-paragraph-green {
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: #2ae92e; }
-
-.anchor-profile {
-  text-align: center;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 0; }
-  .anchor-profile a {
-    margin: 0 auto;
-    display: block;
-    color: #000;
-    width: 120px;
-    background-color: #2ae92e;
-    padding: 1% 2%; }
-
-.anchor-profile-coach {
-  text-align: center;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 0; }
-  .anchor-profile-coach a {
-    margin: 0 auto;
-    display: block;
-    color: #000;
-    width: 120px;
-    background-color: #2ae92e;
-    padding: 1% 2%; }
-
-.input-profile {
-  margin-top: 82px;
-  font-weight: bold;
-  margin-bottom: 10%; }
-  .input-profile a {
-    margin-left: 85%;
-    width: 120px;
-    background-color: #2ae92e;
-    color: #000;
-    padding: 1% 2%; }
+.container-inner-main {
+  margin: 20px 0; }
+  .container-inner-main .inner-block {
+    background-color: #FFF;
+    box-shadow: 0 6px 19px gray;
+    margin: 10px 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px; }
+    .container-inner-main .inner-block.full-box {
+      height: 900px; }
+    .container-inner-main .inner-block.semi-full-box {
+      height: 600px; }
+    .container-inner-main .inner-block.quarter-box {
+      height: 300px; }
+    .container-inner-main .inner-block.half-box {
+      height: 450px; }
+    .container-inner-main .inner-block .interest {
+      background-color: #2ae92e;
+      width: 100%;
+      padding: 6px 0; }
+      .container-inner-main .inner-block .interest h2 {
+        margin: 0;
+        padding-left: 10px;
+        font-weight: bold; }
+    .container-inner-main .inner-block .advicement {
+      width: 100%;
+      border-bottom: 1px solid #e9eaed;
+      padding-bottom: 5px; }
+      .container-inner-main .inner-block .advicement h3 {
+        font-weight: bold; }
+  .container-inner-main .interest-team {
+    margin-top: 5px; }
+    .container-inner-main .interest-team ul {
+      padding-left: 10px; }
+      .container-inner-main .interest-team ul li {
+        list-style-type: none;
+        border-bottom: 1px solid #e9eaed; }
+        .container-inner-main .interest-team ul li img {
+          width: 100%; }
+        .container-inner-main .interest-team ul li p {
+          font-size: 1.125em; }
+          .container-inner-main .interest-team ul li p.title {
+            font-weight: bold; }
 
 .width-profile {
   width: 100%; }
@@ -815,43 +932,14 @@ footer {
 .head-body-bottom {
   font-size: 36px;
   font-weight: bold;
-  padding-top: 5%;
-  text-align: center; }
-
-.head-body-coach {
-  font-size: 24px;
-  font-weight: bold;
-  padding-top: 5%;
-  text-align: center; }
+  padding-top: 5%; }
 
 .body-paragraph-bottom {
-  text-align: center;
   font-size: 20px;
   font-weight: normal; }
 
 .color-textarea {
   background-color: #e9eaed; }
-
-.border-coach-one {
-  border-bottom: 3px solid #9bee9d;
-  margin-bottom: 3%; }
-
-.border-coach-two {
-  border-bottom: 3px solid #707070;
-  margin-bottom: 3%; }
-
-.anchor-coach {
-  color: #9bee9d;
-  font-weight: bold; }
-
-.years {
-  display: inline; }
-
-.margin-years {
-  margin-bottom: 5%; }
-
-.experience {
-  text-align: center; }
 
 .border-column-botom {
   border-bottom: 1px solid;
@@ -905,45 +993,8 @@ footer {
   text-align: center;
   margin: auto; }
 
-.interest {
-  background-color: #2ae92e;
-  width: 100%; }
-
-.photo-icon-interest {
-  width: 55px;
-  text-decoration: none;
-  list-style-type: none; }
-
-.photo-icon-catalogue {
-  width: 144px;
-  list-style-type: none; }
-
-.li-description {
-  list-style-type: none; }
-
-.catalogue-image {
-  background: url("../images/equipo.png") no-repeat center;
-  background-size: cover;
-  width: 100%;
-  height: 100px; }
-
-.chat {
-  background: url("../images/chat.png") no-repeat 6px center;
-  width: 90px;
-  height: 90px;
-  display: block;
-  right: 45px;
-  position: fixed;
-  bottom: 45px; }
-
-.chat-code {
-  text-align: right;
-  display: none;
-  height: 500px;
-  background-color: #FFF; }
-
 .prospects-image {
-  background: url("../images/jugador.png") no-repeat 6px center;
+  background: url(../images/jugador.png) no-repeat 6px center;
   background-size: cover;
   height: 120px;
   width: 100%;
@@ -962,7 +1013,7 @@ footer {
     font-size: 20px; }
 
 .prospects-image-search {
-  background: url("../images/jugador.png") no-repeat 6px center;
+  background: url(../images/jugador.png) no-repeat 6px center;
   background-size: cover;
   height: 150px;
   width: 80%;
@@ -993,149 +1044,20 @@ footer {
   width: 180px;
   border: none; }
 
-a {
-  text-decoration: none; }
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0; }
-
-h4, h5 {
-  line-height: 1.5em;
-  margin: 0; }
-
-hr {
-  background: #e9e9e9;
-  border: 0;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 1px;
-  margin: 0;
-  min-height: 1px; }
-
-img {
-  border: 0;
-  display: block;
-  height: auto;
-  max-width: 100%; }
-
-input {
-  border: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: 100%;
-  line-height: normal;
-  margin: 0; }
-
-p {
-  margin: 0; }
-
-.clearfix {
-  *zoom: 1; }
-
-/* For IE 6/7 */
-.clearfix:before, .clearfix:after {
-  content: "";
-  display: table; }
-
-.clearfix:after {
-  clear: both; }
-
-/* ---------- LIVE-CHAT ---------- */
-.live-chat {
-  bottom: 0;
-  font-size: 12px;
-  right: 24px;
-  position: fixed;
-  width: 300px; }
-
-.live-chat header {
-  background: #293239;
-  border-radius: 5px 5px 0 0;
-  color: #fff;
-  cursor: pointer;
-  padding: 16px 24px; }
-
-.live-chat h4:before {
-  background: #1a8a34;
-  border-radius: 50%;
-  content: "";
-  display: inline-block;
-  height: 8px;
-  margin: 0 8px 0 0;
-  width: 8px; }
-
-#live-chat h4 {
-  font-size: 12px; }
-
-#live-chat h5 {
-  font-size: 10px; }
-
-#live-chat form {
-  padding: 24px; }
-
-#live-chat input[type="text"] {
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 8px;
-  outline: none;
-  width: 234px; }
-
-.chat-message-counter {
-  background: #e62727;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  display: none;
-  font-size: 12px;
-  font-weight: bold;
-  height: 28px;
-  left: 0;
-  line-height: 28px;
-  margin: -15px 0 0 -15px;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  width: 28px; }
-
-.chat-close {
-  background: #1b2126;
-  border-radius: 50%;
-  color: #fff;
-  display: block;
-  float: right;
-  font-size: 10px;
-  height: 16px;
-  line-height: 16px;
-  margin: 2px 0 0 0;
-  text-align: center;
-  width: 16px; }
+.anchor-coach {
+  color: #9bee9d;
+  font-weight: bold; }
+  .anchor-coach:hover, .anchor-coach:link, .anchor-coach:visited, .anchor-coach:active {
+    color: #9bee9d; }
 
 .chat {
-  background: #fff; }
-
-.chat-history {
-  height: 252px;
-  padding: 8px 24px;
-  overflow-y: scroll; }
-
-.chat-message {
-  margin: 16px 0; }
-
-.chat-message img {
-  border-radius: 50%;
-  float: left; }
-
-.chat-message-content {
-  margin-left: 56px; }
-
-.chat-time {
-  float: right;
-  font-size: 10px; }
-
-.chat-feedback {
-  font-style: italic;
-  margin: 0 0 0 80px; }
+  background: url(../images/chat.png) no-repeat 6px center;
+  width: 90px;
+  height: 90px;
+  display: block;
+  right: 45px;
+  position: fixed;
+  bottom: 45px; }
 
 /**
   * Media queries Partial SASS
@@ -1227,17 +1149,8 @@ p {
       margin-top: 30%;
       width: 160px; }
 
-  .container {
-    margin-top: 0; }
-
   .background-img-profile {
     background: #e9eaed; }
-
-  .align-labels {
-    text-align: left; }
-
-  .form-group-modified {
-    text-align: left; }
 
   .buttom-member-one {
     margin-bottom: 0; }
@@ -1245,45 +1158,8 @@ p {
   .left-profile h1 {
     text-align: left; }
 
-  .body-paragraph {
-    font-size: 20px;
-    font-weight: normal;
-    text-align: left; }
-
-  .paragraph-up {
-    text-align: left; }
-
-  .body-paragraph-green {
-    text-align: left; }
-
-  .head-paragraph {
-    text-align: left; }
-
-  .body-paragraph-left {
-    text-align: left; }
-
-  .anchor-profile {
-    text-align: left;
-    margin-top: 0;
-    margin-bottom: 10%; }
-    .anchor-profile a {
-      margin: 0;
-      display: none; }
-
   .profile-photos-slide {
     height: 70px; }
-
-  .head-body-bottom {
-    text-align: left; }
-
-  .head-body-coach {
-    text-align: left; }
-
-  .body-paragraph-bottom {
-    text-align: left; }
-
-  .experience {
-    text-align: left; }
 
   .recuitrers {
     margin-top: 5%;
@@ -1298,6 +1174,13 @@ p {
   .cd-tabs-content {
     height: 600px; }
     .cd-tabs-content li {
-      height: 600px; } }
+      height: 600px; }
+
+  .coach-container .coach-row {
+    width: 90%;
+    padding: 0 2%; }
+
+  .profile-view-container .responsive-button {
+    display: none; } }
 
 /*# sourceMappingURL=main.css.map */

@@ -58,7 +58,7 @@
   }
   /////////  Sign up ////////
   .form-sign {
-    .input-signup  {
+    .input-signup {
       font-size: 22px;
     }
   }
@@ -117,18 +117,8 @@
       width: 160px;
     }
   }
-  .container {
-    margin-top: 0;
-  }
   .background-img-profile {
     background: $gray-material;
-  }
-  .align-labels {
-    text-align: left;
-  }
-  .cd-tabs-content {}
-  .form-group-modified {
-    text-align: left;
   }
   .buttom-member-one {
     margin-bottom: 0;
@@ -139,46 +129,8 @@
       text-align: left;
     }
   }
-  .body-paragraph {
-    font-size: 20px;
-    font-weight: normal;
-    text-align: left;
-  }
-  .paragraph-up {
-    text-align: left;
-  }
-  .body-paragraph-green {
-    text-align: left;
-  }
-  .head-paragraph {
-    text-align: left;
-  }
-  .body-paragraph-left {
-    text-align: left;
-  }
-  .anchor-profile {
-    text-align: left;
-    margin-top: 0;
-    margin-bottom: 10%;
-    a {
-      margin: 0;
-      display: none;
-    }
-  }
   .profile-photos-slide {
     height: 70px;
-  }
-  .head-body-bottom {
-    text-align: left;
-  }
-  .head-body-coach {
-    text-align: left;
-  }
-  .body-paragraph-bottom {
-    text-align: left;
-  }
-  .experience {
-    text-align: left;
   }
   .recuitrers {
     margin-top: 5%;
@@ -187,7 +139,6 @@
   .pay-organization {
     width: 50%;
   }
-
   .dl-menuwrapper-admin {
     ul {
       height: 600px;
@@ -197,6 +148,20 @@
     height: 600px;
     li {
       height: 600px;
+    }
+  }
+  ///////// Dashboard coach ////////////////////
+  .coach-container {
+    .coach-row {
+      width: 90%;
+      padding: 0 2%;
+    }
+  }
+
+  ///////Profiles View //////////////
+  .profile-view-container {
+    .responsive-button {
+      display: none;
     }
   }
 }

@@ -32,16 +32,13 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'GET /': 'Pagecontroller.showHomePage',
+  'GET /': 'ProfileController.showHomePage',
   'GET /signup/player': {view: 'signupPlayer'},
   'GET /signup/coach': {view: 'signupCoach'},
-  'GET /player/preview': {view: 'previewPlayer'},
   'POST /signup': 'UserController.signup',
   'GET /login': {view: 'login'},
   'PUT /login': 'UserController.login',
   'GET /logout': 'UserController.logout',
-  'GET /coach': {view: 'dashboardCoach'},
-  'GET /coach/preview': {view: 'previewCoach'},
   /***************************************************************************
   *                                                                          *
   * User routes (Players and Coaches)...                                     *
@@ -57,6 +54,15 @@ module.exports.routes = {
   'PUT /user/exclusive': 'UserController.club',
   'GET /user/membership': 'UserController.getUserStripe',
   'PUT /user/membership': 'UserController.membership',
+  'DELETE /user/membership': 'UserController.deleteCard',
+  'GET /user/complete_profile': 'UserController.getUserProfile',
+  /***************************************************************************
+  *                                                                          *
+  * User routes (Players and Coaches)...                                     *
+  *                                                                          *
+  ***************************************************************************/
+  'GET /profile/:id': 'ProfileController.showProfile',
+  'GET /user/home': 'ProfileController.showInnerHome',
   /***************************************************************************
   *                                                                          *
   * Team or University routes ...                                            *

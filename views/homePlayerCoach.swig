@@ -1,42 +1,45 @@
-{% extends 'baseProfile.swig' %} {% block content %}
+{% extends 'baseProfile.swig' %}
+{% block content %}
 
 <div class="container">
-  <div class="row">
-    <div class="col-sm-3" style="background-color: white;">
-      <div style="height:250px;">
+  <div class="row container-inner-main">
+    <div class="col-sm-3 no-padding">
+      <div class="inner-block half-box">
         <div class="interest">
-          <h2>Me interesan </h2>
+          <h2>Me interesan
+          </h2>
         </div>
         <div class="interest-team">
           <ul>
-            <li class="li-description ">
+            <li>
               <div class="row">
-                <div class="col-sm-4">
-                  <img alt="..." class="photo-icon-interest" src="../images/equipo.png">
+                <div class="col-xs-4">
+                  <img alt="..." src="../images/equipo.png">
                 </div>
-                <div class="col-sm-2">
-                  <p>UDLAP </p>
-                  <p> Puebla </p>
+                <div class="col-xs-8">
+                  <p class="title">UDLAP</p>
+                  <p>Puebla</p>
                 </div>
               </div>
+            </li>
+          </ul>
         </div>
-        </li>
-        </ul>
       </div>
-      <div style="height:250px;">
+      <div class="inner-block half-box">
         <div class="interest">
-          <h2>Les intereso </h2>
+          <h2>Les intereso
+          </h2>
         </div>
         <div class="interest-team">
           <ul>
-            <li class="li-description ">
+            <li>
               <div class="row">
-                <div class="col-sm-4">
-                  <img alt="..." class="photo-icon-interest" src="../images/equipo.png">
+                <div class="col-xs-4">
+                  <img alt="..." src="../images/equipo.png">
                 </div>
-                <div class="col-sm-2">
-                  <p>UDLAP </p>
-                  <p> Puebla </p>
+                <div class="col-xs-8">
+                  <p class="title">UDLAP</p>
+                  <p>Puebla</p>
                 </div>
               </div>
             </li>
@@ -45,142 +48,109 @@
       </div>
     </div>
 
-    <div class="col-sm-6" style="background-color: white;">
-      <div style="height:500px;">
+    <div class="col-sm-6 no-padding">
+      <div class="inner-block quarter-box">
         <div class="interest">
-          <h2>Catálogo </h2>
+          <h2>Anuncios
+          </h2>
         </div>
-        <h2> Puebla
-          <h2>
-            <div class="row">
-              <div class="col-xs-4">
-
-                <div class="catalogue-image">
-
-                </div>
-              </div>
-              <div class="col-xs-4">
-                <div class="catalogue-image">
-
-                </div>
-              </div>
-              <div class="col-xs-4">
-                <div class="catalogue-image">
-
-                </div>
-              </div>
+        <div class="advicement">
+          <h3>20.12.2016</h3>
+          <p>El dia de hoy se presenta..........</p>
+        </div>
+      </div>
+      <div class="inner-block semi-full-box">
+        <div class="interest">
+          <h2>Catálogo
+          </h2>
+        </div>
+        <div class="row profile-card no-margin">
+          <div class="col-xs-6 col-sm-4">
+            <div class="card">
+              <div class="catalogue-image"></div>
+              <p>Udlap</p>
+              <img class="shield" src="../images/equipo_escudo.png">
             </div>
+          </div>
+          <div class="col-xs-6 col-sm-4">
+            <div class="card">
+              <div class="catalogue-image"></div>
+              <p>Udlap</p>
+              <img class="shield" src="../images/equipo_escudo.png">
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-4">
+            <div class="card">
+              <div class="catalogue-image"></div>
+              <p>Udlap</p>
+              <img class="shield" src="../images/equipo_escudo.png">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-
-    <div class="col-sm-3 dissapear" style="background-color: white;">
-
-      <img alt="..." class="photo-icon-catalogue" src="../images/equipo.png">
-      <img alt="..." class="photo-icon-catalogue" src="../images/equipo.png">
-
+    <div class="col-sm-3 dissapear no-padding">
+      <div class="inner-block full-box">
+        <img alt="..." src="../images/equipo.png" width="100%;">
+        <img alt="..." src="../images/equipo.png" width="100%;">
+      </div>
     </div>
   </div>
+</div>
+<a class="chat" id="button-chat"></a>
 
-  <a id="botton-chat" class="chat"></a>
+<!-- Modal Chat -->
+<div class="modalChat" id="chat-structure">
+  <div class="inbox-container" id="inbox">
+    <div class="header">
+      <h2>Inbox</h2>
+    </div>
+    <ul class="message-list">
+      <li class="inbox-contact">
+        <div class="row">
+          <div class="col-sm-4">
+            <img src="http://i.usatoday.net/sports/_photos/2011/09/26/St-Xaviers-Specht-to-coach-Team-USA-in-bowl-80DUI6A-x-large.jpg">
+          </div>
+          <div class="col-sm-6">
+            <p>UDLAP</p>
+          </div>
+        </div>
 
-
-  <div id="live-chat">
-
-		<header class="clearfix">
-
-			<a href="#" class="chat-close">x</a>
-
-			<h4>John Doe</h4>
-
-			<span class="chat-message-counter">3</span>
-
-		</header>
-
-		<div class="chat">
-
-			<div class="chat-history">
-
-				<div class="chat-message clearfix">
-
-					<img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32">
-
-					<div class="chat-message-content clearfix">
-
-						<span class="chat-time">13:35</span>
-
-						<h5>John Doe</h5>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
-
-					</div> <!-- end chat-message-content -->
-
-				</div> <!-- end chat-message -->
-
-				<hr>
-
-				<div class="chat-message clearfix">
-
-					<img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32" height="32">
-
-					<div class="chat-message-content clearfix">
-
-						<span class="chat-time">13:37</span>
-
-						<h5>Marco Biedermann</h5>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel debitis numquam qui tempora rem voluptatem delectus!</p>
-
-					</div> <!-- end chat-message-content -->
-
-				</div> <!-- end chat-message -->
-
-				<hr>
-
-				<div class="chat-message clearfix">
-
-					<img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32">
-
-					<div class="chat-message-content clearfix">
-
-						<span class="chat-time">13:38</span>
-
-						<h5>John Doe</h5>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-
-					</div> <!-- end chat-message-content -->
-
-				</div> <!-- end chat-message -->
-
-				<hr>
-
-			</div> <!-- end chat-history -->
-
-			<p class="chat-feedback">Your partner is typing…</p>
-
-			<form action="#" method="post">
-
-				<fieldset>
-
-					<input type="text" placeholder="Type your message…" autofocus>
-					<input type="hidden">
-
-				</fieldset>
-
-			</form>
-
-		</div> <!-- end chat -->
-
-	</div> 
-
-
-
-
-
-
-
-
-
+      </li>
+    </ul>
+  </div>
+  <div class="inbox-container" id="conversation">
+    <div class="header">
+    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true" id="return-inbox"></span>
+    <h2>UDLAP</h2>
+    </div>
+    <ul>
+      <li>
+        <div class="message">
+          <p>Esto es un mensaje</p>
+        </div>
+      </li>
+      <li>
+        <div class="message own-message">
+          <p>Esto es un mensaje</p>
+        </div>
+      </li>
+      <li>
+        <div class="message own-message">
+          <p>Esto es un mensaje</p>
+        </div>
+      </li>
+      <li>
+        <div class="message">
+          <p>Esto es un mensaje</p>
+        </div>
+      </li>
+    </ul>
+    <div class="message-input">
+      <input type="text"/>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}

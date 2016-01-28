@@ -1,14 +1,15 @@
 <div class="row" ng-controller="MembershipController">
-  <form class="form-inline align-labels">
+  <form class="form-inline align-labels" id="membership-form">
     <div class="col-sm-12 col-md-6" style="font-weight: bold;
 margin-top: 10%;
 font-size: 25px;">
       <div class="checkbox align-labels">
         <label>
-          <input type="checkbox" value="players club" ng-model="membership.accept.s1"> Membresía Players Club
+          <input type="checkbox" value="players club" ng-model="membership.group.s1" name="group" required > Membresía Players Club
           <br> $1500.00
           </br>
         </label>
+        <div class="days-counter" id="daysCounter"><h4>Restan {{ membership.days_counter }} dias de tu subscripcion</h4></div>
       </div>
     </div>
     <div class="col-sm-12 col-md-6">
@@ -66,12 +67,12 @@ font-size: 25px;">
       <div class="row margin-gallery">
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <input class="form-buttom button-member--cancel" type="submit" value="Borrar tarjeta" name="delete">
+            <a class="form-buttom button-member--cancel" ng-click="delete()" id="cancelBtn">Borrar tarjeta</a>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <button class="form-buttom button-member--confirm" ng-click="buy()">Comprar</button>
+            <a class="form-buttom button-member--confirm" ng-click="buy()" id="buyBtn">Comprar</a>
           </div>
         </div>
       </div>

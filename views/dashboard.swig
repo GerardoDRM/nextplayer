@@ -9,7 +9,7 @@
     </h1>
   </div>
 
-  <div class="images-profile background-img-profile">
+  <div class="images-profile background-img-profile" ng-controller="PlayerUpperBody">
     <div class="row no-margin--sides">
       <div class="col-sm-3 no-padding dissapear">
         <div class="middle-image profile-photo">
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="col-sm-4">
-          <input class="form-buttom  " type="submit" value="Ver perfil" />
+          <a ng-click="viewProfile()">Ver perfil</a>
         </div>
       </div>
     </div>
@@ -80,7 +80,6 @@
 
     </div>
     <div class="col-sm-9 no-padding">
-    <input type="hidden" value="<%= message.id %>" id="userId">
       <ul class="cd-tabs-content" style="height: auto;">
         <li class="selected" data-content="basic" id="basic">
           {% include "dashboard_players/basic_info.swig" %}

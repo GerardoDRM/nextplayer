@@ -1,33 +1,31 @@
 {% extends 'baseProfile.swig' %} {% block content %}
-<div class="container">
+<div class="container profile-view-container" ng-app="PlayerModule" ng-controller="ProfileViewController">
   <div class="row">
+  <div class="col-sm-12">
+    <h1>{{ user.name }}
+      {{ user.lastname }}
+    </h1>
+    <p class="sub-title">{{ user.state }},
+      {{ user.country }}
+    </p>
+    <div class="input-profile">
+      <a class="dissapear" href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
+    </div>
+  </div>
     <div class="col-sm-4 border-right-column">
       <div class="left-profile">
-        <h1>Alberto Lozano Huerta </h1>
-        <p class="paragraph-up">Colima, México </p>
         <div class="profile-picture">
 
         </div>
-
-        <div class="anchor-profile">
-        <a href="http://www.w3schools.com">Edita tu perfil</a>
-        </div>
         <div class="special-two-col">
-          <p class="head-paragraph"> Contacto </p>
-          <p class="body-paragraph-left">mail:jugador@gmail.com </p>
-          <p class="body-paragraph-left">Facebook:Alberto Rozano </p>
-          <p class="body-paragraph-left">Teléfono:222 267 7876 </p>
-        </div>
-        <div class="special-two-col">
-          <p class="head-paragraph"> Contacto Coach </p>
-          <p class="body-paragraph-left">mail:coach@gmail.com </p>
-          <p class="body-paragraph-left">Facebook:Coach L. </p>
-          <p class="body-paragraph-left">Teléfono:222 267 7876 </p>
+          <p class="head-title"> Contacto </p>
+          <p>mail: {{ user.email }} </p>
+          <p>Teléfono: {{ user.phone }} </p>
         </div>
         <div class="exclusive-club">
 
           <p class="head-paragraph border-top-column "> ¿Quién ha visto mi perfil? </p>
-          <p class="body-paragraph-left"> (Exclusivo Players Club) </p>
+          <p> (Exclusivo Players Club) </p>
           <div class="row">
             <div class="col-xs-3">
               <div class="profile-photos-slide-exclusive"> </div>
@@ -47,58 +45,58 @@
       </div>
     </div>
     <div class="col-sm-8">
-      <div class="input-profile">
-        <a class="dissapear" href="http://www.w3schools.com">Edita tu perfil</a>
-      </div>
+    <div class="responsive-button">
+      <a href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
+    </div>
       <div>
         <div class="row">
           <div class="col-sm-6">
             <div class="row">
               <div class="col-xs-6">
-                <p class="body-paragraph">Equipo </p>
+                <p>Equipo </p>
               </div>
               <div class="col-xs-6">
-                <p class="body-paragraph-green">Bucaneros </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <p class="body-paragraph">Promedio </p>
-              </div>
-              <div class="col-xs-6">
-                <p class="body-paragraph-green"> 9.3 </p>
+                <p class="green-title">{{ user.sport.team }} </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p class="body-paragraph"> Escuela </p>
+                <p>Promedio </p>
               </div>
               <div class="col-xs-6">
-                <p class="body-paragraph-green">EuroLiceo </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <p class="body-paragraph"> Fecha de nacimiento </p>
-              </div>
-              <div class="col-xs-6">
-                <p class="body-paragraph-green">06/12/90 </p>
+                <p class="green-title">{{ user.details.schoolGrade }}</p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p class="body-paragraph"> Egreso de Secundaria </p>
+                <p> Escuela </p>
               </div>
               <div class="col-xs-6">
-                <p class="body-paragraph-green"> 2012 </p>
+                <p class="green-title">{{ user.details.school }} </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p class="body-paragraph"> Posición </p>
+                <p> Fecha de nacimiento </p>
               </div>
               <div class="col-xs-6">
-                <p class="body-paragraph-green"> Quaterback Running back Running back </p>
+                <p class="green-title">{{ user.born }} </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <p> Egreso de Secundaria </p>
+              </div>
+              <div class="col-xs-6">
+                <p class="green-title"> {{ user.details.schoolYear }} </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <p> Posición </p>
+              </div>
+              <div class="col-xs-6">
+                <p class="green-title"> {{ user.pos }} </p>
               </div>
             </div>
           </div>
@@ -107,26 +105,26 @@
               <div class="col-sm-6">
                 <div class="row">
                   <div class="col-xs-6">
-                    <p class="body-paragraph">Peso</p>
+                    <p>Peso</p>
                   </div>
                   <div class="col-xs-6">
-                    <p class="body-paragraph-green">96kg</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-6">
-                    <p class="body-paragraph">Altura</p>
-                  </div>
-                  <div class="col-xs-6">
-                    <p class="body-paragraph-green">1.80m</p>
+                    <p class="green-title">{{ user.sport.weight }} kg</p>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-xs-6">
-                    <p class="body-paragraph">Tiempo 40.y </p>
+                    <p>Altura</p>
                   </div>
                   <div class="col-xs-6">
-                    <p class="body-paragraph-green">5.3S </p>
+                    <p class="green-title">{{ user.sport.height }} m</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p>Tiempo 40.y </p>
+                  </div>
+                  <div class="col-xs-6">
+                    <p class="green-title">5.3S </p>
                   </div>
                 </div>
               </div>
@@ -136,7 +134,7 @@
       </div>
       <div class="middle-profile">
         <h1 class="head-body-bottom border-top-column"> ¿Por qué quiero ser reclutado? </h1>
-        <p class="body-paragraph-bottom">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et </p>
+        <p>{{ user.exclusive.me }}</p>
       </div>
       <div class="profile-photos dissapear">
         <h1 class="head-body border-top-column"> Fotos </h1>
@@ -170,3 +168,9 @@
 
 
 {% endblock content %}
+
+{% block custom-scripts %}
+  <script>
+    $("body").css({"background-color": "white"});
+  </script>
+{% endblock custom-scripts %}

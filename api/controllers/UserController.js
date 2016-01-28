@@ -79,7 +79,8 @@ module.exports = {
           sport: {
             title: req.param('sport')
           },
-          role: req.param('role')
+          role: req.param('role'),
+          memebership: {}
         }, function userCreated(err, newUser) {
           if (err) {
 
@@ -162,6 +163,21 @@ module.exports = {
   ///////Get User Info ///////
   ////////////////////////////
 
+  // Get complete Profile
+  getUserProfile: function(req, res) {
+    var user = req.param("user");
+    // Get user and update info
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err) res.json(500);
+      else {
+        delete userDB.encryptedPassword;
+        res.json(userDB);
+      }
+    });
+  },
+
   // Get User Basic Info
   getUserBasic: function(req, res) {
     var user = req.param("user");
@@ -171,7 +187,7 @@ module.exports = {
     }).exec(function findOneCB(err, userDB) {
       if (err) res.json(500);
       else {
-        var basicKeys = ["name", "lastname", "state", "country", "born", "phone"];
+        var basicKeys = ["name", "lastname", "state", "country", "born", "phone", "email"];
         var applicantDetailsKeys = [];
         var basicInfo = {
           "general": {},
@@ -228,13 +244,22 @@ module.exports = {
       if (err) res.json(500);
       else {
         var clubInfo = {};
-        var clubDetails = [];
-        if (userDB.role == "player") {
-          clubDetails = clubDetails.concat(["me"]);
-        }
-        // Getting just Exclusive Info
-        for (var i = 0; i < clubDetails.length; i++) {
-          clubInfo[clubDetails[i]] = userDB.exclusive[clubDetails[i]];
+        if (userDB.membership !== undefined && Object.keys(userDB.membership).length > 0) {
+          // Get UNIX timestamp for now
+          var currentDate = Math.floor(Date.now() / 1000);
+          if (userDB.membership.transaction_date <= currentDate) {
+            clubInfo["status"] = 1;
+            var clubDetails = [];
+            if (userDB.role == "player") {
+              clubDetails = clubDetails.concat(["me"]);
+            }
+            // Getting just Exclusive Info
+            for (var i = 0; i < clubDetails.length; i++) {
+              clubInfo[clubDetails[i]] = userDB.exclusive[clubDetails[i]];
+            }
+          } else {
+            clubInfo["status"] = 0;
+          }
         }
         res.json(clubInfo);
       }
@@ -250,7 +275,17 @@ module.exports = {
       if (err) res.json(500);
       else {
         var stripeInfo = {};
-        if (userDB.membership !== undefined) {
+        if (userDB.membership !== undefined && Object.keys(userDB.membership).length > 0) {
+          // Get UNIX timestamp for now
+          var currentDate = Math.floor(Date.now() / 1000);
+          var transactionD = userDB.membership.transaction_date;
+          if (transactionD <= currentDate) {
+            // Get days until renew
+            var endDate = moment.unix(transactionD).add(1, 'years');
+            var startDate = moment.unix(currentDate);
+            stripeInfo.days_counter = endDate.diff(startDate, 'days')
+            stripeInfo.level = userDB.membership.level;
+          }
           var cardList = getCustomerCard(userDB.membership.stripeId);
           cardList.then(function(cards) {
             // Case User with registered card
@@ -289,6 +324,9 @@ module.exports = {
           userDB[basic] = user[basic];
         }
         // Applicant Details
+        if (userDB.details === undefined) userDB.details = {};
+        // Reset experience
+        if (userDB.role == "coach") userDB.details.experience = [];
         for (var detail in applicantDetails) {
           userDB.details[detail] = applicantDetails[detail];
         }
@@ -363,6 +401,7 @@ module.exports = {
     var membership = req.param("membership");
     var user = req.param("user");
     // Get user and update info
+    console.log(membership);
     User.findOne({
       id: user.id
     }).exec(function findOneCB(err, userDB) {
@@ -378,39 +417,50 @@ module.exports = {
             description: 'Customer ' + userDB.name,
             email: userDB.email
           }).then(function(customer) {
-            // Update Info
-            userDB.membership.stripeId = customer.id;
-            userDB.save(function(error) {
-              if (error) res.json(500);
-            });
             // Create card
             var card = createCard(customer.id, membership);
             card.then(function(card_result) {
               // Create Charge
-              createCharge(customer.id, 1500, "Players Club").then(function(charge) {
-                console.log(charge);
-                res.json("Ok");
+              createCharge(customer.id, membership.amount, membership.selected_group).then(function(charge) {
+                // Update Info
+                userDB = addUserStripeInfo(userDB, customer.id, membership.selected_group, membership.level, charge.created);
+                userDB.save(function(error) {
+                  if (error) res.json(500);
+                  res.json(201);
+                });
               }, stripeError);
             }, stripeError);
           }, stripeError); // end Create customer
         } else {
-          console.log("Current User");
           // Get card
           var stripeId = userDB.membership.stripeId;
           var cardList = getCustomerCard(stripeId);
           cardList.then(function(cards) {
-            console.log(cards);
             // Case User with registered card
             if (cards.data.length > 0) {
               // Create Charge
-              createCharge(stripeId, 1500, "Players Club");
+              createCharge(customer.id, membership.amount, membership.selected_group).then(function(charge) {
+                // Update Info
+                userDB = addUserStripeInfo(userDB, customer.id, membership.selected_group, membership.level, charge.created);
+                userDB.save(function(error) {
+                  if (error) res.json(500);
+                  res.json(201);
+                });
+              }, stripeError);
             } else {
               // Case User without card
               // Create card
               var card = createCard(stripeId, membership);
               card.then(function(card_result) {
                 // Create Charge
-                createCharge(stripeId, 1500, "Players Club");
+                createCharge(customer.id, membership.amount, membership.selected_group).then(function(charge) {
+                  // Update Info
+                  userDB = addUserStripeInfo(userDB, customer.id, membership.selected_group, membership.level, charge.created);
+                  userDB.save(function(error) {
+                    if (error) res.json(500);
+                    res.json(201);
+                  });
+                }, stripeError);
               }, stripeError(reason));
             }
           }, stripeError(reason));
@@ -441,18 +491,29 @@ module.exports = {
             userDB.membership.stripeId,
             card.id,
             function(err, confirmation) {
-              // asynchronously called
+              if (err) res.json(500)
+                // asynchronously called
               console.log(confirmation);
+              res.json(201);
             }
           );
         });
       }
     });
-    res.json("Ok");
   }
 };
 
 // Stripe Functions
+var addUserStripeInfo = function(userDB, id, group, level, created) {
+  // Adding info
+  userDB.membership.stripeId = id;
+  userDB.membership.group = group;
+  userDB.membership.level = level;
+  userDB.membership.transaction_date = created;
+
+  return userDB;
+}
+
 var createCard = function(customer, membership) {
   // Create Stripe Card
   return stripe.customers.createSource(
@@ -470,7 +531,7 @@ var createCard = function(customer, membership) {
 
 var createCharge = function(customer, amount, description) {
   // Create Charge
-  stripe.charges.create({
+  return stripe.charges.create({
     amount: amount * 100,
     currency: "mxn",
     customer: customer,
