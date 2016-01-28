@@ -23,7 +23,7 @@
               </h2>
             </div>
           </div>
-          <div class="col-sm-4" style="margin-top:10%;">
+          <div class="col-sm-4" style="margin-top:80px;">
             <a ng-click="viewProfile()">Ver Perfil</a>
           </div>
         </div>
@@ -110,8 +110,11 @@
     <div id="space-for-experience"></div>
     <div class="coach-container">
       <a class="anchor-coach" experience href="javascript:void(0);">+ Agregar nueva experiencia</a>
+      <div class="save-button" style="margin-top:0; margin-right:44px;">
       <button class="input-signup" ng-click="update()">Guardar</button>
+      </div>
     </div>
+
   </form>
 </div>
 {% endblock content %}

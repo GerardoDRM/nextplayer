@@ -12,7 +12,7 @@
 
     <div class="row margin-gallery" id="space-for-videos"></div>
   </div>
-  <p class="p-sport">No tienes video de tus jugadas? Nosotros te podemos hacer uno.
+  <p>No tienes video de tus jugadas? Nosotros te podemos hacer uno.
     <br>
     <a>
       Contáctanos</a>

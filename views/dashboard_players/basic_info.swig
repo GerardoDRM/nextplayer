@@ -110,7 +110,9 @@
     </div>
   </div>
 </div>
-<button class="input-signup" ng-click="update()">Guardar</button>
 
 </form>
+<div class="save-button">
+<button class="input-signup" ng-click="update()">Guardar</button>
+</div>
 </div>

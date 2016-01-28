@@ -29,7 +29,7 @@
             </h2>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="margin-top:80px;">
           <a ng-click="viewProfile()">Ver perfil</a>
         </div>
       </div>

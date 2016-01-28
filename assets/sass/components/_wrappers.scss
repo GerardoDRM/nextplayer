@@ -313,6 +313,7 @@
     font-size: 36px;
   }
   a {
+    padding: 6px;
     background-color: $green;
     color: $black;
     margin-top: 0;
@@ -397,6 +398,7 @@
 }
 ///////// Dashboard coach ////////////////////
 .coach-container {
+  
   padding-bottom: 35px;
   background-color: $white;
   .coach-row {

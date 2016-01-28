@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" type="number" name="height"  ng-model="sport.height">
+          <input class="form-group-modified-input" style="width:80%;" type="number" name="height"  ng-model="sport.height">
           <span>m.</span>
         </div>
       </div>
@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" type="text" name="team" ng-model="sport.team">
+          <input class="form-group-modified-input"  type="text" name="team" ng-model="sport.team">
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" type="text" name="weight" ng-model="sport.weight">
+          <input class="form-group-modified-input" style="width:80%;" type="text" name="weight" ng-model="sport.weight">
           <span>kg.</span>
         </div>
       </div>
@@ -72,7 +72,10 @@
       </div>
     </div>
   </div>
-  <button class="input-signup" ng-click="update()">Guardar</button>
+
 
 </form>
+<div class="save-button">
+<button class="input-signup" ng-click="update()">Guardar</button>
+</div>
 </div>

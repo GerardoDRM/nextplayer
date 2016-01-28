@@ -715,6 +715,7 @@ footer {
     font-weight: bold;
     font-size: 36px; }
   .images-profile a {
+    padding: 6px;
     background-color: #2ae92e;
     color: #000;
     margin-top: 0;
@@ -1036,15 +1037,18 @@ footer {
   background-color: red;
   width: 180px;
   margin-bottom: 5%;
-  border: none; }
+  border: none;
+  padding: 7px; }
 
 .button-member--confirm {
   color: #000;
   background-color: #2ae92e;
   width: 180px;
-  border: none; }
+  border: none;
+  padding: 7px; }
 
 .anchor-coach {
+  margin-left: 44px;
   color: #9bee9d;
   font-weight: bold; }
   .anchor-coach:hover, .anchor-coach:link, .anchor-coach:visited, .anchor-coach:active {
@@ -1058,6 +1062,15 @@ footer {
   right: 45px;
   position: fixed;
   bottom: 45px; }
+
+.save-button {
+  text-align: right; }
+  .save-button button {
+    margin-top: 100px;
+    font-weight: bold;
+    background-color: #2ae92e;
+    border: none;
+    padding: 9px; }
 
 /**
   * Media queries Partial SASS
