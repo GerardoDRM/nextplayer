@@ -75,12 +75,13 @@ module.exports = {
           lastname: req.param('lastname'),
           email: req.param('email'),
           encryptedPassword: encryptedPassword,
-          lastLoggedIn: new Date(),
           sport: {
             title: req.param('sport')
           },
           role: req.param('role'),
-          memebership: {}
+          membership: {},
+          details: {},
+          exclusive: {}
         }, function userCreated(err, newUser) {
           if (err) {
 
@@ -101,9 +102,7 @@ module.exports = {
           req.session.me = newUser.id;
 
           // Send back the id of the new user
-          return res.json({
-            id: newUser.id
-          });
+          return res.ok();
         });
       },
     });
@@ -193,20 +192,24 @@ module.exports = {
           "general": {},
           "details": {}
         };
-        if (userDB.role == "player") {
-          applicantDetailsKeys = ["school", "schoolGrade", "schoolYear"];
-        } else {
-          applicantDetailsKeys = ["experience"];
-        }
         // Getting just Basic Info
         for (var i = 0; i < basicKeys.length; i++) {
           basicInfo.general[basicKeys[i]] = userDB[basicKeys[i]];
         }
         // Adding sport
-        basicInfo.general["sport"] = userDB.sport !== undefined ? userDB.sport["title"] : undefined;
+        basicInfo.general["sport_name"] = userDB.sport !== undefined ? userDB.sport["title"] : undefined;
         // Getting applicant Info
-        for (var j = 0; j < applicantDetailsKeys.length; j++) {
-          basicInfo.details[applicantDetailsKeys[j]] = userDB.details[applicantDetailsKeys[j]];
+        for (var j in userDB.details) {
+          basicInfo.details[j] = userDB.details[j];
+        }
+        if (userDB.membership !== undefined) {
+          // Get UNIX timestamp for now
+          var currentDate = Math.floor(Date.now() / 1000);
+          if (userDB.membership.transaction_date <= currentDate) {
+            basicInfo.status = 1;
+          } else {
+            basicInfo.status = 0;
+          }
         }
         res.json(basicInfo);
       }
@@ -243,7 +246,7 @@ module.exports = {
     }).exec(function findOneCB(err, userDB) {
       if (err) res.json(500);
       else {
-        var clubInfo = {};
+        var clubInfo = {"status":0};
         if (userDB.membership !== undefined && Object.keys(userDB.membership).length > 0) {
           // Get UNIX timestamp for now
           var currentDate = Math.floor(Date.now() / 1000);
@@ -257,8 +260,6 @@ module.exports = {
             for (var i = 0; i < clubDetails.length; i++) {
               clubInfo[clubDetails[i]] = userDB.exclusive[clubDetails[i]];
             }
-          } else {
-            clubInfo["status"] = 0;
           }
         }
         res.json(clubInfo);
@@ -470,34 +471,30 @@ module.exports = {
   },
 
   uploadImage: function(req, res) {
-    var photo = req.file("photo");
-    console.log(photo);
-    // req.file(photo).upload({
-    // }, function whenDone(err, uploadedFiles) {
-    //   if (err) {
-    //     return res.negotiate(err);
-    //   }
-    //
-    //   // If no files were uploaded, respond with an error.
-    //   if (uploadedFiles.length === 0) {
-    //     return res.badRequest('No file was uploaded');
-    //   }
-    //
-    //
-    //   // Save the "fd" and the url where the avatar for a user can be accessed
-    //   User.update(req.session.me, {
-    //
-    //       // Generate a unique URL where the avatar can be downloaded.
-    //       avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me),
-    //
-    //       // Grab the first file and use it's `fd` (file descriptor)
-    //       avatarFd: uploadedFiles[0].fd
-    //     })
-    //     .exec(function(err) {
-    //       if (err) return res.negotiate(err);
-    //       return res.ok();
-    //     });
-    // });
+    var photo = req.file('file');
+    photo.upload({
+    }, function whenDone(err, uploadedFiles) {
+      if (err) {
+        return res.negotiate(err);
+      }
+      // If no files were uploaded, respond with an error.
+      if (uploadedFiles.length === 0) {
+        return res.badRequest('No file was uploaded');
+      }
+      // Save the "fd" and the url where the avatar for a user can be accessed
+      User.update(req.session.me, {
+
+          // Generate a unique URL where the avatar can be downloaded.
+          avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me),
+
+          // Grab the first file and use it's `fd` (file descriptor)
+          avatarFd: uploadedFiles[0].fd
+        })
+        .exec(function(err) {
+          if (err) return res.negotiate(err);
+          return res.ok();
+        });
+    });
   },
 
   ////////////////////////////

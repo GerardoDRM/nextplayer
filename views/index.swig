@@ -114,19 +114,19 @@
       <div class="row row-after">
         <div class="col-xs-6 col-sm-3">
           <img src="../images/contador_temporal.png" alt="...">
-          <h2 class="dissapear"> 21 </h2>
+          <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
         <div class="col-xs-6 col-sm-3">
           <img src="../images/contador_temporal.png" alt="...">
-          <h2 class="dissapear"> 21 </h2>
+        <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
         <div class="col-xs-6 col-sm-3">
           <img src="../images/contador_temporal.png" alt="...">
-          <h2 class="dissapear"> 21 </h2>
+          <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
         <div class="col-xs-6 col-sm-3">
           <img src="../images/contador_temporal.png" alt="...">
-          <h2 class="dissapear"> 21 </h2>
+            <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
       </div>
     </div>

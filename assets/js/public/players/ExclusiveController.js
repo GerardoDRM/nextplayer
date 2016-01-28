@@ -12,6 +12,9 @@ angular.module('PlayerModule').controller('ExclusiveController', ['$scope', '$ht
     }).then(function successCallback(response) {
       console.log(response);
       $scope.exclusive = response.data;
+      if($scope.exclusive.status == 0) {
+        $("#exclusive-form :input").prop("disabled", true);
+      }
     }, function errorCallback(response) {
       console.log(response);
     });

@@ -40,10 +40,16 @@ angular.module('PlayerModule').controller('BasicInfoController', ['$scope', '$ht
       "user": $("#userId").val()
     }
   }).then(function successCallback(response) {
+    console.log( response.data);
     $scope.user = response.data["general"];
     $scope.player = response.data["details"];
+    $scope.status = response.data["status"];
+    if(status == 1) {
+      $("#club-message").css({"display":"none"});
+    }
     // Adding global sport
-    $("#userSport").val($scope.user.sport);
+    $("#userSport").val($scope.user.sport_name);
+    delete $scope.user.sport_name;
     createStates($scope.user.country, $scope);
   }, function errorCallback(response) {
     console.log(response);

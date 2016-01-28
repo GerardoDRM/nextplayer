@@ -42,11 +42,12 @@ angular.module('PlayerModule').directive("fileread", ['$http', function($http) {
                 });
 
                 // Upload Image
-                $http({
-                  method: 'POST',
-                  url: '/user/gallery/photos',
-                  data: {
-                    "photo": data
+                var fd = new FormData();
+                fd.append('file', changeEvent.target.files[0]);
+                $http.post('/user/gallery/photos', fd, {
+                  transformRequest: angular.identity,
+                  headers: {
+                    'Content-Type': undefined
                   }
                 }).then(function successCallback(response) {
                   console.log(response);

@@ -13,16 +13,19 @@
   width: 180px;
   margin-bottom: 5%;
   border: none;
+  padding: 7px;
 }
 .button-member--confirm {
   color: $black;
   background-color: $green;
   width: 180px;
   border: none;
+  padding: 7px;
 }
 
 /// Coach Dashboard //
 .anchor-coach {
+  margin-left: 44px;
   color: $new-green;
   font-weight: bold;
   &:hover, &:link, &:visited, &:active {
@@ -40,4 +43,17 @@
   right: 45px;
   position: fixed;
   bottom: 45px;
+}
+
+//Dashboard player
+
+.save-button {
+  text-align: right;
+  button {
+    margin-top: 100px;
+    font-weight: bold;
+    background-color: $green;
+    border: none;
+    padding: 9px;
+  }
 }

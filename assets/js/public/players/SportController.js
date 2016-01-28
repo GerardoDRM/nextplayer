@@ -56,6 +56,7 @@ angular.module('PlayerModule').controller('SportController', ['$scope', '$http',
 }]);
 
 function checkSport(sport, scope, compile) {
+  console.log(sport);
   switch (sport) {
     case "Fútbol americano":
       createPostions(scope.americanFootball, compile, scope);
