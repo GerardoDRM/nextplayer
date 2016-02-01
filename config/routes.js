@@ -56,6 +56,10 @@ module.exports.routes = {
   'PUT /user/membership': 'UserController.membership',
   'DELETE /user/membership': 'UserController.deleteCard',
   'POST /user/gallery/photos': 'UserController.uploadImage',
+  'DELETE /user/gallery/photos': 'UserController.removePhoto',
+  'POST /user/gallery/videos': 'UserController.uploadVideo',
+  'DELETE /user/gallery/videos': 'UserController.removeVideo',
+  'GET /user/gallery': 'UserController.getUserGallery',
   'GET /user/complete_profile': 'UserController.getUserProfile',
   /***************************************************************************
   *                                                                          *

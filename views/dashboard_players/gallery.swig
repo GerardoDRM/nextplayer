@@ -19,4 +19,16 @@
     para más información. (Subject: Quiero un vídeo.)
   </br>
 </p>
+
+<div class="modalDialog" id="dialogVideo">
+  <div class="dialogVideo">
+    <p>URL:</p>
+    <form id="video-form">
+      <input ng-model="video.url" required type="text"/>
+      <div class="save-button">
+        <button class="input-signup" ng-click="storeVideo()">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
 </div>

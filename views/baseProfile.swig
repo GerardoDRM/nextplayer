@@ -16,7 +16,7 @@
   <!--STYLES END-->
 </head>
 
-<body class="color-profile">
+<body class="color-profile" ng-app="UsersModule">
   <nav class="navbar navbar-default ">
     <div class="container-fluid ">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,7 +45,12 @@
     <!-- /.container-fluid -->
   </nav>
   <input type="hidden" id="userSport" />
-  <input type="hidden" value="<%= message.id %>" id="userId"> {% block content %}{% endblock %}
+  <input type="hidden" value="<%= message.id %>" id="userId">
+  <!-- Feedback -->
+  <div id="feedback" class="feedback">
+    <h3 id="feedback-msg"></h3>
+  </div>
+  {% block content %}{% endblock %}
   <footer class="footer">
     <div class="container">
       <div class="col-xs-12">
@@ -87,15 +92,14 @@
   <script src="/js/public/login/LoginController.js"></script>
   <!--SCRIPTS END-->
   <!--Profiles-->
-  <script src="/js/public/players/PlayersModule.js"></script>
-  <script src="/js/public/players/ProfileViewController.js"></script>
-  <script src="/js/public/players/PlayerUpperBody.js"></script>
+  <script src="/js/public/user/UsersModule.js"></script>
+  <script src="/js/public/user/ProfileViewController.js"></script>
+  <script src="/js/public/user/UserUpperBody.js"></script>
   <script src="/js/public/players/BasicInfoController.js"></script>
   <script src="/js/public/players/ExclusiveController.js"></script>
   <script src="/js/public/players/GalleryController.js"></script>
   <script src="/js/public/players/MembershipController.js"></script>
   <script src="/js/public/players/SportController.js"></script>
-  <script src="/js/public/coachs/CoachInfoModule.js"></script>
   <script src="/js/public/coachs/CoachInfoController.js"></script>
 
   {% block custom-scripts %} {% endblock custom-scripts %}

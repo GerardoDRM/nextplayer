@@ -28,7 +28,7 @@
 .dl-menuwrapper-admin li, .profile-view-container .responsive-button {
   text-align: center; }
 
-.full-wrapper, .dl-menuwrapper-admin, .dl-menuwrapper-admin .dl-menu {
+.full-wrapper, .dl-menuwrapper-admin, .dl-menuwrapper-admin .dl-menu, .profile-preview .inner-filter, .photo-preview .inner-filter, .photo-preview .video-container {
   width: 100%;
   height: 100%; }
 
@@ -38,7 +38,7 @@
 .no-padding, .select-sport .select-options, .dl-menuwrapper-admin ul {
   padding: 0; }
 
-.no-margin, .select-sport .select-options, .select-sport .select-options li, .middle-image {
+.no-margin, .select-sport .select-options, .select-sport .select-options li, .middle-image, .profile-preview {
   margin: 0; }
 
 .no-margin--sides {
@@ -73,8 +73,10 @@ html {
 .pos-absolute {
   position: absolute; }
 
-a:hover, a:link, a:visited, a:active {
-  text-decoration: none; }
+a {
+  cursor: pointer; }
+  a:hover, a:link, a:visited, a:active {
+    text-decoration: none; }
 
 .logoIndex {
   height: 400px; }
@@ -166,6 +168,82 @@ footer {
   color: #2ae92e;
   background-color: transparent; }
 
+/*
+  ANIMATION
+  */
+@-webkit-keyframes stretch {
+  0% {
+    transform: scale(0.3);
+    background-color: #9bee9d;
+    border-radius: 100%; }
+  50% {
+    background-color: #9bee9d;
+    width: 50%;
+    height: 150px;
+    margin-left: -48%; }
+  100% {
+    width: 100%;
+    left: 0;
+    margin-left: 0;
+    transform: scale(1);
+    background-color: #9bee9d; } }
+@-moz-keyframes stretch {
+  0% {
+    transform: scale(0.3);
+    background-color: #9bee9d;
+    border-radius: 100%; }
+  50% {
+    background-color: #9bee9d;
+    width: 50%;
+    height: 150px;
+    margin-left: -48%; }
+  100% {
+    width: 100%;
+    left: 0;
+    margin-left: 0;
+    transform: scale(1);
+    background-color: #9bee9d; } }
+@keyframes stretch {
+  0% {
+    transform: scale(0.3);
+    background-color: #9bee9d;
+    border-radius: 100%; }
+  50% {
+    background-color: #9bee9d;
+    width: 50%;
+    height: 150px;
+    margin-left: -48%; }
+  100% {
+    width: 100%;
+    left: 0;
+    margin-left: 0;
+    transform: scale(1);
+    background-color: #9bee9d; } }
+/* out*/
+@-webkit-keyframes feedback-out {
+  0% {
+    transform: translateY(0); }
+  20% {
+    transform: translateY(0px);
+    padding-top: 5px; }
+  100% {
+    transform: translateY(-150px); } }
+@-moz-keyframes feedback-out {
+  0% {
+    transform: translateY(0); }
+  20% {
+    transform: translateY(0px);
+    padding-top: 5px; }
+  100% {
+    transform: translateY(-150px); } }
+@keyframes feedback-out {
+  0% {
+    transform: translateY(0); }
+  20% {
+    transform: translateY(0px);
+    padding-top: 5px; }
+  100% {
+    transform: translateY(-150px); } }
 /**
   * Index Partial SASS
   * This SASS file is the manifest on
@@ -203,14 +281,14 @@ footer {
   margin-bottom: 10%; }
 
 .profile-photos-slide {
-  background: url("../images/slide_1.jpg") no-repeat center;
-  width: 80%;
-  height: 154px;
-  background-size: cover; }
+  width: 100%;
+  height: 150px;
+  margin: 15px 0;
+  cursor: pointer; }
 
 .profile-photos-slide-exclusive {
   background: url("../images/slide_1.jpg") no-repeat center;
-  width: 60px;
+  width: 100%;
   height: 70px;
   background-size: cover; }
 
@@ -440,6 +518,63 @@ footer {
       -moz-border-radius: 5px;
       -ms-border-radius: 5px;
       border-radius: 5px; }
+
+.feedback {
+  padding: 0 100px;
+  color: #fff;
+  overflow: hidden;
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  margin-left: -100px;
+  background-color: #9bee9d;
+  top: 0;
+  z-index: 2;
+  display: none;
+  font-family: 'Roboto', sans-serif; }
+  .feedback h3 {
+    font-size: 32px; }
+  .feedback p {
+    font-size: 22px; }
+
+.msg {
+  display: block;
+  -webkit-animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
+  -moz-animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
+  animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards; }
+
+.modalDialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  -o-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  overflow: auto; }
+
+.dialogVideo {
+  padding: 5%;
+  position: relative;
+  z-index: 99;
+  height: auto;
+  margin: 12% auto;
+  width: 50%;
+  background: #FFF; }
+
+.dialogGallery {
+  width: 800px;
+  height: 80%;
+  position: relative;
+  z-index: 99;
+  margin: 5% auto; }
 
 /**
   * Wrappers Partial SASS
@@ -714,15 +849,17 @@ footer {
     margin-top: 71px;
     font-weight: bold;
     font-size: 36px; }
-  .images-profile a {
-    padding: 6px;
-    background-color: #2ae92e;
-    color: #000;
-    margin-top: 0;
-    font-weight: bold;
-    width: 100px;
-    font-size: 22px;
-    border: none; }
+
+.form-group-modified-input {
+  border: none;
+  background-color: #e9eaed;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  margin-bottom: 5%;
+  width: 100%; }
 
 .middle-image {
   height: 200px;
@@ -737,19 +874,32 @@ footer {
     -moz-transition: opacity ease-in-out 0.2s;
     -o-transition: opacity ease-in-out 0.2s;
     transition: opacity ease-in-out 0.2s; }
-    .profile-photo .default-photo:hover {
-      opacity: 0.5; }
+  .profile-photo input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; }
 
-.form-group-modified-input {
-  border: none;
-  background-color: #e9eaed;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555;
-  margin-bottom: 5%;
-  width: 100%; }
+.profile-preview {
+  height: 200px;
+  width: 100%;
+  display: none; }
+  .profile-preview .inner-filter {
+    background: linear-gradient(0deg, transparent, rgba(29, 17, 17, 0.6)), linear-gradient(transparent, transparent 50%); }
+  .profile-preview a {
+    background-image: url(../images/ic_cancel_white.png);
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 15px;
+    right: 15px; }
+    .profile-preview a:hover {
+      padding: 18px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer; }
 
 .photo {
   text-align: center;
@@ -771,7 +921,23 @@ footer {
 .photo-preview {
   width: 100%;
   height: 150px;
-  display: none; }
+  display: none;
+  margin: 10px 0; }
+  .photo-preview .inner-filter {
+    background: linear-gradient(0deg, transparent, rgba(29, 17, 17, 0.6)), linear-gradient(transparent, transparent 50%); }
+  .photo-preview a {
+    background-image: url(../images/ic_cancel_white.png);
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 15px;
+    right: 15px; }
+    .photo-preview a:hover {
+      padding: 18px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer; }
 
 .margin-position {
   margin-top: -10%; }
@@ -860,6 +1026,11 @@ footer {
   margin: 0;
   font-weight: bold;
   text-align: center; }
+
+.video-frame {
+  width: 90%;
+  margin: 20px auto;
+  height: 380px; }
 
 .profile-card {
   margin-top: 10px; }
@@ -1086,6 +1257,16 @@ footer {
     border: none;
     padding: 9px; }
 
+.view-green--btn {
+  padding: 6px;
+  background-color: #2ae92e;
+  color: #000;
+  margin-top: 0;
+  font-weight: bold;
+  width: 100px;
+  font-size: 22px;
+  border: none; }
+
 /**
   * Media queries Partial SASS
   * This SASS file has the break points
@@ -1172,9 +1353,6 @@ footer {
     .images-profile h2 {
       color: #000;
       margin-top: 35%; }
-    .images-profile input {
-      margin-top: 30%;
-      width: 160px; }
 
   .background-img-profile {
     background: #e9eaed; }
@@ -1184,9 +1362,6 @@ footer {
 
   .left-profile h1 {
     text-align: left; }
-
-  .profile-photos-slide {
-    height: 70px; }
 
   .recuitrers {
     margin-top: 5%;

@@ -9,7 +9,7 @@ var stripe = require("stripe")(
   "sk_test_uXFg6L2zyI568ZpmaAZbIJfZ"
 );
 var moment = require('moment');
-
+const fs = require('fs');
 
 module.exports = {
 
@@ -172,6 +172,15 @@ module.exports = {
       if (err) res.json(500);
       else {
         delete userDB.encryptedPassword;
+        if (userDB.membership !== undefined) {
+          // Get UNIX timestamp for now
+          var currentDate = Math.floor(Date.now() / 1000);
+          if (userDB.membership.transaction_date <= currentDate) {
+            userDB.status = 1;
+          } else {
+            userDB.status = 0;
+          }
+        }
         res.json(userDB);
       }
     });
@@ -186,7 +195,7 @@ module.exports = {
     }).exec(function findOneCB(err, userDB) {
       if (err) res.json(500);
       else {
-        var basicKeys = ["name", "lastname", "state", "country", "born", "phone", "email"];
+        var basicKeys = ["name", "lastname", "state", "country", "born", "phone", "email", "profile_photo"];
         var applicantDetailsKeys = [];
         var basicInfo = {
           "general": {},
@@ -238,6 +247,36 @@ module.exports = {
     });
   },
 
+  getUserGallery: function(req, res) {
+    var user = req.param("user");
+    console.log(user);
+    // Get user
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        var galleryInfo = {
+          "status": 0
+        };
+        // Check if user has membership
+        if (userDB.membership !== undefined && Object.keys(userDB.membership).length > 0) {
+          // Get UNIX timestamp for now
+          var currentDate = Math.floor(Date.now() / 1000);
+          if (userDB.membership.transaction_date <= currentDate) {
+            galleryInfo["status"] = 1;
+          }
+        }
+        // Get gallery list
+        if (userDB.details.gallery !== undefined) {
+          galleryInfo.gallery = userDB.details.gallery;
+          galleryInfo.videos = userDB.details.videos;
+        }
+        res.json(galleryInfo);
+      }
+    });
+  },
+
   getUserClub: function(req, res) {
     var user = req.param("user");
     // Get user
@@ -246,7 +285,9 @@ module.exports = {
     }).exec(function findOneCB(err, userDB) {
       if (err) res.json(500);
       else {
-        var clubInfo = {"status":0};
+        var clubInfo = {
+          "status": 0
+        };
         if (userDB.membership !== undefined && Object.keys(userDB.membership).length > 0) {
           // Get UNIX timestamp for now
           var currentDate = Math.floor(Date.now() / 1000);
@@ -470,9 +511,32 @@ module.exports = {
     }); // end query
   },
 
+  uploadVideo: function(req, res) {
+    var user = req.param("user");
+    var video = req.param("video");
+    // Get user and update info
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        var position = video.position;
+        if (userDB.details.videos === undefined) userDB.details.videos = [];
+        userDB.details.videos[position] = video.url;
+      }
+      userDB.save(function(error) {
+        if (error) res.json(500);
+        res.json(201);
+      });
+    });
+  },
+
   uploadImage: function(req, res) {
     var photo = req.file('file');
+    var model = req.param('model');
+    var user = req.param("user");
     photo.upload({
+      dirname: process.cwd() + '/assets/uploads/'
     }, function whenDone(err, uploadedFiles) {
       if (err) {
         return res.negotiate(err);
@@ -481,19 +545,31 @@ module.exports = {
       if (uploadedFiles.length === 0) {
         return res.badRequest('No file was uploaded');
       }
-      // Save the "fd" and the url where the avatar for a user can be accessed
-      User.update(req.session.me, {
-
-          // Generate a unique URL where the avatar can be downloaded.
-          avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me),
-
-          // Grab the first file and use it's `fd` (file descriptor)
-          avatarFd: uploadedFiles[0].fd
-        })
-        .exec(function(err) {
-          if (err) return res.negotiate(err);
-          return res.ok();
-        });
+      // Get user and update info
+      User.findOne({
+        id: user
+      }).exec(function findOneCB(err, userDB) {
+        if (err || userDB === undefined) res.json(500);
+        else {
+          // Image path
+          var phrase = uploadedFiles[0].fd;
+          var myRegexp = /\/assets\/uploads\/(.*)/;
+          var match = myRegexp.exec(phrase);
+          // Check image model
+          if (model == "gallery") {
+            var position = req.param("position");
+            if (userDB.details.gallery === undefined) userDB.details.gallery = [];
+            userDB.details.gallery[position] = match[0];
+          }
+          else if(model == "profile") {
+            userDB.profile_photo = match[0];
+          }
+          userDB.save(function(error) {
+            if (error) res.json(500);
+            res.json(201);
+          });
+        }
+      });
     });
   },
 
@@ -525,6 +601,59 @@ module.exports = {
               res.json(201);
             }
           );
+        });
+      }
+    });
+  },
+
+  // Remove Video
+  removeVideo: function(req, res) {
+    var user = req.param("user");
+    var video = req.param("video");
+    // Get user and update info
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        var position = video.position;
+        userDB.details.videos[position] = undefined;
+      }
+      userDB.save(function(error) {
+        if (error) res.json(500);
+        res.json(201);
+      });
+    });
+  },
+
+  // Remove Photo
+  removePhoto: function(req, res) {
+    // Get params
+    var user = req.param("user");
+    var photo = req.param("photo");
+    // Get user and update info
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        var path = process.cwd();
+        if (photo.model == "gallery") {
+          var position = photo.position;
+          path += userDB.details.gallery[position];
+          userDB.details.gallery[position] = undefined;
+        }
+        else if(photo.model == "profile") {
+          path += userDB.profile_photo;
+          userDB.profile_photo = undefined;
+        }
+        // Remove physical file from directory
+        fs.unlink(path, (err) => {
+          if (err) throw res.json(500);
+          userDB.save(function(error) {
+            if (error) res.json(500);
+            res.json(201);
+          });
         });
       }
     });

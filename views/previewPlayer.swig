@@ -1,43 +1,55 @@
-{% extends 'baseProfile.swig' %} {% block content %}
+{% extends 'baseProfile.swig' %}
+{% block content %}
 <div class="container profile-view-container" ng-app="PlayerModule" ng-controller="ProfileViewController">
   <div class="row">
-  <div class="col-sm-12">
-    <h1>{{ user.name }}
-      {{ user.lastname }}
-    </h1>
-    <p class="sub-title">{{ user.state }},
-      {{ user.country }}
-    </p>
-    <div class="input-profile">
-      <a class="dissapear" href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
+    <div class="col-sm-12">
+      <h1>{{ user.name }}
+        {{ user.lastname }}
+      </h1>
+      <p class="sub-title">{{ user.state }},
+        {{ user.country }}
+      </p>
+      <div class="input-profile">
+        <a class="dissapear" href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
+      </div>
     </div>
-  </div>
     <div class="col-sm-4 border-right-column">
       <div class="left-profile">
-        <div class="profile-picture">
-
+        <div class="profile-picture" id="profilePhoto"></div>
+        <div class="responsive-button">
+          <a href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
         </div>
         <div class="special-two-col">
-          <p class="head-title"> Contacto </p>
-          <p>mail: {{ user.email }} </p>
-          <p>Teléfono: {{ user.phone }} </p>
+          <p class="head-title">
+            Contacto
+          </p>
+          <p>mail:
+            {{ user.email }}
+          </p>
+          <p>Teléfono:
+            {{ user.phone }}
+          </p>
         </div>
         <div class="exclusive-club">
 
-          <p class="head-paragraph border-top-column "> ¿Quién ha visto mi perfil? </p>
-          <p> (Exclusivo Players Club) </p>
+          <p class="head-paragraph border-top-column ">
+            ¿Quién ha visto mi perfil?
+          </p>
+          <p>
+            (Exclusivo Players Club)
+          </p>
           <div class="row">
             <div class="col-xs-3">
-              <div class="profile-photos-slide-exclusive"> </div>
+              <div class="profile-photos-slide-exclusive"></div>
             </div>
             <div class="col-xs-3">
-              <div class="profile-photos-slide-exclusive"> </div>
+              <div class="profile-photos-slide-exclusive"></div>
             </div>
             <div class="col-xs-3">
-              <div class="profile-photos-slide-exclusive"> </div>
+              <div class="profile-photos-slide-exclusive"></div>
             </div>
             <div class="col-xs-3">
-              <div class="profile-photos-slide-exclusive"> </div>
+              <div class="profile-photos-slide-exclusive"></div>
             </div>
 
           </div>
@@ -45,23 +57,23 @@
       </div>
     </div>
     <div class="col-sm-8">
-    <div class="responsive-button">
-      <a href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
-    </div>
       <div>
         <div class="row">
           <div class="col-sm-6">
             <div class="row">
               <div class="col-xs-6">
-                <p>Equipo </p>
+                <p>Equipo
+                </p>
               </div>
               <div class="col-xs-6">
-                <p class="green-title">{{ user.sport.team }} </p>
+                <p class="green-title">{{ user.sport.team }}
+                </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p>Promedio </p>
+                <p>Promedio
+                </p>
               </div>
               <div class="col-xs-6">
                 <p class="green-title">{{ user.details.schoolGrade }}</p>
@@ -69,34 +81,48 @@
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p> Escuela </p>
+                <p>
+                  Escuela
+                </p>
               </div>
               <div class="col-xs-6">
-                <p class="green-title">{{ user.details.school }} </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <p> Fecha de nacimiento </p>
-              </div>
-              <div class="col-xs-6">
-                <p class="green-title">{{ user.born }} </p>
+                <p class="green-title">{{ user.details.school }}
+                </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p> Egreso de Secundaria </p>
+                <p>
+                  Fecha de nacimiento
+                </p>
               </div>
               <div class="col-xs-6">
-                <p class="green-title"> {{ user.details.schoolYear }} </p>
+                <p class="green-title">{{ user.born }}
+                </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p> Posición </p>
+                <p>
+                  Egreso de Secundaria
+                </p>
               </div>
               <div class="col-xs-6">
-                <p class="green-title"> {{ user.pos }} </p>
+                <p class="green-title">
+                  {{ user.details.schoolYear }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <p>
+                  Posición
+                </p>
+              </div>
+              <div class="col-xs-6">
+                <p class="green-title">
+                  {{ user.pos }}
+                </p>
               </div>
             </div>
           </div>
@@ -108,7 +134,8 @@
                     <p>Peso</p>
                   </div>
                   <div class="col-xs-6">
-                    <p class="green-title">{{ user.sport.weight }} kg</p>
+                    <p class="green-title">{{ user.sport.weight }}
+                      kg</p>
                   </div>
                 </div>
                 <div class="row">
@@ -116,15 +143,18 @@
                     <p>Altura</p>
                   </div>
                   <div class="col-xs-6">
-                    <p class="green-title">{{ user.sport.height }} m</p>
+                    <p class="green-title">{{ user.sport.height }}
+                      m</p>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-xs-6">
-                    <p>Tiempo 40.y </p>
+                    <p>Tiempo 40.y
+                    </p>
                   </div>
                   <div class="col-xs-6">
-                    <p class="green-title">5.3S </p>
+                    <p class="green-title">5.3S
+                    </p>
                   </div>
                 </div>
               </div>
@@ -132,45 +162,35 @@
           </div>
         </div>
       </div>
-      <div class="middle-profile">
-        <h1 class="head-body-bottom border-top-column"> ¿Por qué quiero ser reclutado? </h1>
+      <div class="middle-profile" id="userExclusive">
+        <h1 class="head-body-bottom border-top-column">
+          ¿Por qué quiero ser reclutado?
+        </h1>
         <p>{{ user.exclusive.me }}</p>
       </div>
       <div class="profile-photos dissapear">
-        <h1 class="head-body border-top-column"> Fotos </h1>
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="profile-photos-slide"> </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="profile-photos-slide"> </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="profile-photos-slide"> </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="profile-photos-slide"> </div>
-          </div>
-        </div>
+        <h1 class="head-body border-top-column">
+          Fotos
+        </h1>
+        <div class="row" id="space-for-photos"></div>
       </div>
       <div class="video-profile dissapear">
-        <h1 class="head-body border-top-column"> Vídeo </h1>
-        <div style="text-align:center;">
-          <iframe style="text-align:center;" width="90%" height="360" src="https://www.youtube.com/embed/q57qB6Kwroo" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <h1 class="head-body border-top-column">
+          Vídeo
+        </h1>
+        <div id="space-for-videos" style="text-align:center;"></div>
       </div>
     </div>
   </div>
-
-
-
+  <!-- Photo view -->
+  <div class="modalDialog" id="dialogGallery">
+    <div class="dialogGallery"></div>
+  </div>
 </div>
-
-
 {% endblock content %}
 
 {% block custom-scripts %}
-  <script>
-    $("body").css({"background-color": "white"});
-  </script>
+<script>
+  $("body").css({"background-color": "white"});
+</script>
 {% endblock custom-scripts %}

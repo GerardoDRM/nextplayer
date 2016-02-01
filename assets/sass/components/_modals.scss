@@ -79,3 +79,64 @@
     }
   }
 }
+
+
+// Feedback
+.feedback {
+  padding: 0 100px;
+  color: #fff;
+  overflow: hidden;
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  margin-left: -100px;
+  background-color: $new-green;
+  top: 0;
+  z-index: 2;
+  display: none;
+  font-family: 'Roboto', sans-serif;
+  h3 {
+    font-size: 32px;
+  }
+  p {
+    font-size: 22px;
+  }
+}
+
+.msg {
+  display: block;
+  -webkit-animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
+  -moz-animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
+  animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
+}
+
+// Modal Video URL //
+.modalDialog {
+  @include position(fixed, true, 0);
+  @include transition(opacity 400ms ease-in);
+  background: rgba($black, 0.8);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  overflow: auto;
+}
+
+.dialogVideo {
+  padding: 5%;
+  position: relative;
+  z-index: 99;
+  height: auto;
+  margin: 12% auto;
+  width: 50%;
+  background: $white;
+}
+
+// Modal Gallery
+.dialogGallery {
+  width: 800px;
+  height: 80%;
+  position: relative;
+  z-index: 99;
+  margin: 5% auto;
+}

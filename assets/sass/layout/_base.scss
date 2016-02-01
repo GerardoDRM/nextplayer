@@ -23,6 +23,7 @@ html {
 }
 
 a {
+  cursor: pointer;
   &:hover,&:link,&:visited,&:active {
     text-decoration: none;
   }

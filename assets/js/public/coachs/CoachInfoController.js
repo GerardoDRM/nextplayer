@@ -1,4 +1,4 @@
-angular.module('CoachInfoModule').controller('CoachInfoController', ['$scope', '$http', '$compile', function($scope, $http, $compile) {
+angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$http', '$compile', function($scope, $http, $compile) {
   $scope.user = {};
   $scope.coach = {};
   $scope.count = 0;
@@ -35,12 +35,34 @@ angular.module('CoachInfoModule').controller('CoachInfoController', ['$scope', '
   }).then(function successCallback(response) {
     $scope.user = response.data["general"];
     var experienceList = response.data["details"].experience;
-    for (var i = 0; i < experienceList.length; i++) {
-      // Check template in use
-      $("#space-for-experience").length > 0 ? createExperience(i, $compile, $scope) : createProfileExperience(i, $compile, $scope);
-      $scope.count++;
-      $scope.coach["e" + i] = experienceList[i];
+    if(experienceList !== undefined) {
+      for (var i = 0; i < experienceList.length; i++) {
+        // Check template in use
+        if($("#space-for-experience").length > 0) createExperience(i, $compile, $scope);
+        $scope.count++;
+        $scope.coach["e" + i] = experienceList[i];
+      }
     }
+    // Adding Profile Photo
+    var profile = $scope.user.profile_photo;
+    if(profile !== undefined) {
+      var phrase = profile;
+      var myRegexp = /uploads\/(.*)/;
+      var match = myRegexp.exec(phrase);
+      // Profile Photo
+      var selectImage = $("#profilePhoto");
+      $(selectImage[0]).css({
+        "display": "none"
+      });
+      var previewImage = $(selectImage).next();
+      $(previewImage[0]).css({
+        "display": "block",
+        "background-image": "url(" + match[0] + ")",
+        "background-size": "cover",
+        "background-repeat": "no-repeat"
+      });
+    }
+
     // Adding global sport
     $("#userSport").val($scope.user.sport);
   }, function errorCallback(response) {
@@ -124,81 +146,3 @@ var createExperience = function(i, compile, scope) {
     '</div>'
   )(scope));
 };
-
-
-// Create Dynamic experience rows
-var createProfileExperience = function(i, compile, scope) {
-  angular.element(document.getElementById('profile-experience')).append(compile(
-    '<div class="row">' +
-    '<div class="col-sm-12">' +
-    '<h2 class="head-title">Experiencia</h2>' +
-    '<div class="row">' +
-    '<div class="col-xs-2">' +
-    '<p>Equipo</p>' +
-    '</div>' +
-    '<div class="col-xs-9">' +
-    '<p class="green-title">{{ coach.e'+ i +'.team }}</p>' +
-    '</div>' +
-    '</div>' +
-    '<div class="row">' +
-    '<div class="col-xs-2">' +
-    '<p>Fechas</p>' +
-    '</div>' +
-    '<div class="col-xs-9">' +
-    '<p class="green-title"> {{ coach.e'+ i +'.startYear }} - {{ coach.e'+ i +'.endYear }}</p>' +
-    '</div>' +
-    '</div>' +
-    '<div class="row">' +
-    '<div class="col-xs-2">' +
-    '<p>Posición</p>' +
-    '</div>' +
-    '<div class="col-xs-9">' +
-    '<p class="green-title"> {{ coach.e'+ i +'.position }} </p>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '<div class="col-sm-12 middle-profile">' +
-    '<h3 class="head-title ">Logros</h3>' +
-    '<p class="border-column-botom ">{{ coach.e'+ i +'.award }}</p>' +
-    '</div>' +
-    '</div>'
-  )(scope));
-};
-
-angular.module('CoachInfoModule').directive("experience", function($compile) {
-  return function(scope, element, attrs) {
-    element.bind("click", function() {
-      if (scope.count < 5) {
-        createExperience(scope.count, $compile, scope);
-        scope.count++;
-      }
-    });
-  };
-});
-
-//Directive for adding buttons on click that show an alert on click
-angular.module('CoachInfoModule').directive("calendar", function() {
-  return function(scope, element, attrs) {
-    var x = $(element);
-    var currentDate = new Date();
-    x.datepicker({
-      dateFormat: 'dd-mm-yy',
-      changeYear: true,
-      yearRange: "1980:2016",
-      dayNamesMin: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-      monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-
-    });
-    x.datepicker("setDate", currentDate);
-  };
-});
-
-angular.module('CoachInfoModule').filter('range', function() {
-  return function(input, min, max) {
-    min = parseInt(min); //Make string input int
-    max = parseInt(max);
-    for (var i = min; i < max; i++)
-      input.push(i);
-    return input;
-  };
-});

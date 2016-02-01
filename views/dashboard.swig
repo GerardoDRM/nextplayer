@@ -1,6 +1,6 @@
 {% extends 'baseProfile.swig' %} {% block content %}
 
-<div class="container container-dash no-padding" ng-app="PlayerModule">
+<div class="container container-dash no-padding">
   <div class="top-title-player" id="club-message">
     <h1 class="dissapear">
       Sube PLAYERS CLUB y
@@ -9,13 +9,18 @@
     </h1>
   </div>
 
-  <div class="images-profile background-img-profile" ng-controller="PlayerUpperBody">
+  <div class="images-profile background-img-profile" ng-controller="UserUpperBody">
     <div class="row no-margin--sides">
       <div class="col-sm-3 no-padding dissapear">
-        <div class="middle-image profile-photo">
+      <input type="hidden" class="profile" value="0">
+        <div class="middle-image profile-photo" id="profilePhoto">
           <div class="default-photo full-wrapper">
             <img class="photo-icon" alt="..." src="../images/photo.png">
           </div>
+          <input type="file" fileread/>
+        </div>
+        <div class="profile-preview">
+        <div class="inner-filter"><a ng-click="deletePhoto($event)"></a></div>
         </div>
       </div>
       <div class="col-sm-9 no-padding image-picture-two">
@@ -30,7 +35,7 @@
           </div>
         </div>
         <div class="col-sm-4" style="margin-top:80px;">
-          <a ng-click="viewProfile()">Ver perfil</a>
+          <a class="view-green--btn" ng-click="viewProfile()">Ver perfil</a>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-angular.module('PlayerModule').controller('ExclusiveController', ['$scope', '$http', function($scope, $http) {
+angular.module('UsersModule').controller('ExclusiveController', ['$scope', '$http', function($scope, $http) {
   $scope.exclusive = {};
   $scope.user = {};
 

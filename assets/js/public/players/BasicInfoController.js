@@ -1,4 +1,4 @@
-angular.module('PlayerModule').controller('BasicInfoController', ['$scope', '$http', function($scope, $http) {
+angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$http', function($scope, $http) {
   // Create Countries and states
   $scope.user = {};
   $scope.player = {};
@@ -47,6 +47,25 @@ angular.module('PlayerModule').controller('BasicInfoController', ['$scope', '$ht
     if(status == 1) {
       $("#club-message").css({"display":"none"});
     }
+    var profile = $scope.user.profile_photo;
+    if(profile !== undefined) {
+      var phrase = profile;
+      var myRegexp = /uploads\/(.*)/;
+      var match = myRegexp.exec(phrase);
+      // Profile Photo
+      var selectImage = $("#profilePhoto");
+      $(selectImage[0]).css({
+        "display": "none"
+      });
+      var previewImage = $(selectImage).next();
+      $(previewImage[0]).css({
+        "display": "block",
+        "background-image": "url(" + match[0] + ")",
+        "background-size": "cover",
+        "background-repeat": "no-repeat"
+      });
+    }
+
     // Adding global sport
     $("#userSport").val($scope.user.sport_name);
     delete $scope.user.sport_name;
@@ -74,24 +93,6 @@ angular.module('PlayerModule').controller('BasicInfoController', ['$scope', '$ht
   };
 
 }]);
-
-//Directive for adding buttons on click that show an alert on click
-angular.module('PlayerModule').directive("calendar", function () {
-    return function (scope, element, attrs) {
-        var x = $(element);
-        var currentDate = new Date();
-        x.datepicker({
-            dateFormat: 'dd-mm-yy',
-            changeYear: true,
-            yearRange: "1980:2016",
-            dayNamesMin: [ "Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" ],
-            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
-
-        });
-        x.datepicker("setDate", currentDate);
-    };
-  });
-
 
 var createStates = function(country, scope) {
   if (country != "México") {

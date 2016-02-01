@@ -1,4 +1,4 @@
-angular.module('PlayerModule').controller('MembershipController', ['$scope', '$http', function($scope, $http) {
+angular.module('UsersModule').controller('MembershipController', ['$scope', '$http', function($scope, $http) {
   $scope.membership = {};
   $scope.user = {};
   $scope.group = {"s1":{"title":"Players Club", "amount": 1500, "level":1}};

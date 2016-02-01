@@ -312,33 +312,6 @@
     font-weight: bold;
     font-size: 36px;
   }
-  a {
-    padding: 6px;
-    background-color: $green;
-    color: $black;
-    margin-top: 0;
-    font-weight: bold;
-    width: 100px;
-    font-size: 22px;
-    border: none;
-  }
-}
-.middle-image {
-  @extend %no-margin;
-  height: 200px;
-  width: 100%;
-}
-// Image photo profile
-.profile-photo {
-  background: $black;
-  .default-photo {
-    background: url("../images/slide_2.jpg")no-repeat center;
-    background-size: cover;
-    @include transition(opacity ease-in-out .2s);
-    &:hover {
-      opacity: 0.5;
-    }
-  }
 }
 .form-group-modified-input {
   border: none;
@@ -350,6 +323,52 @@
   color: #555;
   margin-bottom: 5%;
   width: 100%;
+}
+///////////// PHOTO PROFILE //////////
+.middle-image {
+  @extend %no-margin;
+  height: 200px;
+  width: 100%;
+}
+.profile-photo {
+  background: $black;
+  .default-photo {
+    background: url("../images/slide_2.jpg")no-repeat center;
+    background-size: cover;
+    @include transition(opacity ease-in-out .2s);
+  }
+  input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+  }
+}
+.profile-preview {
+  @extend %no-margin;
+  height: 200px;
+  width: 100%;
+  display: none;
+  .inner-filter {
+    @extend %complete-dimension;
+    background: linear-gradient(0deg, transparent, rgba(29, 17, 17, 0.6)), linear-gradient(transparent, transparent 50%);
+  }
+  a {
+    background-image: url(../images/ic_cancel_white.png);
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    &:hover {
+      padding: 18px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+    }
+  }
 }
 ///// PHOTOS //////////
 .photo {
@@ -369,17 +388,37 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0
+    top: 0;
   }
 }
-
 .photo-preview {
   width: 100%;
   height: 150px;
   display: none;
+  margin: 10px 0;
+  .inner-filter {
+    @extend %complete-dimension;
+    background: linear-gradient(0deg, transparent, rgba(29, 17, 17, 0.6)), linear-gradient(transparent, transparent 50%);
+  }
+  a {
+    background-image: url(../images/ic_cancel_white.png);
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    &:hover {
+      padding: 18px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+    }
+  }
+  .video-container {
+    @extend %complete-dimension;
+  }
 }
-
-
 .margin-position {
   margin-top: -10%;
 }
@@ -418,7 +457,6 @@
 }
 ///////// Dashboard coach ////////////////////
 .coach-container {
-  
   padding-bottom: 35px;
   background-color: $white;
   .coach-row {
@@ -492,6 +530,11 @@
     font-weight: bold;
     text-align: center;
   }
+}
+.video-frame {
+  width: 90%;
+  margin: 20px auto;
+  height: 380px;
 }
 ////// Customer Card on Catalogues ////////////
 .profile-card {
@@ -661,8 +704,6 @@
   text-align: center;
   margin: auto;
 }
-
-
 .prospects-image {
   background: url(../images/jugador.png) no-repeat 6px center;
   background-size: cover;
@@ -677,8 +718,6 @@
 .prospects-description {
   height: 120px;
 }
-
-
 ///// SEARCH
 .filter {
   background-color: white;

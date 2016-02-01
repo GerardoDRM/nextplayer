@@ -1,6 +1,6 @@
 {% extends 'baseProfile.swig' %}
 {% block content %}
-<div class="container profile-view-container" ng-app="CoachInfoModule" ng-cloak ng-controller="CoachInfoController">
+<div class="container profile-view-container" ng-app="UsersModule" ng-controller="ProfileViewController">
   <div class="row">
     <div class="col-sm-12">
       <h1>{{ user.name }}
@@ -15,7 +15,7 @@
     </div>
     <div class="col-sm-4 border-right-column">
       <div class="left-profile">
-        <div class="profile-picture"></div>
+        <div class="profile-picture" id="profilePhoto"></div>
         <div class="responsive-button">
           <a href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
         </div>
