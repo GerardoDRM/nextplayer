@@ -1009,7 +1009,7 @@ footer {
   margin: auto; }
 
 .prospects-image {
-  background: url(../images/jugador.png) no-repeat 6px center;
+  background: url("../images/jugador.png") no-repeat 6px center;
   background-size: cover;
   height: 120px;
   width: 100%;
@@ -1028,7 +1028,7 @@ footer {
     font-size: 20px; }
 
 .prospects-image-search {
-  background: url(../images/jugador.png) no-repeat 6px center;
+  background: url("../images/jugador.png") no-repeat 6px center;
   background-size: cover;
   height: 150px;
   width: 80%;
@@ -1039,6 +1039,17 @@ footer {
   margin-bottom: 10px;
   width: 73px;
   height: 80px; }
+
+.contact-header {
+  padding-left: 87px;
+  font-size: 40px;
+  color: #FFF; }
+
+.staff-image {
+  background: url("../images/coach.png") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 120px; }
 
 /**
   * Buttons Partial SASS

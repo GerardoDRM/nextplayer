@@ -14,7 +14,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group-modified">
-          <label>Apellido</label>
+          <label>Ciudad</label>
         </div>
       </div>
       <div class="col-sm-6">
@@ -28,39 +28,27 @@
         </div>
       </div>
       <div class="col-sm-6 countries-eff">
-        <select id="states-list" name="states" ng-model="user.state" ng-options="s for s in states">
-        </select>
+        <input class="form-group-modified-input" type="text" name="lastname" ng-model="user.lastname">
       </div>
     </div>
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group-modified">
-          <label>País</label>
+          <label>Dirección</label>
         </div>
       </div>
       <div class="col-sm-6 countries-eff">
-        <select id="countries-list" name="country" ng-model="user.country">
-          <option ng-repeat="country in countries" value="{{ country }}">{{ country }}</option>
-        </select>
+        <input class="form-group-modified-input" type="text" name="lastname" ng-model="user.lastname">
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group-modified">
-          <label>Fecha de nacimiento</label>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <input class="form-group-modified-input" id="datepicker" type="text" name="born" ng-model="user.born" calendar>
-      </div>
-    </div>
+
     <!-- End Firts Col-->
   </div>
   <div class="col-sm-12 col-md-6">
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group-modified">
-          <label>Escuela</label>
+          <label>Sitio Web</label>
         </div>
       </div>
       <div class="col-sm-6">
@@ -70,7 +58,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group-modified">
-          <label>Promedio</label>
+          <label>Correo</label>
         </div>
       </div>
       <div class="col-sm-6">
@@ -80,35 +68,16 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
-          <label for="exampleInputEmail2">Año de ingreso
-            <br>
-            de secundaria
-          </br>
+          <label for="exampleInputEmail2">Descripción
+
         </label>
       </div>
     </div>
     <div class="col-sm-6 countries-eff">
-      <select style="margin-bottom:10%;" name="year" ng-model="player.schoolYear">
-        <option selected="selected" value="2012">2012</option>
-        <option value="2013">2013</option>
-        <option value="2014">2014</option>
-        <option value="2015">2015</option>
-        <option value="2016">2016</option>
-        <option value="2017">2017</option>
-      </select>
+    <textarea class="form-control" style="background-color:#e9eaed; width:100%;" rows="3"></textarea>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group-modified">
-        <label for="exampleInputEmail2">Teléfono</label>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <input class="form-group-modified-input" type="text" name="phone" ng-model="user.phone">
 
-    </div>
-  </div>
 </div>
 
 </form>

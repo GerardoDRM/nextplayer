@@ -76,7 +76,8 @@ module.exports.routes = {
   'GET /search': {view: 'search'},
   'GET /teamPreview': {view: 'teamPreview'},
   'GET /organization/dashboard' : {view: 'dashboardOrganization'},
-  'GET /contact' : {view: 'contact'}
+  'GET /contact' : {view: 'contact'},
+    'GET /blog' : {view: 'blog'}
 
 
 
