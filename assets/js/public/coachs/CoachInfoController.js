@@ -66,7 +66,6 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
     // Adding global sport
     $("#userSport").val($scope.user.sport);
   }, function errorCallback(response) {
-    console.log(response);
   });
 
   $scope.update = function() {
@@ -88,9 +87,10 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
         "applicant": exp
       }
     }).then(function successCallback(response) {
-      console.log(response);
+      if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
+      else{addFeedback("Tus datos han sido almacenados exitosamente", 'success');}
     }, function errorCallback(response) {
-      console.log(response);
+      ddFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
     });
   };
 

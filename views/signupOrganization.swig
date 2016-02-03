@@ -1,35 +1,35 @@
-{% extends 'base.swig' %} {% block content %}
-<div class="advisement">
-
-</div>
-<div class="form-sign"  ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
-  <form  ng-submit="submitSignupForm()" name="signup" id="form-signup">
+{% extends 'base.swig' %}
+{% block content %}
+<div class="advisement"></div>
+<div class="form-sign" ng-app="SignupModule" ng-cloak ng-controller="SignupController">
+  <form id="form-signup" name="signup" ng-submit="submitSignupForm()">
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
           <div class="top-sign">
-            <img src="../images/equipo_escudo.png" alt="...">
-            <h1> Organización </h1>
+            <img alt="..." src="../images/equipo_escudo.png">
+            <h1>
+              Organización
+            </h1>
 
           </div>
-          <input type="text" class="input-signup" placeholder="Escuela"  name="school" ng-model="signupForm.school" required>
-          <input type="text" class="input-signup" placeholder="Puesto"  name="post" ng-model="signupForm.post" required>
+          <input class="input-signup" name="school" ng-model="signupForm.school" placeholder="Escuela" required type="text">
+          <input class="input-signup" name="post" ng-model="signupForm.post" placeholder="Puesto" required type="text">
 
-          <input type="hidden" id="user-type" value="coach">
+          <input id="user-type" type="hidden" value="coach">
         </div>
         <div class="col-sm-6 text-center ">
-          <input type="text" class="input-signup" placeholder="Nombre" style="margin-top:30px" name="name" ng-model="signupForm.name" required>
+          <input class="input-signup" name="name" ng-model="signupForm.name" placeholder="Nombre" required style="margin-top:30px" type="text">
 
-          <input type="text" class="input-signup" placeholder="Apellidos" name="lastname" ng-model="signupForm.lastname" required>
+          <input class="input-signup" name="lastname" ng-model="signupForm.lastname" placeholder="Apellidos" required type="text">
 
-          <input type="email" class="input-signup" placeholder="Correo"  name="email" ng-model="signupForm.email" required>
+          <input class="input-signup" name="email" ng-model="signupForm.email" placeholder="Correo" required type="email">
 
-          <input type="password" class="input-signup" placeholder="Contraseña" name="password" ng-model="signupForm.password" required>
+          <input class="input-signup" name="password" ng-model="signupForm.password" placeholder="Contraseña" required type="password">
 
-            <input type="submit" value="Registrarse" class="input-signup">
+          <input class="input-signup" type="submit" value="Registrarse">
 
-
-          <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+          <input name="_csrf" type="hidden" value="<%= _csrf %>"/>
         </div>
       </div>
 
@@ -40,29 +40,41 @@
 
 <div class="container">
   <div class="function">
-    <h1> ¿Cómo funciona? </h1>
+    <h1>
+      ¿Cómo funciona?
+    </h1>
     <div class="row">
       <div class="col-sm-4">
-        <h2> 1 </h2>
-        <p> Registrate - Solo equipos/universidades con Membresía tendrán acceso a nuestra base de datos. </p>
+        <h2>
+          1
+        </h2>
+        <p>
+          Registrate - Solo equipos/universidades con Membresía tendrán acceso a nuestra base de datos.
+        </p>
       </div>
       <div class="col-sm-4">
-        <h2> 2 </h2>
+        <h2>
+          2
+        </h2>
         <p>Encuentra talento - Nuestra base de datos incluye perfiles de jugadores de toda la República.</p>
       </div>
       <div class="col-sm-4">
-        <h2> 3 </h2>
-        <p> Conéctate con jugadores y/o coaches que te ayudarán a elevar tu programa al próximo nivel. </p>
+        <h2>
+          3
+        </h2>
+        <p>
+          Conéctate con jugadores y/o coaches que te ayudarán a elevar tu programa al próximo nivel.
+        </p>
       </div>
 
     </div>
   </div>
 </div>
 
-
-  <div class="more-info">
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.  </p>
-  </div>
-
+<div class="more-info">
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
+    pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+  </p>
+</div>
 
 {% endblock content %}

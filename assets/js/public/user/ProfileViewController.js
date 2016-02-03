@@ -22,9 +22,16 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
       "user": $("#userId").val()
     }
   }).then(function successCallback(response) {
-    console.log(response);
     $scope.user = response.data;
     var status = $scope.user.status;
+
+    if (status == 1) {
+      $("#exclusiveViews").css({"display":"block"});
+      $("#exclusiveMe").css({"display":"block"});
+    } else {
+      $("#exclusiveViews").css({"display":"none"});
+      $("#exclusiveMe").css({"display":"none"});
+    }
 
     if ($scope.user.role == "player") {
       // Players stuff

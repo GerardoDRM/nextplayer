@@ -26,9 +26,10 @@ angular.module('UsersModule').controller('UserUpperBody', ['$scope', '$http', fu
         "photo": photo
       }
     }).then(function successCallback(response) {
-      console.log(response);
+      if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
+      else{addFeedback("Tu foto de perfil ha sido retirada", 'success');}
     }, function errorCallback(response) {
-      console.log(response);
+      addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
     });
 
   }

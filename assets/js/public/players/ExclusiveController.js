@@ -16,7 +16,6 @@ angular.module('UsersModule').controller('ExclusiveController', ['$scope', '$htt
         $("#exclusive-form :input").prop("disabled", true);
       }
     }, function errorCallback(response) {
-      console.log(response);
     });
   });
 
@@ -32,9 +31,10 @@ angular.module('UsersModule').controller('ExclusiveController', ['$scope', '$htt
         "user": $scope.user
       }
     }).then(function successCallback(response) {
-      console.log(response);
+      if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
+      else{addFeedback("Tus datos han sido guardados exitosamente", 'success');}
     }, function errorCallback(response) {
-      console.log(response);
+      addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
     });
   }
 }]);

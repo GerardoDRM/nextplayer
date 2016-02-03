@@ -20,11 +20,10 @@ angular.module('UsersModule').controller('MembershipController', ['$scope', '$ht
         $("#membership-form :input").prop("disabled", true);
         $("#buyBtn").css({"display":"none"});
       }
-      console.log($scope.membership.name);
       if($scope.membership.name === undefined) $("#cancelBtn").css({"display":"none"});
+      else $("#cancelBtn").css({"display":"block"});
 
     }, function errorCallback(response) {
-      console.log(response);
     });
   });
 
@@ -47,9 +46,11 @@ angular.module('UsersModule').controller('MembershipController', ['$scope', '$ht
           "user": $scope.user
         }
       }).then(function successCallback(response) {
-        console.log(response);
+        if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
+        else{addFeedback("Tu compra se ha realizado de manera exitosa", 'success');}
+        $("#membership-btn").trigger('click');
       }, function errorCallback(response) {
-        console.log(response);
+        addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
       });
     }
   };
@@ -64,10 +65,11 @@ angular.module('UsersModule').controller('MembershipController', ['$scope', '$ht
         "user": $scope.user
       }
     }).then(function successCallback(response) {
-      console.log(response);
+      if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
+      else{addFeedback("Tu tarjeta ha sido retirada del sistema", 'success');}
       $("#membership-btn").trigger("click");
     }, function errorCallback(response) {
-      console.log(response);
+      addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
     });
   }
 }]);

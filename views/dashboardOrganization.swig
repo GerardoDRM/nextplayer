@@ -50,9 +50,9 @@
             </a>
           </li>
           <li class="dissapear">
-            <a class="menu-click" data-content="sports" href="javascript:void(0)" id="sports-btn">
+            <a class="menu-click" data-content="staff" href="javascript:void(0)" id="staff-btn">
               <h3>
-                Deporte</h3>
+                Staff</h3>
             </a>
           </li>
           <li class="dissapear">
@@ -62,16 +62,23 @@
             </a>
           </li>
           <li class="dissapear">
-            <a class="menu-click" data-content="exclusive" href="javascript:void(0)" id="exclusive-btn">
+            <a class="menu-click" data-content="achievements" href="javascript:void(0)" id="achievements-btn">
               <h3>
-                Beneficios Playes Club
+                Logros
+              </h3>
+            </a>
+          </li>
+          <li class="dissapear">
+            <a class="menu-click" data-content="access" href="javascript:void(0)" id="access-btn">
+              <h3>
+                Accesos
               </h3>
             </a>
           </li>
           <li>
             <a class="menu-click" data-content="membership" href="javascript:void(0)" id="membership-btn">
               <h3>
-                Membresía
+          Membresía
               </h3>
             </a>
           </li>
@@ -82,19 +89,22 @@
     <div class="col-sm-9 no-padding">
       <ul class="cd-tabs-content" style="height: auto;">
         <li class="selected" data-content="basic" id="basic">
-          {% include "dashboard_players/basic_info.swig" %}
+          {% include "dashboard_organization/basic_info.swig" %}
         </li>
-        <li data-content="sports" id="sports">
-          {% include "dashboard_players/sport.swig"%}
+        <li data-content="staff" id="staff">
+          {% include "dashboard_organization/staff.swig"%}
         </li>
         <li data-content="gallery" id="gallery">
-          {% include "dashboard_players/gallery.swig"%}
+          {% include "dashboard_organization/gallery.swig"%}
         </li>
-        <li data-content="exclusive" id="exclusive">
-          {% include "dashboard_players/players_club.swig" %}
+        <li data-content="achievements" id="achievements">
+          {% include "dashboard_organization/achievements.swig" %}
+        </li>
+        <li data-content="access" id="access">
+          {% include "dashboard_organization/access.swig"%}
         </li>
         <li data-content="membership" id="membership">
-          {% include "dashboard_players/membership.swig"%}
+          {% include "dashboard_organization/membership.swig"%}
         </li>
       </ul>
       <!-- cd-tabs-content -->

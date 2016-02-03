@@ -30,7 +30,7 @@
             {{ user.phone }}
           </p>
         </div>
-        <div class="exclusive-club">
+        <div class="exclusive-club" id="exclusiveViews">
 
           <p class="head-paragraph border-top-column ">
             ¿Quién ha visto mi perfil?
@@ -162,7 +162,7 @@
           </div>
         </div>
       </div>
-      <div class="middle-profile" id="userExclusive">
+      <div class="middle-profile" id="exclusiveMe">
         <h1 class="head-body-bottom border-top-column">
           ¿Por qué quiero ser reclutado?
         </h1>

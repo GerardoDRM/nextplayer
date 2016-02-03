@@ -105,6 +105,7 @@
 }
 
 .msg {
+  background-color: $new-green;
   display: block;
   -webkit-animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
   -moz-animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
@@ -139,4 +140,15 @@
   position: relative;
   z-index: 99;
   margin: 5% auto;
+}
+
+
+// Modal sport
+.dialogSport {
+  padding: 5%;
+  position: relative;
+  z-index: 99;
+  margin: 12% auto;
+  width: 35%;
+  background: $white;
 }

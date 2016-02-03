@@ -92,6 +92,7 @@
   <script src="/js/public/login/LoginController.js"></script>
   <!--SCRIPTS END-->
   <!--Profiles-->
+  <script src="/js/public/user/countries.js"></script>
   <script src="/js/public/user/UsersModule.js"></script>
   <script src="/js/public/user/ProfileViewController.js"></script>
   <script src="/js/public/user/UserUpperBody.js"></script>

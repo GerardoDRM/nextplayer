@@ -174,10 +174,8 @@ footer {
 @-webkit-keyframes stretch {
   0% {
     transform: scale(0.3);
-    background-color: #9bee9d;
     border-radius: 100%; }
   50% {
-    background-color: #9bee9d;
     width: 50%;
     height: 150px;
     margin-left: -48%; }
@@ -185,15 +183,12 @@ footer {
     width: 100%;
     left: 0;
     margin-left: 0;
-    transform: scale(1);
-    background-color: #9bee9d; } }
+    transform: scale(1); } }
 @-moz-keyframes stretch {
   0% {
     transform: scale(0.3);
-    background-color: #9bee9d;
     border-radius: 100%; }
   50% {
-    background-color: #9bee9d;
     width: 50%;
     height: 150px;
     margin-left: -48%; }
@@ -201,15 +196,12 @@ footer {
     width: 100%;
     left: 0;
     margin-left: 0;
-    transform: scale(1);
-    background-color: #9bee9d; } }
+    transform: scale(1); } }
 @keyframes stretch {
   0% {
     transform: scale(0.3);
-    background-color: #9bee9d;
     border-radius: 100%; }
   50% {
-    background-color: #9bee9d;
     width: 50%;
     height: 150px;
     margin-left: -48%; }
@@ -217,8 +209,7 @@ footer {
     width: 100%;
     left: 0;
     margin-left: 0;
-    transform: scale(1);
-    background-color: #9bee9d; } }
+    transform: scale(1); } }
 /* out*/
 @-webkit-keyframes feedback-out {
   0% {
@@ -300,6 +291,9 @@ footer {
   * This SASS file has all
   * forms used on the app
 **/
+textarea {
+  background-color: #e9eaed; }
+
 .select-hidden {
   display: none;
   visibility: hidden; }
@@ -539,6 +533,7 @@ footer {
     font-size: 22px; }
 
 .msg {
+  background-color: #9bee9d;
   display: block;
   -webkit-animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
   -moz-animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
@@ -575,6 +570,14 @@ footer {
   position: relative;
   z-index: 99;
   margin: 5% auto; }
+
+.dialogSport {
+  padding: 5%;
+  position: relative;
+  z-index: 99;
+  margin: 12% auto;
+  width: 35%;
+  background: #FFF; }
 
 /**
   * Wrappers Partial SASS
@@ -1180,7 +1183,7 @@ footer {
   margin: auto; }
 
 .prospects-image {
-  background: url(../images/jugador.png) no-repeat 6px center;
+  background: url("../images/jugador.png") no-repeat 6px center;
   background-size: cover;
   height: 120px;
   width: 100%;
@@ -1199,7 +1202,7 @@ footer {
     font-size: 20px; }
 
 .prospects-image-search {
-  background: url(../images/jugador.png) no-repeat 6px center;
+  background: url("../images/jugador.png") no-repeat 6px center;
   background-size: cover;
   height: 150px;
   width: 80%;
@@ -1210,6 +1213,33 @@ footer {
   margin-bottom: 10px;
   width: 73px;
   height: 80px; }
+
+.contact-header {
+  padding-left: 18%;
+  font-size: 5em;
+  color: #FFF;
+  position: relative;
+  padding-top: 300px;
+  margin: 0; }
+
+.staff-image {
+  background: url("../images/coach.png") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 120px; }
+
+.card-exclusive {
+  width: 60%;
+  box-shadow: 0px 1px 10px #333;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px; }
+  .card-exclusive .header {
+    text-align: center;
+    color: #FFF;
+    background-color: #337AB7;
+    padding: 2px; }
 
 /**
   * Buttons Partial SASS

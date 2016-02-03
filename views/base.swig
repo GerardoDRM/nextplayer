@@ -41,17 +41,21 @@
               <li role="separator" class="divider"></li>
               <li><a href="/signup/coach">Coach</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Organización</a></li>
+              <li><a href="/signup/organization">Organización</a></li>
             </ul>
           </li>
           <li><a href="/login">Login</a></li>
-          <li><a href="#">Contacto</a></li>
+          <li><a href="/contact">Contacto</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
   </nav>
+  <!-- Feedback -->
+  <div id="feedback" class="feedback">
+    <h3 id="feedback-msg"></h3>
+  </div>
 
   {% block content %}{% endblock %}
   <footer class="footer">
@@ -90,14 +94,17 @@
 
   <!--SCRIPTS-->
   <script src="/js/dependencies/sails.io.js"></script>
+  <script src="/js/public/contact/ContactSendModule.js"></script>
+  <script src="/js/public/contact/ContactSendController.js"></script>
+  <script src="/js/public/user/UsersModule.js"></script>
   <script src="/js/public/signup/SignupModule.js"></script>
   <script src="/js/public/signup/SignupController.js"></script>
   <script src="/js/public/login/LoginModule.js"></script>
   <script src="/js/public/login/LoginController.js"></script>
+  <script src="/js/public/user/ForgotPasswordController.js"></script>
+
   <!--SCRIPTS END-->
   <script>
-
-
     $(document).ready(function() {
       // Clone select list data in a custom select list
       // Replicate info
@@ -147,20 +154,6 @@
 
       }); // End custom select
 
-      // Login Image update
-      $(".select-options").children().click(function() {
-        //Get val
-        var userType = $('#select-sport').find('option:selected').val();
-        if (userType == "Jugador") {
-          $("#img-login").attr("src", "../images/jugador_escudo.png");
-        } else if (userType == "Coach") {
-          $("#img-login").attr("src", "../images/coach_escudo.png");
-        } else if (userType == "Organización") {
-          $("#img-login").attr("src", "../images/equipo_escudo.png");
-        }
-
-      });
-
       // Tabs which are used on navigation bar
       var tabItems = $('.menu-click');
       var tabContentWrapper = $('.cd-tabs-content');
@@ -177,30 +170,24 @@
       });
 
 
-
-      for (var k=1985; k<=2016 ; k++) {
-        $("#years-list").append($("<option>", {
-          value: k,
-          text: k
-        }));
-      }
-
-      for (var n=1985; n<=2016 ; n++) {
-        $("#twenties-list").append($("<option>", {
-          value: n,
-          text: n
-        }));
-      }
-
       jQuery.extend(jQuery.validator.messages, {
-            required: "Este campo es requerido",
-            minlength: jQuery.validator.format("Por favor debe de haber almenos {0} caracteres."),
-            email: "Ingresa un correo valido"
-        });
-
+        required: "Este campo es requerido",
+        minlength: jQuery.validator.format("Por favor debe de haber almenos {0} caracteres."),
+        email: "Ingresa un correo valido",
+        equalTo: "La Contraseña debe de ser la misma"
+      });
       // Validate
       $("#form-signup").validate();
       $("#form-login").validate();
+      $("#form-contact").validate();
+      $("#form-forgot").validate();
+      $("#form-reset").validate({
+        rules: {
+          password2: {
+            equalTo: "#password"
+          }
+        }
+      });
 
     });
   </script>

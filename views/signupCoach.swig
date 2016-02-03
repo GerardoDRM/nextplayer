@@ -2,8 +2,8 @@
 <div class="advisement">
 
 </div>
-<div class="form-sign"  ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
-  <form  ng-submit="submitSignupForm()" name="signup" id="form-signup">
+<div class="form-sign" ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
+  <form ng-submit="submitSignupForm()" name="signup" id="form-signup">
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
@@ -28,13 +28,11 @@
 
           <input type="text" class="input-signup" placeholder="Apellidos" name="lastname" ng-model="signupForm.lastname" required>
 
-          <input type="email" class="input-signup" placeholder="Correo"  name="email" ng-model="signupForm.email" required>
+          <input type="email" class="input-signup" placeholder="Correo" name="email" ng-model="signupForm.email" required>
 
           <input type="password" class="input-signup" placeholder="Contraseña" name="password" ng-model="signupForm.password" required>
 
-            <input type="submit" value="Registrarse" class="input-signup">
-
-          <a class="input-signup facebook" href="/user/facebook">Login con Facebook</a>
+          <input type="submit" value="Registrarse" class="input-signup">
           <input type="hidden" name="_csrf" value="<%= _csrf %>" />
         </div>
       </div>
@@ -66,9 +64,10 @@
 </div>
 
 
-  <div class="more-info">
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.  </p>
-  </div>
+<div class="more-info">
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+    quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. </p>
+</div>
 
 
 {% endblock content %}

@@ -23,7 +23,6 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
         "user": $("#userId").val()
       }
     }).then(function successCallback(response) {
-      console.log(response);
       var status = response.data["status"];
       var gallery = response.data["gallery"];
       var videos = response.data["videos"];
@@ -42,7 +41,6 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
         }
       }
     }, function errorCallback(response) {
-      console.log(response);
     });
 
   });
@@ -61,7 +59,8 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
             "video": $scope.video
           }
         }).then(function successCallback(response) {
-          console.log(response);
+          if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
+          else{addFeedback("Tu video ha sido almacenado", 'success');}
           // Change UI preview video
           var videoContainer = $scope.elementVideo;
           $(videoContainer).css({
@@ -83,7 +82,7 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
           });
 
         }, function errorCallback(response) {
-          console.log(response);
+          addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
         });
       }
     }
@@ -121,9 +120,10 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
           "video": video
         }
       }).then(function successCallback(response) {
-        console.log(response);
+        if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
+        else{addFeedback("Tu video ha sido removido", 'success');}
       }, function errorCallback(response) {
-        console.log(response);
+        addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
       });
     }
   };
@@ -156,9 +156,10 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
         "photo": photo
       }
     }).then(function successCallback(response) {
-      console.log(response);
+      if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
+      else{addFeedback("Tu foto ha sido eliminada", 'success');}
     }, function errorCallback(response) {
-      console.log(response);
+      addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
     });
 
   }

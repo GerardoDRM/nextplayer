@@ -1,29 +1,30 @@
 angular.module('SignupModule').controller('SignupController', ['$scope', '$http', function($scope, $http) {
   $scope.signupForm = {};
   $scope.submitSignupForm = function() {
+    if($("#form-signup").val()) {
+      // Submit request to Sails.
+      $http.post('/signup', {
+          name: $scope.signupForm.name,
+          lastname: $scope.signupForm.lastname,
+          email: $scope.signupForm.email,
+          password: $scope.signupForm.password,
+          sport: $('#select-sport').find('option:selected').val(),
+          role: $("#user-type").val()
+        })
+        .then(function onSuccess(sailsResponse) {
+          addFeedback('Tu usuario ha sido creado, por favor verifica tu email', 'success');
+        })
+        .catch(function onError(sailsResponse) {
+          // Handle known error type(s).
+          // If using sails-disk adpater -- Handle Duplicate Key
+          var emailAddressAlreadyInUse = sailsResponse.status == 409;
 
-    // Submit request to Sails.
-    $http.post('/signup', {
-        name: $scope.signupForm.name,
-        lastname: $scope.signupForm.lastname,
-        email: $scope.signupForm.email,
-        password: $scope.signupForm.password,
-        sport: $('#select-sport').find('option:selected').val(),
-        role: $("#user-type").val()
-      })
-      .then(function onSuccess(sailsResponse) {
-        window.location = '/';
-      })
-      .catch(function onError(sailsResponse) {
-        // Handle known error type(s).
-        // If using sails-disk adpater -- Handle Duplicate Key
-        var emailAddressAlreadyInUse = sailsResponse.status == 409;
+          if (emailAddressAlreadyInUse) {
+            addFeedback('Este email ya esta ocupado por algun otro usuario, intente con uno diferente', 'error');
+            return;
+          }
 
-        if (emailAddressAlreadyInUse) {
-          console.log('That email address has already been taken, please try again.');
-          return;
-        }
-
-      })
+        });
+    }
   }
 }]);

@@ -35,10 +35,12 @@ module.exports.routes = {
   'GET /': 'ProfileController.showHomePage',
   'GET /signup/player': {view: 'signupPlayer'},
   'GET /signup/coach': {view: 'signupCoach'},
+  'GET /signup/organization': {view: 'signupOrganization'},
   'POST /signup': 'UserController.signup',
   'GET /login': {view: 'login'},
   'PUT /login': 'UserController.login',
   'GET /logout': 'UserController.logout',
+  'POST /contact': 'ContactController.contact',
   /***************************************************************************
   *                                                                          *
   * User routes (Players and Coaches)...                                     *
@@ -61,6 +63,11 @@ module.exports.routes = {
   'DELETE /user/gallery/videos': 'UserController.removeVideo',
   'GET /user/gallery': 'UserController.getUserGallery',
   'GET /user/complete_profile': 'UserController.getUserProfile',
+  'GET /forgot': {view: 'forgot'},
+  'POST /forgot': 'UserController.forgot',
+  'GET /reset/:token': 'UserController.getReset',
+  'POST /reset/:token': 'UserController.reset',
+
   /***************************************************************************
   *                                                                          *
   * User routes (Players and Coaches)...                                     *
@@ -74,13 +81,13 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'GET /organization': {view: 'tempOrganization'},
-  'GET /signup/organization': {view: 'signupOrganization'},
   'GET /homePlayerCoach': {view: 'homePlayerCoach'},
   'GET /homeUniversity': {view: 'homeUniversity'},
   'GET /search': {view: 'search'},
   'GET /teamPreview': {view: 'teamPreview'},
   'GET /organization/dashboard' : {view: 'dashboardOrganization'},
-  'GET /contact' : {view: 'contact'}
+  'GET /contact' : {view: 'contact'},
+    'GET /blog' : {view: 'blog'}
 
 
 

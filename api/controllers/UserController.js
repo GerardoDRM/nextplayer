@@ -10,6 +10,17 @@ var stripe = require("stripe")(
 );
 var moment = require('moment');
 const fs = require('fs');
+var Passwords = require('machinepack-passwords');
+// Node Mailer Config
+var nodemailer = require('nodemailer');
+var async = require('async');
+var crypto = require('crypto');
+/*
+    Here we are configuring our SMTP Server details.
+    STMP is mail server which is responsible for sending and recieving email.
+*/
+var smtpTransport = nodemailer.createTransport('smtps://gerardo.bw@gmail.com:gerileboLTD@smtp.gmail.com');
+var rand, mailOptions, host, link;
 
 module.exports = {
 
@@ -21,14 +32,15 @@ module.exports = {
 
     // Try to look up user using the provided email address
     User.findOne({
-      email: req.param('email')
+      email: req.param('email'),
+      email_verification: true
     }, function foundUser(err, user) {
-      if (err) return res.negotiate(err);
+      if (err || user === undefined) return res.negotiate(err);
       if (!user) return res.notFound();
 
       // Compare password attempt from the form params to the encrypted password
       // from the database (`user.password`)
-      require('machinepack-passwords').checkPassword({
+      Passwords.checkPassword({
         passwordAttempt: req.param('password'),
         encryptedPassword: user.encryptedPassword
       }).exec({
@@ -58,7 +70,6 @@ module.exports = {
 
 
   signup: function(req, res) {
-    var Passwords = require('machinepack-passwords');
     // Encrypt a string using the BCrypt algorithm.
     Passwords.encryptPassword({
       password: req.param('password'),
@@ -81,7 +92,8 @@ module.exports = {
           role: req.param('role'),
           membership: {},
           details: {},
-          exclusive: {}
+          exclusive: {},
+          email_verification: false
         }, function userCreated(err, newUser) {
           if (err) {
 
@@ -97,10 +109,21 @@ module.exports = {
             // Otherwise, send back something reasonable as our error response.
             return res.negotiate(err);
           }
-
-          // Log user in
-          req.session.me = newUser.id;
-
+          // Send Email Verfication
+          host = req.get('host');
+          link = "http://" + req.get('host') + "/verify?id=" + newUser.id + "&email=" + newUser.email;
+          // setup e-mail data with unicode symbols
+          mailOptions = {
+            from: 'Nextplayers 👥 <gerardo.bw@gmail.com>', // sender address
+            to: newUser.email, // list of receivers
+            subject: 'Hola Por favor confirma tu email ✔', // Subject line
+            html: 'Hola,<br> Da click en el siguiente link para validar tu email.<br><a href="' + link + '">Click para validar</a>' // html body
+          };
+          smtpTransport.sendMail(mailOptions, function(error, response) {
+            if (error) {
+              console.log("Email error for:" + newUser.email);
+            }
+          });
           // Send back the id of the new user
           return res.ok();
         });
@@ -133,6 +156,166 @@ module.exports = {
     });
   },
 
+  verify: function(req, res) {
+    console.log(req.protocol + ":/" + req.get('host'));
+    if ((req.protocol + "://" + req.get('host')) == ("http://localhost:1337")) {
+      // Try to look up user using the provided email address
+      User.findOne({
+        id: req.param('id'),
+        email: req.param('email')
+      }, function foundUser(err, user) {
+        if (err) return res.negotiate(err);
+        if (!user) return res.notFound();
+        user.email_verification = true;
+        user.save(function(error) {
+          if (error) res.json(500);
+          res.redirect('/login');
+        });
+      });
+    } else {
+      res.end("<h1>Request is from unknown source");
+    }
+  },
+
+  forgot: function(req, res) {
+    // Using async for better organization on promises
+    async.waterfall([
+      function(done) {
+        crypto.randomBytes(20, function(err, buf) {
+          var token = buf.toString('hex');
+          done(err, token);
+        });
+      },
+      function(token, done) {
+        User.findOne({
+          email: req.param("email")
+        }, function(err, user) {
+          if (!user || err || user === undefined) {
+            console.log("Error");
+            res.json(500);
+            return;
+          }
+          user.resetPasswordToken = token;
+          user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+          user.save(function(err) {
+            done(err, token, user);
+          });
+        });
+      },
+      function(token, user, done) {
+        // Send Email Verfication
+        host = req.get('host');
+        link = "http://" + req.get('host') + "/reset/" + token;
+        // setup e-mail data with unicode symbols
+        mailOptions = {
+          from: 'Nextplayers 👥 <gerardo.bw@gmail.com>', // sender address
+          to: user.email, // list of receivers
+          subject: 'Password reset ✔', // Subject line
+          html: 'Hola, tu estas recibiendo este email debido a que tu o alguien mas ha realizado una peticion para' +
+            'cambio de tu password,</br> Por favor da click en el siguiente link para completar el proceso </br> <a href="' + link + '">Click para validar</a> </br>' +
+            'Si tu no realizaste esta peticion porfavor haz caso omiso de este correo.'
+        };
+        smtpTransport.sendMail(mailOptions, function(err) {
+          // req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+          done(err, 'done');
+        });
+      }
+    ], function(err) {
+      if (err) res.json(500);
+      res.ok();
+    });
+  },
+
+  getReset: function(req, res) {
+    // Reset Password
+    var token = req.param("token");
+    // Use native Mongo Query
+    User.native(function(err, collection) {
+      if (err) return res.serverError(err);
+      collection.find({
+        resetPasswordToken: token,
+        resetPasswordExpires: {
+          $gt: Date.now()
+        }
+      }).toArray(function(err, result) {
+        if (err || result === undefined || result.length == 0) return res.view('500');
+        return res.view('reset', {
+          message: {
+            token: token
+          }
+        }); // end return
+      });
+    });
+  },
+
+  reset: function(req, res) {
+    // Reset Password
+    var token = req.param("token");
+    console.log(req.param('password'));
+    // Using async for better organization on promises
+    async.waterfall([
+      function(done) {
+        // Use native Mongo Query
+        User.native(function(err, collection) {
+          if (err) return res.serverError(err);
+          collection.find({
+            resetPasswordToken: token,
+            resetPasswordExpires: {
+              $gt: Date.now()
+            }
+          }).toArray(function(err, results) {
+            if (err || results === undefined || results.length == 0) res.json(500);
+            // Encrypt a string using the BCrypt algorithm.
+            Passwords.encryptPassword({
+              password: req.param('password'),
+              difficulty: 10,
+            }).exec({
+              // An unexpected error occurred.
+              error: function(err) {
+                res.json(500);
+              },
+              // OK. Update Password
+              success: function(encryptedPassword) {
+                var user = results[0];
+                User.findOne({
+                  id: user._id
+                }).exec(function findOneCB(err, userDB) {
+                  userDB.encryptedPassword = encryptedPassword;
+                  userDB.resetPasswordToken = null;
+                  userDB.resetPasswordExpires = null;
+                  // Update Info
+                  userDB.save(function(error) {
+                    if (error) res.json(500);
+                    done(err, userDB);
+                  });
+                });
+              }
+            }); // end encryption
+          });
+        }); // native function
+      },
+      function(user, done) {
+        // Send Email Verfication
+        host = req.get('host');
+        link = "http://" + req.get('host') + "/reset/" + token;
+        // setup e-mail data with unicode symbols
+        mailOptions = {
+          from: 'Nextplayers 👥 <gerardo.bw@gmail.com>', // sender address
+          to: user.email, // list of receivers
+          subject: 'Password reset ✔', // Subject line
+          html: 'Hola, tu password ha sido cambiado exitosamente.'
+        };
+        smtpTransport.sendMail(mailOptions, function(err) {
+          done(err, 'done');
+        });
+      }
+    ], function(err) {
+      if (err) res.json(500);
+      res.ok();
+    });
+  },
+
+
   'facebook': function(req, res, next) {
     passport.authenticate('facebook', {
         scope: ['email']
@@ -143,7 +326,7 @@ module.exports = {
             req.session.flash = 'There was an error';
             res.redirect('/login');
           } else {
-            req.session.me = user;
+            req.session.me = user.id;
             res.redirect('/');
           }
         });
@@ -249,7 +432,6 @@ module.exports = {
 
   getUserGallery: function(req, res) {
     var user = req.param("user");
-    console.log(user);
     // Get user
     User.findOne({
       id: user
@@ -257,7 +439,9 @@ module.exports = {
       if (err || userDB === undefined) res.json(500);
       else {
         var galleryInfo = {
-          "status": 0
+          "status": 0,
+          gallery: [],
+          videos: []
         };
         // Check if user has membership
         if (userDB.membership !== undefined && Object.keys(userDB.membership).length > 0) {
@@ -391,10 +575,10 @@ module.exports = {
     User.findOne({
       id: user.id
     }).exec(function findOneCB(err, userDB) {
-      if (err) res.json(500);
+      if (err || userDB === undefined) res.json(500);
       else {
         // Delete not required key
-        delete sport.position;
+        if(sport.position) delete sport.position;
         // Sport Details
         userDB.sport["positions"] = {};
         for (var detail in sport) {
@@ -560,8 +744,7 @@ module.exports = {
             var position = req.param("position");
             if (userDB.details.gallery === undefined) userDB.details.gallery = [];
             userDB.details.gallery[position] = match[0];
-          }
-          else if(model == "profile") {
+          } else if (model == "profile") {
             userDB.profile_photo = match[0];
           }
           userDB.save(function(error) {
@@ -642,8 +825,7 @@ module.exports = {
           var position = photo.position;
           path += userDB.details.gallery[position];
           userDB.details.gallery[position] = undefined;
-        }
-        else if(photo.model == "profile") {
+        } else if (photo.model == "profile") {
           path += userDB.profile_photo;
           userDB.profile_photo = undefined;
         }
@@ -700,7 +882,6 @@ var getCustomerCard = function(customer) {
   // Check Card
   return stripe.customers.listCards(customer);
 }
-
 
 var stripeError = function(reason) {
   console.log(reason);

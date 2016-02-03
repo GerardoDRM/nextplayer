@@ -18,15 +18,12 @@ angular.module('UsersModule').controller('SportController', ['$scope', '$http', 
         "user": $("#userId").val()
       }
     }).then(function successCallback(response) {
-      console.log(response);
       $scope.sport = response.data;
       $scope.sport.position = {};
       for (var key in $scope.sport.positions) {
         $scope.sport.position[key] = true;
       }
-    }, function errorCallback(response) {
-      console.log(response);
-    });
+    }, function errorCallback(response) {});
   });
 
   $scope.update = function() {
@@ -37,26 +34,34 @@ angular.module('UsersModule').controller('SportController', ['$scope', '$http', 
         $scope.sport.positions[key] = $scope.selected_sport[pos];
       }
     }
-    // PUT data
-    $scope.user.id = $("#userId").val();
-    $http({
-      method: 'PUT',
-      url: '/user/sport',
-      data: {
-        "sport": $scope.sport,
-        "user": $scope.user
-      }
-    }).then(function successCallback(response) {
-      console.log(response);
-    }, function errorCallback(response) {
-      console.log(response);
-    });
+
+    if (Object.keys($scope.sport.positions).length > 3) {
+      addFeedback("Solo debes de elegir maximo 3 posiciones");
+    } else {
+      // PUT data
+      $scope.user.id = $("#userId").val();
+      $http({
+        method: 'PUT',
+        url: '/user/sport',
+        data: {
+          "sport": $scope.sport,
+          "user": $scope.user
+        }
+      }).then(function successCallback(response) {
+        if (response.data == 500) {
+          addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
+        } else {
+          addFeedback("Se han agregado tus datos de tu deporte", 'success');
+        }
+      }, function errorCallback(response) {
+        addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
+      });
+    }
   }
 
 }]);
 
 function checkSport(sport, scope, compile) {
-  console.log(sport);
   switch (sport) {
     case "Fútbol americano":
       createPostions(scope.americanFootball, compile, scope);

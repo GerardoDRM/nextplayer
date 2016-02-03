@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" style="width:80%;" type="number" name="height"  ng-model="sport.height">
+          <input class="form-group-modified-input" style="width:80%;" type="number" name="height"  ng-model="sport.height" step="0.01">
           <span>m.</span>
         </div>
       </div>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" style="width:80%;" type="text" name="weight" ng-model="sport.weight">
+          <input class="form-group-modified-input" style="width:80%;" type="number" name="weight" ng-model="sport.weight" step="0.01">
           <span>kg.</span>
         </div>
       </div>

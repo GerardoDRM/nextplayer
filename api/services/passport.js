@@ -23,15 +23,27 @@ passport.use(new FacebookStrategy({
   User.findOne({
     facebookId: profile_json.id
   }, function foundUser(err, user) {
+    console.log(err);
+    console.log(user);
     if (!user) {
       User.create({
-        facebookId: profile_json.id
+        facebookId: profile_json.id,
+        name: profile_json.name,
+        sport: {
+          title: ''
+        },
+        role: 'player',
+        membership: {},
+        details: {},
+        exclusive: {}
       }, function userCreated(err, newUser) {
         if (newUser) {
+          console.log(newUser);
           return done(null, newUser, {
             message: 'Logged In Successfully'
           });
         } else {
+          console.log(err);
           return done(err, null, {
             message: 'There was an error logging you in with Facebook'
           });

@@ -14,16 +14,13 @@ module.exports = {
     },
     lastname: {
       type: 'string',
-      required: true
     },
     email: {
       type: 'string',
-      required: true,
       unique: true
     },
     encryptedPassword: {
       type: 'string',
-      required: true
     },
     // facebook_auth: {
     //   type: 'integer'

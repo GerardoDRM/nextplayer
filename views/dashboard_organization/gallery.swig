@@ -12,11 +12,5 @@
 
     <div class="row margin-gallery" id="space-for-videos"></div>
   </div>
-  <p>No tienes video de tus jugadas? Nosotros te podemos hacer uno.
-    <br>
-    <a>
-      Contáctanos</a>
-    para más información. (Subject: Quiero un vídeo.)
-  </br>
-</p>
+
 </div>

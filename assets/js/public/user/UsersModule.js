@@ -84,10 +84,11 @@ angular.module('UsersModule').directive("fileread", ['$http', function($http) {
                     'Content-Type': undefined
                   }
                 }).then(function successCallback(response) {
-                  console.log(response);
+                  if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
+                  else{addFeedback("Tu foto ha sido almacenada", 'success');}
                   $(element).val(undefined);
                 }, function errorCallback(response) {
-                  console.log(response);
+                  addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
                 });
 
               } else {
@@ -130,9 +131,15 @@ var checkVideoProvider = function(url) {
   return 500;
 }
 
-function addFeedback(msg) {
+function addFeedback(msg, status) {
+    var cl = status == "success" ? "#70DA8B" : "#FFE6B2";
+    var fontColor = status == "success" ? "#4DA463" : "#C5A14E";
     $("#feedback").addClass("msg");
     $("#feedback-msg").html(msg);
+    $("#feedback").css({
+      "background-color" : cl,
+      "color": fontColor
+    });
     setTimeout(function () {
         $("#feedback").removeClass("msg");
         $("#feedback-msg").html("");
