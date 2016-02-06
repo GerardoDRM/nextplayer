@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-3 dissapear">
 
       <h2> Entradas </h2>
       <ul style="list-style: none;">
@@ -51,7 +51,8 @@
       </ul>
     </div>
 
-    <div class="col-sm-6" style="background-color:white;">
+    <div class="col-sm-6" style="background-color:white;
+    box-shadow: 0 6px 19px gray;">
 
       <h2> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </h2>
       <p style="font-style:italic; margin-bottom:10px;"> Juan Hernández -12 de Diciembre de 2016 </p>
@@ -72,7 +73,7 @@
         dapibus. Vivamus elementum semper nisi.</p>
 
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-3 dissapear">
 
       <h2> (12) Comentarios </h2>
       <input class="form-group-modified-input" style="background-color:white;" placeholder="Escribe tu comentario..." type="text" name="school" ng-model="player.school">

@@ -646,6 +646,10 @@
   font-size: 20px;
   font-weight: normal;
 }
+.head-paragraph {
+  font-size: 20px;
+  font-weight: bold;
+}
 .color-textarea {
   background-color: $gray-material;
 }
@@ -767,5 +771,98 @@
     color: $white;
     background-color: $blue;
     padding: 2px;
+  }
+}
+
+// Combines
+
+.font-image-combines {
+  background: url("../images/slide_1.jpg")no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 250px;
+}
+.combines {
+  margin-left: 40px;
+margin-right: 40px;
+ h2 {
+   font-size: 36px;
+   color: $green;
+
+ }
+ h1 {
+   font-size: 48px;
+   color: $green;
+ }
+ .head-combine {
+     padding: 15px 10%;
+   margin-bottom: 5%;
+
+   background-color: $white;
+
+ }
+ .middle-combine {
+     padding: 15px 10%;
+   margin-bottom: 5%;
+
+   background-color: $white;
+
+   img {
+     margin-left: 20%;
+     margin-bottom: 5%;
+   }
+   ul {
+     list-style: none;
+     li {
+       p {
+         margin: 0;
+       }
+     }
+   }
+ }
+ .cost-combine {
+    padding: 15px 10%;
+
+   background-color: $white;
+   margin-bottom: 5%;
+    h1 {
+     text-align: center;
+}
+p {
+  text-align: center;
+  font-weight: bold;
+}
+ }
+ .date-combine {
+    padding: 15px 10%;
+
+   background-color: $white;
+   margin-bottom: 5%;
+   ul {
+     list-style: none;
+     li {
+       color: $new-green;
+     }
+   }
+ }
+ .complete-combine {
+
+  padding: 15px 10%;
+
+background-color: $white;
+margin-bottom: 5%;
+ }
+}
+.photo-team-preview {
+  background: url("../images/slide_1.jpg")no-repeat center;
+  width: 100%;
+  height: 277px;
+  background-size: cover;
+}
+.head-preview {
+  background-color: #96B13E;
+  color: $white;
+  h2 {
+    font-weight: bold;
   }
 }

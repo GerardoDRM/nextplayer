@@ -1,17 +1,62 @@
 {% extends 'baseProfile.swig' %} {% block content %}
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
 
-<div class="container">
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+
+    <div class="item active">
+      <div class="carousel-images">
+      </div>
+    </div>
+    <div class="item">
+      <div class="carousel-images-dos">
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="carousel-images-tres">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+<div class="container" style="width: 1061px;
+    margin-top: -125px;">
+  <div class="row">
+    <div class="col-sm-5" style="padding-right:0px;">
+      <div class="photo-team-preview ">
+      </div>
+    </div>
+    <div class="col-sm-7 head-preview" style="    padding-right: 0px;">
+      <h2> Universidad de las Américas Puebla
+
+
+      </h2>
+        <p>Puebla, México </p>
+      <h1 class="head-body-bottom border-top-column"> Acerca de </h1>
+      <p class="body-paragraph-bottom">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et </p>
+    </div>
+  </div>
   <div class="row">
     <div class="col-sm-5 border-right-column">
       <div class="left-profile">
-        <h1 style="font-size:26px;">Universidad de las Américas Puebla</h1>
-        <p class="paragraph-up">Colima, México </p>
-        <div class="profile-picture">
 
-        </div>
-
-        <div class="anchor-profile">
-          <a href="http://www.w3schools.com">Edita tu perfil</a>
+        <div class="save-button" style="text-align:left">
+          <button style=" margin-bottom:20px;    margin-top: 20px;" class="input-signup" ng-click="storeSport()">Editar perfil</button>
         </div>
         <div class="special-two-col">
           <p class="head-paragraph"> Dirección </p>
@@ -61,15 +106,13 @@
       </div>
     </div>
     <div class="col-sm-7">
-      <div class="input-profile" style="    margin-top: 21px;">
-        <a class="dissapear" href="http://www.w3schools.com">Edita tu perfil</a>
-      </div>
+
       <div>
         <h2> Logros </h2>
 
         <div class="row">
           <div class="col-sm-1">
-            <p class="body-paragraph-green">1990 </p>
+            <p style="color:#2ae92e; font-weight:bold;">1990 </p>
           </div>
           <div class="col-sm-10">
             <p class="body-paragraph">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
@@ -77,16 +120,7 @@
         </div>
         <div class="row">
           <div class="col-sm-1">
-            <p class="body-paragraph-green">1990 </p>
-          </div>
-          <div class="col-sm-10">
-            <p class="body-paragraph">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-1">
-            <p class="body-paragraph-green">1990 </p>
+            <p style="color:#2ae92e; font-weight:bold;">1990 </p>
           </div>
           <div class="col-sm-10">
             <p class="body-paragraph">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
@@ -95,48 +129,37 @@
 
         <div class="row">
           <div class="col-sm-1">
-            <p class="body-paragraph-green">1990 </p>
+            <p style="color:#2ae92e; font-weight:bold;">1990 </p>
           </div>
           <div class="col-sm-10">
             <p class="body-paragraph">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
           </div>
         </div>
 
-                    <div class="row">
-                      <div class="col-sm-1">
-                        <p class="body-paragraph-green">1990 </p>
-                      </div>
-                      <div class="col-sm-10">
-                        <p class="body-paragraph">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
-                      </div>
-                    </div>
-
-
-
-
-
-      </div>
-      <div class="middle-profile">
-        <h1 class="head-body-bottom border-top-column"> Acerca de </h1>
-        <p class="body-paragraph-bottom">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et </p>
-      </div>
-      <div class="profile-photos dissapear">
-        <h1 class="head-body border-top-column"> Galería</h1>
         <div class="row">
-          <div class="col-sm-3">
-            <div class="profile-photos-slide"> </div>
+          <div class="col-sm-1">
+            <p style="color:#2ae92e; font-weight:bold;">1990 </p>
           </div>
-          <div class="col-sm-3">
-            <div class="profile-photos-slide"> </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="profile-photos-slide"> </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="profile-photos-slide"> </div>
+          <div class="col-sm-10">
+            <p class="body-paragraph">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-sm-1">
+            <p style="color:#2ae92e; font-weight:bold;">1990 </p>
+          </div>
+          <div class="col-sm-10">
+            <p class="body-paragraph">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
+          </div>
+        </div>
+
+
+
+
+
       </div>
+
       <div class="video-profile dissapear">
         <h1 class="head-body border-top-column"> Vídeo </h1>
         <div style="text-align:center;">
