@@ -1,16 +1,23 @@
 angular.module('SignupModule').controller('SignupController', ['$scope', '$http', function($scope, $http) {
   $scope.signupForm = {};
   $scope.submitSignupForm = function() {
-    if($("#form-signup").val()) {
-      // Submit request to Sails.
-      $http.post('/signup', {
+    console.log("here");
+    if($("#form-signup").valid()) {
+      var userModel = $("#user-type").val();
+      var data = {
           name: $scope.signupForm.name,
           lastname: $scope.signupForm.lastname,
           email: $scope.signupForm.email,
           password: $scope.signupForm.password,
-          sport: $('#select-sport').find('option:selected').val(),
           role: $("#user-type").val()
-        })
+        };
+      if (userModel == "organization") {
+        data.organization_name = $scope.signupForm.organization_name;
+      } else {
+        data.sport = $('#select-sport').find('option:selected').val();
+      }
+      // Submit request to Sails.
+      $http.post('/signup', data)
         .then(function onSuccess(sailsResponse) {
           addFeedback('Tu usuario ha sido creado, por favor verifica tu email', 'success');
         })

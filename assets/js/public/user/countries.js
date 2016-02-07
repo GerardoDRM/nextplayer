@@ -309,6 +309,24 @@ function populateStates(countryElementId, stateElementId) {
   }
 }
 
+// Own function populate just states
+function populateListStates(countryElementId, stateElementId) {
+
+  var selectedCountryIndex = countryElementId;
+
+  var stateElement = document.getElementById(stateElementId);
+
+  stateElement.length = 0; // Fixed by Julian Woods
+  stateElement.options[0] = new Option('Select State', '');
+  stateElement.selectedIndex = 0;
+
+  var state_arr = s_a[selectedCountryIndex].split("|");
+
+  for (var i = 0; i < state_arr.length; i++) {
+    stateElement.options[stateElement.length] = new Option(state_arr[i], state_arr[i]);
+  }
+}
+
 function populateCountries(countryElementId, stateElementId) {
   // given the id of the <select> tag as function argument, it inserts <option> tags
   var countryElement = document.getElementById(countryElementId);

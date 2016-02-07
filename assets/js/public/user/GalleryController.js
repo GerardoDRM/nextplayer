@@ -26,17 +26,25 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
       var status = response.data["status"];
       var gallery = response.data["gallery"];
       var videos = response.data["videos"];
-      var counterPhotos = status == 0 ? 4 : 8;
-      var counterVideos = status == 0 ? 1 : 4;
+      var role = response.data["role"];
+      var counterPhotos, counterVideos;
+      if(role == "organization") {
+        counterPhotos = 5;
+        counterVideos = 3;
+      } else { // Should be a player
+        counterPhotos = status == 0 ? 4 : 8;
+        counterVideos = status == 0 ? 1 : 4;
+      }
+
       for (var i = 0; i < counterPhotos; i++) {
         _createGalleryConteiner(i, $compile, $scope, "photo");
-        if (gallery[i] !== undefined && gallery[i] != null) {
+        if (gallery !== undefined && gallery[i] !== undefined && gallery[i] != null) {
           updatePreview(i, gallery[i]);
         }
       }
       for (var i = 0; i < counterVideos; i++) {
         _createGalleryConteiner(i, $compile, $scope, "video");
-        if (videos[i] !== undefined && videos[i] != null) {
+        if (videos !== undefined && videos[i] !== undefined && videos[i] != null) {
           updatePreviewVideo(i, videos[i]);
         }
       }

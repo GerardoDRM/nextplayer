@@ -19,7 +19,7 @@ font-size: 25px;">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <label for="exampleInputName2">Nombre del Propietario</label>
+            <label >Nombre del Propietario</label>
           </div>
         </div>
         <div class="col-sm-6">
@@ -29,7 +29,7 @@ font-size: 25px;">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <label for="exampleInputName2">Número de tarjeta</label>
+            <label >Número de tarjeta</label>
           </div>
         </div>
         <div class="col-sm-6">
@@ -39,7 +39,7 @@ font-size: 25px;">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <label for="exampleInputName2">CV</label>
+            <label >CV</label>
           </div>
         </div>
         <div class="col-sm-6">
@@ -49,13 +49,13 @@ font-size: 25px;">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <label for="exampleInputName2">Fecha de vencimiento</label>
+            <label >Fecha de vencimiento</label>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="row">
             <div class="col-sm-6">
-              <input class="form-group-modified-input" placeholder="mm" type="number" name="month" ng-model="membership.month" required>
+              <input class="form-group-modified-input" placeholder="mm" type="number"  min="1" max="12" name="month" ng-model="membership.month" required>
             </div>
             <div class="col-sm-6">
               <input class="form-group-modified-input" placeholder="yyyy" type="number" min="2016" max="2050"  name="year" ng-model="membership.year" required>

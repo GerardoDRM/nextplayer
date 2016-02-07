@@ -1,16 +1,6 @@
 angular.module('UsersModule', []);
 
 
-angular.module('UsersModule').directive("experience", function($compile) {
-  return function(scope, element, attrs) {
-    element.bind("click", function() {
-      if (scope.count < 5) {
-        createExperience(scope.count, $compile, scope);
-        scope.count++;
-      }
-    });
-  };
-});
 
 //Directive for adding buttons on click that show an alert on click
 angular.module('UsersModule').directive("calendar", function() {

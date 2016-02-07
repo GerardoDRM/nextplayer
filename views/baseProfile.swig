@@ -98,10 +98,15 @@
   <script src="/js/public/user/UserUpperBody.js"></script>
   <script src="/js/public/players/BasicInfoController.js"></script>
   <script src="/js/public/players/ExclusiveController.js"></script>
-  <script src="/js/public/players/GalleryController.js"></script>
-  <script src="/js/public/players/MembershipController.js"></script>
+  <script src="/js/public/user/GalleryController.js"></script>
+  <script src="/js/public/user/MembershipController.js"></script>
   <script src="/js/public/players/SportController.js"></script>
   <script src="/js/public/coachs/CoachInfoController.js"></script>
+  <script src="/js/public/organization/BasicInfoController.js"></script>
+  <script src="/js/public/organization/StaffController.js"></script>
+  <script src="/js/public/organization/AchivementsController.js"></script>
+  <script src="/js/public/organization/AccessController.js"></script>
+
 
   {% block custom-scripts %} {% endblock custom-scripts %}
 

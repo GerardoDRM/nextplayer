@@ -24,111 +24,119 @@ var rand, mailOptions, host, link;
 
 module.exports = {
 
-  /**
-   * Check the provided email address and password, and if they
-   * match a real user in the database, sign in to Activity Overlord.
-   */
-  login: function(req, res) {
+    /**
+     * Check the provided email address and password, and if they
+     * match a real user in the database, sign in to Activity Overlord.
+     */
+    login: function(req, res) {
 
-    // Try to look up user using the provided email address
-    User.findOne({
-      email: req.param('email'),
-      email_verification: true
-    }, function foundUser(err, user) {
-      if (err || user === undefined) return res.negotiate(err);
-      if (!user) return res.notFound();
+      // Try to look up user using the provided email address
+      User.findOne({
+        email: req.param('email'),
+        email_verification: true
+      }, function foundUser(err, user) {
+        if (err || user === undefined) return res.negotiate(err);
+        if (!user) return res.notFound();
 
-      // Compare password attempt from the form params to the encrypted password
-      // from the database (`user.password`)
-      Passwords.checkPassword({
-        passwordAttempt: req.param('password'),
-        encryptedPassword: user.encryptedPassword
-      }).exec({
+        // Compare password attempt from the form params to the encrypted password
+        // from the database (`user.password`)
+        Passwords.checkPassword({
+          passwordAttempt: req.param('password'),
+          encryptedPassword: user.encryptedPassword
+        }).exec({
 
-        error: function(err) {
-          return res.negotiate(err);
-        },
-
-        // If the password from the form params doesn't checkout w/ the encrypted
-        // password from the database...
-        incorrect: function() {
-          return res.notFound();
-        },
-
-        success: function() {
-
-          // Store user id in the user session
-          req.session.me = user.id;
-
-          // All done- let the client know that everything worked.
-          return res.ok();
-        }
-      });
-    });
-
-  },
-
-
-  signup: function(req, res) {
-    // Encrypt a string using the BCrypt algorithm.
-    Passwords.encryptPassword({
-      password: req.param('password'),
-      difficulty: 10,
-    }).exec({
-      // An unexpected error occurred.
-      error: function(err) {
-
-      },
-      // OK.
-      success: function(encryptedPassword) {
-        User.create({
-          name: req.param('name'),
-          lastname: req.param('lastname'),
-          email: req.param('email'),
-          encryptedPassword: encryptedPassword,
-          sport: {
-            title: req.param('sport')
-          },
-          role: req.param('role'),
-          membership: {},
-          details: {},
-          exclusive: {},
-          email_verification: false
-        }, function userCreated(err, newUser) {
-          if (err) {
-
-            console.log("err: " + err);
-            console.log("err.invalidAttributes: ");
-
-            // If this is a uniqueness error about the email attribute,
-            // send back an easily parseable status code.
-            if (err.invalidAttributes && err.invalidAttributes.email && err.invalidAttributes.email[0] && err.invalidAttributes.email[0].rule === 'unique') {
-              return res.emailAddressInUse();
-            }
-
-            // Otherwise, send back something reasonable as our error response.
+          error: function(err) {
             return res.negotiate(err);
+          },
+
+          // If the password from the form params doesn't checkout w/ the encrypted
+          // password from the database...
+          incorrect: function() {
+            return res.notFound();
+          },
+
+          success: function() {
+
+            // Store user id in the user session
+            req.session.me = user.id;
+
+            // All done- let the client know that everything worked.
+            return res.ok();
           }
-          // Send Email Verfication
-          host = req.get('host');
-          link = "http://" + req.get('host') + "/verify?id=" + newUser.id + "&email=" + newUser.email;
-          // setup e-mail data with unicode symbols
-          mailOptions = {
-            from: 'Nextplayers 👥 <gerardo.bw@gmail.com>', // sender address
-            to: newUser.email, // list of receivers
-            subject: 'Hola Por favor confirma tu email ✔', // Subject line
-            html: 'Hola,<br> Da click en el siguiente link para validar tu email.<br><a href="' + link + '">Click para validar</a>' // html body
-          };
-          smtpTransport.sendMail(mailOptions, function(error, response) {
-            if (error) {
-              console.log("Email error for:" + newUser.email);
-            }
-          });
-          // Send back the id of the new user
-          return res.ok();
         });
-      },
-    });
+      });
+
+    },
+
+
+    signup: function(req, res) {
+      var role = req.param("role");
+      // Encrypt a string using the BCrypt algorithm.
+      Passwords.encryptPassword({
+        password: req.param('password'),
+        difficulty: 10,
+      }).exec({
+          // An unexpected error occurred.
+          error: function(err) {
+
+          },
+          // OK.
+          success: function(encryptedPassword) {
+            var data = {
+              name: req.param('name'),
+              lastname: req.param('lastname'),
+              email: req.param('email'),
+              encryptedPassword: encryptedPassword,
+              role: req.param('role'),
+              membership: {},
+              details: {},
+              exclusive: {},
+              email_verification: false
+            }
+          if (role == "organization") {
+            data.sports_list = [];
+            data.details.organization_name = req.param("organization_name");
+          } else {
+            data.sport = {
+              title: req.param('sport')
+            }
+          }
+
+          User.create(data, function userCreated(err, newUser) {
+            if (err) {
+
+              console.log("err: " + err);
+              console.log("err.invalidAttributes: ");
+
+              // If this is a uniqueness error about the email attribute,
+              // send back an easily parseable status code.
+              if (err.invalidAttributes && err.invalidAttributes.email && err.invalidAttributes.email[0] && err.invalidAttributes.email[0].rule === 'unique') {
+                return res.emailAddressInUse();
+              }
+
+              // Otherwise, send back something reasonable as our error response.
+              return res.negotiate(err);
+            }
+            // Send Email Verfication
+            host = req.get('host');
+            link = "http://" + req.get('host') + "/verify?id=" + newUser.id;
+            // setup e-mail data with unicode symbols
+            mailOptions = {
+              from: 'Nextplayers 👥 <gerardo.bw@gmail.com>', // sender address
+              to: newUser.email, // list of receivers
+              subject: 'Hola Por favor confirma tu email ✔', // Subject line
+              html: 'Hola,<br> Da click en el siguiente link para validar tu email.<br><a href="' + link + '">Click para validar</a>' // html body
+            };
+            smtpTransport.sendMail(mailOptions, function(error, response) {
+              if (error) {
+                console.log("Email error for:" + newUser.email);
+              }
+            });
+            // Send back the id of the new user
+            return res.ok();
+          });
+        },
+      });
   }, // end signup
   /**
    * Log out of Activity Overlord.
@@ -161,11 +169,10 @@ module.exports = {
     if ((req.protocol + "://" + req.get('host')) == ("http://localhost:1337")) {
       // Try to look up user using the provided email address
       User.findOne({
-        id: req.param('id'),
-        email: req.param('email')
+        id: req.param('id')
       }, function foundUser(err, user) {
         if (err) return res.negotiate(err);
-        if (!user) return res.notFound();
+        if (!user || user === undefined) return res.notFound();
         user.email_verification = true;
         user.save(function(error) {
           if (error) res.json(500);
@@ -378,7 +385,7 @@ module.exports = {
     }).exec(function findOneCB(err, userDB) {
       if (err) res.json(500);
       else {
-        var basicKeys = ["name", "lastname", "state", "country", "born", "phone", "email", "profile_photo"];
+        var basicKeys = ["name", "lastname", "state", "country", "born", "phone", "email", "profile_photo", "job"];
         var applicantDetailsKeys = [];
         var basicInfo = {
           "general": {},
@@ -439,7 +446,8 @@ module.exports = {
       if (err || userDB === undefined) res.json(500);
       else {
         var galleryInfo = {
-          "status": 0,
+          role: userDB.role,
+          status: 0,
           gallery: [],
           videos: []
         };
@@ -530,6 +538,24 @@ module.exports = {
     });
   },
 
+  getAchivements: function(req, res) {
+    var user = req.param("user");
+    // Get user
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        if(userDB.details.achivements !== undefined) {
+          res.json({"achivements" : userDB.details.achivements});
+        }
+        else {
+          res.json({});
+        }
+      }
+    });
+  },
+
   ////////////////////////////
   ////User Updating Actions///
   ////////////////////////////
@@ -578,7 +604,7 @@ module.exports = {
       if (err || userDB === undefined) res.json(500);
       else {
         // Delete not required key
-        if(sport.position) delete sport.position;
+        if (sport.position) delete sport.position;
         // Sport Details
         userDB.sport["positions"] = {};
         for (var detail in sport) {
@@ -693,6 +719,24 @@ module.exports = {
         } // end else
       } // end else
     }); // end query
+  },
+
+  achivements: function(req, res) {
+    var user = req.param("user");
+    // Get user
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        userDB.details.achivements = [];
+        userDB.details.achivements = req.param("achivements");
+        userDB.save(function(error) {
+          if (error) res.json(500);
+          res.json(201);
+        });
+      }
+    });
   },
 
   uploadVideo: function(req, res) {

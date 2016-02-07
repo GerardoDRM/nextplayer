@@ -5,9 +5,7 @@ margin-top: 10%;
 font-size: 25px;">
       <div class="checkbox align-labels">
         <label>
-          <input type="checkbox" value="players club" ng-model="membership.group.s1" name="group" required > Membresía Players Club
-          <br> $1500.00
-          </br>
+          <input type="checkbox" value="players club" ng-model="membership.group.s1" name="group" required > Membresía Recruiter Club
         </label>
         <div class="days-counter" id="daysCounter"><h4>Restan {{ membership.days_counter }} dias de tu subscripcion</h4></div>
       </div>
@@ -19,7 +17,7 @@ font-size: 25px;">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <label for="exampleInputName2">Nombre del Propietario</label>
+            <label >Nombre del Propietario</label>
           </div>
         </div>
         <div class="col-sm-6">
@@ -29,7 +27,7 @@ font-size: 25px;">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <label for="exampleInputName2">Número de tarjeta</label>
+            <label >Número de tarjeta</label>
           </div>
         </div>
         <div class="col-sm-6">
@@ -39,7 +37,7 @@ font-size: 25px;">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <label for="exampleInputName2">CV</label>
+            <label >CV</label>
           </div>
         </div>
         <div class="col-sm-6">
@@ -49,7 +47,7 @@ font-size: 25px;">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified align-labels">
-            <label for="exampleInputName2">Fecha de vencimiento</label>
+            <label >Fecha de vencimiento</label>
           </div>
         </div>
         <div class="col-sm-6">

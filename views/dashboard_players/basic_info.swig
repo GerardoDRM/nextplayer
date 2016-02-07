@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="col-sm-6 countries-eff">
-        <select name="year" ng-model="player.schoolYear" ng-options="n for n in [] | range:1990:2016" style="margin-bottom:10%;"></select>
+        <select name="year" ng-model="player.schoolYear" ng-options="n for n in [] | range:2005:2020" style="margin-bottom:10%;"></select>
       </div>
     </div>
     <div class="row">

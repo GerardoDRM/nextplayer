@@ -25,19 +25,30 @@ module.exports = {
         return res.view('index');
       }
 
+      var data = {
+        id: user.id
+      };
+      var route = '';
+
       if (user.role == "player") {
-        return res.view('dashboard', {
-          message: {
-            id: user.id,
+        route = 'dashboard';
+      } else if (user.role == "coach"){
+        route = 'dashboardCoach';
+      }  else if (user.role == "organization"){
+        if (user.membership !== undefined) {
+          // Get UNIX timestamp for now
+          var currentDate = Math.floor(Date.now() / 1000);
+          if (user.membership.transaction_date <= currentDate) {
+            route = 'dashboardOrganization';
+          } else {
+            route = "paymentOrganization";
           }
-        });
-      } else {
-        return res.view('dashboardCoach', {
-          message: {
-            id: user.id
-          }
-        });
+        }
+
       }
+      return res.view(route, {
+        message: data
+      });
     });
   }, // End home page
 
@@ -100,7 +111,16 @@ module.exports = {
       if (user.role == "player" || user.role == "coach") {
         route = "homePlayerCoach";
       } else {
-        route = "homeUniversity";
+        if (user.membership !== undefined) {
+          // Get UNIX timestamp for now
+          var currentDate = Math.floor(Date.now() / 1000);
+          if (user.membership.transaction_date <= currentDate) {
+            route = "homeUniversity";
+          } else {
+            route = "paymentOrganization";
+          }
+        }
+
       }
       return res.view(route, {
         message: {

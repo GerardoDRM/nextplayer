@@ -22,12 +22,9 @@ module.exports = {
     encryptedPassword: {
       type: 'string',
     },
-    // facebook_auth: {
-    //   type: 'integer'
-    // },
     role: {
       type: 'string',
-      enum: ['player', 'coach'],
+      enum: ['player', 'coach', 'organization'],
       required: true
     },
     state: {
@@ -44,7 +41,6 @@ module.exports = {
     },
     sport: {
       type: 'json',
-      required: true
     },
     membership: {
       type: 'json'

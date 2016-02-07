@@ -41,6 +41,7 @@ module.exports.routes = {
   'PUT /login': 'UserController.login',
   'GET /logout': 'UserController.logout',
   'POST /contact': 'ContactController.contact',
+  'GET /contact' : {view: 'contact'},
   /***************************************************************************
   *                                                                          *
   * User routes (Players and Coaches)...                                     *
@@ -67,7 +68,7 @@ module.exports.routes = {
   'POST /forgot': 'UserController.forgot',
   'GET /reset/:token': 'UserController.getReset',
   'POST /reset/:token': 'UserController.reset',
-
+  'GET /verify': 'UserController.verify',
   /***************************************************************************
   *                                                                          *
   * User routes (Players and Coaches)...                                     *
@@ -80,14 +81,11 @@ module.exports.routes = {
   * Team or University routes ...                                            *
   *                                                                          *
   ***************************************************************************/
-  'GET /organization': {view: 'tempOrganization'},
-  'GET /homePlayerCoach': {view: 'homePlayerCoach'},
-  'GET /homeUniversity': {view: 'homeUniversity'},
+  'GET /user/org/achivements': 'UserController.getAchivements',
+  'PUT /user/org/achivements': 'UserController.achivements',
   'GET /search': {view: 'search'},
   'GET /teamPreview': {view: 'teamPreview'},
-  'GET /organization/dashboard' : {view: 'dashboardOrganization'},
-  'GET /contact' : {view: 'contact'},
-    'GET /blog' : {view: 'blog'}
+  'GET /blog' : {view: 'blog'}
 
 
 

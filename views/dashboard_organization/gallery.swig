@@ -13,4 +13,15 @@
     <div class="row margin-gallery" id="space-for-videos"></div>
   </div>
 
+  <div class="modalDialog" id="dialogVideo">
+    <div class="dialogVideo">
+      <p>URL:</p>
+      <form id="video-form">
+        <input ng-model="video.url" required type="text"/>
+        <div class="save-button">
+          <button class="input-signup" ng-click="storeVideo()">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

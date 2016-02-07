@@ -13,12 +13,11 @@
             </h1>
 
           </div>
-          <input class="input-signup" name="school" ng-model="signupForm.school" placeholder="Escuela" required type="text">
-          <input class="input-signup" name="post" ng-model="signupForm.post" placeholder="Puesto" required type="text">
-
-          <input id="user-type" type="hidden" value="coach">
         </div>
         <div class="col-sm-6 text-center ">
+        <input type="hidden" id="user-type" value="organization">
+          <input class="input-signup" name="organization_name" ng-model="signupForm.organization_name" placeholder="Universidad / Equipo" required type="text">
+
           <input class="input-signup" name="name" ng-model="signupForm.name" placeholder="Nombre" required style="margin-top:30px" type="text">
 
           <input class="input-signup" name="lastname" ng-model="signupForm.lastname" placeholder="Apellidos" required type="text">
