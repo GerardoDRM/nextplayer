@@ -84,11 +84,14 @@ module.exports.routes = {
   'GET /user/org/achivements': 'UserController.getAchivements',
   'PUT /user/org/achivements': 'UserController.achivements',
   'GET /search': {view: 'search'},
-  'GET /teamPreview': {view: 'teamPreview'},
-  'GET /blog' : {view: 'blog'}
-
-
-
+  'GET /blog' : 'BlogController.blog',
+  'GET /blogs/:month/:year': 'BlogController.getPostByDate',
+  'GET /blog/comments/:id': 'BlogController.getPostComments',
+  'PUT /blog/comments/:id': 'BlogController.addComment',
+  'GET /notices': 'NoticeController.getAll',
+  'GET /organizations/all': 'UserController.getTeams',
+  'GET /contact' : {view: 'contact'},
+  'GET /combines' : {view: 'combines'}
 
 
   /***************************************************************************

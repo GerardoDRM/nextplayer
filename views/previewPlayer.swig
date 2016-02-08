@@ -1,6 +1,6 @@
 {% extends 'baseProfile.swig' %}
 {% block content %}
-<div class="container profile-view-container" ng-app="PlayerModule" ng-controller="ProfileViewController">
+<div class="container profile-view-container" ng-app="UsersModule" ng-controller="ProfileViewController">
   <div class="row">
     <div class="col-sm-12">
       <h1>{{ user.name }}

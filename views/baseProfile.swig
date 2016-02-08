@@ -27,7 +27,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/user/home">
           <img class="logo" alt="Brand" src="../images/logo.png"> </a>
       </div>
 
@@ -35,7 +35,8 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right navbar-text">
           <li><a href="/user/home">Home</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="/">Perfil</a></li>
+          <li><a href="/blog">Blog</a></li>
           <li><a href="#">Combines</a></li>
           <li><a href="/logout">Log out</a></li>
         </ul>
@@ -106,6 +107,9 @@
   <script src="/js/public/organization/StaffController.js"></script>
   <script src="/js/public/organization/AchivementsController.js"></script>
   <script src="/js/public/organization/AccessController.js"></script>
+  <script src="/js/public/organization/OrgPreviewController.js"></script>
+  <script src="/js/public/blog/BlogController.js"></script>
+  <script src="/js/public/homeProfile/HomeProfileController.js"></script>
 
 
   {% block custom-scripts %} {% endblock custom-scripts %}

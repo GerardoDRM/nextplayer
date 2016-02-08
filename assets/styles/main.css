@@ -1127,6 +1127,10 @@ textarea {
   font-size: 20px;
   font-weight: normal; }
 
+.head-paragraph {
+  font-size: 20px;
+  font-weight: bold; }
+
 .color-textarea {
   background-color: #e9eaed; }
 
@@ -1240,6 +1244,88 @@ textarea {
     color: #FFF;
     background-color: #337AB7;
     padding: 2px; }
+
+.font-image-combines {
+  background: url("../images/slide_1.jpg") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 250px; }
+
+.combines {
+  margin-left: 40px;
+  margin-right: 40px; }
+  .combines h2 {
+    font-size: 36px;
+    color: #2ae92e; }
+  .combines h1 {
+    font-size: 48px;
+    color: #2ae92e; }
+  .combines .head-combine {
+    padding: 15px 10%;
+    margin-bottom: 5%;
+    background-color: #FFF; }
+  .combines .middle-combine {
+    padding: 15px 10%;
+    margin-bottom: 5%;
+    background-color: #FFF; }
+    .combines .middle-combine img {
+      margin-left: 20%;
+      margin-bottom: 5%; }
+    .combines .middle-combine ul {
+      list-style: none; }
+      .combines .middle-combine ul li p {
+        margin: 0; }
+  .combines .cost-combine {
+    padding: 15px 10%;
+    background-color: #FFF;
+    margin-bottom: 5%; }
+    .combines .cost-combine h1 {
+      text-align: center; }
+    .combines .cost-combine p {
+      text-align: center;
+      font-weight: bold; }
+  .combines .date-combine {
+    padding: 15px 10%;
+    background-color: #FFF;
+    margin-bottom: 5%; }
+    .combines .date-combine ul {
+      list-style: none; }
+      .combines .date-combine ul li {
+        color: #9bee9d; }
+  .combines .complete-combine {
+    padding: 15px 10%;
+    background-color: #FFF;
+    margin-bottom: 5%; }
+
+.photo-team-preview {
+  background: url("../images/slide_1.jpg") no-repeat center;
+  width: 100%;
+  height: 277px;
+  background-size: cover; }
+
+.head-preview {
+  background-color: #96B13E;
+  color: #FFF; }
+  .head-preview h2 {
+    font-weight: bold; }
+
+.blog-date {
+  list-style: none; }
+  .blog-date .years {
+    font-weight: bold; }
+  .blog-date .blog-months {
+    list-style: none;
+    padding-left: 38px;
+    display: block; }
+
+.card-blog {
+  background-color: #FFF;
+  box-shadow: 0 6px 19px gray;
+  margin: 15px auto; }
+  .card-blog .author {
+    font-style: italic; }
+  .card-blog p {
+    margin-bottom: 10px; }
 
 /**
   * Buttons Partial SASS

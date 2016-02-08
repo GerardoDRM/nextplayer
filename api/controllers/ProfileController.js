@@ -77,8 +77,10 @@ module.exports = {
         var route = "";
         if (userDB.role == "player") {
           route = "previewPlayer";
-        } else {
+        } else if (userDB.role == "coach") {
           route = "previewCoach";
+        } else if (userDB.role == "organization") {
+          route = "teamPreview";
         }
         return res.view(route, {
           message: {

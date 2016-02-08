@@ -24,119 +24,119 @@ var rand, mailOptions, host, link;
 
 module.exports = {
 
-    /**
-     * Check the provided email address and password, and if they
-     * match a real user in the database, sign in to Activity Overlord.
-     */
-    login: function(req, res) {
+  /**
+   * Check the provided email address and password, and if they
+   * match a real user in the database, sign in to Activity Overlord.
+   */
+  login: function(req, res) {
 
-      // Try to look up user using the provided email address
-      User.findOne({
-        email: req.param('email'),
-        email_verification: true
-      }, function foundUser(err, user) {
-        if (err || user === undefined) return res.negotiate(err);
-        if (!user) return res.notFound();
+    // Try to look up user using the provided email address
+    User.findOne({
+      email: req.param('email'),
+      email_verification: true
+    }, function foundUser(err, user) {
+      if (err || user === undefined) return res.negotiate(err);
+      if (!user) return res.notFound();
 
-        // Compare password attempt from the form params to the encrypted password
-        // from the database (`user.password`)
-        Passwords.checkPassword({
-          passwordAttempt: req.param('password'),
-          encryptedPassword: user.encryptedPassword
-        }).exec({
-
-          error: function(err) {
-            return res.negotiate(err);
-          },
-
-          // If the password from the form params doesn't checkout w/ the encrypted
-          // password from the database...
-          incorrect: function() {
-            return res.notFound();
-          },
-
-          success: function() {
-
-            // Store user id in the user session
-            req.session.me = user.id;
-
-            // All done- let the client know that everything worked.
-            return res.ok();
-          }
-        });
-      });
-
-    },
-
-
-    signup: function(req, res) {
-      var role = req.param("role");
-      // Encrypt a string using the BCrypt algorithm.
-      Passwords.encryptPassword({
-        password: req.param('password'),
-        difficulty: 10,
+      // Compare password attempt from the form params to the encrypted password
+      // from the database (`user.password`)
+      Passwords.checkPassword({
+        passwordAttempt: req.param('password'),
+        encryptedPassword: user.encryptedPassword
       }).exec({
-          // An unexpected error occurred.
-          error: function(err) {
 
-          },
-          // OK.
-          success: function(encryptedPassword) {
-            var data = {
-              name: req.param('name'),
-              lastname: req.param('lastname'),
-              email: req.param('email'),
-              encryptedPassword: encryptedPassword,
-              role: req.param('role'),
-              membership: {},
-              details: {},
-              exclusive: {},
-              email_verification: false
-            }
-          if (role == "organization") {
-            data.sports_list = [];
-            data.details.organization_name = req.param("organization_name");
-          } else {
-            data.sport = {
-              title: req.param('sport')
-            }
-          }
-
-          User.create(data, function userCreated(err, newUser) {
-            if (err) {
-
-              console.log("err: " + err);
-              console.log("err.invalidAttributes: ");
-
-              // If this is a uniqueness error about the email attribute,
-              // send back an easily parseable status code.
-              if (err.invalidAttributes && err.invalidAttributes.email && err.invalidAttributes.email[0] && err.invalidAttributes.email[0].rule === 'unique') {
-                return res.emailAddressInUse();
-              }
-
-              // Otherwise, send back something reasonable as our error response.
-              return res.negotiate(err);
-            }
-            // Send Email Verfication
-            host = req.get('host');
-            link = "http://" + req.get('host') + "/verify?id=" + newUser.id;
-            // setup e-mail data with unicode symbols
-            mailOptions = {
-              from: 'Nextplayers 👥 <gerardo.bw@gmail.com>', // sender address
-              to: newUser.email, // list of receivers
-              subject: 'Hola Por favor confirma tu email ✔', // Subject line
-              html: 'Hola,<br> Da click en el siguiente link para validar tu email.<br><a href="' + link + '">Click para validar</a>' // html body
-            };
-            smtpTransport.sendMail(mailOptions, function(error, response) {
-              if (error) {
-                console.log("Email error for:" + newUser.email);
-              }
-            });
-            // Send back the id of the new user
-            return res.ok();
-          });
+        error: function(err) {
+          return res.negotiate(err);
         },
+
+        // If the password from the form params doesn't checkout w/ the encrypted
+        // password from the database...
+        incorrect: function() {
+          return res.notFound();
+        },
+
+        success: function() {
+
+          // Store user id in the user session
+          req.session.me = user.id;
+
+          // All done- let the client know that everything worked.
+          return res.ok();
+        }
       });
+    });
+
+  },
+
+
+  signup: function(req, res) {
+    var role = req.param("role");
+    // Encrypt a string using the BCrypt algorithm.
+    Passwords.encryptPassword({
+      password: req.param('password'),
+      difficulty: 10,
+    }).exec({
+      // An unexpected error occurred.
+      error: function(err) {
+
+      },
+      // OK.
+      success: function(encryptedPassword) {
+        var data = {
+          name: req.param('name'),
+          lastname: req.param('lastname'),
+          email: req.param('email'),
+          encryptedPassword: encryptedPassword,
+          role: req.param('role'),
+          membership: {},
+          details: {},
+          exclusive: {},
+          email_verification: false
+        }
+        if (role == "organization") {
+          data.sports_list = [];
+          data.details.organization_name = req.param("organization_name");
+        } else {
+          data.sport = {
+            title: req.param('sport')
+          }
+        }
+
+        User.create(data, function userCreated(err, newUser) {
+          if (err) {
+
+            console.log("err: " + err);
+            console.log("err.invalidAttributes: ");
+
+            // If this is a uniqueness error about the email attribute,
+            // send back an easily parseable status code.
+            if (err.invalidAttributes && err.invalidAttributes.email && err.invalidAttributes.email[0] && err.invalidAttributes.email[0].rule === 'unique') {
+              return res.emailAddressInUse();
+            }
+
+            // Otherwise, send back something reasonable as our error response.
+            return res.negotiate(err);
+          }
+          // Send Email Verfication
+          host = req.get('host');
+          link = "http://" + req.get('host') + "/verify?id=" + newUser.id;
+          // setup e-mail data with unicode symbols
+          mailOptions = {
+            from: 'Nextplayers 👥 <gerardo.bw@gmail.com>', // sender address
+            to: newUser.email, // list of receivers
+            subject: 'Hola Por favor confirma tu email ✔', // Subject line
+            html: 'Hola,<br> Da click en el siguiente link para validar tu email.<br><a href="' + link + '">Click para validar</a>' // html body
+          };
+          smtpTransport.sendMail(mailOptions, function(error, response) {
+            if (error) {
+              console.log("Email error for:" + newUser.email);
+            }
+          });
+          // Send back the id of the new user
+          return res.ok();
+        });
+      },
+    });
   }, // end signup
   /**
    * Log out of Activity Overlord.
@@ -415,6 +415,21 @@ module.exports = {
     });
   },
 
+  getTeams: function(req, res) {
+    // bootstrapping basic user data in the HTML sent from the server
+    User.native(function(err, collection) {
+      if (err) return res.serverError(err);
+      collection.find({role:"organization"}, {
+        _id: 1,
+        "details.organization_name" : 1,
+        profile_photo: 1
+      }).toArray(function(err, results) {
+        if (err) return res.serverError(err);
+        return res.ok(results);
+      });
+    });
+  }, // End home page
+
   getUserSport: function(req, res) {
     var user = req.param("user");
     // Get user and update info
@@ -546,10 +561,11 @@ module.exports = {
     }).exec(function findOneCB(err, userDB) {
       if (err || userDB === undefined) res.json(500);
       else {
-        if(userDB.details.achivements !== undefined) {
-          res.json({"achivements" : userDB.details.achivements});
-        }
-        else {
+        if (userDB.details.achivements !== undefined) {
+          res.json({
+            "achivements": userDB.details.achivements
+          });
+        } else {
           res.json({});
         }
       }
