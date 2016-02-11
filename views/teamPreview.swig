@@ -1,7 +1,7 @@
 {% extends 'baseProfile.swig' %}
 {% block content %}
 <div ng-app="UsersModule" ng-controller="OrgPreviewController">
-  <div class="carousel slide" data-ride="carousel" id="carousel-example-generic">
+  <div class="carousel slide dissapear" data-ride="carousel" id="carousel-example-generic">
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox" id="space-for-photos">
     </div>
@@ -30,7 +30,8 @@
         <div class="left-profile">
 
           <div class="save-button" style="text-align:left">
-            <button class="input-signup" ng-click="viewDashboard()" style=" margin:10px 0;">Editar perfil</button>
+            <button class="input-signup" ng-click="viewDashboard()" style=" margin:10px 0;" id="editProfile1">Editar perfil</button>
+            <button class="input-signup" style=" margin:10px 0;" ng-click="follow()" id="follow1">Seguir</button>
           </div>
           <div class="special-two-col">
             <p class="head-paragraph">

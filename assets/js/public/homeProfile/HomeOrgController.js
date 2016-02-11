@@ -1,12 +1,7 @@
-angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$http', '$q', '$compile', function($scope, $http, $q, $compile) {
-
+angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http', '$q', '$compile', function($scope, $http, $q, $compile) {
   $scope.noticeInfo = $http({
     method: 'GET',
     url: '/notices'
-  });
-  $scope.orgsInfo = $http({
-    method: 'GET',
-    url: '/organizations/all'
   });
   $scope.followers = $http({
     method: 'GET',
@@ -25,30 +20,22 @@ angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$h
     for (var i = 0; i < noticesList.length; i++) {
       createNotices($compile, $scope, noticesList[i]);
     }
-
-    ////////////////////
-    ///// Teams  //////
-    ///////////////////
-    var teamsList = results[1].data;
-    for (var i = 0; i < teamsList.length; i++) {
-      createTeams($compile, $scope, teamsList[i]);
-    }
-
     ////////////////////
     ///// Followers ///
     ///////////////////
     var followersList = results[2].data;
+    $scope.followers_counter = followersList.length;
     for (var i = 0; i < followersList.length; i++) {
       createFollowers($compile, $scope, followersList[i]);
     }
 
-    ////////////////////
-    ///// Following ///
-    ///////////////////
-    var followingList = results[3].data;
-    for (var i = 0; i < followingList.length; i++) {
-      createFollowing($compile, $scope, followingList[i]);
-    }
+    // ////////////////////
+    // ///// Following ///
+    // ///////////////////
+    // var followingList = results[3].data;
+    // for (var i = 0; i < followingList.length; i++) {
+    //   createFollowing($compile, $scope, followingList[i]);
+    // }
 
   });
 }]);
@@ -82,7 +69,6 @@ var createFollowing = function(compile, scope, following) {
 
   angular.element(document.getElementById('space-for-following')).append(compile(
     '<li>' +
-    '<a href="/profile/' + following._id + '">' +
     '<div class="row">' +
     '<div class="col-xs-4">' +
     '<img alt="..." src="../'+ match[0] +'">' +
@@ -92,7 +78,6 @@ var createFollowing = function(compile, scope, following) {
     '<p>' + following.state + '</p>' +
     '</div>' +
     '</div>' +
-    '</a>'+
     '</li>'
   )(scope));
 }
@@ -100,32 +85,24 @@ var createFollowing = function(compile, scope, following) {
 var createFollowers = function(compile, scope, follower) {
   var profile = follower.profile_photo;
   var match = [];
-  var name;
   if (profile !== undefined) {
     var phrase = profile;
     var myRegexp = /uploads\/(.*)/;
     match = myRegexp.exec(phrase);
   }
 
-  if (follower.details.organization_name !== undefined) {
-    name = follower.details.organization_name;
-  } else {
-    name = follower.name;
-  }
-
   angular.element(document.getElementById('space-for-followers')).append(compile(
     '<li>' +
-    '<a href="/profile/' + follower._id + '">' +
     '<div class="row">' +
     '<div class="col-xs-4">' +
     '<img alt="..." src="../'+ match[0] +'">' +
     '</div>' +
     '<div class="col-xs-8">' +
-    '<p class="title">' + name + '</p>' +
+    '<p class="title">' + follower.name +' '+ follower.lastname + '</p>' +
     '<p>' + follower.state + '</p>' +
+    '<p>' + follower.sport.title + '</p>' +
     '</div>' +
     '</div>' +
-    '</a>' +
     '</li>'
   )(scope));
 }

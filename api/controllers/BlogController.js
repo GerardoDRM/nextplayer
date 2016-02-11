@@ -59,7 +59,6 @@ module.exports = {
   addComment: function(req, res) {
 		var post = req.param("id");
     var comment = req.param("comment");
-		console.log(req.session.me);
     Blog.findOne({
       id: post
     }).exec(function findOneCB(err, blogDB) {

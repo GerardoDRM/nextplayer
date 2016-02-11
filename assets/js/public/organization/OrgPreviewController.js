@@ -1,12 +1,26 @@
-angular.module('UsersModule').controller('OrgPreviewController', ['$scope', '$http', '$compile', function($scope, $http, $compile) {
+angular.module('UsersModule').controller('OrgPreviewController', ['$scope', '$http', '$compile', '$q', function($scope, $http, $compile, $q) {
   $scope.user = {};
   $scope.org = {};
+
+  // ChecK if user is looking for his own profile
+  if($("#userId").val() != $("#previewId").val()) {
+    $("#editProfile1").css({display:"none"});
+    $("#editProfile2").css({display:"none"});
+    $("#follow1").css({display:"block"});
+    $("#follow2").css({display:"block"});
+  } else {
+    $("#editProfile1").css({display:"display"});
+    $("#editProfile2").css({display:"display"});
+    $("#follow1").css({display:"none"});
+    $("#follow2").css({display:"none"});
+  }
+
 
   $http({
     method: 'GET',
     url: '/user/complete_profile',
     params: {
-      "user": $("#userId").val()
+      "user": $("#previewId").val()
     }
   }).then(function successCallback(response) {
       $scope.org = response.data;
@@ -56,6 +70,22 @@ angular.module('UsersModule').controller('OrgPreviewController', ['$scope', '$ht
 
   $scope.viewDashboard = function() {
     window.location = '/';
+  };
+
+  $scope.follow = function() {
+      $scope.following = $http({
+        method: 'PUT',
+        url: '/following',
+        data: {"user":$("#userId").val(), "following": $("#previewId").val()}
+      });
+      $scope.followed = $http({
+        method: 'PUT',
+        url: '/followed',
+        data: {"followed":$("#userId").val(), "user": $("#previewId").val()}
+      });
+      $q.all([$scope.following, $scope.followed]).then(function(results) {
+        console.log(results);
+      });
   };
 
   var _createAchivements = function(compile, scope, achivement) {

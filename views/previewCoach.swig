@@ -10,14 +10,16 @@
         {{ user.country }}
       </p>
       <div class="input-profile">
-        <a class="dissapear" href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
+        <a class="dissapear" href="javascript:void(0);" id="editProfile1" ng-click="viewDashboard()" style=" margin:10px 0;">Edita tu perfil</a>
+        <a class="dissapear" href="javascript:void(0);" id="follow1" ng-click="follow()" style=" margin:10px 0;">Seguir</a>
       </div>
     </div>
     <div class="col-sm-4 border-right-column">
       <div class="left-profile">
         <div class="profile-picture" id="profilePhoto"></div>
         <div class="responsive-button">
-          <a href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
+          <a href="javascript:void(0);" id="editProfile2" ng-click="viewDashboard()" style=" margin:10px 0;">Edita tu perfil</a>
+          <a class="dissapear" href="javascript:void(0);" id="follow2" ng-click="follow()" style=" margin:10px 0;">Seguir</a>
         </div>
         <div class="special-two-col" style="width:100%;">
           <p>Fecha de nacimiento
@@ -37,10 +39,16 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-8" id="profile-experience">
-
-
+    <div class="col-sm-8" id="profile-experience"></div>
+    <div class="col-sm-8">
+      <div class="video-profile">
+        <h1 class="head-body border-top-column">
+          Vídeo
+        </h1>
+        <div id="space-for-videos" style="text-align:center;"></div>
+      </div>
     </div>
+
   </div>
 
 </div>
@@ -48,7 +56,7 @@
 {% endblock content %}
 
 {% block custom-scripts %}
-  <script>
-    $("body").css({"background-color": "white"});
-  </script>
+<script>
+  $("body").css({"background-color": "white"});
+</script>
 {% endblock custom-scripts %}

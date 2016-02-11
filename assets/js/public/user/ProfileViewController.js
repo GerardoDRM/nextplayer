@@ -14,23 +14,64 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
     e.stopPropagation();
   });
 
+  // ChecK if user is looking for his own profile
+  if ($("#userId").val() != $("#previewId").val()) {
+    $("#editProfile1").css({
+      display: "none"
+    });
+    $("#editProfile2").css({
+      display: "none"
+    });
+    $("#follow1").css({
+      display: "block"
+    });
+    $("#follow2").css({
+      display: "block"
+    });
+  } else {
+    $("#editProfile1").css({
+      display: "display"
+    });
+    $("#editProfile2").css({
+      display: "display"
+    });
+    $("#follow1").css({
+      display: "none"
+    });
+    $("#follow2").css({
+      display: "none"
+    });
+  }
 
   $http({
     method: 'GET',
     url: '/user/complete_profile',
     params: {
-      "user": $("#userId").val()
+      "user": $("#previewId").val()
     }
   }).then(function successCallback(response) {
     $scope.user = response.data;
     var status = $scope.user.status;
 
+    // Changing format Date
+    if ($scope.user.born !== undefined || $scope.user.born != "") {
+      $scope.user.born = moment($scope.user.born).format('DD-MM-YYYY');
+    }
+
     if (status == 1) {
-      $("#exclusiveViews").css({"display":"block"});
-      $("#exclusiveMe").css({"display":"block"});
+      $("#exclusiveViews").css({
+        "display": "block"
+      });
+      $("#exclusiveMe").css({
+        "display": "block"
+      });
     } else {
-      $("#exclusiveViews").css({"display":"none"});
-      $("#exclusiveMe").css({"display":"none"});
+      $("#exclusiveViews").css({
+        "display": "none"
+      });
+      $("#exclusiveMe").css({
+        "display": "none"
+      });
     }
 
     if ($scope.user.role == "player") {
@@ -78,6 +119,12 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
           $scope.coach["e" + i] = experienceList[i];
         }
       }
+      // Create Videos
+      var video = $scope.user.details.video;
+      if (video !== undefined) {
+        var videoEmbed = checkVideoProvider(video);
+        _createGalleryContainer($compile, $scope, "video", videoEmbed);
+      }
     }
 
     // Update Profile Photo
@@ -90,6 +137,28 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
 
   $scope.viewDashboard = function() {
     window.location = '/';
+  };
+
+  $scope.follow = function() {
+    $scope.following = $http({
+      method: 'PUT',
+      url: '/following',
+      data: {
+        "user": $("#userId").val(),
+        "following": $("#previewId").val()
+      }
+    });
+    $scope.followed = $http({
+      method: 'PUT',
+      url: '/followed',
+      data: {
+        "followed": $("#userId").val(),
+        "user": $("#previewId").val()
+      }
+    });
+    $q.all([$scope.following, $scope.followed]).then(function(results) {
+      console.log(result);
+    });
   };
 
   $scope.showPhoto = function($event) {

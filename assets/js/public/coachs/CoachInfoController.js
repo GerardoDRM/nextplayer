@@ -2,28 +2,19 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
   $scope.user = {};
   $scope.coach = {};
   $scope.count = 0;
-  $scope.countries = ["Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda",
-    "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas",
-    "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia",
-    "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután",
-    "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano",
-    "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba",
-    "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia",
-    "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón",
-    "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea - Bisáu",
-    "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón",
-    "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto",
-    "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Madagascar", "Malasia", "Malaui", "Maldivas",
-    "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro",
-    "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos",
-    "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricanaç",
-    "República Checa", "República de Macedonia", "República del Congo", "República Democrática del Congo", "República Dominicana", "República Sudafricana",
-    "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía",
-    "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka",
-    "Suazilandia", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania",
-    "Tayikistán", "Timor Orienta", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania",
-    "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue"
-  ];
+  populateCountries("country", "states");
+
+  // Close Modal Dialog for Gallery
+  $('#dialogVideo').click(function() {
+    $("#dialogVideo").css({
+      opacity: 0,
+      "pointer-events": "none"
+    });
+  });
+  // Check false propagation
+  $('.dialogVideo').click(function(e) {
+    e.stopPropagation();
+  });
 
 
   $http({
@@ -34,6 +25,10 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
     }
   }).then(function successCallback(response) {
     $scope.user = response.data["general"];
+    // Date Format
+    if ($scope.user.born !== undefined) {
+      $scope.user.born = moment($scope.user.born).format('DD-MM-YYYY');
+    }
     var experienceList = response.data["details"].experience;
     if(experienceList !== undefined) {
       for (var i = 0; i < experienceList.length; i++) {
@@ -43,6 +38,30 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
         $scope.coach["e" + i] = experienceList[i];
       }
     }
+    // Adding video
+    if (response.data["details"].video !== undefined) {
+      $scope.video = response.data["details"].video;
+      var iframe = checkVideoProvider($scope.video);
+
+      var element = $('.video[value="1"]')[0];
+      var defaultPhoto = $(element).next();
+      $(defaultPhoto).css({
+        "display": "none"
+      });
+      var previewVideo = $(defaultPhoto).next();
+      $(previewVideo[0]).css({
+        "display": "block"
+      });
+      var videoSpace = $(previewVideo).children('.video-container');
+      $(videoSpace).empty();
+      $(videoSpace).append(
+        iframe
+      );
+
+    } else {
+      $scope.video = {};
+    }
+
     // Adding Profile Photo
     var profile = $scope.user.profile_photo;
     if(profile !== undefined) {
@@ -62,6 +81,12 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
         "background-repeat": "no-repeat"
       });
     }
+    // Adding country and state
+    if($scope.user.country !== undefined) {
+      $("#country").val($scope.user.country);
+      $("#country").trigger('change');
+    }
+    if($scope.user.state !== undefined) $("#states").val($scope.user.state);
 
     // Adding global sport
     $("#userSport").val($scope.user.sport);
@@ -74,10 +99,14 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
       experienceList.push($scope.coach[experience]);
     }
     var exp = {
-      "experience": experienceList
+      "experience": experienceList,
+      "video": $scope.video
     };
+    // Adding state and Country
+    $scope.user.state = $("#states").val();
+    $scope.user.country = $("#country").val();
     // PUT data
-    $scope.user.born = $("#datepicker").val();
+    $scope.user.born = moment($("#datepicker").val(), "DD-MM-YYYY").toISOString();
     $scope.user.id = $("#userId").val();
     $http({
       method: 'PUT',
@@ -92,6 +121,55 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
     }, function errorCallback(response) {
       ddFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
     });
+  };
+
+  $scope.storeVideo = function() {
+    if ($("#video-form").valid()) {
+      var iframe = checkVideoProvider($scope.video);
+      if (iframe != 500) {
+        // Change UI preview video
+        var videoContainer = $scope.elementVideo;
+        $(videoContainer).css({
+          "display": "none"
+        });
+        var previewImage = $(videoContainer).next();
+        $(previewImage[0]).css({
+          "display": "block"
+        });
+        var videoSpace = $(previewImage).children('.video-container');
+        $(videoSpace).empty();
+        $(videoSpace).append(
+          iframe
+        );
+        // Hide modal dialog
+        $("#dialogVideo").css({
+          "opacity": 0,
+          "pointer-events": "none"
+        });
+      }
+    }
+  };
+
+  $scope.showVideoURL = function($event) {
+    $scope.elementVideo = $event.target;
+    $("#dialogVideo").css({
+      "opacity": 1,
+      "pointer-events": "auto"
+    });
+  };
+
+  $scope.deleteVideo = function($event) {
+    var selectImage = $($event.target).parent().prev();
+    $(selectImage[0]).css({
+      "display": "block"
+    });
+    var previewImage = $($event.target).parent();
+    $(previewImage[0]).css({
+      "display": "none"
+    });
+    // Clean
+    $scope.video = {};
+
   };
 
   $scope.viewProfile = function() {

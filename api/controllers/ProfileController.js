@@ -84,7 +84,9 @@ module.exports = {
         }
         return res.view(route, {
           message: {
-            id: userId
+            id: user.id,
+            preview_id: userId
+
           }
         }); // end return
       });

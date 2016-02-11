@@ -571,7 +571,46 @@ module.exports = {
       }
     });
   },
-
+  // Search Function
+  userFilters: function(req, res) {
+    var search = req.param("search");
+    var skip = req.param("skip");
+    // Init data search
+    var data = {
+      email_verification:true,
+      $or:[{role:"player"}, {role:"coach"}]
+    };
+    // Chage data
+    search.sport !== undefined ? data["sport.title"] = search.sport: false;
+    if(search.age !== undefined) {
+      var year = ((new Date()).getFullYear()) - search.age;
+      var start = moment([year, 1 - 1]).toISOString();
+      var end = moment(start).endOf('year').toISOString();
+      data["born"] = {$gte: start, $lt: end};
+    }
+    var rangeHeight = search.range.height;
+    rangeHeight !== undefined ? data["sport.height"] = {$gte: rangeHeight.$gte, $lte: rangeHeight.$lte} : false;
+    var rangeWeight = search.range.weight;
+    rangeWeight !== undefined ? data["sport.weight"] = {$gte: rangeWeight.$gte, $lte: rangeWeight.$lte} : false;
+    // Query
+    User.native(function(err, collection) {
+      if (err) return res.serverError(500);
+      collection.find(data, {
+        name: 1,
+        lastname: 1,
+        "sport.title": 1,
+        profile_photo: 1,
+        role: 1,
+        state: 1,
+        "sport.height": 1,
+        "sport.weight": 1,
+        born:1
+      }).skip(skip).limit(10).toArray(function(err, results) {
+        if (err) return res.serverError(err);
+        return res.ok(results);
+      });
+    });
+  },
   ////////////////////////////
   ////User Updating Actions///
   ////////////////////////////

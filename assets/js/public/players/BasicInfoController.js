@@ -11,7 +11,6 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
       "user": $("#userId").val()
     }
   }).then(function successCallback(response) {
-    console.log( response.data);
     $scope.user = response.data["general"];
     $scope.user.id = $("#userId").val();
     $scope.player = response.data["details"];
@@ -19,6 +18,11 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     if($scope.status == 1) {
       $("#club-message").css({"display":"none"});
     }
+    // Date Format
+    if ($scope.user.born !== undefined) {
+      $scope.user.born = moment($scope.user.born).format('DD-MM-YYYY');
+    }
+
     var profile = $scope.user.profile_photo;
     if(profile !== undefined) {
       var phrase = profile;
@@ -39,9 +43,9 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     }
 
     // Adding country and state
-    if($scope.user.country) {
+    if($scope.user.country !== undefined) {
       $("#countries-list").val($scope.user.country);
-      $("#countries-list").trigger('change');
+      $("#countries-list" !== undefined).trigger('change');
     }
     if($scope.user.state) $("#states-list").val($scope.user.state);
 
@@ -53,7 +57,6 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     }
     delete $scope.user.sport_name;
   }, function errorCallback(response) {
-    console.log(response);
   });
 
   // In case use has not sport pre selected when sign in
@@ -84,7 +87,7 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     $scope.user.state = $("#states-list").val();
     $scope.user.country = $("#countries-list").val();
     // PUT data
-    $scope.user.born = $("#datepicker").val();
+    $scope.user.born = moment($("#datepicker").val(), "DD-MM-YYYY").toISOString();
     $scope.user.id = $("#userId").val();
     $http({
       method: 'PUT',

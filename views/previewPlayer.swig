@@ -10,14 +10,16 @@
         {{ user.country }}
       </p>
       <div class="input-profile">
-        <a class="dissapear" href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
+        <a class="dissapear" href="javascript:void(0);" ng-click="viewDashboard()" id="editProfile1" style=" margin:10px 0;">Edita tu perfil</a>
+        <a class="dissapear" href="javascript:void(0);" ng-click="follow()" id="follow1" style=" margin:10px 0;">Seguir</a>
       </div>
     </div>
     <div class="col-sm-4 border-right-column">
       <div class="left-profile">
         <div class="profile-picture" id="profilePhoto"></div>
         <div class="responsive-button">
-          <a href="javascript:void(0);" ng-click="viewDashboard()">Edita tu perfil</a>
+          <a href="javascript:void(0);" ng-click="viewDashboard()" id="editProfile2" style=" margin:10px 0;">Edita tu perfil</a>
+          <a class="dissapear" href="javascript:void(0);" ng-click="follow()" id="follow2" style=" margin:10px 0;">Seguir</a>
         </div>
         <div class="special-two-col">
           <p class="head-title">

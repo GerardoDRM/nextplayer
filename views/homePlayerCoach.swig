@@ -10,39 +10,17 @@
             </h2>
           </div>
           <div class="interest-team">
-            <ul>
-              <li>
-                <div class="row">
-                  <div class="col-xs-4">
-                    <img alt="..." src="../images/equipo.png">
-                  </div>
-                  <div class="col-xs-8">
-                    <p class="title">UDLAP</p>
-                    <p>Puebla</p>
-                  </div>
-                </div>
-              </li>
+            <ul id="space-for-following">
             </ul>
           </div>
         </div>
         <div class="inner-block half-box">
           <div class="interest">
-            <h2>Les intereso
-            </h2>
+            <h2>Les intereso</h2>
           </div>
           <div class="interest-team">
-            <ul>
-              <li>
-                <div class="row">
-                  <div class="col-xs-4">
-                    <img alt="..." src="../images/equipo.png">
-                  </div>
-                  <div class="col-xs-8">
-                    <p class="title">UDLAP</p>
-                    <p>Puebla</p>
-                  </div>
-                </div>
-              </li>
+            <ul id="space-for-followers">
+
             </ul>
           </div>
         </div>

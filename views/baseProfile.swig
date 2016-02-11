@@ -37,7 +37,7 @@
           <li><a href="/user/home">Home</a></li>
           <li><a href="/">Perfil</a></li>
           <li><a href="/blog">Blog</a></li>
-          <li><a href="#">Combines</a></li>
+          <li><a href="/combines">Combines</a></li>
           <li><a href="/logout">Log out</a></li>
         </ul>
       </div>
@@ -47,6 +47,7 @@
   </nav>
   <input type="hidden" id="userSport" />
   <input type="hidden" value="<%= message.id %>" id="userId">
+  <input type="hidden" value="<%= message.preview_id %>" id="previewId">
   <!-- Feedback -->
   <div id="feedback" class="feedback">
     <h3 id="feedback-msg"></h3>
@@ -85,6 +86,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="/js/dependencies/jquery-ui.min.js"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+  <script src="/js/dependencies/moment.min.js"></script>
+
   <!--SCRIPTS-->
   <script src="/js/dependencies/sails.io.js"></script>
   <script src="/js/public/signup/SignupModule.js"></script>
@@ -110,6 +113,8 @@
   <script src="/js/public/organization/OrgPreviewController.js"></script>
   <script src="/js/public/blog/BlogController.js"></script>
   <script src="/js/public/homeProfile/HomeProfileController.js"></script>
+  <script src="/js/public/homeProfile/HomeOrgController.js"></script>
+  <script src="/js/public/homeProfile/SearchController.js"></script>
 
 
   {% block custom-scripts %} {% endblock custom-scripts %}

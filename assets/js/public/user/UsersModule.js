@@ -10,7 +10,7 @@ angular.module('UsersModule').directive("calendar", function() {
     x.datepicker({
       dateFormat: 'dd-mm-yy',
       changeYear: true,
-      yearRange: "1980:2016",
+      yearRange: "1940:2016",
       dayNamesMin: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
       monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 
