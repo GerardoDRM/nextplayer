@@ -406,7 +406,6 @@
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
-    top: 15px;
     right: 15px;
     &:hover {
       padding: 18px;
@@ -752,9 +751,9 @@
   margin-bottom: 34px;
 }
 .team-photos {
-  border-radius: 30px;
+  border-radius: 50%;
   margin-bottom: 10px;
-  width: 73px;
+  width: 80px;
   height: 80px;
 }
 
@@ -765,13 +764,6 @@
   position: relative;
   padding-top: 300px;
   margin: 0;
-}
-
-.staff-image {
-  background: url("../images/coach.png")no-repeat center;
-  background-size: contain;
-  width: 100%;
-  height: 150px;
 }
 
 

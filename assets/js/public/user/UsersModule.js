@@ -44,22 +44,9 @@ angular.module('UsersModule').directive("fileread", ['$http', function($http) {
             if (secureFile) {
               // Check file size
               if (changeEvent.target.files[0].size < 1000000) {
-                var selectImage = $(element).parent();
-                $(selectImage[0]).css({
-                  "display": "none"
-                });
-                var previewImage = $(element).parent().next();
-                $(previewImage[0]).css({
-                  "display": "block",
-                  "background-image": "url(" + data + ")",
-                  "background-size": "cover",
-                  "background-repeat": "no-repeat"
-                });
-
                 // Check image model
                 var identifier = $(element).parent().prev();
                 var fd = new FormData();
-                fd.append('file', changeEvent.target.files[0]);
                 fd.append('user', $("#userId").val());
                 if (identifier.hasClass("gallery")) {
                   fd.append('model', 'gallery');
@@ -67,6 +54,7 @@ angular.module('UsersModule').directive("fileread", ['$http', function($http) {
                 } else if (identifier.hasClass("profile")) {
                   fd.append('model', 'profile');
                 }
+                fd.append('file', changeEvent.target.files[0]);
                 // Upload Image
                 $http.post('/user/gallery/photos', fd, {
                   transformRequest: angular.identity,
@@ -75,7 +63,21 @@ angular.module('UsersModule').directive("fileread", ['$http', function($http) {
                   }
                 }).then(function successCallback(response) {
                   if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
-                  else{addFeedback("Tu foto ha sido almacenada", 'success');}
+                  else{
+                    // Change Preview
+                    var selectImage = $(element).parent();
+                    $(selectImage[0]).css({
+                      "display": "none"
+                    });
+                    var previewImage = $(element).parent().next();
+                    $(previewImage[0]).css({
+                      "display": "block",
+                      "background-image": "url(" + data + ")",
+                      "background-size": "cover",
+                      "background-repeat": "no-repeat"
+                    });
+                    addFeedback("Tu foto ha sido almacenada", 'success');
+                  }
                   $(element).val(undefined);
                 }, function errorCallback(response) {
                   addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
@@ -110,7 +112,6 @@ var checkVideoProvider = function(url) {
   };
   for (var serv in services) {
     var match = url.match(services[serv].pattern);
-    console.log(match);
     if (match) {
       var urlsrc = "";
       if (serv == "hudl") urlsrc = services[serv].frame + match[1] + "/" + match[2];

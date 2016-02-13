@@ -50,14 +50,12 @@ angular.module('UsersModule').controller('BlogController', ['$scope', '$http', '
       method: 'GET',
       url: '/blogs/' + month + '/' + year
     }).then(function successCallback(response) {
-        console.log(response);
         var blogList = response.data;
         for (var i = 0; i < blogList.length; i++) {
           createBlogCard($compile, $scope, blogList[i]);
         }
       },
       function errorCallback(response) {
-        console.log(response);
       });
   }
   // First get post from current date
@@ -70,14 +68,12 @@ angular.module('UsersModule').controller('BlogController', ['$scope', '$http', '
       method: 'GET',
       url: '/blog/comments/' + id
     }).then(function successCallback(response) {
-        console.log(response);
         var comments = response.data;
         for (var i = 0; i < comments.length; i++) {
           createPostComments($compile, $scope, comments[i]);
         }
       },
       function errorCallback(response) {
-        console.log(response);
       });
   }
 

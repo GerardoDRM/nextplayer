@@ -1,7 +1,6 @@
 angular.module('SignupModule').controller('SignupController', ['$scope', '$http', function($scope, $http) {
   $scope.signupForm = {};
   $scope.submitSignupForm = function() {
-    console.log("here");
     if($("#form-signup").valid()) {
       var userModel = $("#user-type").val();
       var data = {
@@ -22,15 +21,8 @@ angular.module('SignupModule').controller('SignupController', ['$scope', '$http'
           addFeedback('Tu usuario ha sido creado, por favor verifica tu email', 'success');
         })
         .catch(function onError(sailsResponse) {
-          // Handle known error type(s).
-          // If using sails-disk adpater -- Handle Duplicate Key
-          var emailAddressAlreadyInUse = sailsResponse.status == 409;
-
-          if (emailAddressAlreadyInUse) {
             addFeedback('Este email ya esta ocupado por algun otro usuario, intente con uno diferente', 'error');
             return;
-          }
-
         });
     }
   }

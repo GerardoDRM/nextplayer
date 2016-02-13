@@ -152,7 +152,6 @@ angular.module('UsersModule').directive("searchreader", ['$http','$compile', fun
         };
         $("#space-for-profiles").empty();
         // Query filters
-        console.log(scope.filter);
         scope.serviceFilter(scope.filter);
       });
     }

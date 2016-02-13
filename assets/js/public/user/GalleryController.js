@@ -98,7 +98,7 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
 
   $scope.showVideoURL = function($event) {
     $scope.selectedVideo = $($event.target).prev().val();
-    $scope.elementVideo = $event.target;
+    $scope.elementVideo = $($event.target).is("img") ? $($event.target).parent()[0] : $event.target;
     $("#dialogVideo").css({
       "opacity": 1,
       "pointer-events": "auto"

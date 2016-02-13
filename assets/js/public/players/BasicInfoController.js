@@ -45,7 +45,7 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     // Adding country and state
     if($scope.user.country !== undefined) {
       $("#countries-list").val($scope.user.country);
-      $("#countries-list" !== undefined).trigger('change');
+      $("#countries-list").trigger('change');
     }
     if($scope.user.state) $("#states-list").val($scope.user.state);
 

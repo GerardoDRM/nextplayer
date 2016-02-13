@@ -40,20 +40,7 @@
           <p>
             (Exclusivo Players Club)
           </p>
-          <div class="row">
-            <div class="col-xs-3">
-              <div class="profile-photos-slide-exclusive"></div>
-            </div>
-            <div class="col-xs-3">
-              <div class="profile-photos-slide-exclusive"></div>
-            </div>
-            <div class="col-xs-3">
-              <div class="profile-photos-slide-exclusive"></div>
-            </div>
-            <div class="col-xs-3">
-              <div class="profile-photos-slide-exclusive"></div>
-            </div>
-
+          <div class="row" id="space-for-views">
           </div>
         </div>
       </div>
@@ -149,7 +136,7 @@
                       m</p>
                   </div>
                 </div>
-                <div class="row">
+                {# <div class="row">
                   <div class="col-xs-6">
                     <p>Tiempo 40.y
                     </p>
@@ -158,7 +145,7 @@
                     <p class="green-title">5.3S
                     </p>
                   </div>
-                </div>
+                </div> #}
               </div>
             </div>
           </div>

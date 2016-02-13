@@ -21,6 +21,7 @@ angular.module('UsersModule').controller('AchivementsController', ['$scope', '$h
           if($("#space-for-achivements").length > 0) createAchivement(i, $compile, $scope);
           $scope.count++;
           $scope.org["a" + i] = achivementList[i];
+          $("#achivementRef" + i).val(i);
         }
       }
     }, function errorCallback(response) {
@@ -34,7 +35,6 @@ angular.module('UsersModule').controller('AchivementsController', ['$scope', '$h
     for (var achivement in $scope.org) {
       achivementList.push($scope.org[achivement]);
     }
-    console.log(achivementList);
     // PUT data
     $scope.user.id = $("#userId").val();
     $http({
@@ -54,6 +54,30 @@ angular.module('UsersModule').controller('AchivementsController', ['$scope', '$h
       ddFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
     });
   };
+
+  $scope.deleteComplete = function($event) {
+    var deleteEvent = $event.target;
+    var position = parseInt($(deleteEvent).next().val());
+    // Remove just from view
+    if (!isNaN(position)) {
+      $http({
+        method: 'DELETE',
+        url: '/user/org/achivements',
+        data: {
+          "position": position,
+          "user": $("#userId").val()
+        }
+      }).then(function successCallback(response) {
+        addFeedback("Se ha removido un logro", "success");
+        $("#achievements-btn").trigger("click");
+      }, function errorCallback(response) {
+        console.log(response);
+      });
+    }
+    // Delete from list and update status
+    $(deleteEvent).parent().remove();
+    $scope.count -= 1;
+  }
 }]);
 
 
@@ -61,6 +85,8 @@ angular.module('UsersModule').controller('AchivementsController', ['$scope', '$h
 var createAchivement = function(i, compile, scope) {
   angular.element(document.getElementById('space-for-achivements')).append(compile(
     '<div class="col-md-12" style="margin: 15px auto;">' +
+    '<a class="anchor-coach" href="javascript:void(0);" ng-click="deleteComplete($event);">-Remover Logro</a>' +
+    '<input type="hidden" id="achivementRef' + i + '">' +
     '<div class="row">' +
     '<div class="col-sm-6">' +
     '<div class="form-group-modified">' +

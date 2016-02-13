@@ -117,6 +117,7 @@
   <script src="/js/public/homeProfile/SearchController.js"></script>
 
 
+
   {% block custom-scripts %} {% endblock custom-scripts %}
 
   <script>
@@ -197,6 +198,11 @@
       });
 
       // Validate Forms
+      jQuery.extend(jQuery.validator.messages, {
+        required: "Este campo es requerido",
+        minlength: jQuery.validator.format("Por favor debe de haber almenos {0} caracteres."),
+        email: "Ingresa un correo valido"
+      });
       // Validate Checkbox
       $('#membership-form').validate({
         rules: {
@@ -210,11 +216,9 @@
           }
         }
       });
-      jQuery.extend(jQuery.validator.messages, {
-        required: "Este campo es requerido",
-        minlength: jQuery.validator.format("Por favor debe de haber almenos {0} caracteres."),
-        email: "Ingresa un correo valido"
-      });
+      // Validate Staff
+      $("#staffForm").validate();
+
 
       // Chat UI animation
       $("#button-chat").click(function() {

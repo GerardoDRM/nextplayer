@@ -10,7 +10,6 @@ angular.module('UsersModule').controller('ExclusiveController', ['$scope', '$htt
         "user": $("#userId").val()
       }
     }).then(function successCallback(response) {
-      console.log(response);
       $scope.exclusive = response.data;
       if($scope.exclusive.status == 0) {
         $("#exclusive-form :input").prop("disabled", true);
@@ -20,7 +19,6 @@ angular.module('UsersModule').controller('ExclusiveController', ['$scope', '$htt
   });
 
   $scope.update = function() {
-    console.log($scope.exclusive);
     // PUT data
     $scope.user.id = $("#userId").val();
     $http({

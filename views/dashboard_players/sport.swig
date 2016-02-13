@@ -35,7 +35,7 @@
           <span>kg.</span>
         </div>
       </div>
-      <div class="row">
+      {# <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified">
             <label>Medidas
@@ -48,7 +48,7 @@
       <div class="col-sm-6">
         <input class="form-group-modified-input" type="email" name="measure" ng-model="sport.measure">
       </div>
-    </div>
+    </div> #}
   </div>
   <div class="col-sm-6">
     <div class="row">

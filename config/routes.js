@@ -81,8 +81,14 @@ module.exports.routes = {
   * Team or University routes ...                                            *
   *                                                                          *
   ***************************************************************************/
+  'PUT /user/org/viewer': 'ViewsController.viewer',
+  'GET /user/player/viewer': 'ViewsController.getViewers',
   'GET /user/org/achivements': 'UserController.getAchivements',
   'PUT /user/org/achivements': 'UserController.achivements',
+  'DELETE /user/org/achivements': 'UserController.achivementDelete',
+  'GET /user/org/staff': 'UserController.getStaff',
+  'PUT /user/org/staff': 'UserController.staff',
+  'DELETE /user/org/staff': 'UserController.staffDelete',
   'GET /search': {view: 'search'},
   'PUT /search/filters': "UserController.userFilters",
   'GET /blog' : 'BlogController.blog',

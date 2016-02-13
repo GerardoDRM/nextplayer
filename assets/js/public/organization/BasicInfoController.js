@@ -10,7 +10,6 @@ angular.module('UsersModule').controller('BasicInfoOrganization', ['$scope', '$h
       "user": $("#userId").val()
     }
   }).then(function successCallback(response) {
-    console.log( response.data);
     $scope.user = response.data["general"];
     $scope.organization = response.data["details"];
 

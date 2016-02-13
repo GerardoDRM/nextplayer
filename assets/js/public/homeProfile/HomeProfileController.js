@@ -17,7 +17,6 @@ angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$h
     url: '/following/' + $("#userId").val()
   });
   $q.all([$scope.noticeInfo, $scope.orgsInfo, $scope.followers, $scope.following]).then(function(results) {
-    console.log(results);
     ////////////////////
     ///// Notices //////
     ///////////////////

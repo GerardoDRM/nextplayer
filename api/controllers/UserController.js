@@ -15,6 +15,7 @@ var Passwords = require('machinepack-passwords');
 var nodemailer = require('nodemailer');
 var async = require('async');
 var crypto = require('crypto');
+var ObjectId = require('mongodb').ObjectID;
 /*
     Here we are configuring our SMTP Server details.
     STMP is mail server which is responsible for sending and recieving email.
@@ -165,7 +166,6 @@ module.exports = {
   },
 
   verify: function(req, res) {
-    console.log(req.protocol + ":/" + req.get('host'));
     if ((req.protocol + "://" + req.get('host')) == ("http://localhost:1337")) {
       // Try to look up user using the provided email address
       User.findOne({
@@ -198,7 +198,6 @@ module.exports = {
           email: req.param("email")
         }, function(err, user) {
           if (!user || err || user === undefined) {
-            console.log("Error");
             res.json(500);
             return;
           }
@@ -258,7 +257,6 @@ module.exports = {
   reset: function(req, res) {
     // Reset Password
     var token = req.param("token");
-    console.log(req.param('password'));
     // Using async for better organization on promises
     async.waterfall([
       function(done) {
@@ -419,9 +417,11 @@ module.exports = {
     // bootstrapping basic user data in the HTML sent from the server
     User.native(function(err, collection) {
       if (err) return res.serverError(err);
-      collection.find({role:"organization"}, {
+      collection.find({
+        role: "organization"
+      }, {
         _id: 1,
-        "details.organization_name" : 1,
+        "details.organization_name": 1,
         profile_photo: 1
       }).toArray(function(err, results) {
         if (err) return res.serverError(err);
@@ -571,27 +571,62 @@ module.exports = {
       }
     });
   },
+
+  getStaff: function(req, res) {
+    var user = new ObjectId(req.param("user"));
+    // Get user
+    User.native(function(err, collection) {
+      if (err) return res.serverError(500);
+      collection.find({
+        _id: user
+      }, {
+        _id: 0,
+        "details.staff": 1
+      }).toArray(function(err, results) {
+        if (err) return res.serverError(err);
+        if (results.length > 0) {
+          return res.ok(results[0].details.staff);
+        } else {
+          return res.ok([]);
+        }
+      });
+    });
+  },
+
   // Search Function
   userFilters: function(req, res) {
     var search = req.param("search");
     var skip = req.param("skip");
     // Init data search
     var data = {
-      email_verification:true,
-      $or:[{role:"player"}, {role:"coach"}]
+      email_verification: true,
+      $or: [{
+        role: "player"
+      }, {
+        role: "coach"
+      }]
     };
     // Chage data
-    search.sport !== undefined ? data["sport.title"] = search.sport: false;
-    if(search.age !== undefined) {
+    search.sport !== undefined ? data["sport.title"] = search.sport : false;
+    if (search.age !== undefined) {
       var year = ((new Date()).getFullYear()) - search.age;
       var start = moment([year, 1 - 1]).toISOString();
       var end = moment(start).endOf('year').toISOString();
-      data["born"] = {$gte: start, $lt: end};
+      data["born"] = {
+        $gte: start,
+        $lt: end
+      };
     }
     var rangeHeight = search.range.height;
-    rangeHeight !== undefined ? data["sport.height"] = {$gte: rangeHeight.$gte, $lte: rangeHeight.$lte} : false;
+    rangeHeight !== undefined ? data["sport.height"] = {
+      $gte: rangeHeight.$gte,
+      $lte: rangeHeight.$lte
+    } : false;
     var rangeWeight = search.range.weight;
-    rangeWeight !== undefined ? data["sport.weight"] = {$gte: rangeWeight.$gte, $lte: rangeWeight.$lte} : false;
+    rangeWeight !== undefined ? data["sport.weight"] = {
+      $gte: rangeWeight.$gte,
+      $lte: rangeWeight.$lte
+    } : false;
     // Query
     User.native(function(err, collection) {
       if (err) return res.serverError(500);
@@ -604,8 +639,10 @@ module.exports = {
         state: 1,
         "sport.height": 1,
         "sport.weight": 1,
-        born:1
-      }).skip(skip).limit(10).toArray(function(err, results) {
+        born: 1
+      }).skip(skip).limit(10).sort({
+        "membership.level": -1
+      }).toArray(function(err, results) {
         if (err) return res.serverError(err);
         return res.ok(results);
       });
@@ -708,7 +745,6 @@ module.exports = {
     var membership = req.param("membership");
     var user = req.param("user");
     // Get user and update info
-    console.log(membership);
     User.findOne({
       id: user.id
     }).exec(function findOneCB(err, userDB) {
@@ -794,6 +830,70 @@ module.exports = {
     });
   },
 
+  staff: function(req, res) {
+    var user = req.param("user");
+    var staffList = req.param("staff");
+    // Get user
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        if (userDB.details.staff === undefined) userDB.details.staff = [];
+        for (var i = 0; i < staffList.length; i++) {
+          var absolutePath = process.cwd();
+          var deletePath = process.cwd();
+          var path = '/assets/uploads/';
+          var staff = staffList[i];
+          if (staff.file_photo != "") {
+            if (staff["file_photo"].status == 1) {
+              // Create Image Path
+              path += moment().toISOString().replace(/[^a-zA-Z0-9]/g, '') + ".jpg";
+              absolutePath += path;
+              // Create Image File
+              fs.writeFile(absolutePath, staff["file_photo"].file, 'base64', function(err) {
+                if (err) return res.json(500);
+              });
+            } else if (staff["file_photo"].status == 0) {
+              path = staff["file_photo"].file;
+            }
+          } else {
+            path = "";
+          }
+
+          // Update on DB
+          if (userDB.details.staff === undefined) userDB.details.staff = [];
+          // Insert
+          var staffObject = {
+            name: staff.name,
+            position: staff.position,
+            sport: staff.sport,
+            path: path
+          };
+          if (staff.array_pos === undefined || staff.array_pos == null) {
+            userDB.details.staff.push(staffObject);
+          } else { // Update
+            var specificFile = userDB.details.staff[staff.array_pos].path;
+            deletePath += specificFile;
+            var currentStaff = userDB.details.staff;
+            currentStaff[staff.array_pos] = staffObject;
+            // Delete File
+            if (specificFile != "" && staff["file_photo"].status != 0) {
+              // Remove physical file from directory
+              fs.unlink(deletePath, (err) => {
+                if (err) return res.json(500);
+              });
+            }
+          }
+        }
+        userDB.save(function(error) {
+          if (error) res.json(500);
+          res.json(201);
+        });
+      }
+    });
+  },
+
   uploadVideo: function(req, res) {
     var user = req.param("user");
     var video = req.param("video");
@@ -815,43 +915,51 @@ module.exports = {
   },
 
   uploadImage: function(req, res) {
-    var photo = req.file('file');
     var model = req.param('model');
     var user = req.param("user");
-    photo.upload({
-      dirname: process.cwd() + '/assets/uploads/'
-    }, function whenDone(err, uploadedFiles) {
-      if (err) {
-        return res.negotiate(err);
-      }
-      // If no files were uploaded, respond with an error.
-      if (uploadedFiles.length === 0) {
-        return res.badRequest('No file was uploaded');
-      }
-      // Get user and update info
-      User.findOne({
-        id: user
-      }).exec(function findOneCB(err, userDB) {
-        if (err || userDB === undefined) res.json(500);
-        else {
-          // Image path
-          var phrase = uploadedFiles[0].fd;
-          var myRegexp = /\/assets\/uploads\/(.*)/;
-          var match = myRegexp.exec(phrase);
-          // Check image model
-          if (model == "gallery") {
-            var position = req.param("position");
-            if (userDB.details.gallery === undefined) userDB.details.gallery = [];
-            userDB.details.gallery[position] = match[0];
-          } else if (model == "profile") {
-            userDB.profile_photo = match[0];
+    var photo = req.file('file');
+    // Using async for better organization on promises
+    async.waterfall([
+      function(done) {
+        photo.upload({
+          dirname: process.cwd() + '/assets/uploads/'
+        }, function whenDone(err, uploadedFiles) {
+          // // If no files were uploaded, respond with an error.
+          if (uploadedFiles.length === 0) {
+            err = true;
           }
-          userDB.save(function(error) {
-            if (error) res.json(500);
-            res.json(201);
-          });
-        }
-      });
+          done(err, uploadedFiles);
+        });
+      },
+      function(uploadedFiles, done) {
+        // Get user and update info
+        User.findOne({
+          id: user
+        }).exec(function findOneCB(err, userDB) {
+          if (err || userDB === undefined) {
+            res.json(500);
+          } else {
+            // Image path
+            var phrase = uploadedFiles[0].fd;
+            var myRegexp = /\/assets\/uploads\/(.*)/;
+            var match = myRegexp.exec(phrase);
+            // Check image model
+            if (model == "gallery") {
+              var position = req.param("position");
+              if (userDB.details.gallery === undefined) userDB.details.gallery = [];
+              userDB.details.gallery[position] = match[0];
+            } else if (model == "profile") {
+              userDB.profile_photo = match[0];
+            }
+            userDB.save(function(error) {
+              done(err, 'done');
+            });
+          }
+        });
+      }
+    ], function(err) {
+      if (err) res.json(500);
+      res.ok(201);
     });
   },
 
@@ -877,9 +985,8 @@ module.exports = {
             userDB.membership.stripeId,
             card.id,
             function(err, confirmation) {
-              if (err) res.json(500)
-                // asynchronously called
-              console.log(confirmation);
+              if (err) res.json(500);
+              // asynchronously called
               res.json(201);
             }
           );
@@ -938,8 +1045,54 @@ module.exports = {
         });
       }
     });
+  },
+
+  // Remove Staff
+  achivementDelete: function(req, res) {
+    var user = req.param("user");
+    var position = req.param("position");
+    // Get user
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        userDB.details.achivements.splice(position, 1);
+        userDB.save(function(error) {
+          if (error) res.json(500);
+          res.json(201);
+        });
+      }
+    });
+  },
+
+  // Remove Staff
+  staffDelete: function(req, res) {
+    var user = req.param("user");
+    var position = req.param("position");
+    // Get user
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        var specificFile = process.cwd() + userDB.details.staff[position].path;
+        userDB.details.staff.splice(position, 1);
+        console.log(userDB.details.staff);
+        // Delete File
+        // Remove physical file from directory
+        fs.unlink(specificFile, (err) => {
+          if (err) return res.json(500);
+          userDB.save(function(error) {
+            if (error) res.json(500);
+            res.json(201);
+          });
+        });
+      }
+    });
   }
 };
+
 
 // Stripe Functions
 var addUserStripeInfo = function(userDB, id, group, level, created) {

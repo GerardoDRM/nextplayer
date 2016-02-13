@@ -3,16 +3,32 @@ angular.module('UsersModule').controller('OrgPreviewController', ['$scope', '$ht
   $scope.org = {};
 
   // ChecK if user is looking for his own profile
-  if($("#userId").val() != $("#previewId").val()) {
-    $("#editProfile1").css({display:"none"});
-    $("#editProfile2").css({display:"none"});
-    $("#follow1").css({display:"block"});
-    $("#follow2").css({display:"block"});
+  if ($("#userId").val() != $("#previewId").val()) {
+    $("#editProfile1").css({
+      display: "none"
+    });
+    $("#editProfile2").css({
+      display: "none"
+    });
+    $("#follow1").css({
+      display: "block"
+    });
+    $("#follow2").css({
+      display: "block"
+    });
   } else {
-    $("#editProfile1").css({display:"display"});
-    $("#editProfile2").css({display:"display"});
-    $("#follow1").css({display:"none"});
-    $("#follow2").css({display:"none"});
+    $("#editProfile1").css({
+      display: "display"
+    });
+    $("#editProfile2").css({
+      display: "display"
+    });
+    $("#follow1").css({
+      display: "none"
+    });
+    $("#follow2").css({
+      display: "none"
+    });
   }
 
 
@@ -59,13 +75,21 @@ angular.module('UsersModule').controller('OrgPreviewController', ['$scope', '$ht
         }
       }
 
+      // Create Staff
+      var staffList = $scope.org.details.staff;
+      if (staffList !== undefined) {
+        for (var i = 0; i < staffList.length; i++) {
+          _createStaff($compile, $scope, staffList[i]);
+        }
+      }
+
       // Update Profile Photo
       var profile = $scope.org.profile_photo;
       if (profile !== undefined || profile != null) updatePhotoView($("#profilePhoto"), profile);
 
     },
     function errorCallback(response) {
-      console.log(response);
+      addFeedback("Ha ocurrido un error, intente en otro momento", "error");
     });
 
   $scope.viewDashboard = function() {
@@ -73,19 +97,25 @@ angular.module('UsersModule').controller('OrgPreviewController', ['$scope', '$ht
   };
 
   $scope.follow = function() {
-      $scope.following = $http({
-        method: 'PUT',
-        url: '/following',
-        data: {"user":$("#userId").val(), "following": $("#previewId").val()}
-      });
-      $scope.followed = $http({
-        method: 'PUT',
-        url: '/followed',
-        data: {"followed":$("#userId").val(), "user": $("#previewId").val()}
-      });
-      $q.all([$scope.following, $scope.followed]).then(function(results) {
-        console.log(results);
-      });
+    $scope.following = $http({
+      method: 'PUT',
+      url: '/following',
+      data: {
+        "user": $("#userId").val(),
+        "following": $("#previewId").val()
+      }
+    });
+    $scope.followed = $http({
+      method: 'PUT',
+      url: '/followed',
+      data: {
+        "followed": $("#userId").val(),
+        "user": $("#previewId").val()
+      }
+    });
+    $q.all([$scope.following, $scope.followed]).then(function(results) {
+      addFeedback("Usted esta siguendo a " + $scope.org.details.organization_name, "success");
+    });
   };
 
   var _createAchivements = function(compile, scope, achivement) {
@@ -103,18 +133,36 @@ angular.module('UsersModule').controller('OrgPreviewController', ['$scope', '$ht
     )(scope));
   };
 
+  var _createStaff = function(compile, scope, staff) {
+    var phrase = staff.path;
+    var myRegexp = /uploads\/(.*)/;
+    var match = myRegexp.exec(phrase);
+    angular.element(document.getElementById('space-for-staff')).append(compile(
+      '<div class="row">' +
+      '<div class="col-xs-3">' +
+      '<div class="team-photos" style="background: url(../' + match[0] + ') 50% 50% / cover no-repeat"></div>' +
+      '</div>' +
+      '<div class="col-xs-5">' +
+      '<p class="head-paragraph">' + staff.position + '</p>' +
+      '<p class="body-paragraph-left">' + staff.name + '</p>' +
+      '<p class="body-paragraph-left">'+ staff.sport + '</p>' +
+      '</div>' +
+      '</div>'
+    )(scope));
+  };
+
   var _createGalleryContainer = function(compile, scope, model, url) {
     var containerName, image;
     if (model == "photo") {
       containerName = 'space-for-photos';
-      if($("#space-for-photos .item").children().length == 0) {
+      if ($("#space-for-photos .item").children().length == 0) {
         template = '<div class="item active">' +
           '<div class="carousel-images" style="background: url(../' + url + ') 50% 50% / cover no-repeat"></div>' +
           '</div>';
       } else {
-      template = '<div class="item">' +
-        '<div class="carousel-images" style="background: url(../' + url + ') 50% 50% / cover no-repeat"></div>' +
-        '</div>';
+        template = '<div class="item">' +
+          '<div class="carousel-images" style="background: url(../' + url + ') 50% 50% / cover no-repeat"></div>' +
+          '</div>';
       }
     } else {
       containerName = 'space-for-videos';

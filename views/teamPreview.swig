@@ -52,48 +52,7 @@
 
             <p class="head-paragraph border-top-column ">Staff
             </p>
-            <div class="row">
-              <div class="col-xs-3 ">
-                <div class="profile-photos-slide-exclusive team-photos"></div>
-              </div>
-              <div class="col-xs-5">
-                <p class="head-paragraph">
-                  Header coach
-                </p>
-                <p class="body-paragraph-left">Eric Fisher
-                </p>
-                <p class="body-paragraph-left">Fútbol Americano
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">
-                <div class="profile-photos-slide-exclusive team-photos"></div>
-              </div>
-              <div class="col-xs-5">
-                <p class="head-paragraph">
-                  Header coach
-                </p>
-                <p class="body-paragraph-left">Eric Fisher
-                </p>
-                <p class="body-paragraph-left">Fútbol Americano
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">
-                <div class="profile-photos-slide-exclusive team-photos"></div>
-              </div>
-              <div class="col-xs-5">
-                <p class="head-paragraph">
-                  Header coach
-                </p>
-                <p class="body-paragraph-left">Eric Fisher
-                </p>
-                <p class="body-paragraph-left">Fútbol Americano
-                </p>
-              </div>
-            </div>
+            <div id="space-for-staff"></div>
           </div>
         </div>
       </div>

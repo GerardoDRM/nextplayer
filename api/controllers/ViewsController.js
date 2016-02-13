@@ -1,16 +1,18 @@
 /**
- * FollowedController
+ * ViewsController
  *
- * @description :: Server-side logic for managing followeds
+ * @description :: Server-side logic for managing views
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-var ObjectId = require('mongodb').ObjectID;
-module.exports = {
-	followed: function(req, res) {
-    var user = new ObjectId(req.param("user"));
-    var followed = new ObjectId(req.param("followed"));
 
-		Followed.native(function(err, collection) {
+ var ObjectId = require('mongodb').ObjectID;
+module.exports = {
+
+	viewer: function(req, res) {
+		var user = new ObjectId(req.param("user"));
+		var viewer = new ObjectId(req.param("viewer"));
+
+		Views.native(function(err, collection) {
 			if (err) return res.serverError(500);
 			collection.find({
 				user_id: user
@@ -18,18 +20,18 @@ module.exports = {
 				if (err) return res.serverError(500);
 				if (results !== undefined && results.length > 0) {
 					// Get all Followers IDs
-					var followedList = [];
-					var objects = results[0].followed;
+					var viewerList = [];
+					var objects = results[0].viewer;
 					for(var i=0; i < objects.length; i++) {
-						followedList[i] = objects[i].toString();
+						viewerList[i] = objects[i].toString();
 					}
 					// Update Info
-					if (followedList.indexOf(followed.toString()) == -1) {
+					if (viewerList.indexOf(viewer.toString()) == -1) {
 						collection.update({
 								user_id: user
 							}, {
 								$push: {
-									followed: followed
+									viewer: viewer
 								}
 							},
 							function(err) {
@@ -42,20 +44,20 @@ module.exports = {
 				} else {
 					var data = {
 						"user_id": user,
-						"followed":[followed]
+						"viewer":[viewer]
 					};
-					Followed.create(data, function createCB(err, newFollowed) {
-	          if (err) res.json(500);
+					Views.create(data, function createCB(err, newViewer) {
+						if (err) res.json(500);
 						res.ok(201);
-	        });
+					});
 				}
 			});
 		});
-  },
+	},
 
-	getFollowed: function(req, res) {
-    var user = new ObjectId(req.param("id"));
-    Followed.native(function(err, collection) {
+	getViewers: function(req, res) {
+		var user = new ObjectId(req.param("user"));
+		Views.native(function(err, collection) {
 			if (err) return res.serverError(500);
 			collection.find({user_id:user}, {
 				_id: 0,
@@ -64,18 +66,13 @@ module.exports = {
 				if (err) return res.serverError(err);
 				if(results !== undefined && results.length > 0) {
 					// Get all Followers IDs
-					var followersList = [];
-					followersList = results[0].followed;
+					var viewerList = [];
+					viewerList = results[0].viewer;
 					// Get info about followers
 					User.native(function(err, collection) {
 						if (err) return res.serverError(500);
-						collection.find({_id: {$in: followersList}}, {
-							state:1,
-							name: 1,
-							"details.organization_name": 1,
-							profile_photo: 1,
-							lastname: 1,
-							"sport.title": 1
+						collection.find({_id: {$in: viewerList}}, {
+							profile_photo: 1
 						}).toArray(function(err, results) {
 							if (err) return res.serverError(err);
 							return res.ok(results);
@@ -86,5 +83,6 @@ module.exports = {
 				}
 			});
 		});
-  }
+	}
+
 };

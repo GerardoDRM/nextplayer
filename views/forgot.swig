@@ -1,7 +1,7 @@
 {% extends 'base.swig' %} {% block content %}
 
 <div class="container">
-  <div class="form-login" style="    height: 860px;" ng-app="UsersModule" ng-controller="ForgotPasswordController" ng-cloak>
+  <div class="form-login" style="height: 860px;" ng-app="UsersModule" ng-controller="ForgotPasswordController" ng-cloak>
     <div class="top-login">
       <img style="width:39%;" id="img-login" src="../images/equipo_escudo.png" alt="nextplayer escudo">
     </div>

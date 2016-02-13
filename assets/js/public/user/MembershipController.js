@@ -18,7 +18,6 @@ angular.module('UsersModule').controller('MembershipController', ['$scope', '$ht
         "user": $("#userId").val()
       }
     }).then(function successCallback(response) {
-      console.log(response);
       $scope.membership = response.data;
       if ($scope.membership.level !== undefined || $scope.membership.level > 0) {
         $scope.membership.group = {}

@@ -4,22 +4,13 @@ angular.module('UsersModule').controller('AccessController', ['$scope', '$http',
   $scope.count = 0;
 
   $scope.update = function() {
-    var experienceList = [];
-    for (var experience in $scope.coach) {
-      experienceList.push($scope.coach[experience]);
-    }
-    var exp = {
-      "experience": experienceList
-    };
     // PUT data
-    $scope.user.born = $("#datepicker").val();
-    $scope.user.id = $("#userId").val();
     $http({
       method: 'PUT',
       url: '/user/basicinfo',
       data: {
-        "user": $scope.user,
-        "applicant": exp
+        "user": $("#userId").val(),
+        "access": exp
       }
     }).then(function successCallback(response) {
       if (response.data == 500) {

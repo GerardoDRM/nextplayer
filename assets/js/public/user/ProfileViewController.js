@@ -1,6 +1,7 @@
 angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$http', '$compile', function($scope, $http, $compile) {
   $scope.user = {};
   $scope.coach = {};
+  $scope.flag_views = false;
 
   // Close Modal Dialog for Gallery
   $('#dialogGallery').click(function() {
@@ -13,6 +14,35 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
   $('.dialogGallery').click(function(e) {
     e.stopPropagation();
   });
+
+  // Show your views
+  $scope.views = function() {
+    $http({
+      method: 'GET',
+      url: '/user/player/viewer',
+      params: {
+        "user": $("#userId").val()
+      }
+    }).then(function successCallback(response) {
+      var viewsList = response.data;
+      for (var i = 0; i < viewsList.length; i++) {
+        _createView($compile, $scope, viewsList[i]);
+      }
+    }, function errorCallback(response) {});
+  };
+
+  // Add views if team is watching you
+  $scope.viewer = function() {
+    $http({
+      method: 'PUT',
+      url: '/user/org/viewer',
+      data: {
+        "viewer": $("#userId").val(),
+        "user": $("#previewId").val()
+      }
+    }).then(function successCallback(response) {
+    }, function errorCallback(response) {});
+  };
 
   // ChecK if user is looking for his own profile
   if ($("#userId").val() != $("#previewId").val()) {
@@ -28,6 +58,8 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
     $("#follow2").css({
       display: "block"
     });
+    // Add View to User
+    $scope.viewer();
   } else {
     $("#editProfile1").css({
       display: "display"
@@ -41,6 +73,8 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
     $("#follow2").css({
       display: "none"
     });
+    // Show your viwes
+    $scope.flag_views = true;
   }
 
   $http({
@@ -59,22 +93,27 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
     }
 
     if (status == 1) {
-      $("#exclusiveViews").css({
-        "display": "block"
-      });
       $("#exclusiveMe").css({
         "display": "block"
       });
     } else {
-      $("#exclusiveViews").css({
-        "display": "none"
-      });
       $("#exclusiveMe").css({
         "display": "none"
       });
     }
 
     if ($scope.user.role == "player") {
+      // Add views
+      if (status == 1 && $scope.flag_views) {
+        $("#exclusiveViews").css({
+          "display": "block"
+        });
+        $scope.views();
+      } else {
+        $("#exclusiveViews").css({
+          "display": "none"
+        });
+      }
       // Players stuff
       var counterPhotos = status == 0 ? 4 : 8;
       var counterVideos = status == 0 ? 1 : 4;
@@ -94,7 +133,6 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
           if (phrase != null) {
             var myRegexp = /uploads\/(.*)/;
             var match = myRegexp.exec(phrase);
-            console.log(match);
             _createGalleryContainer($compile, $scope, "photo", match[0]);
           }
         }
@@ -132,7 +170,7 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
     if (profile !== undefined || profile != null) updatePhotoView($("#profilePhoto"), profile);
 
   }, function errorCallback(response) {
-    console.log(response);
+    addFeedback("Ha ocurrido un error, intente en otro momento", "error");
   });
 
   $scope.viewDashboard = function() {
@@ -157,7 +195,7 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
       }
     });
     $q.all([$scope.following, $scope.followed]).then(function(results) {
-      console.log(result);
+      addFeedback("Usted esta siguendo a " + $scope.user.name, "success");
     });
   };
 
@@ -170,6 +208,24 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
       "pointer-events": "auto"
     });
   };
+
+  var _createView = function(compile, scope, view) {
+    var phrase = view.profile_photo;
+    var myRegexp = /uploads\/(.*)/;
+    var match = myRegexp.exec(phrase);
+    var url = "";
+    if (phrase != null && phrase !== undefined) {
+      url = 'style="background: url(../' + match[0] + ') 50% 50% / cover no-repeat"';
+    }
+
+    angular.element(document.getElementById("space-for-views")).append(compile(
+      '<div class="col-xs-4 col-sm-3">' +
+      '<a href="/profile/'+ view._id +'" style="background: transparent;">' +
+      '<div class="profile-photos-slide-exclusive" ' + url + '></div></a>' +
+      '</div>'
+    )(scope));
+
+  }
 
   var _createGalleryContainer = function(compile, scope, model, url) {
     var containerName, image;
