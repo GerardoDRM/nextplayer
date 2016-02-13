@@ -14,15 +14,15 @@
     <div class="item active">
       <div class="carousel-images">
         <div class="margin-top">
-        <h1 class="dissapear"> DARE </h1>
-        <h3 class="dissapear"> TO </h3>
-        <h2 class="dissapear"> DREAM </h2>
-        <p class="dissapear"> Sueñas con jugar al siguiente nivel? </p>
-        <p class="dissapear"> únete a nextplayers, creando tu perfil con </p>
-        <p class="dissapear"> todos tus datos, fotos y vídeos. </p>
+          <h1 class="dissapear"> DARE </h1>
+          <h3 class="dissapear"> TO </h3>
+          <h2 class="dissapear"> DREAM </h2>
+          <p class="dissapear"> Sueñas con jugar al siguiente nivel? </p>
+          <p class="dissapear"> únete a nextplayers, creando tu perfil con </p>
+          <p class="dissapear"> todos tus datos, fotos y vídeos. </p>
 
-        <h3 class="dissapear"> ¡ES GRATIS! </h3>
-      </div>
+          <h3 class="dissapear"> ¡ES GRATIS! </h3>
+        </div>
       </div>
     </div>
     <div class="item">
@@ -96,13 +96,13 @@
           <h2 class="dissapear"> PERFILES MUESTRA </h2>
         </div>
         <div class="col-sm-4 col-md-3">
-          <img src="../images/equipo.png" alt="...">
+          <a onclick="showPreviewSample('team')"><img src="../images/equipo_muestra.png" alt="..."></a>
         </div>
         <div class="col-sm-4 col-md-3">
-          <img src="../images/jugador.png" alt="...">
+          <a onclick="showPreviewSample('player')"><img src="../images/jugador_muestra.png" alt="..."></a>
         </div>
         <div class="col-sm-4 col-md-3">
-          <img src="../images/coach.png" alt="...">
+        <a onclick="showPreviewSample('coach')"><img src="../images/coach_muestra.png" alt="..."></a>
         </div>
       </div>
     </div>
@@ -113,20 +113,20 @@
     <div class="middle-counter">
       <div class="row row-after">
         <div class="col-xs-6 col-sm-3">
-          <img src="../images/contador_temporal.png" alt="...">
+          <img src="../images/contador_soccer.png" alt="...">
           <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
         <div class="col-xs-6 col-sm-3">
-          <img src="../images/contador_temporal.png" alt="...">
-        <!--  <h2 class="dissapear"> 21 </h2> -->
-        </div>
-        <div class="col-xs-6 col-sm-3">
-          <img src="../images/contador_temporal.png" alt="...">
+          <img src="../images/contador_americano.png" alt="...">
           <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
         <div class="col-xs-6 col-sm-3">
-          <img src="../images/contador_temporal.png" alt="...">
-            <!--  <h2 class="dissapear"> 21 </h2> -->
+          <img src="../images/contador_tenis.png" alt="...">
+          <!--  <h2 class="dissapear"> 21 </h2> -->
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <img src="../images/contador_baloncesto.png" alt="...">
+          <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
       </div>
     </div>
@@ -151,4 +151,9 @@
   </div>
 </div>
 
+<div class="modalDialog" id="dialogSample">
+  <div class="dialogSample">
+    <img style="width: 100%;" id="dialogImgSample">
+  </div>
+</div>
 {% endblock %}
