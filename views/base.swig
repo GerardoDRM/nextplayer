@@ -105,6 +105,7 @@
 
   <!--SCRIPTS END-->
   <script>
+
     $(document).ready(function() {
       // Clone select list data in a custom select list
       // Replicate info
@@ -189,7 +190,34 @@
         }
       });
 
+      $("#dialogSample").click(function() {
+        $("#dialogSample").css({
+          opacity:0,
+          "pointer-events": "none"
+        });
+      });
+      $(".dialogSample").click(function(e) {
+        e.stopPropagation();
+      });
+
     });
+
+    // Sample profiles
+    function showPreviewSample(model) {
+      if(model == "team") {
+        $("#dialogImgSample").attr("src","../images/perfil_muestra_equipo.jpg");
+      }
+      else if(model == "player") {
+        $("#dialogImgSample").attr("src","../images/perfil_muestra_jugador.jpg");
+      }
+      else if(model == "coach") {
+        $("#dialogImgSample").attr("src","../images/perfil_muestra_coach.jpg");
+      }
+      $("#dialogSample").css({
+        opacity:1,
+        "pointer-events": "auto"
+      });
+    }
   </script>
 
 </body>

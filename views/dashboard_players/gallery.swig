@@ -14,7 +14,7 @@
   </div>
   <p>No tienes video de tus jugadas? Nosotros te podemos hacer uno.
     <br>
-    <a>
+    <a style="color:#9bee9d" href="mailto:info@nextplayers.mx">
       Contáctanos</a>
     para más información. (Subject: Quiero un vídeo.)
   </br>
@@ -22,9 +22,15 @@
 
 <div class="modalDialog" id="dialogVideo">
   <div class="dialogVideo">
-    <p>URL:</p>
+    <h1>URL:</h1>
     <form id="video-form">
-      <input ng-model="video.url" required type="text"/>
+      <input style="width:100%;" ng-model="video.url" required type="text"/>
+      <div>
+        <h3> Youtube </h3>
+        <img style="width: 100%;" src="../images/youtube3.png">
+        <h3> Hudl </h3>
+        <img style="width: 100%;" src="../images/holds.png">
+      </div>
       <div class="save-button">
         <button class="input-signup" ng-click="storeVideo()">Guardar</button>
       </div>

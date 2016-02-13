@@ -76,6 +76,7 @@ html {
 a {
   cursor: pointer; }
   a:hover, a:link, a:visited, a:active {
+    color: #000;
     text-decoration: none; }
 
 .logoIndex {
@@ -578,6 +579,12 @@ textarea {
   margin: 12% auto;
   width: 35%;
   background: #FFF; }
+
+.dialogSample {
+  position: relative;
+  z-index: 99;
+  margin: 12% auto;
+  width: 60%; }
 
 /**
   * Wrappers Partial SASS

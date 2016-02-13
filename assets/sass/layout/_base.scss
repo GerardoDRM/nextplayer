@@ -25,6 +25,7 @@ html {
 a {
   cursor: pointer;
   &:hover,&:link,&:visited,&:active {
+    color:$black;
     text-decoration: none;
   }
 }
