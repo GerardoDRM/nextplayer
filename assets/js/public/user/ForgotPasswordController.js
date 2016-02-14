@@ -23,7 +23,7 @@ angular.module('UsersModule').controller('ForgotPasswordController', ['$scope', 
       })
       .then(function onSuccess (result){
         if(result.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
-        else{addFeedback("Tu password ha sido cambiada", 'success');}
+        else{addFeedback("Tú password ha sido cambiada", 'success');}
       })
       .catch(function onError(sailsResponse) {
         addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');

@@ -195,7 +195,7 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
       }
     });
     $q.all([$scope.following, $scope.followed]).then(function(results) {
-      addFeedback("Usted esta siguendo a " + $scope.user.name, "success");
+      addFeedback("Usted está siguendo a " + $scope.user.name, "success");
     });
   };
 

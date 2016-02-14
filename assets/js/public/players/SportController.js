@@ -36,7 +36,7 @@ angular.module('UsersModule').controller('SportController', ['$scope', '$http', 
     }
 
     if (Object.keys($scope.sport.positions).length > 3) {
-      addFeedback("Solo debes de elegir maximo 3 posiciones");
+      addFeedback("Sólo debes de elegir maximo 3 posiciones");
     } else {
       // PUT data
       $scope.user.id = $("#userId").val();
@@ -51,7 +51,7 @@ angular.module('UsersModule').controller('SportController', ['$scope', '$http', 
         if (response.data == 500) {
           addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
         } else {
-          addFeedback("Se han agregado tus datos de tu deporte", 'success');
+          addFeedback("Se han agregado tus datos de tú deporte", 'success');
         }
       }, function errorCallback(response) {
         addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');

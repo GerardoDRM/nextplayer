@@ -25,7 +25,7 @@
       </div>
       <div class="col-sm-9 no-padding image-picture-two">
         <div class="col-sm-4 dissapear">
-          <img class="icons-sport" alt="..." src="../images/contador_temporal.png">
+      <img id="change-sport" class="icons-sport" alt="...">
         </div>
         <div class="col-sm-4">
           <div class="title">

@@ -143,7 +143,7 @@ angular.module('UsersModule').controller('StaffController', ['$scope', '$http', 
 var createStaff = function(i, compile, scope) {
   angular.element(document.getElementById('space-for-staff')).append(compile(
     '<div class="col-sm-4" style="margin-bottom:10px;">' +
-    '<a class="anchor-coach" href="javascript:void(0);" ng-click="deleteComplete($event);">- Remover staff</a>' +
+    '<a class="anchor-coach" style="color:red;" href="javascript:void(0);" ng-click="deleteComplete($event);">- Remover staff</a>' +
     '<input type="hidden" id="staffRef' + i + '">' +
     '<div class="photo">' +
     '<img alt="..." src="../images/photo.png"/>' +

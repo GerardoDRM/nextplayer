@@ -485,8 +485,9 @@
 .left-profile {
   overflow: auto;
   img {
-    width: 80%;
-    height: 250px;
+    margin-left: 25%;
+  width: 50%;
+  margin-top: 57%;
     @extend %margin-center;
   }
   h1 {
@@ -561,6 +562,7 @@
 .container-inner-main {
   margin: 20px 0;
   .inner-block {
+    overflow-x: hidden;
     background-color: $white;
     box-shadow: 0 6px 19px gray;
     margin: 20px 5px;
@@ -893,6 +895,16 @@ margin-bottom: 5%;
     font-style:italic;
   }
   p {
-    margin-bottom:10px
+    margin-bottom:10px;
   }
+}
+.see-image {
+  margin-left: 30%;
+width: 35%;
+margin-top: 41%;
+}
+
+
+.container-university-preview{
+margin-top: 0px;
 }

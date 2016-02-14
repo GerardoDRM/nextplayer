@@ -266,7 +266,7 @@ footer {
   height: 350px; }
 
 .profile-picture {
-  background: url("../images/slide_1.jpg") no-repeat center;
+  background: gray;
   width: 100%;
   height: 300px;
   background-size: cover;
@@ -1003,8 +1003,9 @@ textarea {
 .left-profile {
   overflow: auto; }
   .left-profile img {
-    width: 80%;
-    height: 250px; }
+    margin-left: 25%;
+    width: 50%;
+    margin-top: 57%; }
   .left-profile h1 {
     text-align: center;
     color: #2ae92e;
@@ -1061,6 +1062,7 @@ textarea {
 .container-inner-main {
   margin: 20px 0; }
   .container-inner-main .inner-block {
+    overflow-x: hidden;
     background-color: #FFF;
     box-shadow: 0 6px 19px gray;
     margin: 20px 5px;
@@ -1343,6 +1345,14 @@ textarea {
   .card-blog p {
     margin-bottom: 10px; }
 
+.see-image {
+  margin-left: 30%;
+  width: 35%;
+  margin-top: 41%; }
+
+.container-university-preview {
+  margin-top: 0px; }
+
 /**
   * Buttons Partial SASS
   * This SASS file has all
@@ -1515,6 +1525,9 @@ textarea {
     padding: 0 2%; }
 
   .profile-view-container .responsive-button {
-    display: none; } }
+    display: none; }
+
+  .container-university-preview {
+    margin-top: -125px; } }
 
 /*# sourceMappingURL=main.css.map */

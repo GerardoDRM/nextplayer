@@ -1,14 +1,14 @@
 {% extends 'baseProfile.swig' %}
 {% block content %}
 <div ng-app="UsersModule" ng-controller="OrgPreviewController">
-  <div class="carousel slide dissapear" data-ride="carousel" id="carousel-example-generic">
+  <div class="carousel slide dissapear" style="height:500px;" data-ride="carousel" id="carousel-example-generic">
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox" id="space-for-photos">
     </div>
   </div>
-  <div class="container" style="margin-top: -125px;">
+  <div class="container" class="container-university-preview">
     <div class="row">
-      <div class="col-sm-5" style="padding-right:0px;">
+      <div class="col-sm-5" style="padding-right:0px;   padding: 0px;">
         <div class="photo-team-preview" id="profilePhoto"></div>
       </div>
       <div class="col-sm-7 head-preview" style="padding-right: 0px;">

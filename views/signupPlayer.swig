@@ -2,8 +2,8 @@
 <div class="advisement">
 
 </div>
-<div class="form-sign"  ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
-  <form  ng-submit="submitSignupForm()" name="signup" id="form-signup">
+<div class="form-sign" ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
+  <form ng-submit="submitSignupForm()" name="signup" id="form-signup">
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
@@ -19,7 +19,15 @@
             <option value="Basquetball">Basquetball</option>
             <option value="Tennis">Tennis</option>
             <option value="Atletismo">Atletismo</option>
-            <option value="Voleiball">Voleiball</option>
+            <option value="Voleiball">Voleiball-sala</option>
+            <option value="Fútbol soccer">Fútbol rápido</option>
+            <option value="Basquetball">Baseball</option>
+            <option value="Tennis">Golf</option>
+            <option value="Atletismo">Rugby</option>
+            <option value="Voleiball">Taekwondo</option>
+            <option value="Basquetball">Basquetball</option>
+            <option value="Tennis">Tennis-mesa</option>
+            <option value="Voleiball">Voleiball-playa</option>
           </select>
           <input type="hidden" id="user-type" value="player">
         </div>
@@ -28,11 +36,11 @@
 
           <input type="text" class="input-signup" placeholder="Apellidos" name="lastname" ng-model="signupForm.lastname" required>
 
-          <input type="email" class="input-signup" placeholder="Correo"  name="email" ng-model="signupForm.email" required>
+          <input type="email" class="input-signup" placeholder="Correo" name="email" ng-model="signupForm.email" required>
 
           <input type="password" class="input-signup" placeholder="Contraseña" name="password" ng-model="signupForm.password" required>
 
-            <input type="submit" value="Registrarse" class="input-signup" placeholder="Registrarse">
+          <input type="submit" value="Registrarse" class="input-signup" placeholder="Registrarse">
 
           <a class="input-signup facebook" href="/user/facebook">Login con Facebook</a>
           <input type="hidden" name="_csrf" value="<%= _csrf %>" />
@@ -66,9 +74,11 @@
 </div>
 
 
-  <div class="more-info">
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.  </p>
-  </div>
+<div class="more-info">
+  <p>!Reclutamiento Deportivo! Nextplayers es una plataforma donde vas a tener acceso a combines y a noticias de jugadores. Podrás buscar, filtrar y contactar talento deportivo. Se te brindará un acceso personalizado donde vas a estar actualizado del talento
+    que hay a nivel nacional e internacional. Lo mejor de todo, recibirás notificaciones en tiempo real de las actualizaciones del jugador que sigues.
+  </p>
+</div>
 
 
 {% endblock content %}

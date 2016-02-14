@@ -10,7 +10,7 @@ angular.module('ContactSendModule').controller('ContactSendController', ['$scope
           message: $scope.mail.message
         })
         .then(function onSuccess() {
-          addFeedback("Tu mensage ha sido enviado exitosamente", 'success');
+          addFeedback("Tú mensage ha sido enviado exitosamente", 'success');
         })
         .catch(function onError(sailsResponse) {
           addFeedback('Ha ocurrido un error inesperado por favor intente nuevamente', 'error');

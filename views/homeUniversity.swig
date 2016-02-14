@@ -33,7 +33,10 @@
             <h2>Prospectos</h2>
           </div>
           <div class="row">
-            <a href="/search">Reclutar</a>
+            <div style="    margin-left: 70%;
+    margin-top: 21px;">
+            <a class="view-green--btn" href="/search">Reclutar</a>
+          </div>
             <div class="col-sm-6">
               <!-- First Col -->
               <div class="row profile-card no-margin">

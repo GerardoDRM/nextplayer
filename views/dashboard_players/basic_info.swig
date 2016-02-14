@@ -51,6 +51,16 @@
           <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" type="text">
         </div>
       </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group-modified">
+            <label>E-mail del titular</label>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" type="text">
+        </div>
+      </div>
       <!-- End Firts Col-->
     </div>
     <div class="col-sm-12 col-md-6">
@@ -96,6 +106,16 @@
       </div>
       <div class="col-sm-6">
         <input class="form-group-modified-input" name="phone" ng-model="user.phone" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group-modified">
+          <label>Parentesco del titular</label>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" type="text">
       </div>
     </div>
   </div>

@@ -242,6 +242,53 @@
       });
 
     });
+
+    function showSport(sport) {
+      switch (sport) {
+        case "Fútbol americano":
+      $("#change-sport").attr("src","../images/contador_americano.jpg");
+          break;
+        case "Atletismo":
+        $("#change-sport").attr("src","../images/contador_atletismo.jpg");
+          break;
+        case "Basquetball":
+      $("#change-sport").attr("src","../images/contador_baloncesto.jpg");
+          break;
+        case "Fútbol rápido":
+        $("#change-sport").attr("src","../images/contador_futbol_rapido.jpg");
+          break;
+        case "Baseball":
+      $("#change-sport").attr("src","../images/contador_baseball.jpg");
+          break;
+        case "Golf":
+          $("#change-sport").attr("src","../images/contador_golf.jpg");
+          break;
+          case "Rugby":
+        $("#change-sport").attr("src","../images/contador_rugby.jpg");
+            break;
+          case "Fútbol soccer":
+          $("#change-sport").attr("src","../images/contador_soccer.jpg");
+            break;
+          case "Taekwondo":
+        $("#change-sport").attr("src","../images/contador_taekwondo.jpg");
+            break;
+          case "Tennis-Mesa":
+          $("#change-sport").attr("src","../images/contador_tenis_mesa.jpg");
+            break;
+          case "Tennis":
+        $("#change-sport").attr("src","../images/contador_tenis.jpg");
+            break;
+          case "Voleiball-sala":
+            $("#change-sport").attr("src","../images/contador_voleibol_sala.jpg");
+            break;
+            case "Voleiball-playa":
+              $("#change-sport").attr("src","../images/contador_voleibol_playa.jpg");
+              break;
+        default:
+          console.log("Wrong Sport");
+      }
+    }
+
   </script>
 
 </body>

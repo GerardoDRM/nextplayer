@@ -75,7 +75,7 @@ angular.module('UsersModule').controller('MembershipController', ['$scope', '$ht
       if (response.data == 500) {
         addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
       } else {
-        addFeedback("Tu tarjeta ha sido retirada del sistema", 'success');
+        addFeedback("Tú tarjeta ha sido retirada del sistema", 'success');
       }
       $("#membership-btn").trigger("click");
     }, function errorCallback(response) {
@@ -99,7 +99,7 @@ var buyMembership = function($scope, $http) {
       if (response.data == 500) {
         addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
       } else {
-        addFeedback("Tu compra se ha realizado de manera exitosa", 'success');
+        addFeedback("Tú compra se ha realizado de manera exitosa", 'success');
       }
     }, function errorCallback(response) {
       addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');

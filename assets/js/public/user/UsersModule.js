@@ -76,7 +76,7 @@ angular.module('UsersModule').directive("fileread", ['$http', function($http) {
                       "background-size": "cover",
                       "background-repeat": "no-repeat"
                     });
-                    addFeedback("Tu foto ha sido almacenada", 'success');
+                    addFeedback("Tú foto ha sido almacenada", 'success');
                   }
                   $(element).val(undefined);
                 }, function errorCallback(response) {
@@ -87,7 +87,7 @@ angular.module('UsersModule').directive("fileread", ['$http', function($http) {
                 addFeedback("El tamaño de la imagen tiene que ser menor a 1MB");
               }
             } else {
-              addFeedback("Debes de adjuntar una imagen con formato jpg, jpeg o png");
+              addFeedback("Debes de adjuntar una imagen con formato jpg, jpeg ó png");
             }
           });
         };

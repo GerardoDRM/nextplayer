@@ -16,7 +16,7 @@ angular.module('LoginModule').controller('LoginController', ['$scope', '$http', 
 	        // Handle known error type(s).
 	        // Invalid username / password combination.
 	        if (sailsResponse.status === 400 || 404) {
-	          addFeedback('La combinacion de email/password es invalida', 'error');
+	          addFeedback('La combinación de email/password es inválida', 'error');
 	          return;
 	        }
 	        addFeedback('Ha ocurrido un error inesperado por favor intente nuevamente', 'error');

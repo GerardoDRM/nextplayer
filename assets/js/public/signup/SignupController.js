@@ -18,10 +18,10 @@ angular.module('SignupModule').controller('SignupController', ['$scope', '$http'
       // Submit request to Sails.
       $http.post('/signup', data)
         .then(function onSuccess(sailsResponse) {
-          addFeedback('Tu usuario ha sido creado, por favor verifica tu email', 'success');
+          addFeedback('Tú usuario ha sido creado, por favor verifica tu email', 'success');
         })
         .catch(function onError(sailsResponse) {
-            addFeedback('Este email ya esta ocupado por algun otro usuario, intente con uno diferente', 'error');
+            addFeedback('Este email ya esta ocupado por algún otro usuario, intente con uno diferente', 'error');
             return;
         });
     }

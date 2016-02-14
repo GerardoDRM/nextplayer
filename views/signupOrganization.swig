@@ -1,5 +1,4 @@
-{% extends 'base.swig' %}
-{% block content %}
+{% extends 'base.swig' %} {% block content %}
 <div class="advisement"></div>
 <div class="form-sign" ng-app="SignupModule" ng-cloak ng-controller="SignupController">
   <form id="form-signup" name="signup" ng-submit="submitSignupForm()">
@@ -15,7 +14,7 @@
           </div>
         </div>
         <div class="col-sm-6 text-center ">
-        <input type="hidden" id="user-type" value="organization">
+          <input type="hidden" id="user-type" value="organization">
           <input class="input-signup" name="organization_name" ng-model="signupForm.organization_name" placeholder="Universidad / Equipo" required type="text">
 
           <input class="input-signup" name="name" ng-model="signupForm.name" placeholder="Nombre" required style="margin-top:30px" type="text">
@@ -28,7 +27,7 @@
 
           <input class="input-signup" type="submit" value="Registrarse">
 
-          <input name="_csrf" type="hidden" value="<%= _csrf %>"/>
+          <input name="_csrf" type="hidden" value="<%= _csrf %>" />
         </div>
       </div>
 
@@ -71,8 +70,9 @@
 </div>
 
 <div class="more-info">
-  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-    pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+  <p>!Reclutamiento Deportivo! Nextplayers es una plataforma donde vas a tener acceso a combines y a noticias de jugadores. Podrás buscar, filtrar y contactar talento deportivo. Se te brindará un acceso personalizado donde vas a estar actualizado del talento
+    que hay a nivel nacional e internacional. Lo mejor de todo, recibirás notificaciones en tiempo real de las actualizaciones del jugador que sigues.
+
   </p>
 </div>
 

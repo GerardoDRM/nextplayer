@@ -68,7 +68,7 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
           }
         }).then(function successCallback(response) {
           if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
-          else{addFeedback("Tu video ha sido almacenado", 'success');}
+          else{addFeedback("Tú video ha sido almacenado", 'success');}
           // Change UI preview video
           var videoContainer = $scope.elementVideo;
           $(videoContainer).css({
@@ -129,7 +129,7 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
         }
       }).then(function successCallback(response) {
         if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
-        else{addFeedback("Tu video ha sido removido", 'success');}
+        else{addFeedback("Tú video ha sido removido", 'success');}
       }, function errorCallback(response) {
         addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
       });

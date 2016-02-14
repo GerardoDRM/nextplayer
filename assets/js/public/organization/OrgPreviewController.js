@@ -114,7 +114,7 @@ angular.module('UsersModule').controller('OrgPreviewController', ['$scope', '$ht
       }
     });
     $q.all([$scope.following, $scope.followed]).then(function(results) {
-      addFeedback("Usted esta siguendo a " + $scope.org.details.organization_name, "success");
+      addFeedback("Usted está siguendo a " + $scope.org.details.organization_name, "success");
     });
   };
 

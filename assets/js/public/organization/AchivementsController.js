@@ -85,7 +85,7 @@ angular.module('UsersModule').controller('AchivementsController', ['$scope', '$h
 var createAchivement = function(i, compile, scope) {
   angular.element(document.getElementById('space-for-achivements')).append(compile(
     '<div class="col-md-12" style="margin: 15px auto;">' +
-    '<a class="anchor-coach" href="javascript:void(0);" ng-click="deleteComplete($event);">-Remover Logro</a>' +
+    '<a class="anchor-coach" style="color:red;" href="javascript:void(0);" ng-click="deleteComplete($event);">-Remover Logro</a>' +
     '<input type="hidden" id="achivementRef' + i + '">' +
     '<div class="row">' +
     '<div class="col-sm-6">' +

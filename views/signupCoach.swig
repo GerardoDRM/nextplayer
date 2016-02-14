@@ -19,7 +19,15 @@
             <option value="Basquetball">Basquetball</option>
             <option value="Tennis">Tennis</option>
             <option value="Atletismo">Atletismo</option>
-            <option value="Voleiball">Voleiball</option>
+            <option value="Voleiball">Voleiball-sala</option>
+            <option value="Fútbol soccer">Fútbol rápido</option>
+            <option value="Basquetball">Baseball</option>
+            <option value="Tennis">Golf</option>
+            <option value="Atletismo">Rugby</option>
+            <option value="Voleiball">Taekwondo</option>
+            <option value="Basquetball">Basquetball</option>
+            <option value="Tennis">Tennis-mesa</option>
+            <option value="Voleiball">Voleiball-playa</option>
           </select>
           <input type="hidden" id="user-type" value="coach">
         </div>
@@ -65,8 +73,9 @@
 
 
 <div class="more-info">
-  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-    quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. </p>
+  <p>!Reclutamiento Deportivo! Nextplayers es una plataforma donde vas a tener acceso a combines y a noticias de jugadores. Podrás buscar, filtrar y contactar talento deportivo. Se te brindará un acceso personalizado donde vas a estar actualizado del talento
+    que hay a nivel nacional e internacional. Lo mejor de todo, recibirás notificaciones en tiempo real de las actualizaciones del jugador que sigues.
+  </p>
 </div>
 
 

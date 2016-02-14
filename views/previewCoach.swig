@@ -16,7 +16,9 @@
     </div>
     <div class="col-sm-4 border-right-column">
       <div class="left-profile">
-        <div class="profile-picture" id="profilePhoto"></div>
+        <div class="profile-picture" id="profilePhoto">
+  <img src="../images/contador_americano.png" alt="...">
+        </div>
         <div class="responsive-button">
           <a href="javascript:void(0);" id="editProfile2" ng-click="viewDashboard()" style=" margin:10px 0;">Edita tu perfil</a>
           <a class="dissapear" href="javascript:void(0);" id="follow2" ng-click="follow()" style=" margin:10px 0;">Seguir</a>
