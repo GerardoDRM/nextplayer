@@ -54,57 +54,25 @@
       </div>
     </div>
   </div>
-  <a class="chat" id="button-chat"></a>
-
+  <a class="chat" id="button-chat" ng-click="showInbox($event)"></a>
   <!-- Modal Chat -->
   <div class="modalChat" id="chat-structure">
     <div class="inbox-container" id="inbox">
       <div class="header">
         <h2>Inbox</h2>
       </div>
-      <ul class="message-list">
-        <li class="inbox-contact">
-          <div class="row">
-            <div class="col-sm-4">
-              <img src="http://i.usatoday.net/sports/_photos/2011/09/26/St-Xaviers-Specht-to-coach-Team-USA-in-bowl-80DUI6A-x-large.jpg">
-            </div>
-            <div class="col-sm-6">
-              <p>UDLAP</p>
-            </div>
-          </div>
-
-        </li>
+      <ul class="message-list" id="space-for-contacts">
       </ul>
     </div>
     <div class="inbox-container" id="conversation">
       <div class="header">
-        <span aria-hidden="true" class="glyphicon glyphicon-triangle-left" id="return-inbox"></span>
-        <h2>UDLAP</h2>
+      <span aria-hidden="true" class="glyphicon glyphicon-triangle-left" id="return-inbox" ng-click="showInbox($event)"></span>
+        <h2 id="roomName"></h2>
       </div>
-      <ul>
-        <li>
-          <div class="message">
-            <p>Esto es un mensaje</p>
-          </div>
-        </li>
-        <li>
-          <div class="message own-message">
-            <p>Esto es un mensaje</p>
-          </div>
-        </li>
-        <li>
-          <div class="message own-message">
-            <p>Esto es un mensaje</p>
-          </div>
-        </li>
-        <li>
-          <div class="message">
-            <p>Esto es un mensaje</p>
-          </div>
-        </li>
+      <ul id="messages-space">
       </ul>
       <div class="message-input">
-        <input type="text"/>
+        <input type="text" ng-model="message" enter="sendMessage()"/>
       </div>
     </div>
   </div>

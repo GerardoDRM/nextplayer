@@ -98,6 +98,20 @@ angular.module('UsersModule').directive("fileread", ['$http', function($http) {
   }
 }]);
 
+// Key enter press
+angular.module('UsersModule').directive('enter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.enter);
+                });
+                event.preventDefault();
+            }
+        });
+    };
+});
+
 
 var checkVideoProvider = function(url) {
   var services = {
@@ -122,6 +136,50 @@ var checkVideoProvider = function(url) {
   return 500;
 }
 
+// Create Messages
+var createMessages = function(compile, scope, message) {
+  var messageType = "message";
+  if (message.id == $("#userId").val()) {
+    messageType = "message own-message";
+  }
+  angular.element(document.getElementById('messages-space')).append(compile(
+    '<li>' +
+    '<div class="' + messageType + '">' +
+    '<p>' + message.content + '</p>' +
+    '</div>' +
+    '</li>'
+  )(scope));
+};
+
+// Create Inbox list
+var createInbox = function(compile, scope, contact) {
+  var profile = contact.profile_photo;
+  var match = [];
+  if (profile !== undefined) {
+    var phrase = profile;
+    var myRegexp = /uploads\/(.*)/;
+    match = myRegexp.exec(phrase);
+  }
+  var name = "";
+  if(contact.details.organization_name !== undefined) {
+    name = contact.details.organization_name;
+  } else {
+    name = contact.name + " " + contact.lastname;
+  }
+  angular.element(document.getElementById('space-for-contacts')).append(compile(
+    '<li class="inbox-contact" ng-click="showConversation(\'' + contact._id + '\', \'' + name + '\')">' +
+    '<div class="row">' +
+    '<div class="col-sm-4">' +
+    '<img src="../' + match[0] + '">' +
+    '</div>' +
+    '<div class="col-sm-6">' +
+    '<p>' + name + '</p>' +
+    '</div>' +
+    '</div>' +
+    '</li>'
+  )(scope));
+};
+
 function addFeedback(msg, status) {
     var cl = status == "success" ? "#70DA8B" : "#FFE6B2";
     var fontColor = status == "success" ? "#4DA463" : "#C5A14E";
@@ -135,4 +193,65 @@ function addFeedback(msg, status) {
         $("#feedback").removeClass("msg");
         $("#feedback-msg").html("");
     }, 6000);
+}
+
+// Connect to socket
+function connectToSocket(chat, inbox, activeChat) {
+
+  // Attach a listener which fires when a connection is established:
+  io.socket.on('connect', function socketConnected() {
+
+    if($("#userId").val() != "") {
+      io.socket.get("/user/subscription/" + $("#userId").val() , function(data){
+        console.log(data);
+      });
+    }
+
+    // Listen for the "user" event, which will be broadcast when something
+    // happens to a user we're subscribed to.  See the "autosubscribe" attribute
+    // of the User model to see which messages will be broadcast by default
+    // to subscribed sockets.
+    io.socket.on('user', function messageReceived(message) {
+      console.log(activeChat);
+      switch (message.verb) {
+        // Handle private messages.
+        case 'messaged':
+          chat.push(message.data);
+          // Case open Inbox
+          if(inbox.length > 0) {
+            for(var i=0; i<chat.length; i++) {
+              console.log(chat[i].from in inbox);
+              if(inbox.indexOf(chat[i].from) > -1) {
+                var contact = $("#space-for-contacts").children()[i];
+                console.log(contact);
+                $(contact).css({"background-color" : "#70DA8B"});
+              }
+            }
+          } else if(activeChat !== undefined) {
+            // Case Open Specific chat
+            for(var i=0; i<chat.length; i++) {
+              if(chat[i].from == activeChat) {
+                chat.splice(i,1);
+                $("#messages-space").append(
+                '<li>' +
+                '<div class="message">' +
+                '<p>' + chat.msg + '</p>' +
+                '</div>' +
+                '</li>');
+                break;
+              }
+            }
+          }
+          break;
+        default:
+          break;
+      }
+
+    });
+
+    console.log('Socket is now connected!');
+    // When the socket disconnects, hide the UI until we reconnect.
+    io.socket.on('disconnect', function() {});
+  });
+
 }

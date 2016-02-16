@@ -69,7 +69,6 @@ module.exports = {
 
   },
 
-
   signup: function(req, res) {
     var role = req.param("role");
     // Encrypt a string using the BCrypt algorithm.

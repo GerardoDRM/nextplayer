@@ -1,15 +1,20 @@
 angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http', '$q', '$compile', function($scope, $http, $q, $compile) {
   $scope.session = {};
+  $scope.chatObjects = [];
+  $scope.inboxList = [];
+  $scope.currentDestination;
+  // Connect To socket
+  connectToSocket($scope.chatObjects, $scope.inboxList, $scope.currentDestination);
 
   // Close commentElement
-  $("#dialogComment").click(function(){
+  $("#dialogComment").click(function() {
     $("#dialogComment").css({
       opacity: 0,
       "pointer-events": "none"
     });
   });
   // Session dialog
-  $("#dialogSessions").click(function(){
+  $("#dialogSessions").click(function() {
     $("#dialogSessions").css({
       opacity: 0,
       "pointer-events": "none"
@@ -86,7 +91,6 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
   };
 
   $scope.updateSession = function() {
-    console.log($scope.session);
     if ($scope.session > -1) {
       $http({
         method: 'PUT',
@@ -135,6 +139,85 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
         addFeedback("Ha ocurrido un error, vuelva a intentarlo en otro momento", "error");
       });
     }
+  };
+
+  $scope.showInbox = function($event) {
+    console.log($scope.chatObjects);
+    $scope.currentDestination = undefined;
+    var elementReturn = $($event.target).is("span");
+    if ($("#chat-structure").css('display') == 'block' && !elementReturn) {
+      $("#chat-structure").hide(500);
+      $scope.inboxList = [];
+    } else {
+      // Get inbox
+      $http({
+        method: 'GET',
+        url: '/myrooms/info',
+        params: {
+          "user": $("#userId").val(),
+        }
+      }).then(function successCallback(response) {
+        var contacts = response.data;
+        if (contacts !== undefined) {
+          // Clean space
+          $("#space-for-contacts").empty();
+          // Add messages
+          for (var i = 0; i < contacts.length; i++) {
+            $scope.inboxList[i] = contacts[i]._id;
+            createInbox($compile, $scope, contacts[i]);
+          }
+        }
+        // Chat UI animation
+        $("#chat-structure").show(500);
+        $("#conversation").hide(100);
+        $("#inbox").show(100);
+      }, function errorCallback(response) {});
+    }
+  };
+
+  $scope.showConversation = function(id, name) {
+    $scope.inbox = [];
+    // Create room or Get messages
+    $http({
+      method: 'PUT',
+      url: '/add/rooms',
+      data: {
+        "org": $("#userId").val(),
+        "user": id
+      }
+    }).then(function successCallback(response) {
+      var messages = response.data[0].messages;
+      if (messages !== undefined) {
+        // Clean space
+        $("#messages-space").empty();
+        // Add messages
+        for (var i = 0; i < messages.length; i++) {
+          createMessages($compile, $scope, messages[i]);
+        }
+      }
+      $scope.currentDestination = id;
+      // Chat UI animation
+      $("#chat-structure").show(500);
+      $("#conversation").show(100);
+      $("#inbox").hide(100);
+      $("#roomName").html(name);
+    }, function errorCallback(response) {});
+  };
+
+  $scope.sendMessage = function() {
+    // Send the private message
+    io.socket.post('/chat/private/' + $("#userId").val(), {
+      to: $scope.currentDestination,
+      msg: $scope.message
+    });
+
+    console.log("Des",$scope.currentDestination);
+
+    var message = {
+      id: $("#userId").val(),
+      content: $scope.message
+    };
+    createMessages($compile, $scope, message);
   }
 
 
@@ -161,7 +244,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
       '<a href="/profile/' + following._id + '\">' +
       '<div class="card">' +
       '<div class="catalogue-image" style="background: url(../' + match[0] + ') 50% 50% / cover no-repeat"></div>' +
-      '<p>' + name  + " " + following.lastname +
+      '<p>' + name + " " + following.lastname +
       '</br>' +
       '(' + following.sport.title + ')</p>' +
       '<img class="shield" src="../images/equipo_escudo.png">' +
@@ -177,8 +260,8 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
       '<h4 style="margin:0;">' + following.recruiter + '</h4>' +
       '</div>' +
       '<div class="col-sm-6" style="display:inline">' +
-      '<a ng-click=showCommentForm(\''+ following._id +'\',$event)><img alt="..." class="message-image" src="../images/comment.svg"></a>' +
-      '<a><img alt="..." class="message-image" src="../images/mensage.svg"></a>' +
+      '<a ng-click=showCommentForm(\'' + following._id + '\',$event)><img alt="..." class="message-image" src="../images/comment.svg"></a>' +
+      '<a ng-click="showConversation(\'' + following._id + '\', \'' + name + '\')"><img alt="..." class="message-image" src="../images/mensage.svg"></a>' +
       '</div>' +
       '<p>' + following.comment + '</p>' +
       '</div>' +
@@ -215,6 +298,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
     )(scope));
   }
 }]);
+
 
 // Create Access rows
 var createAccessOpt = function(i, compile, scope, access) {

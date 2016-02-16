@@ -9,8 +9,7 @@ angular.module('LoginModule').controller('LoginController', ['$scope', '$http', 
 	        password: $scope.loginForm.password
 	      })
 	      .then(function onSuccess() {
-	        // Refresh the page now that we've been logged in.
-	        window.location = '/';
+          window.location = '/';
 	      })
 	      .catch(function onError(sailsResponse) {
 	        // Handle known error type(s).

@@ -68,5 +68,28 @@
     </form>
   </div>
 </div>
+<a class="chat" id="button-chat" ng-click="showInbox($event)"></a>
+
+<!-- Modal Chat -->
+<div class="modalChat" id="chat-structure">
+  <div class="inbox-container" id="inbox">
+    <div class="header">
+      <h2>Inbox</h2>
+    </div>
+    <ul class="message-list" id="space-for-contacts">
+    </ul>
+  </div>
+  <div class="inbox-container" id="conversation">
+    <div class="header">
+      <span aria-hidden="true" class="glyphicon glyphicon-triangle-left" id="return-inbox" ng-click="showInbox($event)"></span>
+      <h2 id="roomName"></h2>
+    </div>
+    <ul id="messages-space">
+    </ul>
+    <div class="message-input">
+      <input type="text" ng-model="message" enter="sendMessage()"/>
+    </div>
+  </div>
+</div>
 </div>
 {% endblock content %}

@@ -1,4 +1,9 @@
 angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$http', '$q', '$compile', function($scope, $http, $q, $compile) {
+  $scope.chatObjects = [];
+  $scope.inboxList = [];
+  $scope.currentDestination;
+  // Connect To socket
+  connectToSocket($scope.chatObjects, $scope.inboxList, $scope.currentDestination);
 
   $scope.noticeInfo = $http({
     method: 'GET',
@@ -50,6 +55,80 @@ angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$h
     }
 
   });
+
+  $scope.showInbox = function($event) {
+    $scope.currentDestination = undefined;
+    var elementReturn = $($event.target).is("span");
+    if ($("#chat-structure").css('display') == 'block' && !elementReturn) {
+      $("#chat-structure").hide(500);
+    } else {
+      // Get inbox
+      $http({
+        method: 'GET',
+        url: '/myrooms/info',
+        params: {
+          "user": $("#userId").val(),
+        }
+      }).then(function successCallback(response) {
+        var contacts = response.data;
+        if (contacts !== undefined) {
+          // Clean space
+          $("#space-for-contacts").empty();
+          // Add messages
+          for (var i = 0; i < contacts.length; i++) {
+            $scope.inboxList[i] = contacts[i]._id;
+            createInbox($compile, $scope, contacts[i]);
+          }
+        }
+        // Chat UI animation
+        $("#chat-structure").show(500);
+        $("#conversation").hide(100);
+        $("#inbox").show(100);
+      }, function errorCallback(response) {});
+    }
+  };
+
+  $scope.showConversation = function(id, name) {
+    $scope.inbox = [];
+    // Create room or Get messages
+    $http({
+      method: 'PUT',
+      url: '/add/rooms',
+      data: {
+        "org": $("#userId").val(),
+        "user": id
+      }
+    }).then(function successCallback(response) {
+      var messages = response.data[0].messages;
+      if (messages !== undefined) {
+        // Clean space
+        $("#messages-space").empty();
+        // Add messages
+        for (var i = 0; i < messages.length; i++) {
+          createMessages($compile, $scope, messages[i]);
+        }
+      }
+      $scope.currentDestination = id;
+      // Chat UI animation
+      $("#chat-structure").show(500);
+      $("#conversation").show(100);
+      $("#inbox").hide(100);
+      $("#roomName").html(name);
+    }, function errorCallback(response) {});
+  };
+
+  $scope.sendMessage = function() {
+    // Send the private message
+    io.socket.post('/chat/private/' + $("#userId").val(), {
+      to: $scope.currentDestination,
+      msg: $scope.message
+    });
+    var message = {
+      id: $("#userId").val(),
+      content: $scope.message
+    };
+    createMessages($compile, $scope, message);
+  }
 }]);
 
 

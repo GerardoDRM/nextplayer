@@ -100,8 +100,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'PUT /user/org/sessions': 'UserController.updateSession',
-
   'GET /search/:session': 'ProfileController.showSearchPage',
+
   'PUT /search/filters': "UserController.userFilters",
   'GET /blog' : 'BlogController.blog',
   'GET /blogs/:month/:year': 'BlogController.getPostByDate',
@@ -114,9 +114,16 @@ module.exports.routes = {
   'PUT /followed': 'FollowedController.followed',
   'GET /followed/:id': 'FollowedController.getFollowed',
   'GET /contact' : {view: 'contact'},
-  'GET /combines' : {view: 'combines'}
-
-
+  'GET /combines' : {view: 'combines'},
+  /***************************************************************************
+  *                                                                          *
+  * Chat routes socket IO.                                                   *
+  *                                                                          *
+  ***************************************************************************/
+  'PUT /add/rooms': 'RoomsController.addRoom',
+  'GET /user/subscription/:id': 'RoomsController.subscribeToMessages',
+  'POST /chat/private/:id': 'RoomsController.privateMessage',
+  'GET /myrooms/info': 'RoomsController.getInbox'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

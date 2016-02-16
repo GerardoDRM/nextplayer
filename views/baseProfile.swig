@@ -88,7 +88,6 @@
     </div>
   </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="/js/dependencies/jquery-ui.min.js"></script>
@@ -97,6 +96,7 @@
 
   <!--SCRIPTS-->
   <script src="/js/dependencies/sails.io.js"></script>
+  <script src="/js/dependencies/app.js"></script>
   <script src="/js/public/signup/SignupModule.js"></script>
   <script src="/js/public/signup/SignupController.js"></script>
   <script src="/js/public/login/LoginModule.js"></script>
@@ -230,16 +230,6 @@
 
 
       // Chat UI animation
-      $("#button-chat").click(function() {
-        if ($("#chat-structure").css('display') == 'block') {
-          $("#chat-structure").hide(500);
-        } else {
-          $("#chat-structure").show(500);
-          $("#conversation").hide(500);
-          $("#inbox").show(500);
-        }
-      });
-
       $(".inbox-contact").click(function() {
         $("#inbox").hide(500);
         $("#conversation").show(500);
