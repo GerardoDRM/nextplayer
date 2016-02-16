@@ -587,7 +587,7 @@ textarea {
   width: 60%; }
 
 .dialogSessions {
-  background: #2ae92e;
+  background: #FFF;
   width: 40%;
   margin: 10% auto;
   padding: 10px;
@@ -602,6 +602,17 @@ textarea {
     font-style: italic; }
   .dialogSessions form {
     text-align: center; }
+  .dialogSessions textarea {
+    margin: 0px;
+    width: 375px;
+    height: 176px; }
+
+.dialogLoading {
+  margin-top: 15%;
+  text-align: center;
+  color: #FFF; }
+  .dialogLoading img {
+    width: 5%; }
 
 /**
   * Wrappers Partial SASS

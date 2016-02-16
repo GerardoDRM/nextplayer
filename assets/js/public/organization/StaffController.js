@@ -61,11 +61,11 @@ angular.module('UsersModule').controller('StaffController', ['$scope', '$http', 
           "file_photo": $scope.arrayPhotos[i] === undefined ? "" : $scope.arrayPhotos[i]
         };
       }
-      // Loading
-      // $("#loading").css({
-      //   opacity: 1,
-      //   "pointer-events": "auto"
-      // });
+       //Loading
+       $("#loading").css({
+         opacity: 1,
+         "pointer-events": "auto"
+       });
       $http({
         method: 'PUT',
         url: '/user/org/staff',
@@ -77,7 +77,7 @@ angular.module('UsersModule').controller('StaffController', ['$scope', '$http', 
         console.log(response);
         addFeedback("Los cambios han sido guardados exitosamente", "success");
         $("#staff-btn").trigger("click");
-        // $("#loading").css({opacity: 0, "pointer-events": "none"});
+         $("#loading").css({opacity: 0, "pointer-events": "none"});
       }, function errorCallback(response) {
         console.log(response);
       });
