@@ -17,4 +17,10 @@
     <button class="input-signup" ng-click="update()">Guardar</button>
   </div>
 
-</div>
+  <div class="modalDialog" id="loading">
+    <div class="dialogLoading">
+      <h3> Espere un momento porfavor </h3>
+        <img src="../images/load_icon.gif">
+    </div>
+    </div>
+  </div>

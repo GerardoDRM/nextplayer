@@ -310,7 +310,7 @@ var createAccessOpt = function(i, compile, scope, access) {
   angular.element(document.getElementById('space-for-access')).append(compile(
     '<div class="col-sm-6">' +
     '<h3>Acceso ' + (i + 1) + '</h3>' +
-    '<p>' + access.name + '<input type="radio" ng-model="session" value="' + i + '" ' + disabled + '></p>' +
+    '<p>' + access.name + '<input style="margin-left:20px;" type="radio" ng-model="session" value="' + i + '" ' + disabled + '></p>' +
     '</div>'
   )(scope));
 };

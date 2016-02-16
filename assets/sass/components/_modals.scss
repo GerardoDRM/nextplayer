@@ -164,7 +164,7 @@
 
 // Moda Sessions
 .dialogSessions {
-  background: $green;;
+  background: $white;;
   width: 40%;
   margin: 10% auto;
   padding: 10px;
@@ -179,4 +179,17 @@
   form {
     text-align: center;
   }
+  textarea {
+    margin: 0px;
+    width: 375px;
+    height: 176px;
+  }
+}
+.dialogLoading {
+  margin-top: 15%;
+text-align: center;
+color: $white;
+img {
+  width: 5%;
+}
 }

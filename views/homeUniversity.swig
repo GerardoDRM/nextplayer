@@ -50,7 +50,7 @@
     <form>
       <div class="row" id="space-for-access"></div>
       <div class="save-button" style="text-align:center;">
-        <button class="input-signup" ng-click="updateSession()" style="margin-top: 18px;">Entrar</button>
+        <button class="input-signup" style="background:#2ae92e;" ng-click="updateSession()" style="margin-top: 18px;">Entrar</button>
       </div>
     </form>
   </div>
@@ -61,9 +61,9 @@
   <div class="dialogSessions">
     <h1>Comenta sobre este prospecto:</h1>
     <form id="form-comment">
-    <textarea placeholder="Escribe tu comentario" ng-model="comment" required></textarea>
+    <textarea maxlength="200" placeholder="Escribe tu comentario" ng-model="comment" required></textarea>
       <div class="save-button" style="text-align:center;">
-        <button class="input-signup" style="margin-top: 18px;" ng-click="addComment()">Guardar</button>
+        <button class="input-signup" style="margin-top: 18px; background:#2ae92e;" ng-click="addComment()">Guardar</button>
       </div>
     </form>
   </div>
