@@ -50,12 +50,10 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     if($scope.user.state) $("#states-list").val($scope.user.state);
 
     // Adding global sport
-    if($scope.user.sport_name != '' || $scope.user.sport_name === undefined){
+    if($scope.user.sport_name != '' || $scope.user.sport_name !== undefined){
       $("#userSport").val($scope.user.sport_name);
-      showSport($scope.user.state);
-    }
-
-    else {
+      showSport($scope.user.sport_name);
+    } else {
       $("#dialogSport").css({"opacity": 1, "pointer-events": "auto"});
     }
     delete $scope.user.sport_name;

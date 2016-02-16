@@ -586,6 +586,23 @@ textarea {
   margin: 12% auto;
   width: 60%; }
 
+.dialogSessions {
+  background: #2ae92e;
+  width: 40%;
+  margin: 10% auto;
+  padding: 10px;
+  box-shadow: 12px 9px 25px #0A0A0A;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px; }
+  .dialogSessions h1 {
+    font-weight: bold; }
+  .dialogSessions h4 {
+    font-style: italic; }
+  .dialogSessions form {
+    text-align: center; }
+
 /**
   * Wrappers Partial SASS
   * This SASS has all the wrappers used on the app
@@ -941,7 +958,8 @@ textarea {
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
-    right: 15px; }
+    right: 15px;
+    top: 20px; }
     .photo-preview a:hover {
       padding: 18px;
       background-repeat: no-repeat;
@@ -1350,7 +1368,7 @@ textarea {
   width: 35%;
   margin-top: 41%; }
 
-.container-university-preview {
+.container-team {
   margin-top: 0px; }
 
 /**
@@ -1527,7 +1545,7 @@ textarea {
   .profile-view-container .responsive-button {
     display: none; }
 
-  .container-university-preview {
+  .container-team {
     margin-top: -125px; } }
 
 /*# sourceMappingURL=main.css.map */

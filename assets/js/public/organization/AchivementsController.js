@@ -51,7 +51,7 @@ angular.module('UsersModule').controller('AchivementsController', ['$scope', '$h
         addFeedback("Tus datos han sido almacenados exitosamente", 'success');
       }
     }, function errorCallback(response) {
-      ddFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
+      addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
     });
   };
 

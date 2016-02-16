@@ -321,30 +321,6 @@ module.exports = {
   },
 
 
-  'facebook': function(req, res, next) {
-    passport.authenticate('facebook', {
-        scope: ['email']
-      },
-      function(err, user) {
-        req.logIn(user, function(err) {
-          if (err) {
-            req.session.flash = 'There was an error';
-            res.redirect('/login');
-          } else {
-            req.session.me = user.id;
-            res.redirect('/');
-          }
-        });
-      })(req, res, next);
-  },
-
-  'facebook/callback': function(req, res, next) {
-    passport.authenticate('facebook',
-      function(req, res) {
-        res.redirect('/');
-      })(req, res, next);
-  },
-
 
   ////////////////////////////
   ///////Get User Info ///////
@@ -590,6 +566,46 @@ module.exports = {
           return res.ok([]);
         }
       });
+    });
+  },
+
+  getAccessOrg: function(req, res) {
+    var user = new ObjectId(req.param("user"));
+    // Get user
+    User.native(function(err, collection) {
+      if (err) return res.serverError(500);
+      collection.find({
+        _id: user
+      }, {
+        _id: 0,
+        "details.access": 1
+      }).toArray(function(err, results) {
+        if (err) return res.serverError(err);
+        if (results.length > 0) {
+          return res.ok(results[0].details.access);
+        } else {
+          return res.ok([]);
+        }
+      });
+    });
+  },
+
+  logoutRecruiter: function(req, res) {
+    var user = req.param("user");
+    var session = req.param("session");
+    // Get user
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        userDB.details.access[session].active = undefined; // 1 hour;
+        userDB.details.access[session].status = 0;
+        userDB.save(function(error) {
+          // Either send a 200 OK or redirect to the home page
+          return res.backToHomePage();
+        });
+      }
     });
   },
 
@@ -894,6 +910,24 @@ module.exports = {
     });
   },
 
+  accessOrg: function(req, res) {
+    var user = req.param("user");
+    // Get user
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        userDB.details.access = [];
+        userDB.details.access = req.param("access");
+        userDB.save(function(error) {
+          if (error) res.json(500);
+          res.json(201);
+        });
+      }
+    });
+  },
+
   uploadVideo: function(req, res) {
     var user = req.param("user");
     var video = req.param("video");
@@ -960,6 +994,26 @@ module.exports = {
     ], function(err) {
       if (err) res.json(500);
       res.ok(201);
+    });
+  },
+
+  // Update Inner Session
+  updateSession: function(req, res) {
+    var user = req.param("user");
+    var session = req.param("session");
+    // Get user
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        userDB.details.access[session].active = Date.now() + 3600000; // 1 hour;
+        userDB.details.access[session].status = 1;
+        userDB.save(function(error) {
+          if (error) res.json(500);
+          res.json(201);
+        });
+      }
     });
   },
 
@@ -1087,6 +1141,24 @@ module.exports = {
             if (error) res.json(500);
             res.json(201);
           });
+        });
+      }
+    });
+  },
+  // Remove Access Org
+  accessOrgDelete: function(req, res) {
+    var user = req.param("user");
+    var position = req.param("position");
+    // Get user
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        userDB.details.access.splice(position, 1);
+        userDB.save(function(error) {
+          if (error) res.json(500);
+          res.json(201);
         });
       }
     });

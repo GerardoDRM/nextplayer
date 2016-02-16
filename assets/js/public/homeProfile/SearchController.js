@@ -40,6 +40,9 @@ angular.module('UsersModule').controller('SearchController', ['$scope', '$http',
   $scope.skip = 0;
   $scope.filter = {sport:undefined, age: undefined, range: {}};
 
+  //////////////////////////
+  //// Search Filter ///////
+  /////////////////////////
   $scope.rangeFilter = function(spec, measure) {
     var values = [];
     // Check available values
@@ -82,6 +85,21 @@ angular.module('UsersModule').controller('SearchController', ['$scope', '$http',
   // At first instance
   $scope.serviceFilter($scope.filter);
 
+  $scope.updateActive = function(id) {
+    $http({
+      method: 'PUT',
+      url: '/user/org/sessions',
+      data: {
+        "user": $("#userId").val(),
+        "session":  $("#session").val()
+      }
+    }).then(function successCallback(response) {
+      console.log(response);
+      window.location = "/profile/" + id + "?session=" + $("#session").val();
+    }, function errorCallback(response) {
+    });
+  }
+
 }]);
 
 
@@ -115,7 +133,7 @@ var createCardsProfle = function(compile, scope, profile_info) {
 
   angular.element(document.getElementById('space-for-profiles')).append(compile(
     '<div class="col-xs-6 col-sm-4">' +
-    '<a href="/profile/' + profile_info._id + '">' +
+    '<a href="javascript:void(0)" ng-click="updateActive(\''+ profile_info._id + '\')">' +
     '<div class="card">' +
     '<div class="catalogue-image" style="height:180px ;' + photo + '"></div>' +
     '<p>' + checkForNulls(profile_info.name) + " " + checkForNulls(profile_info.lastname) + '</p>' +

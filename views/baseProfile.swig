@@ -27,18 +27,22 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/user/home">
-          <img class="logo" alt="Brand" src="../images/logo.png"> </a>
+        <img class="logo" alt="Brand" src="../images/logo.png">
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right navbar-text">
+          {% if message.session %}
+          <li><a href="/search/<%=message.session %>">Buscar</a></li>
+          <li><a href="/inner/logout/<%=message.id %>/<%=message.session %>">Cerrar session de Reclutador</a></li>
+          {% else %}
           <li><a href="/user/home">Home</a></li>
           <li><a href="/">Perfil</a></li>
           <li><a href="/blog">Blog</a></li>
           <li><a href="/combines">Combines</a></li>
           <li><a href="/logout">Log out</a></li>
+          {% endif %}
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -48,6 +52,9 @@
   <input type="hidden" id="userSport" />
   <input type="hidden" value="<%= message.id %>" id="userId">
   <input type="hidden" value="<%= message.preview_id %>" id="previewId">
+  <input type="hidden" value="<%=message.session%>" id="session" />
+  <input type="hidden" value="<%=message.recruiter_name%>" id="recruiter" />
+
   <!-- Feedback -->
   <div id="feedback" class="feedback">
     <h3 id="feedback-msg"></h3>
@@ -218,6 +225,8 @@
       });
       // Validate Staff
       $("#staffForm").validate();
+      // Validate Comment
+      $("#form-comment").validate();
 
 
       // Chat UI animation
@@ -246,49 +255,48 @@
     function showSport(sport) {
       switch (sport) {
         case "Fútbol americano":
-      $("#change-sport").attr("src","../images/contador_americano.jpg");
+          $("#change-sport").attr("src", "../images/contador_americano.png");
           break;
         case "Atletismo":
-        $("#change-sport").attr("src","../images/contador_atletismo.jpg");
+          $("#change-sport").attr("src", "../images/contador_atletismo.png");
           break;
         case "Basquetball":
-      $("#change-sport").attr("src","../images/contador_baloncesto.jpg");
+          $("#change-sport").attr("src", "../images/contador_baloncesto.png");
           break;
         case "Fútbol rápido":
-        $("#change-sport").attr("src","../images/contador_futbol_rapido.jpg");
+          $("#change-sport").attr("src", "../images/contador_futbol_rapido.png");
           break;
         case "Baseball":
-      $("#change-sport").attr("src","../images/contador_baseball.jpg");
+          $("#change-sport").attr("src", "../images/contador_baseball.png");
           break;
         case "Golf":
-          $("#change-sport").attr("src","../images/contador_golf.jpg");
+          $("#change-sport").attr("src", "../images/contador_golf.png");
           break;
-          case "Rugby":
-        $("#change-sport").attr("src","../images/contador_rugby.jpg");
-            break;
-          case "Fútbol soccer":
-          $("#change-sport").attr("src","../images/contador_soccer.jpg");
-            break;
-          case "Taekwondo":
-        $("#change-sport").attr("src","../images/contador_taekwondo.jpg");
-            break;
-          case "Tennis-Mesa":
-          $("#change-sport").attr("src","../images/contador_tenis_mesa.jpg");
-            break;
-          case "Tennis":
-        $("#change-sport").attr("src","../images/contador_tenis.jpg");
-            break;
-          case "Voleiball-sala":
-            $("#change-sport").attr("src","../images/contador_voleibol_sala.jpg");
-            break;
-            case "Voleiball-playa":
-              $("#change-sport").attr("src","../images/contador_voleibol_playa.jpg");
-              break;
+        case "Rugby":
+          $("#change-sport").attr("src", "../images/contador_rugby.png");
+          break;
+        case "Fútbol soccer":
+          $("#change-sport").attr("src", "../images/contador_soccer.png");
+          break;
+        case "Taekwondo":
+          $("#change-sport").attr("src", "../images/contador_taekwondo.png");
+          break;
+        case "Tennis-Mesa":
+          $("#change-sport").attr("src", "../images/contador_tenis_mesa.png");
+          break;
+        case "Tennis":
+          $("#change-sport").attr("src", "../images/contador_tenis.png");
+          break;
+        case "Voleiball-sala":
+          $("#change-sport").attr("src", "../images/contador_voleibol_sala.png");
+          break;
+        case "Voleiball-playa":
+          $("#change-sport").attr("src", "../images/contador_voleibol_playa.png");
+          break;
         default:
           console.log("Wrong Sport");
       }
     }
-
   </script>
 
 </body>

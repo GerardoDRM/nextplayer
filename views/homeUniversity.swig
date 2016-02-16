@@ -10,8 +10,7 @@
             </h2>
           </div>
           <div class="interest-team">
-            <ul id="space-for-followers">
-            </ul>
+            <ul id="space-for-followers"></ul>
           </div>
         </div>
       </div>
@@ -33,73 +32,40 @@
             <h2>Prospectos</h2>
           </div>
           <div class="row">
-            <div style="    margin-left: 70%;
-    margin-top: 21px;">
-            <a class="view-green--btn" href="/search">Reclutar</a>
-          </div>
-            <div class="col-sm-6">
-              <!-- First Col -->
-              <div class="row profile-card no-margin">
-                <div class="col-sm-4">
-                  <div class="card">
-                    <div class="catalogue-image"></div>
-                    <p>Udlap</p>
-                    <img class="shield" src="../images/equipo_escudo.png">
-                  </div>
-                </div>
-                <div class="col-sm-8">
-                  <div class="prospects-description">
-                    <h3>
-                      Añadido por:
-                    </h3>
-                    <div class="col-sm-6">
-                      Javier Torres
-                    </div>
-                    <div class="col-sm-6">
-                      <img alt="..." class="message-image" src="../images/mensage.svg">
-                    </div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                    </p>
-
-                  </div>
-                </div>
-              </div>
+            <div style="margin-left: 70%; margin-top: 21px;">
+              <a class="view-green--btn" href="javascript:void(0);" ng-click="getAccess()">Reclutar</a>
             </div>
-            <div class="col-sm-6">
-              <!-- Second Col -->
-              <div class="row profile-card no-margin">
-                <div class="col-sm-4">
-                  <div class="card">
-                    <div class="catalogue-image"></div>
-                    <p>Juan Jose
-                    </br>
-                    (Futbol soccer)</p>
-                  <img class="shield" src="../images/equipo_escudo.png">
-                </div>
-              </div>
-              <div class="col-sm-8">
-                <div class="prospects-description">
-                  <h3>
-                    Añadido por:
-                  </h3>
-                  <div class="col-sm-6 no-padding">
-                    Javier Torres
-                  </div>
-                  <div class="col-sm-6">
-                    <a><img alt="..." class="message-image" src="../images/mensage.svg"></a>
-                  </div>
-
-                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                  </p>
-
-                </div>
-              </div>
-            </div>
-          </div>
+            <div id="space-for-following"></div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<!-- Sessions -->
+<div class="modalDialog" id="dialogSessions">
+  <div class="dialogSessions">
+    <h1>Sesiones:</h1>
+    <h4>
+      *Nota: Una vez que la session este activa, es necesario cerrar la sesion cuando esta sea desocupada, de lo contrario cada session tendra un limite de una hora.</h4>
+    <form>
+      <div class="row" id="space-for-access"></div>
+      <div class="save-button" style="text-align:center;">
+        <button class="input-signup" ng-click="updateSession()" style="margin-top: 18px;">Entrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Comments -->
+<div class="modalDialog" id="dialogComment">
+  <div class="dialogSessions">
+    <h1>Comenta sobre este prospecto:</h1>
+    <form id="form-comment">
+    <textarea placeholder="Escribe tu comentario" ng-model="comment" required></textarea>
+      <div class="save-button" style="text-align:center;">
+        <button class="input-signup" style="margin-top: 18px;" ng-click="addComment()">Guardar</button>
+      </div>
+    </form>
   </div>
 </div>
 </div>

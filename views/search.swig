@@ -80,7 +80,7 @@
         <h2>Resultados</h2>
         <div class="row profile-card no-margin" id="space-for-profiles"></div>
         <div class="save-button" style="text-align:center;">
-          <button class="input-signup" style="    margin-top: 18px;" ng-click="showMore()">Ver más</button>
+          <button class="input-signup" ng-click="showMore()" style="    margin-top: 18px;">Ver más</button>
         </div>
       </div>
     </div>

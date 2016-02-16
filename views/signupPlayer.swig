@@ -41,8 +41,6 @@
           <input type="password" class="input-signup" placeholder="Contraseña" name="password" ng-model="signupForm.password" required>
 
           <input type="submit" value="Registrarse" class="input-signup" placeholder="Registrarse">
-
-          <a class="input-signup facebook" href="/user/facebook">Login con Facebook</a>
           <input type="hidden" name="_csrf" value="<%= _csrf %>" />
         </div>
       </div>

@@ -6,9 +6,9 @@
     <div class="carousel-inner" role="listbox" id="space-for-photos">
     </div>
   </div>
-  <div class="container" class="container-university-preview">
+  <div class="container container-team">
     <div class="row">
-      <div class="col-sm-5" style="padding-right:0px;   padding: 0px;">
+      <div class="col-sm-5 no-padding">
         <div class="photo-team-preview" id="profilePhoto"></div>
       </div>
       <div class="col-sm-7 head-preview" style="padding-right: 0px;">

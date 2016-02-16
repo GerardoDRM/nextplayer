@@ -160,3 +160,23 @@
   margin: 12% auto;
   width: 60%;
 }
+
+
+// Moda Sessions
+.dialogSessions {
+  background: $green;;
+  width: 40%;
+  margin: 10% auto;
+  padding: 10px;
+  box-shadow: 12px 9px 25px #0A0A0A;
+  @include border-radius(5px);
+  h1 {
+    font-weight: bold;
+  }
+  h4{
+    font-style: italic;
+  }
+  form {
+    text-align: center;
+  }
+}

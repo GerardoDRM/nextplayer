@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing Pages
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+var ObjectId = require('mongodb').ObjectID;
 module.exports = {
   showHomePage: function(req, res) {
 
@@ -32,9 +32,9 @@ module.exports = {
 
       if (user.role == "player") {
         route = 'dashboard';
-      } else if (user.role == "coach"){
+      } else if (user.role == "coach") {
         route = 'dashboardCoach';
-      }  else if (user.role == "organization"){
+      } else if (user.role == "organization") {
         if (user.membership !== undefined) {
           // Get UNIX timestamp for now
           var currentDate = Math.floor(Date.now() / 1000);
@@ -82,13 +82,37 @@ module.exports = {
         } else if (userDB.role == "organization") {
           route = "teamPreview";
         }
-        return res.view(route, {
+        var data = {
           message: {
             id: user.id,
             preview_id: userId
-
           }
-        }); // end return
+        };
+        var session = req.param("session");
+        if (session !== undefined) {
+          // Get info about followers
+          User.native(function(err, collection) {
+            if (err) return res.serverError(500);
+            collection.find({
+              _id: new ObjectId(user.id)
+            }, {
+              "details.access" : 1
+            }).toArray(function(err, results) {
+              if (err) return res.serverError(err);
+              var access = results[0].details.access;
+              if(access.length > 0 && access[session] !== undefined && access[session].status == 1 && access[session].active >= Date.now()) {
+                data.message.session = session;
+                data.message.recruiter_name = access[session].name;
+                return res.view(route, data);
+              } else {
+                return res.backToHomePage();
+              }
+            });
+          });
+        }
+        else {
+          return res.view(route, data); // end return
+        }
       });
     });
   }, // End home page
@@ -133,4 +157,43 @@ module.exports = {
       });
     });
   }, // End home page
+
+  showSearchPage: function(req, res) {
+
+    // If not logged in, show the public view.
+    if (!req.session.me) {
+      return res.view('index');
+    }
+
+    // Otherwise, look up the logged-in user and show the logged-in view,
+    // bootstrapping basic user data in the HTML sent from the server
+    User.findOne(req.session.me, function(err, user) {
+      if (err) {
+        return res.negotiate(err);
+      }
+      var session = req.param("session");
+      if (!user || user.role != "organization" || session === undefined) {
+        return res.backToHomePage();
+      }
+      var currentSession = user.details.access[session];
+      if(currentSession === undefined || currentSession.active < Date.now() ||
+         currentSession.status == 0) return res.backToHomePage();
+
+      if (user.membership !== undefined) {
+        // Get UNIX timestamp for now
+        var currentDate = Math.floor(Date.now() / 1000);
+        if (user.membership.transaction_date <= currentDate) {
+          route = "search";
+        } else {
+          route = "paymentOrganization";
+        }
+      }
+      return res.view(route, {
+        message: {
+          id: user.id,
+          session: session
+        }
+      });
+    });
+  }, // End search page
 };

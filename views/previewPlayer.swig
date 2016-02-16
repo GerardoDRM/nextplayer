@@ -17,7 +17,7 @@
     <div class="col-sm-4 border-right-column">
       <div class="left-profile">
         <div class="profile-picture" id="profilePhoto">
-          <img src="../images/contador_americano.png" alt="...">
+          <img alt="..." id="change-sport">
         </div>
         <div class="responsive-button">
           <a href="javascript:void(0);" ng-click="viewDashboard()" id="editProfile2" style=" margin:10px 0;">Edita tu perfil</a>

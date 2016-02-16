@@ -1,4 +1,4 @@
-angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$http', '$compile', function($scope, $http, $compile) {
+angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$http', '$compile' ,'$q', function($scope, $http, $compile, $q) {
   $scope.user = {};
   $scope.coach = {};
   $scope.flag_views = false;
@@ -52,12 +52,22 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
     $("#editProfile2").css({
       display: "none"
     });
-    $("#follow1").css({
-      display: "block"
-    });
-    $("#follow2").css({
-      display: "block"
-    });
+    // Just if it is an active recruiter
+    if($("#recruiter").val() !== undefined && $("#recruiter").val() != ""){
+      $("#follow1").css({
+        display: "block"
+      });
+      $("#follow2").css({
+        display: "block"
+      });
+    } else {
+      $("#follow1").css({
+        display: "none"
+      });
+      $("#follow2").css({
+        display: "none"
+      });
+    }
     // Add View to User
     $scope.viewer();
   } else {
@@ -165,6 +175,11 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
       }
     }
 
+    // Adding global sport
+    if($scope.user.sport.title !== undefined){
+      showSport($scope.user.sport.title);
+    }
+
     // Update Profile Photo
     var profile = $scope.user.profile_photo;
     if (profile !== undefined || profile != null) updatePhotoView($("#profilePhoto"), profile);
@@ -183,7 +198,8 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
       url: '/following',
       data: {
         "user": $("#userId").val(),
-        "following": $("#previewId").val()
+        "following": $("#previewId").val(),
+        "recruiter": $("#recruiter").val()
       }
     });
     $scope.followed = $http({

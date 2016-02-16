@@ -89,7 +89,19 @@ module.exports.routes = {
   'GET /user/org/staff': 'UserController.getStaff',
   'PUT /user/org/staff': 'UserController.staff',
   'DELETE /user/org/staff': 'UserController.staffDelete',
-  'GET /search': {view: 'search'},
+  'GET /user/org/access': 'UserController.getAccessOrg',
+  'PUT /user/org/access': 'UserController.accessOrg',
+  'DELETE /user/org/access': 'UserController.accessOrgDelete',
+  'PUT /org/roster/comments': 'Following.comments',
+  'GET /inner/logout/:user/:session': 'UserController.logoutRecruiter',
+  /***************************************************************************
+  *                                                                          *
+  * Team routes Inner fake sessions...                                       *
+  *                                                                          *
+  ***************************************************************************/
+  'PUT /user/org/sessions': 'UserController.updateSession',
+
+  'GET /search/:session': 'ProfileController.showSearchPage',
   'PUT /search/filters': "UserController.userFilters",
   'GET /blog' : 'BlogController.blog',
   'GET /blogs/:month/:year': 'BlogController.getPostByDate',
