@@ -80,10 +80,6 @@ function checkSport(sport, scope, compile) {
       createPostions(scope.basquetbal, compile, scope);
       scope.selected_sport = scope.basquetbal;
       break;
-    case "Tennis":
-      createPostions(scope.americanFootball, compile, scope);
-      scope.selected_sport = scope.americanFootball;
-      break;
     case "Beisbol":
       createPostions(scope.beisbol, compile, scope);
       scope.selected_sport = scope.beisbol;
@@ -92,10 +88,14 @@ function checkSport(sport, scope, compile) {
       createPostions(scope.fastFootball, compile, scope);
       scope.selected_sport = scope.fastFootball;
       break;
-      case "Voleibol":
+      case "Voleibol-sala":
         createPostions(scope.voleibol, compile, scope);
         scope.selected_sport = scope.voleibol;
         break;
+        case "Voleibol-playa":
+          createPostions(scope.voleibol, compile, scope);
+          scope.selected_sport = scope.voleibol;
+          break;
         case "Taekwondo":
           createPostions(scope.taekwondo, compile, scope);
           scope.selected_sport = scope.taekwondo;
