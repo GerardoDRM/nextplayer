@@ -115,6 +115,7 @@ module.exports.routes = {
   'GET /followed/:id': 'FollowedController.getFollowed',
   'GET /contact' : {view: 'contact'},
   'GET /combines' : {view: 'combines'},
+  'GET /terms' : {view: 'terms'},
   /***************************************************************************
   *                                                                          *
   * Chat routes socket IO.                                                   *

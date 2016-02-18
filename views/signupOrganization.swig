@@ -1,5 +1,7 @@
 {% extends 'base.swig' %} {% block content %}
-<div class="advisement"></div>
+<!--<div class="advisement">
+
+</div> -->
 <div class="form-sign" ng-app="SignupModule" ng-cloak ng-controller="SignupController">
   <form id="form-signup" name="signup" ng-submit="submitSignupForm()">
     <div class="container">
@@ -28,6 +30,7 @@
           <input class="input-signup" type="submit" value="Registrarse">
 
           <input name="_csrf" type="hidden" value="<%= _csrf %>" />
+              <p class="note-terms"> *Nota: Al registrarse usted esta aceptando los términos y condiciones </p>
         </div>
       </div>
 

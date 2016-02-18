@@ -1,11 +1,11 @@
 {% extends 'base.swig' %} {% block content %}
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div class="carousel slide" data-ride="carousel" id="carousel-example-generic">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li class="active" data-slide-to="0" data-target="#carousel-example-generic"></li>
+    <li data-slide-to="1" data-target="#carousel-example-generic"></li>
+    <li data-slide-to="2" data-target="#carousel-example-generic"></li>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -14,36 +14,48 @@
     <div class="item active">
       <div class="carousel-images">
         <div class="margin-top">
-          <h1 class="dissapear"> DARE </h1>
-          <h3 class="dissapear"> TO </h3>
-          <h2 class="dissapear"> DREAM </h2>
-          <p class="dissapear"> Sueñas con jugar al siguiente nivel? </p>
-          <p class="dissapear"> únete a nextplayers, creando tu perfil con </p>
-          <p class="dissapear"> todos tus datos, fotos y vídeos. </p>
+          <h1 class="dissapear">
+            DARE
+          </h1>
+          <h3 class="dissapear">
+            TO
+          </h3>
+          <h2 class="dissapear">
+            DREAM
+          </h2>
+          <p class="dissapear">
+            Sueñas con jugar al siguiente nivel?
+          </p>
+          <p class="dissapear">
+            únete a nextplayers, creando tu perfil con
+          </p>
+          <p class="dissapear">
+            todos tus datos, fotos y vídeos.
+          </p>
 
-          <h3 class="dissapear"> ¡ES GRATIS! </h3>
+          <h3 class="dissapear">
+            ¡ES GRATIS!
+          </h3>
         </div>
       </div>
     </div>
     <div class="item">
-      <div class="carousel-images-dos">
-      </div>
+      <div class="carousel-images-dos"></div>
     </div>
 
     <div class="item">
-      <div class="carousel-images-tres">
-      </div>
+      <div class="carousel-images-tres"></div>
     </div>
 
   </div>
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  <a class="left carousel-control" data-slide="prev" href="#carousel-example-generic" role="button">
+    <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+  <a class="right carousel-control" data-slide="next" href="#carousel-example-generic" role="button">
+    <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
@@ -51,8 +63,12 @@
 <!-- After carousel -->
 
 <div class="midtern-header">
-  <h1> BIENVENIDO A NEXTPLAYERS! </h1>
-  <p> la única plataforma de reclutamiento deportivo en México </p>
+  <h1>
+    BIENVENIDO A NEXTPLAYERS!
+  </h1>
+  <p>
+    la única plataforma de reclutamiento deportivo en México
+  </p>
 
 </div>
 <div class="container-fluid">
@@ -60,31 +76,37 @@
     <div class="middle-body">
       <div class="row">
         <div class="col-sm-8">
-          <h1> CREA TU PERFIL </h1>
+          <h1>
+            CREA TU PERFIL
+          </h1>
           <div class="row">
             <div class="col-sm-4">
               <a href="/signup/coach">
-                <img src="../images/coach_escudo.png" alt="...">
+                <img alt="..." src="../images/coach_escudo.png">
               </a>
-              <h2>COACHES </h2>
+              <h2>COACHES
+              </h2>
             </div>
             <div class=" col-sm-4">
               <a href="/signup/organization">
-                <img src="../images/equipo_escudo.png" alt="...">
+                <img alt="..." src="../images/equipo_escudo.png">
               </a>
-              <h2>EQUIPOS </h2>
+              <h2>EQUIPOS
+              </h2>
             </div>
             <div class=" col-sm-4">
               <a href="/signup/player">
-                <img src="../images/jugador_escudo.png" alt="...">
+                <img alt="..." src="../images/jugador_escudo.png">
               </a>
-              <h2>JUGADORES </h2>
+              <h2>JUGADORES
+              </h2>
             </div>
           </div>
-          <p>REGISTRÉNSE PARA ACCEDER A NUESTRA BASE DE DATOS </p>
+          <p>REGISTRÉNSE PARA ACCEDER A NUESTRA BASE DE DATOS
+          </p>
         </div>
         <div class="col-sm-4 nike-img ">
-          <img src="../images/nike.jpg" alt="..." class="dissapear">
+      
         </div>
       </div>
     </div>
@@ -95,21 +117,23 @@
     <div class="middle-middle">
       <div class="row row-middle">
         <div class="col-sm-12 col-md-3">
-          <h2 class="dissapear"> PERFILES MUESTRA </h2>
+          <h2 class="dissapear">
+            PERFILES MUESTRA
+          </h2>
         </div>
         <div class="col-sm-4 col-md-3">
           <a onclick="showPreviewSample('team')">
-            <img src="../images/equipo_muestra.png" alt="...">
+            <img alt="..." src="../images/equipo_muestra.png">
           </a>
         </div>
         <div class="col-sm-4 col-md-3">
           <a onclick="showPreviewSample('player')">
-            <img src="../images/jugador_muestra.png" alt="...">
+            <img alt="..." src="../images/jugador_muestra.png">
           </a>
         </div>
         <div class="col-sm-4 col-md-3">
           <a onclick="showPreviewSample('coach')">
-            <img src="../images/coach_muestra.png" alt="...">
+            <img alt="..." src="../images/coach_muestra.png">
           </a>
         </div>
       </div>
@@ -121,19 +145,19 @@
     <div class="middle-counter">
       <div class="row row-after">
         <div class="col-xs-6 col-sm-3">
-          <img src="../images/contador_soccer.png" alt="...">
+          <img alt="..." src="../images/contador_soccer.png">
           <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
         <div class="col-xs-6 col-sm-3">
-          <img src="../images/contador_americano.png" alt="...">
+          <img alt="..." src="../images/contador_americano.png">
           <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
         <div class="col-xs-6 col-sm-3">
-          <img src="../images/contador_tenis.png" alt="...">
+          <img alt="..." src="../images/contador_tenis.png">
           <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
         <div class="col-xs-6 col-sm-3">
-          <img src="../images/contador_baloncesto.png" alt="...">
+          <img alt="..." src="../images/contador_baloncesto.png">
           <!--  <h2 class="dissapear"> 21 </h2> -->
         </div>
       </div>
@@ -145,14 +169,21 @@
     <div class="mision-vision">
       <div class="row">
         <div class="col-sm-6">
-          <h2> MISIÓN </h2>
+          <h2>
+            MISIÓN
+          </h2>
           <p>
 
-            Nuestra misión es ayudar a todos los atletas de México que buscan una oportunidad de poder estudiar y por medio de sus habilidades tanto deportivas poder obtener una beca universitaria en las mejores escuelas de México. </p>
+            En Next Players estamos comprometidos a ayudar a atletas, coaches y equipos alcanzar su potencial. Facilitaremos la búsqueda de talento y conexión entre jugadores y reclutadores, con mayor alcance. Para contribuir a mejorar la calidad del nivel deportivo
+            en el pais, apoyaremos a atletas, coaches y equipos desarrollar sus aptitudes físicas y mentales.
+          </p>
         </div>
         <div class="col-sm-6">
-          <h2> VISIÓN </h2>
-          <p>Nuestra visión es llegar a satisfacer las necesidades de todas las universidades en México y facilitar la búsqueda de los mejores atletas. </p>
+          <h2>
+            VISIÓN
+          </h2>
+          <p>En Next Players queremos ser una plataforma innovadora que está al tanto de las nuevas tendencias tecnológicas y deportivas para lograr ser una empresa reconocida a nivel mundial en reclutamiento deportivo.
+          </p>
         </div>
       </div>
     </div>
@@ -161,7 +192,7 @@
 
 <div class="modalDialog" id="dialogSample">
   <div class="dialogSample">
-    <img style="width: 100%;" id="dialogImgSample">
+    <img id="dialogImgSample" style="width: 100%;">
   </div>
 </div>
 {% endblock %}

@@ -3,6 +3,11 @@ angular.module('UsersModule').controller('SportController', ['$scope', '$http', 
   $scope.soccer = ["Portero", "Lateral Izquierdo", "Lateral Derecho", "Central", "Medio de Contención", "Mediocampista", "Extremo Izquierdo", "Extremo Derecho", "Enganche", "Centro Delantero"];
   $scope.voleibol = ["Acomodador", "Esquina", "Central", "Zaguero", "Libero"];
   $scope.basquetbal = ["Base", "Escolta", "Alero", "Ala-Pivot", "Pivot"];
+  $scope.beisbol = ["Pícher", "Catcher", "Primera Base", "Segunda Base", "Tercera Base", "Short Stop", "Jardinero Izquierdo", "Jardinero Derecho", "Jardinero Central", "Bateador designado"];
+  $scope.taekwondo= ["Blanca", "Amarilla", "Verde", "Azul", "Roja", "Roja/Negra", "Negra"];
+  $scope.rugby= ["Pilares", "Hooker", "Segunda Línea", "Tercera Línea", "Número ocho", "Medio-scrum", "Apertura", "Wings", "Centros", "Full Back"];
+  $scope.fastFootball= ["Portero", "Defensa", "Medio", "Delantero"];
+  $scope.atletism= ["Velocidad", "MedioFondo", "Maratón", "Fondo", "Relevos", "Saltos", "Lanzamientos", "Marcha", "Pruebas Combinadas"];
   $scope.selected_sport = [];
   $scope.user = {};
   $scope.sport = {};
