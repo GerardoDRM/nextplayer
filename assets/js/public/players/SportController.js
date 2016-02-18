@@ -88,11 +88,11 @@ function checkSport(sport, scope, compile) {
       createPostions(scope.fastFootball, compile, scope);
       scope.selected_sport = scope.fastFootball;
       break;
-      case "Voleibol-sala":
+      case "Voleibol Sala":
         createPostions(scope.voleibol, compile, scope);
         scope.selected_sport = scope.voleibol;
         break;
-        case "Voleibol-playa":
+        case "Voleibol Playa":
           createPostions(scope.voleibol, compile, scope);
           scope.selected_sport = scope.voleibol;
           break;

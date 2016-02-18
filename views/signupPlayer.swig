@@ -17,16 +17,17 @@
             <option value="Fútbol americano" selected="selected">Fútbol americano</option>
             <option value="Fútbol soccer">Fútbol soccer</option>
             <option value="Tennis">Tennis</option>
+            <option value="Tennis Mesa">Tennis Mesa</option>
             <option value="Atletismo">Atletismo</option>
-            <option value="Voleibol">Voleibol-sala</option>
-            <option value="Fútbol soccer">Fútbol rápido</option>
+            <option value="Voleibol Playa">Voleibol Playa</option>
+            <option value="Fútbol rápido">Fútbol rápido</option>
             <option value="Beisbol">Beisbol</option>
-            <option value="Tennis">Golf</option>
-            <option value="Atletismo">Rugby</option>
+            <option value="Golf">Golf</option>
+            <option value="Rugby">Rugby</option>
             <option value="Taekwondo">Taekwondo</option>
             <option value="Baloncesto">Baloncesto</option>
-            <option value="Tennis">Tennis-mesa</option>
-            <option value="Voleibol">Voleibol-playa</option>
+            <option value="Voleibol Sala">Voleibol Sala</option>
+
           </select>
           <input type="hidden" id="user-type" value="player">
         </div>
