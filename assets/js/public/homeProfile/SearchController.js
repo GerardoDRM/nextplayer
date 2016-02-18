@@ -39,6 +39,36 @@ angular.module('UsersModule').controller('SearchController', ['$scope', '$http',
   };
   $scope.skip = 0;
   $scope.filter = {sport:undefined, age: undefined, range: {}};
+  $scope.following_list = [];
+
+  $scope.searchFilter = $http({
+    method: 'PUT',
+    url: '/search/filters',
+    data: {
+      "search": $scope.filter,
+      "skip": $scope.skip
+    }
+  });
+  $scope.following = $http({
+    method: 'GET',
+    url: '/following/' + $("#userId").val()
+  });
+  $q.all([$scope.following, $scope.searchFilter]).then(function(results) {
+    ////////////////////
+    ///// Following ///
+    ///////////////////
+    var followingList = results[0].data;
+    for (var i = 0; i < followingList.length; i++) {
+      $scope.following_list.push(followingList[i]._id);
+    }
+    ////////////////////
+    ///// Search //////
+    ///////////////////
+    var profiles = results[1].data;
+    for(var i=0; i<profiles.length; i++) {
+      createCardsProfle($compile, $scope, profiles[i]);
+    }
+  });
 
   //////////////////////////
   //// Search Filter ///////
@@ -82,8 +112,6 @@ angular.module('UsersModule').controller('SearchController', ['$scope', '$http',
     $scope.skip += 10;
     $scope.serviceFilter($scope.filter);
   };
-  // At first instance
-  $scope.serviceFilter($scope.filter);
 
   $scope.updateActive = function(id) {
     $http({
@@ -102,22 +130,6 @@ angular.module('UsersModule').controller('SearchController', ['$scope', '$http',
 
 }]);
 
-
-function getAge(date) {
-  var today = new Date();
-  var birthDate = new Date(date);
-  var age = today.getFullYear() - birthDate.getFullYear();
-  var m = today.getMonth() - birthDate.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  return age;
-}
-
-var checkForNulls = function(x) {
-  return x === undefined ? "" : x;
-}
-
 var createCardsProfle = function(compile, scope, profile_info) {
   var profile = profile_info.profile_photo;
   var match = [];
@@ -131,10 +143,17 @@ var createCardsProfle = function(compile, scope, profile_info) {
   var photo = match.length > 0 ? 'background: url(../' + match[0] + ') 50% 50% / cover no-repeat' : "";
   var shield = profile_info.role == "player" ? "jugador_escudo" : "coach_escudo";
 
+  // Check following
+  var elementFollowing = "";
+  if(scope.following_list.indexOf(profile_info._id) > -1) {
+    elementFollowing = "<div class='following-card'>Siguiendo</div>";
+  }
+
   angular.element(document.getElementById('space-for-profiles')).append(compile(
     '<div class="col-xs-6 col-sm-4">' +
     '<a href="javascript:void(0)" ng-click="updateActive(\''+ profile_info._id + '\')">' +
     '<div class="card">' +
+    elementFollowing +
     '<div class="catalogue-image" style="height:180px ;' + photo + '"></div>' +
     '<p>' + checkForNulls(profile_info.name) + " " + checkForNulls(profile_info.lastname) + '</p>' +
     '<p>' + checkForNulls(profile_info.sport.title) + '</p>' +

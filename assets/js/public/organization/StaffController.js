@@ -74,12 +74,13 @@ angular.module('UsersModule').controller('StaffController', ['$scope', '$http', 
           "user": $("#userId").val()
         }
       }).then(function successCallback(response) {
-        console.log(response);
         addFeedback("Los cambios han sido guardados exitosamente", "success");
-        $("#staff-btn").trigger("click");
-         $("#loading").css({opacity: 0, "pointer-events": "none"});
+        setTimeout(function() {
+          $("#staff-btn").trigger("click");
+          $("#loading").css({opacity: 0, "pointer-events": "none"});
+        }, 2000);
       }, function errorCallback(response) {
-        console.log(response);
+        addFeedback("Ha ocurrido un error, intente en otro momento", "error");
       });
     }
   };
@@ -109,10 +110,16 @@ angular.module('UsersModule').controller('StaffController', ['$scope', '$http', 
   };
 
   $scope.deleteComplete = function($event) {
+
     var deleteEvent = $event.target;
     var position = parseInt($(deleteEvent).next().val());
     // Remove just from view
     if (!isNaN(position)) {
+      //Loading
+      $("#loading").css({
+        opacity: 1,
+        "pointer-events": "auto"
+      });
       $http({
         method: 'DELETE',
         url: '/user/org/staff',
@@ -123,9 +130,9 @@ angular.module('UsersModule').controller('StaffController', ['$scope', '$http', 
       }).then(function successCallback(response) {
         addFeedback("Se ha removido un elemento del staff", "success");
         $("#staff-btn").trigger("click");
-        // $("#loading").css({opacity: 0, "pointer-events": "none"});
+        $("#loading").css({opacity: 0, "pointer-events": "none"});
       }, function errorCallback(response) {
-        console.log(response);
+        addFeedback("Ha ocurrido un error, intente en otro momento", "error");
       });
     }
     // Delete from list and update status
@@ -142,7 +149,7 @@ angular.module('UsersModule').controller('StaffController', ['$scope', '$http', 
 // Create Dynamic experience rows
 var createStaff = function(i, compile, scope) {
   angular.element(document.getElementById('space-for-staff')).append(compile(
-    '<div class="col-sm-4" style="margin-bottom:10px;">' +
+    '<div class="col-sm-4" style="margin-bottom:20px;">' +
     '<a class="anchor-coach" style="color:red;" href="javascript:void(0);" ng-click="deleteComplete($event);">- Remover staff</a>' +
     '<input type="hidden" id="staffRef' + i + '">' +
     '<div class="photo">' +

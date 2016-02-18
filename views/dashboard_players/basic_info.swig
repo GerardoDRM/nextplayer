@@ -1,5 +1,5 @@
 <div ng-controller="BasicInfoController">
-  <form class="form-inline align-labels">
+  <form class="form-inline align-labels" id="basic-player-form">
     <div class="col-sm-12 col-md-6">
       <div class="row">
         <div class="col-sm-6">
@@ -51,16 +51,7 @@
           <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" type="text">
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="form-group-modified">
-            <label>E-mail del titular</label>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" type="text">
-        </div>
-      </div>
+      <div id="tutor"></div>
       <!-- End Firts Col-->
     </div>
     <div class="col-sm-12 col-md-6">
@@ -108,39 +99,9 @@
         <input class="form-group-modified-input" name="phone" ng-model="user.phone" type="text">
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group-modified">
-          <label>Parentesco del titular</label>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" type="text">
-      </div>
-    </div>
   </div>
 </form>
 <div class="save-button">
   <button class="input-signup" ng-click="update()">Guardar</button>
-</div>
-<!-- Modal dialog for Sport -->
-<div class="modalDialog" id="dialogSport">
-  <div class="dialogSport">
-    <h2>Por favor, elige tu deporte de interes:
-    </h2>
-    <form id="sport-form">
-      <select ng-model="sport.title">
-        <option selected="selected" value="Fútbol americano">Fútbol americano</option>
-        <option value="Fútbol soccer">Fútbol soccer</option>
-        <option value="Basquetball">Basquetball</option>
-        <option value="Tennis">Tennis</option>
-        <option value="Atletismo">Atletismo</option>
-        <option value="Voleiball">Voleiball</option>
-      </select>
-      <div class="save-button">
-        <button class="input-signup" ng-click="storeSport()">Guardar</button>
-      </div>
-    </form>
-  </div>
 </div>
 </div>

@@ -79,8 +79,6 @@
     }
   }
 }
-
-
 // Feedback
 .feedback {
   padding: 0 100px;
@@ -103,7 +101,6 @@
     font-size: 22px;
   }
 }
-
 .msg {
   background-color: $new-green;
   display: block;
@@ -111,7 +108,6 @@
   -moz-animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
   animation: stretch 0.3s ease-in-out forwards, feedback-out 0.3s ease-in-out 5s forwards;
 }
-
 // Modal Video URL //
 .modalDialog {
   @include position(fixed, true, 0);
@@ -122,7 +118,6 @@
   pointer-events: none;
   overflow: auto;
 }
-
 .dialogVideo {
   padding: 5%;
   position: relative;
@@ -132,7 +127,6 @@
   width: 50%;
   background: $white;
 }
-
 // Modal Gallery
 .dialogGallery {
   width: 800px;
@@ -141,8 +135,6 @@
   z-index: 99;
   margin: 5% auto;
 }
-
-
 // Modal sport
 .dialogSport {
   padding: 5%;
@@ -152,7 +144,6 @@
   width: 35%;
   background: $white;
 }
-
 // Modal Preview samples
 .dialogSample {
   position: relative;
@@ -160,11 +151,9 @@
   margin: 12% auto;
   width: 60%;
 }
-
-
 // Moda Sessions
 .dialogSessions {
-  background: $white;;
+  background: $white;
   width: 40%;
   margin: 10% auto;
   padding: 10px;
@@ -173,23 +162,23 @@
   h1 {
     font-weight: bold;
   }
-  h4{
+  h4 {
     font-style: italic;
   }
   form {
     text-align: center;
   }
   textarea {
-    margin: 0px;
-    width: 375px;
-    height: 176px;
+    margin: 0;
+    width: 90%;
+    height: 80px;
   }
 }
 .dialogLoading {
   margin-top: 15%;
-text-align: center;
-color: $white;
-img {
-  width: 5%;
-}
+  text-align: center;
+  color: $white;
+  img {
+    width: 5%;
+  }
 }

@@ -60,6 +60,7 @@
 <div class="modalDialog" id="dialogComment">
   <div class="dialogSessions">
     <h1>Comenta sobre este prospecto:</h1>
+    <p>(Max. 200 caracteres)</p>
     <form id="form-comment">
     <textarea maxlength="200" placeholder="Escribe tu comentario" ng-model="comment" required></textarea>
       <div class="save-button" style="text-align:center;">

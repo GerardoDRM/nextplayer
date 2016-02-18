@@ -1,9 +1,10 @@
+var chatObjects = [];
+var inboxList = [];
+var active_chat;
+
 angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$http', '$q', '$compile', function($scope, $http, $q, $compile) {
-  $scope.chatObjects = [];
-  $scope.inboxList = [];
-  $scope.currentDestination;
   // Connect To socket
-  connectToSocket($scope.chatObjects, $scope.inboxList, $scope.currentDestination);
+  connectToSocket();
 
   $scope.noticeInfo = $http({
     method: 'GET',
@@ -57,7 +58,7 @@ angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$h
   });
 
   $scope.showInbox = function($event) {
-    $scope.currentDestination = undefined;
+    active_chat = undefined;
     var elementReturn = $($event.target).is("span");
     if ($("#chat-structure").css('display') == 'block' && !elementReturn) {
       $("#chat-structure").hide(500);
@@ -76,8 +77,17 @@ angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$h
           $("#space-for-contacts").empty();
           // Add messages
           for (var i = 0; i < contacts.length; i++) {
-            $scope.inboxList[i] = contacts[i]._id;
+            inboxList[i] = contacts[i]._id;
             createInbox($compile, $scope, contacts[i]);
+          }
+        }
+        // Case open Inbox
+        if(inboxList.length > 0) {
+          for(var i=0; i<chatObjects.length; i++) {
+            if(inboxList.indexOf(chatObjects[i].from) > -1) {
+              var contact = $("#space-for-contacts").children()[i];
+              $(contact).css({"background-color" : "#70DA8B"});
+            }
           }
         }
         // Chat UI animation
@@ -89,14 +99,14 @@ angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$h
   };
 
   $scope.showConversation = function(id, name) {
-    $scope.inbox = [];
+    inboxList = [];
     // Create room or Get messages
     $http({
       method: 'PUT',
       url: '/add/rooms',
       data: {
-        "org": $("#userId").val(),
-        "user": id
+        "user": $("#userId").val(),
+        "org": id
       }
     }).then(function successCallback(response) {
       var messages = response.data[0].messages;
@@ -109,6 +119,7 @@ angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$h
         }
       }
       $scope.currentDestination = id;
+      active_chat = id;
       // Chat UI animation
       $("#chat-structure").show(500);
       $("#conversation").show(100);
@@ -152,6 +163,8 @@ var createFollowing = function(compile, scope, following) {
     match = myRegexp.exec(phrase);
   }
 
+  var photo = match.length > 0 ? "../" + match[0] : "";
+
   if (following.details.organization_name !== undefined) {
     name = following.details.organization_name;
   } else {
@@ -163,7 +176,7 @@ var createFollowing = function(compile, scope, following) {
     '<a href="/profile/' + following._id + '">' +
     '<div class="row">' +
     '<div class="col-xs-4">' +
-    '<img alt="..." src="../'+ match[0] +'">' +
+    '<img alt="..." src="'+ photo +'">' +
     '</div>' +
     '<div class="col-xs-8">' +
     '<p class="title">' + name + '</p>' +
@@ -185,6 +198,8 @@ var createFollowers = function(compile, scope, follower) {
     match = myRegexp.exec(phrase);
   }
 
+  var photo = match.length > 0 ? "../" + match[0] : "";
+
   if (follower.details.organization_name !== undefined) {
     name = follower.details.organization_name;
   } else {
@@ -196,7 +211,7 @@ var createFollowers = function(compile, scope, follower) {
     '<a href="/profile/' + follower._id + '">' +
     '<div class="row">' +
     '<div class="col-xs-4">' +
-    '<img alt="..." src="../'+ match[0] +'">' +
+    '<img alt="..." src="'+ photo +'">' +
     '</div>' +
     '<div class="col-xs-8">' +
     '<p class="title">' + name + '</p>' +
@@ -218,11 +233,13 @@ var createTeams = function(compile, scope, team) {
     match = myRegexp.exec(phrase);
   }
 
+  var photo = match.length > 0 ? 'background: url(../' + match[0] + ') 50% 50% / cover no-repeat' : "";
+
   angular.element(document.getElementById('space-for-teams')).append(compile(
     '<div class="col-xs-6 col-sm-4">' +
     '<a href="/profile/' + team._id + '">' +
     '<div class="card">' +
-    '<div class="catalogue-image" style="background: url(../' + match[0] + ') 50% 50% / cover no-repeat"></div>' +
+    '<div class="catalogue-image" style="' + photo + '"></div>' +
     '<p>' + team.details.organization_name + '</p>' +
     '<img class="shield" src="../images/equipo_escudo.png">' +
     '</div></a>' +

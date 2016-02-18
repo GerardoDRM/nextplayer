@@ -358,7 +358,8 @@ module.exports = {
     }).exec(function findOneCB(err, userDB) {
       if (err) res.json(500);
       else {
-        var basicKeys = ["name", "lastname", "state", "country", "born", "phone", "email", "profile_photo", "job"];
+        var basicKeys = ["name", "lastname", "state", "country", "born", "phone",
+         "email", "profile_photo", "job", "tutor_name", "tutor_email", "tutor_model"];
         var applicantDetailsKeys = [];
         var basicInfo = {
           "general": {},

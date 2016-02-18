@@ -23,7 +23,7 @@
       <h2>
         Comentarios
       </h2>
-      <textarea class="form-group-modified-input" style="background-color:white;" ng-model="blog.content" rows="4" placeholder="Escribe tu comentario..."></textarea>
+      <textarea maxlength="150" class="form-group-modified-input" style="background-color:white; height:auto;" ng-model="blog.content" rows="4" placeholder="Escribe tu comentario..."></textarea>
       <div class="save-button" style="text-align:right;">
         <button class="input-signup" ng-click="postComment()" style="margin-top:-2px; margin-bottom:10px;">Publicar</button>
       </div>

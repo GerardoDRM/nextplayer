@@ -116,7 +116,8 @@ module.exports = {
               "details.organization_name": 1,
               profile_photo: 1,
               lastname: 1,
-              "sport.title": 1
+              "sport.title": 1,
+              role: 1
             }).toArray(function(err, results) {
               if (err) return res.serverError(err);
               // Add info required by organizations

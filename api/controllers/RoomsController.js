@@ -9,16 +9,14 @@ var ObjectId = require('mongodb').ObjectID;
 module.exports = {
 
   addRoom: function(req, res) {
-    var user1 = req.param("org");
-    var user2 = req.param("user");
+    var org = req.param("org");
+    var user = req.param("user");
     // Retrieve an existing room
     Rooms.native(function(err, collection) {
       if (err) return res.serverError(500);
       collection.find({
-        $or:[
-					{$and: [{org_id: user1},{user_id: user2}]},
-					{$and: [{org_id: user2},{user_id: user1}]}
-			]
+        org_id: org,
+        user_id: user
       }, {
         messages: 1
       }).toArray(function(err, results) {

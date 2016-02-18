@@ -14,6 +14,7 @@
     <h3> <span><img src="../images/check.svg"/></span> Sube hasta 8 fotos </h3>
     <h3> <span><img src="../images/check.svg"/></span> Sube hasta 4 vídeos </h3>
     <h3> <span><img src="../images/check.svg"/></span> Escribe ¿por qué quieres ser reclutado? </h3>
+    <h3> <span><img src="../images/check.svg"/></span> Aparece en los primeros resultados de búsqueda </h3>
     </div>
 
   </div>

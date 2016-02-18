@@ -56,9 +56,11 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
   $scope.storeVideo = function() {
     if ($("#video-form").valid()) {
       var iframe = checkVideoProvider($scope.video.url);
+      console.log(iframe);
       if (iframe != 500) {
         // Upload Video
         $scope.video.position = $scope.selectedVideo;
+        console.log($scope.video);
         $http({
           method: 'POST',
           url: '/user/gallery/videos',
@@ -97,7 +99,7 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
   };
 
   $scope.showVideoURL = function($event) {
-    $scope.selectedVideo = $($event.target).prev().val();
+    $scope.selectedVideo = $($event.target).is("img") ? $($event.target).parent().prev().val() :$($event.target).prev().val();
     $scope.elementVideo = $($event.target).is("img") ? $($event.target).parent()[0] : $event.target;
     $("#dialogVideo").css({
       "opacity": 1,

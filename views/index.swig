@@ -69,7 +69,9 @@
               <h2>COACHES </h2>
             </div>
             <div class=" col-sm-4">
-              <img src="../images/equipo_escudo.png" alt="...">
+              <a href="/signup/organization">
+                <img src="../images/equipo_escudo.png" alt="...">
+              </a>
               <h2>EQUIPOS </h2>
             </div>
             <div class=" col-sm-4">
@@ -96,13 +98,19 @@
           <h2 class="dissapear"> PERFILES MUESTRA </h2>
         </div>
         <div class="col-sm-4 col-md-3">
-          <a onclick="showPreviewSample('team')"><img src="../images/equipo_muestra.png" alt="..."></a>
+          <a onclick="showPreviewSample('team')">
+            <img src="../images/equipo_muestra.png" alt="...">
+          </a>
         </div>
         <div class="col-sm-4 col-md-3">
-          <a onclick="showPreviewSample('player')"><img src="../images/jugador_muestra.png" alt="..."></a>
+          <a onclick="showPreviewSample('player')">
+            <img src="../images/jugador_muestra.png" alt="...">
+          </a>
         </div>
         <div class="col-sm-4 col-md-3">
-        <a onclick="showPreviewSample('coach')"><img src="../images/coach_muestra.png" alt="..."></a>
+          <a onclick="showPreviewSample('coach')">
+            <img src="../images/coach_muestra.png" alt="...">
+          </a>
         </div>
       </div>
     </div>

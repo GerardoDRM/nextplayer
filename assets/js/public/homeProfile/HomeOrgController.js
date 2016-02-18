@@ -1,10 +1,11 @@
+var chatObjects = [];
+var inboxList = [];
+var active_chat;
+
 angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http', '$q', '$compile', function($scope, $http, $q, $compile) {
   $scope.session = {};
-  $scope.chatObjects = [];
-  $scope.inboxList = [];
-  $scope.currentDestination;
   // Connect To socket
-  connectToSocket($scope.chatObjects, $scope.inboxList, $scope.currentDestination);
+  connectToSocket();
 
   // Close commentElement
   $("#dialogComment").click(function() {
@@ -36,7 +37,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
     method: 'GET',
     url: '/following/' + $("#userId").val()
   });
-  $q.all([$scope.noticeInfo, $scope.orgsInfo, $scope.followers, $scope.following]).then(function(results) {
+  $q.all([$scope.noticeInfo, $scope.followers, $scope.following]).then(function(results) {
     ////////////////////
     ///// Notices //////
     ///////////////////
@@ -47,7 +48,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
     ////////////////////
     ///// Followers ///
     ///////////////////
-    var followersList = results[2].data;
+    var followersList = results[1].data;
     $scope.followers_counter = followersList.length;
     for (var i = 0; i < followersList.length; i++) {
       _createFollowers($compile, $scope, followersList[i]);
@@ -56,7 +57,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
     ////////////////////
     ///// Following ///
     ///////////////////
-    var followingList = results[3].data;
+    var followingList = results[2].data;
     for (var i = 0; i < followingList.length; i++) {
       _createFollowing($compile, $scope, followingList[i]);
     }
@@ -142,12 +143,11 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
   };
 
   $scope.showInbox = function($event) {
-    console.log($scope.chatObjects);
-    $scope.currentDestination = undefined;
+    active_chat = undefined;
     var elementReturn = $($event.target).is("span");
     if ($("#chat-structure").css('display') == 'block' && !elementReturn) {
       $("#chat-structure").hide(500);
-      $scope.inboxList = [];
+      inboxList = [];
     } else {
       // Get inbox
       $http({
@@ -163,8 +163,17 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
           $("#space-for-contacts").empty();
           // Add messages
           for (var i = 0; i < contacts.length; i++) {
-            $scope.inboxList[i] = contacts[i]._id;
+            inboxList[i] = contacts[i]._id;
             createInbox($compile, $scope, contacts[i]);
+          }
+        }
+        // Case open Inbox
+        if(inboxList.length > 0) {
+          for(var i=0; i<chatObjects.length; i++) {
+            if(inboxList.indexOf(chatObjects[i].from) > -1) {
+              var contact = $("#space-for-contacts").children()[i];
+              $(contact).css({"background-color" : "#70DA8B"});
+            }
           }
         }
         // Chat UI animation
@@ -196,6 +205,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
         }
       }
       $scope.currentDestination = id;
+      active_chat = id;
       // Chat UI animation
       $("#chat-structure").show(500);
       $("#conversation").show(100);
@@ -210,8 +220,6 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
       to: $scope.currentDestination,
       msg: $scope.message
     });
-
-    console.log("Des",$scope.currentDestination);
 
     var message = {
       id: $("#userId").val(),
@@ -237,17 +245,22 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
       name = following.name;
     }
 
+    // Elements
+    var photo = match.length > 0 ? 'background: url(../' + match[0] + ') 50% 50% / cover no-repeat' : "";
+    var shield = following.role == "player" ? "jugador_escudo" : "coach_escudo";
+    var commet = following.comment !== undefined ? following.comment : "No ha comentarios";
+
     angular.element(document.getElementById('space-for-following')).append(compile(
       '<div class="col-sm-6">' +
       '<div class="row profile-card no-margin">' +
       '<div class="col-sm-4">' +
       '<a href="/profile/' + following._id + '\">' +
       '<div class="card">' +
-      '<div class="catalogue-image" style="background: url(../' + match[0] + ') 50% 50% / cover no-repeat"></div>' +
+      '<div class="catalogue-image" style="' + photo + '"></div>' +
       '<p>' + name + " " + following.lastname +
       '</br>' +
       '(' + following.sport.title + ')</p>' +
-      '<img class="shield" src="../images/equipo_escudo.png">' +
+      '<img class="shield" src="../images/' + shield + '.png">' +
       '</div>' +
       '</a>' +
       '</div>' +
@@ -263,7 +276,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
       '<a ng-click=showCommentForm(\'' + following._id + '\',$event)><img alt="..." class="message-image" src="../images/comment.svg"></a>' +
       '<a ng-click="showConversation(\'' + following._id + '\', \'' + name + '\')"><img alt="..." class="message-image" src="../images/mensage.svg"></a>' +
       '</div>' +
-      '<p>' + following.comment + '</p>' +
+      '<p>' + commet + '</p>' +
       '</div>' +
       '</div>' +
       '</div>' +
@@ -280,16 +293,17 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
       match = myRegexp.exec(phrase);
     }
 
+    var photo = match.length > 0 ? "../" + match[0] : "";
+
     angular.element(document.getElementById('space-for-followers')).append(compile(
       '<li>' +
       '<a href="/profile/' + follower._id + '\">' +
       '<div class="row">' +
       '<div class="col-xs-4">' +
-      '<img alt="..." src="../' + match[0] + '">' +
+      '<img alt="..." src="' + photo + '">' +
       '</div>' +
       '<div class="col-xs-8">' +
       '<p class="title">' + follower.name + ' ' + follower.lastname + '</p>' +
-      '<p>' + follower.state + '</p>' +
       '<p>' + follower.sport.title + '</p>' +
       '</div>' +
       '</div>' +

@@ -46,7 +46,7 @@
             </p>
             <p class="body-paragraph-left">{{ org.details.email }}
             </p>
-            <p class="body-paragraph-left">{{ org.details.web }}</p>
+            <p class="body-paragraph-left">{{ org.details.website }}</p>
           </div>
           <div class="exclusive-club">
 

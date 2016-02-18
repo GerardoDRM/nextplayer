@@ -4,13 +4,12 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="form-group-modified" style="margin-bottom:25px;">
-          <a class="anchor-coach" staff href="javascript:void(0);" style="margin-left:0px;">+ Añadir staff</a>
+          <a class="anchor-coach" href="javascript:void(0);" staff style="margin-left:0px;">+ Añadir staff</a>
         </div>
       </div>
 
     </div>
-    <div class="row" id="space-for-staff">
-    </div>
+    <div class="row" id="space-for-staff"></div>
 
   </form>
   <div class="save-button">
@@ -19,8 +18,10 @@
 
   <div class="modalDialog" id="loading">
     <div class="dialogLoading">
-      <h3> Espere un momento porfavor </h3>
-        <img src="../images/load_icon.gif">
-    </div>
+      <h3>
+        Espere un momento porfavor
+      </h3>
+      <img src="../images/load_icon.gif">
     </div>
   </div>
+</div>

@@ -116,7 +116,7 @@ angular.module('UsersModule').directive('enter', function () {
 var checkVideoProvider = function(url) {
   var services = {
     hudl: {
-      pattern: /^.*hudl\.com\/(athlete|team)\/(\d.+\/highlights.*\/).*/,
+      pattern: /^.*hudl\.com\/(athlete|team)\/(\d.+\/highlights\/.*)/,
       frame: '//www.hudl.com/embed/'
     },
     youtube: {
@@ -128,8 +128,9 @@ var checkVideoProvider = function(url) {
     var match = url.match(services[serv].pattern);
     if (match) {
       var urlsrc = "";
-      if (serv == "hudl") urlsrc = services[serv].frame + match[1] + "/" + match[2];
+      if (serv == "hudl") {console.log(match); urlsrc = services[serv].frame + match[1] + "/" + match[2];}
       else if (serv == "youtube")  urlsrc = services[serv].frame + match[2];
+      console.log(urlsrc);
       return '<iframe width="100%" height="100%" src="' + urlsrc + '" frameborder="0" allowfullscreen></iframe>';
     }
   }
@@ -160,6 +161,8 @@ var createInbox = function(compile, scope, contact) {
     var myRegexp = /uploads\/(.*)/;
     match = myRegexp.exec(phrase);
   }
+  var photo = match.length > 0 ? "../" + match[0] : "";
+
   var name = "";
   if(contact.details.organization_name !== undefined) {
     name = contact.details.organization_name;
@@ -170,7 +173,7 @@ var createInbox = function(compile, scope, contact) {
     '<li class="inbox-contact" ng-click="showConversation(\'' + contact._id + '\', \'' + name + '\')">' +
     '<div class="row">' +
     '<div class="col-sm-4">' +
-    '<img src="../' + match[0] + '">' +
+    '<img src="' + photo + '">' +
     '</div>' +
     '<div class="col-sm-6">' +
     '<p>' + name + '</p>' +
@@ -196,7 +199,7 @@ function addFeedback(msg, status) {
 }
 
 // Connect to socket
-function connectToSocket(chat, inbox, activeChat) {
+function connectToSocket() {
 
   // Attach a listener which fires when a connection is established:
   io.socket.on('connect', function socketConnected() {
@@ -212,36 +215,10 @@ function connectToSocket(chat, inbox, activeChat) {
     // of the User model to see which messages will be broadcast by default
     // to subscribed sockets.
     io.socket.on('user', function messageReceived(message) {
-      console.log(activeChat);
       switch (message.verb) {
         // Handle private messages.
         case 'messaged':
-          chat.push(message.data);
-          // Case open Inbox
-          if(inbox.length > 0) {
-            for(var i=0; i<chat.length; i++) {
-              console.log(chat[i].from in inbox);
-              if(inbox.indexOf(chat[i].from) > -1) {
-                var contact = $("#space-for-contacts").children()[i];
-                console.log(contact);
-                $(contact).css({"background-color" : "#70DA8B"});
-              }
-            }
-          } else if(activeChat !== undefined) {
-            // Case Open Specific chat
-            for(var i=0; i<chat.length; i++) {
-              if(chat[i].from == activeChat) {
-                chat.splice(i,1);
-                $("#messages-space").append(
-                '<li>' +
-                '<div class="message">' +
-                '<p>' + chat.msg + '</p>' +
-                '</div>' +
-                '</li>');
-                break;
-              }
-            }
-          }
+          getSocketMessage(message);
           break;
         default:
           break;
@@ -253,5 +230,48 @@ function connectToSocket(chat, inbox, activeChat) {
     // When the socket disconnects, hide the UI until we reconnect.
     io.socket.on('disconnect', function() {});
   });
+}
 
+// Interact With message from socket
+function getSocketMessage(message) {
+  chatObjects.push(message.data);
+  // Case open Inbox
+  if(inboxList.length > 0) {
+    for(var i=0; i<chatObjects.length; i++) {
+      if(inboxList.indexOf(chatObjects[i].from) > -1) {
+        var contact = $("#space-for-contacts").children()[i];
+        $(contact).css({"background-color" : "#70DA8B"});
+      }
+    }
+  }
+  if(active_chat !== undefined) {
+    // Case Open Specific chat
+    for(var i=0; i<chatObjects.length; i++) {
+      if(chatObjects[i].from == active_chat) {
+        $("#messages-space").append(
+        '<li>' +
+        '<div class="message">' +
+        '<p>' + chatObjects[i].msg + '</p>' +
+        '</div>' +
+        '</li>');
+        chatObjects.splice(i,1);
+        break;
+      }
+    }
+  }
+}
+
+function getAge(date) {
+  var today = new Date();
+  var birthDate = new Date(date);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
+var checkForNulls = function(x) {
+  return x === undefined ? "" : x;
 }
