@@ -250,14 +250,11 @@
         case "Atletismo":
           $("#change-sport").attr("src", "../images/contador_atletismo.png");
           break;
-        case "Basquetball":
+        case "Baloncesto":
           $("#change-sport").attr("src", "../images/contador_baloncesto.png");
           break;
         case "Fútbol rápido":
           $("#change-sport").attr("src", "../images/contador_futbol_rapido.png");
-          break;
-        case "Baloncesto":
-          $("#change-sport").attr("src", "../images/contador_baseball.png");
           break;
         case "Golf":
           $("#change-sport").attr("src", "../images/contador_golf.png");
@@ -274,16 +271,16 @@
         case "Taekwondo":
           $("#change-sport").attr("src", "../images/contador_taekwondo.png");
           break;
-        case "Tennis-Mesa":
+        case "Tennis Mesa":
           $("#change-sport").attr("src", "../images/contador_tenis_mesa.png");
           break;
         case "Tennis":
           $("#change-sport").attr("src", "../images/contador_tenis.png");
           break;
-        case "Voleibol-sala":
+        case "Voleibol Sala":
           $("#change-sport").attr("src", "../images/contador_voleibol_sala.png");
           break;
-        case "Voleibol-playa":
+        case "Voleibol Playa":
           $("#change-sport").attr("src", "../images/contador_voleibol_playa.png");
           break;
         default:
