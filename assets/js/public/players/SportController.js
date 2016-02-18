@@ -76,7 +76,7 @@ function checkSport(sport, scope, compile) {
       createPostions(scope.soccer, compile, scope);
       scope.selected_sport = scope.soccer;
       break;
-    case "Basquetball":
+    case "Baloncesto":
       createPostions(scope.basquetbal, compile, scope);
       scope.selected_sport = scope.basquetbal;
       break;
@@ -84,14 +84,30 @@ function checkSport(sport, scope, compile) {
       createPostions(scope.americanFootball, compile, scope);
       scope.selected_sport = scope.americanFootball;
       break;
-    case "Atletismo":
-      createPostions(scope.americanFootball, compile, scope);
-      scope.selected_sport = scope.americanFootball;
+    case "Beisbol":
+      createPostions(scope.beisbol, compile, scope);
+      scope.selected_sport = scope.beisbol;
       break;
-    case "Voleiball":
-      createPostions(scope.voleibol, compile, scope);
-      scope.selected_sport = scope.voleibol;
+    case "Fútbol rápido":
+      createPostions(scope.fastFootball, compile, scope);
+      scope.selected_sport = scope.fastFootball;
       break;
+      case "Voleibol":
+        createPostions(scope.voleibol, compile, scope);
+        scope.selected_sport = scope.voleibol;
+        break;
+        case "Taekwondo":
+          createPostions(scope.taekwondo, compile, scope);
+          scope.selected_sport = scope.taekwondo;
+          break;
+          case "Rugby":
+            createPostions(scope.rugby, compile, scope);
+            scope.selected_sport = scope.rugby;
+            break;
+            case "Atletismo":
+              createPostions(scope.atletism, compile, scope);
+              scope.selected_sport = scope.atletism;
+              break;
     default:
       console.log("Wrong Sport");
   }
