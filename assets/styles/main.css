@@ -1390,6 +1390,11 @@ textarea {
   background: #2ae92e;
   padding: 4%; }
 
+.note-terms {
+  font-weight: bold;
+  color: white;
+  margin-top: 10px; }
+
 /**
   * Buttons Partial SASS
   * This SASS file has all

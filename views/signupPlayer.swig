@@ -1,7 +1,7 @@
 {% extends 'base.swig' %} {% block content %}
-<div class="advisement">
+<!--<div class="advisement">
 
-</div>
+</div> -->
 <div class="form-sign" ng-app="SignupModule" ng-controller="SignupController" ng-cloak>
   <form ng-submit="submitSignupForm()" name="signup" id="form-signup">
     <div class="container">
@@ -16,18 +16,17 @@
           <select id="select-sport" class="select-hidden">
             <option value="Fútbol americano" selected="selected">Fútbol americano</option>
             <option value="Fútbol soccer">Fútbol soccer</option>
-            <option value="Basquetball">Basquetball</option>
             <option value="Tennis">Tennis</option>
             <option value="Atletismo">Atletismo</option>
-            <option value="Voleiball">Voleiball-sala</option>
+            <option value="Voleibol">Voleibol-sala</option>
             <option value="Fútbol soccer">Fútbol rápido</option>
-            <option value="Basquetball">Baseball</option>
+            <option value="Beisbol">Beisbol</option>
             <option value="Tennis">Golf</option>
             <option value="Atletismo">Rugby</option>
-            <option value="Voleiball">Taekwondo</option>
-            <option value="Basquetball">Basquetball</option>
+            <option value="Taekwondo">Taekwondo</option>
+            <option value="Baloncesto">Baloncesto</option>
             <option value="Tennis">Tennis-mesa</option>
-            <option value="Voleiball">Voleiball-playa</option>
+            <option value="Voleibol">Voleibol-playa</option>
           </select>
           <input type="hidden" id="user-type" value="player">
         </div>
@@ -42,6 +41,7 @@
 
           <input type="submit" value="Registrarse" class="input-signup" placeholder="Registrarse">
           <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+          <p class="note-terms"> *Nota: Al registrarse usted esta aceptando los términos y condiciones </p>
         </div>
       </div>
 
@@ -73,8 +73,9 @@
 
 
 <div class="more-info">
-  <p>!Reclutamiento Deportivo! Nextplayers es una plataforma donde vas a tener acceso a combines y a noticias de jugadores. Podrás buscar, filtrar y contactar talento deportivo. Se te brindará un acceso personalizado donde vas a estar actualizado del talento
-    que hay a nivel nacional e internacional. Lo mejor de todo, recibirás notificaciones en tiempo real de las actualizaciones del jugador que sigues.
+  <p>
+    !Mantente En La Mira! Nextplayers es una plataforma donde podrás crear un perfil con tus datos, fotos y highlights demostrando tu talento a universidades y equipos. Nextplayers pondrá a tu alcance comunicación directa con los reclutadores y te facilitará
+    las herramientas necesarias para tu óptima preparación física y mental.
   </p>
 </div>
 

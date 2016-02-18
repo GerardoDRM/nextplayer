@@ -3,6 +3,11 @@ angular.module('UsersModule').controller('SportController', ['$scope', '$http', 
   $scope.soccer = ["Portero", "Lateral Izquierdo", "Lateral Derecho", "Central", "Medio de Contención", "Mediocampista", "Extremo Izquierdo", "Extremo Derecho", "Enganche", "Centro Delantero"];
   $scope.voleibol = ["Acomodador", "Esquina", "Central", "Zaguero", "Libero"];
   $scope.basquetbal = ["Base", "Escolta", "Alero", "Ala-Pivot", "Pivot"];
+  $scope.beisbol = ["Pícher", "Catcher", "Primera Base", "Segunda Base", "Tercera Base", "Short Stop", "Jardinero Izquierdo", "Jardinero Derecho", "Jardinero Central", "Bateador designado"];
+  $scope.taekwondo= ["Blanca", "Amarilla", "Verde", "Azul", "Roja", "Roja/Negra", "Negra"];
+  $scope.rugby= ["Pilares", "Hooker", "Segunda Línea", "Tercera Línea", "Número ocho", "Medio-scrum", "Apertura", "Wings", "Centros", "Full Back"];
+  $scope.fastFootball= ["Portero", "Defensa", "Medio", "Delantero"];
+  $scope.atletism= ["Velocidad", "MedioFondo", "Maratón", "Fondo", "Relevos", "Saltos", "Lanzamientos", "Marcha", "Pruebas Combinadas"];
   $scope.selected_sport = [];
   $scope.user = {};
   $scope.sport = {};
@@ -71,22 +76,38 @@ function checkSport(sport, scope, compile) {
       createPostions(scope.soccer, compile, scope);
       scope.selected_sport = scope.soccer;
       break;
-    case "Basquetball":
+    case "Baloncesto":
       createPostions(scope.basquetbal, compile, scope);
       scope.selected_sport = scope.basquetbal;
       break;
-    case "Tennis":
-      createPostions(scope.americanFootball, compile, scope);
-      scope.selected_sport = scope.americanFootball;
+    case "Beisbol":
+      createPostions(scope.beisbol, compile, scope);
+      scope.selected_sport = scope.beisbol;
       break;
-    case "Atletismo":
-      createPostions(scope.americanFootball, compile, scope);
-      scope.selected_sport = scope.americanFootball;
+    case "Fútbol rápido":
+      createPostions(scope.fastFootball, compile, scope);
+      scope.selected_sport = scope.fastFootball;
       break;
-    case "Voleiball":
-      createPostions(scope.voleibol, compile, scope);
-      scope.selected_sport = scope.voleibol;
-      break;
+      case "Voleibol-sala":
+        createPostions(scope.voleibol, compile, scope);
+        scope.selected_sport = scope.voleibol;
+        break;
+        case "Voleibol-playa":
+          createPostions(scope.voleibol, compile, scope);
+          scope.selected_sport = scope.voleibol;
+          break;
+        case "Taekwondo":
+          createPostions(scope.taekwondo, compile, scope);
+          scope.selected_sport = scope.taekwondo;
+          break;
+          case "Rugby":
+            createPostions(scope.rugby, compile, scope);
+            scope.selected_sport = scope.rugby;
+            break;
+            case "Atletismo":
+              createPostions(scope.atletism, compile, scope);
+              scope.selected_sport = scope.atletism;
+              break;
     default:
       console.log("Wrong Sport");
   }

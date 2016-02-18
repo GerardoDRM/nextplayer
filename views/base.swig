@@ -72,7 +72,7 @@
             <p>NextPlayers.mx</p>
           </div>
           <div class="col-xs-12 col-sm-4">
-            <p>Términos de privacidad y política</p>
+          <a style="color:white;" href="terms">  <p>Términos de privacidad y política</p> </a>
           </div>
         </div>
       </div>
