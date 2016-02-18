@@ -57,7 +57,6 @@ module.exports = {
         },
 
         success: function() {
-
           // Store user id in the user session
           req.session.me = user.id;
 
@@ -66,7 +65,21 @@ module.exports = {
         }
       });
     });
+  },
 
+  loginSocket: function(req, res) {
+    User.findOne({
+      id: req.param("user")
+    }, function foundUser(err, user) {
+      if (err || user === undefined) return res.json({status:500});
+      if (!user) return res.json({status:500});
+      if(user.role == "organization") {
+        User.watch(req);
+        res.json({status:201, message:"User socket"});
+      } else {
+        res.json({status:201});
+      }
+    });
   },
 
   signup: function(req, res) {
@@ -359,7 +372,8 @@ module.exports = {
       if (err) res.json(500);
       else {
         var basicKeys = ["name", "lastname", "state", "country", "born", "phone",
-         "email", "profile_photo", "job", "tutor_name", "tutor_email", "tutor_model"];
+          "email", "profile_photo", "job", "tutor_name", "tutor_email", "tutor_model"
+        ];
         var applicantDetailsKeys = [];
         var basicInfo = {
           "general": {},
@@ -945,6 +959,29 @@ module.exports = {
         if (error) res.json(500);
         res.json(201);
       });
+    });
+  },
+
+  // Video Socket
+  updateVideoSocket: function(req, res) {
+    var user = req.param("user");
+    // Get user and update info
+    User.findOne({
+      id: user
+    }).exec(function findOneCB(err, userDB) {
+      if (err || userDB === undefined) res.json(500);
+      else {
+        // Publish video creation if it is a player with membership
+        if (userDB.membership !== undefined && Object.keys(userDB.membership).length > 0 && userDB.role == "player") {
+          // Get UNIX timestamp for now
+          var currentDate = Math.floor(Date.now() / 1000);
+          if (userDB.membership.transaction_date <= currentDate) {
+            User.publishCreate({
+              id: userDB.id
+            }, req);
+          }
+        }
+      }
     });
   },
 

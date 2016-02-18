@@ -56,11 +56,9 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
   $scope.storeVideo = function() {
     if ($("#video-form").valid()) {
       var iframe = checkVideoProvider($scope.video.url);
-      console.log(iframe);
       if (iframe != 500) {
         // Upload Video
         $scope.video.position = $scope.selectedVideo;
-        console.log($scope.video);
         $http({
           method: 'POST',
           url: '/user/gallery/videos',
@@ -70,27 +68,33 @@ angular.module('UsersModule').controller('GalleryController', ['$scope', '$http'
           }
         }).then(function successCallback(response) {
           if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
-          else{addFeedback("Tú video ha sido almacenado", 'success');}
-          // Change UI preview video
-          var videoContainer = $scope.elementVideo;
-          $(videoContainer).css({
-            "display": "none"
-          });
-          var previewImage = $(videoContainer).next();
-          $(previewImage[0]).css({
-            "display": "block"
-          });
-          var videoSpace = $(previewImage).children('.video-container');
-          $(videoSpace).empty();
-          $(videoSpace).append(
-            iframe
-          );
-          // Hide modal dialog
-          $("#dialogVideo").css({
-            "opacity": 0,
-            "pointer-events": "none"
-          });
+          else{
+            addFeedback("Tú video ha sido almacenado", 'success');
+            // Change UI preview video
+            var videoContainer = $scope.elementVideo;
+            $(videoContainer).css({
+              "display": "none"
+            });
+            var previewImage = $(videoContainer).next();
+            $(previewImage[0]).css({
+              "display": "block"
+            });
+            var videoSpace = $(previewImage).children('.video-container');
+            $(videoSpace).empty();
+            $(videoSpace).append(
+              iframe
+            );
+            // Hide modal dialog
+            $("#dialogVideo").css({
+              "opacity": 0,
+              "pointer-events": "none"
+            });
 
+            // Send feedback to sockets
+            io.socket.post('/videos/notification', {
+              user: $("#userId").val()
+            });
+          }
         }, function errorCallback(response) {
           addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
         });

@@ -206,7 +206,10 @@ function connectToSocket() {
 
     if($("#userId").val() != "") {
       io.socket.get("/user/subscription/" + $("#userId").val() , function(data){
-        console.log(data);
+        // console.log(data);
+      });
+      io.socket.get("/login/socket/" + $("#userId").val() , function(data){
+        // console.log(data);
       });
     }
 
@@ -216,6 +219,10 @@ function connectToSocket() {
     // to subscribed sockets.
     io.socket.on('user', function messageReceived(message) {
       switch (message.verb) {
+        // Handle video updates.
+        case 'created':
+          addNotification(message);
+          break;
         // Handle private messages.
         case 'messaged':
           getSocketMessage(message);
@@ -223,15 +230,22 @@ function connectToSocket() {
         default:
           break;
       }
-
     });
 
-    console.log('Socket is now connected!');
+    // console.log('Socket is now connected!');
     // When the socket disconnects, hide the UI until we reconnect.
     io.socket.on('disconnect', function() {});
   });
 }
 
+// Add notificition
+function addNotification(message) {
+  var pos = rosterElements.indexOf(message.id);
+  if(pos > -1) {
+    var element = $("#space-for-following").children()[pos];
+    $(element).append("<div class='new-video'><p>Nuevo Video</p></div>");
+  }
+}
 // Interact With message from socket
 function getSocketMessage(message) {
   chatObjects.push(message.data);

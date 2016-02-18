@@ -1,6 +1,7 @@
 var chatObjects = [];
 var inboxList = [];
 var active_chat;
+var rosterElements = [];
 
 angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http', '$q', '$compile', function($scope, $http, $q, $compile) {
   $scope.session = {};
@@ -244,7 +245,8 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
     } else {
       name = following.name;
     }
-
+    // Add pos to roster
+    rosterElements.push(following._id);
     // Elements
     var photo = match.length > 0 ? 'background: url(../' + match[0] + ') 50% 50% / cover no-repeat' : "";
     var shield = following.role == "player" ? "jugador_escudo" : "coach_escudo";
