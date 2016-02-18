@@ -14,17 +14,16 @@ angular.module('SignupModule').controller('SignupController', ['$scope', '$http'
         data.organization_name = $scope.signupForm.organization_name;
       } else {
         data.sport = $('#select-sport').find('option:selected').val();
-        console.log(data.sport);
       }
       // Submit request to Sails.
     $http.post('/signup', data)
-        .then(function onSuccess(sailsResponse) {
-          addFeedback('Tú usuario ha sido creado, por favor verifica tu email', 'success');
-        })
-        .catch(function onError(sailsResponse) {
-            addFeedback('Este email ya esta ocupado por algún otro usuario, intente con uno diferente', 'error');
-            return;
-        }); 
+      .then(function onSuccess(sailsResponse) {
+        addFeedback('Tú usuario ha sido creado, por favor verifica tu email', 'success');
+      })
+      .catch(function onError(sailsResponse) {
+        addFeedback('Este email ya esta ocupado por algún otro usuario, intente con uno diferente', 'error');
+        return;
+      });
     }
   }
 }]);

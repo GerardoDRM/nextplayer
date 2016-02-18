@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>{{title}}</title>
+  <title>NextPlayers</title>
   <!-- Latest compiled and minified CSS -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -71,10 +71,10 @@
             <p> Email:info@nextplayers.mx </p>
           </div>
           <div class="col-xs-12 col-sm-4">
-            <p>NextPlayers.mx</p>
+            <a href="https://www.facebook.com/NextPlayersMX/?fref=ts"><p><img src="../images/social.svg" width="20px">NextPlayers.mx</p></a>
           </div>
           <div class="col-xs-12 col-sm-4">
-            <p>Términos de privacidad y política</p>
+            <a style="color:white;" href="/terms">  <p>Términos de privacidad y política</p> </a>
           </div>
         </div>
       </div>
@@ -262,7 +262,7 @@
         case "Rugby":
           $("#change-sport").attr("src", "../images/contador_rugby.png");
           break;
-          case "Beisbol":
+        case "Beisbol":
             $("#change-sport").attr("src", "../images/contador_baseball.png");
             break;
         case "Fútbol soccer":
@@ -271,10 +271,10 @@
         case "Taekwondo":
           $("#change-sport").attr("src", "../images/contador_taekwondo.png");
           break;
-        case "Tennis Mesa":
+        case "Tenis Mesa":
           $("#change-sport").attr("src", "../images/contador_tenis_mesa.png");
           break;
-        case "Tennis":
+        case "Tenis":
           $("#change-sport").attr("src", "../images/contador_tenis.png");
           break;
         case "Voleibol Sala":

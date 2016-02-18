@@ -9,7 +9,7 @@ font-size: 25px;">
           <br> $1500.00
           </br>
         </label>
-        <div class="days-counter" id="daysCounter"><h4>Restan {{ membership.days_counter }} dias de tu subscripcion</h4></div>
+        <div class="days-counter" id="daysCounter"><h4>Restan {{ membership.days_counter }} días de tu suscripción</h4></div>
       </div>
     </div>
     <div class="col-sm-12 col-md-6">

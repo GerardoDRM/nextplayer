@@ -16,8 +16,8 @@
           <select id="select-sport" class="select-hidden">
             <option value="Fútbol americano" selected="selected">Fútbol americano</option>
             <option value="Fútbol soccer">Fútbol soccer</option>
-            <option value="Tennis">Tennis</option>
-            <option value="Tennis Mesa">Tennis Mesa</option>
+            <option value="Tenis">Tenis</option>
+            <option value="Tenis Mesa">Tenis Mesa</option>
             <option value="Atletismo">Atletismo</option>
             <option value="Voleibol Playa">Voleibol Playa</option>
             <option value="Fútbol rápido">Fútbol rápido</option>

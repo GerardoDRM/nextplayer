@@ -47,10 +47,10 @@
       </div>
 
       <div class="col-sm-3 dissapear no-padding">
-        <div class="inner-block full-box">
+        {# <div class="inner-block full-box">
           <img alt="..." src="../images/equipo.png" width="100%;">
           <img alt="..." src="../images/equipo.png" width="100%;">
-        </div>
+        </div> #}
       </div>
     </div>
   </div>

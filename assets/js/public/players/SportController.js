@@ -1,13 +1,13 @@
 angular.module('UsersModule').controller('SportController', ['$scope', '$http', '$compile', function($scope, $http, $compile) {
-  $scope.americanFootball = ["Quarterback", "Linebacker", "Runningback", "Safety", "Wide receiver", "Cornerback", "Tight Endt", "Línea ofensivo", "Línea defensivo"];
+  $scope.americanFootball = ["Quarterback", "Linebacker", "Runningback", "Safety", "Wide receiver", "Cornerback", "Tight Endt", "Línea ofensivo", "Línea defensivo", "Pateador"];
   $scope.soccer = ["Portero", "Lateral Izquierdo", "Lateral Derecho", "Central", "Medio de Contención", "Mediocampista", "Extremo Izquierdo", "Extremo Derecho", "Enganche", "Centro Delantero"];
-  $scope.voleibol = ["Acomodador", "Esquina", "Central", "Zaguero", "Libero"];
-  $scope.basquetbal = ["Base", "Escolta", "Alero", "Ala-Pivot", "Pivot"];
-  $scope.beisbol = ["Pícher", "Catcher", "Primera Base", "Segunda Base", "Tercera Base", "Short Stop", "Jardinero Izquierdo", "Jardinero Derecho", "Jardinero Central", "Bateador designado"];
-  $scope.taekwondo= ["Blanca", "Amarilla", "Verde", "Azul", "Roja", "Roja/Negra", "Negra"];
-  $scope.rugby= ["Pilares", "Hooker", "Segunda Línea", "Tercera Línea", "Número ocho", "Medio-scrum", "Apertura", "Wings", "Centros", "Full Back"];
-  $scope.fastFootball= ["Portero", "Defensa", "Medio", "Delantero"];
-  $scope.atletism= ["Velocidad", "MedioFondo", "Maratón", "Fondo", "Relevos", "Saltos", "Lanzamientos", "Marcha", "Pruebas Combinadas"];
+  $scope.volleyball = ["Acomodador", "Esquina", "Central", "Zaguero", "Libero"];
+  $scope.basketball = ["Base", "Escolta", "Alero", "Ala-Pivot", "Pivot"];
+  $scope.baseball = ["Pícher", "Catcher", "Primera Base", "Segunda Base", "Tercera Base", "Short Stop", "Jardinero Izquierdo", "Jardinero Derecho", "Jardinero Central", "Bateador designado"];
+  $scope.taekwondo = ["Blanca", "Amarilla", "Verde", "Azul", "Roja", "Roja/Negra", "Negra"];
+  $scope.rugby = ["Pilares", "Hooker", "Segunda Línea", "Tercera Línea", "Número ocho", "Medio-scrum", "Apertura", "Wings", "Centros", "Full Back"];
+  $scope.fastFootball = ["Portero", "Defensa", "Medio", "Delantero"];
+  $scope.athletics = ["Velocidad", "MedioFondo", "Maratón", "Fondo", "Relevos", "Saltos", "Lanzamientos", "Marcha", "Pruebas Combinadas"];
   $scope.selected_sport = [];
   $scope.user = {};
   $scope.sport = {};
@@ -77,37 +77,37 @@ function checkSport(sport, scope, compile) {
       scope.selected_sport = scope.soccer;
       break;
     case "Baloncesto":
-      createPostions(scope.basquetbal, compile, scope);
-      scope.selected_sport = scope.basquetbal;
+      createPostions(scope.basketball, compile, scope);
+      scope.selected_sport = scope.basketball;
       break;
     case "Beisbol":
-      createPostions(scope.beisbol, compile, scope);
-      scope.selected_sport = scope.beisbol;
+      createPostions(scope.baseball, compile, scope);
+      scope.selected_sport = scope.baseball;
       break;
     case "Fútbol rápido":
       createPostions(scope.fastFootball, compile, scope);
       scope.selected_sport = scope.fastFootball;
       break;
-      case "Voleibol Sala":
-        createPostions(scope.voleibol, compile, scope);
-        scope.selected_sport = scope.voleibol;
-        break;
-        case "Voleibol Playa":
-          createPostions(scope.voleibol, compile, scope);
-          scope.selected_sport = scope.voleibol;
-          break;
-        case "Taekwondo":
-          createPostions(scope.taekwondo, compile, scope);
-          scope.selected_sport = scope.taekwondo;
-          break;
-          case "Rugby":
-            createPostions(scope.rugby, compile, scope);
-            scope.selected_sport = scope.rugby;
-            break;
-            case "Atletismo":
-              createPostions(scope.atletism, compile, scope);
-              scope.selected_sport = scope.atletism;
-              break;
+    case "Voleibol Sala":
+      createPostions(scope.volleyball, compile, scope);
+      scope.selected_sport = scope.volleyball;
+      break;
+    case "Voleibol Playa":
+      createPostions(scope.volleyball, compile, scope);
+      scope.selected_sport = scope.volleyball;
+      break;
+    case "Taekwondo":
+      createPostions(scope.taekwondo, compile, scope);
+      scope.selected_sport = scope.taekwondo;
+      break;
+    case "Rugby":
+      createPostions(scope.rugby, compile, scope);
+      scope.selected_sport = scope.rugby;
+      break;
+    case "Atletismo":
+      createPostions(scope.athletics, compile, scope);
+      scope.selected_sport = scope.athletics;
+      break;
     default:
       console.log("Wrong Sport");
   }

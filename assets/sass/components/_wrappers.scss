@@ -553,7 +553,7 @@
     .shield {
       width: 30px;
       position: absolute;
-      top: 54%;
+      top: 45%;
       left: 10%;
     }
     .catalogue-image {
@@ -679,7 +679,7 @@
   height: 150px;
 }
 .middle-organization {
-  background: url("../images/pagos.jpg")no-repeat center;
+  background: url("../images/banners-05.jpg")no-repeat center;
   background-size: cover;
   width: 100%;
   height: 450px;
@@ -784,7 +784,7 @@
 }
 // Combines
 .font-image-combines {
-  background: url("../images/slide_1.jpg")no-repeat center;
+  background: url("../images/banners-01.jpg")no-repeat center;
   background-size: cover;
   width: 100%;
   height: 250px;
@@ -902,9 +902,17 @@
   background: $green;
   padding: 4%;
 }
-
 .note-terms {
   font-weight: bold;
-color: white;
-margin-top: 10px;
+  color: white;
+  margin-top: 10px;
+}
+
+// New video notification
+.new-video {
+  padding: 2px;
+  position: absolute;
+  top: 0;
+  left: 5%;
+  background: $green;
 }

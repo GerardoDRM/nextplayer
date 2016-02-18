@@ -22,8 +22,8 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     }
     // Date Format
     if ($scope.user.born !== undefined) {
-      if(getAge($scope.user.born) < 18) {
-        $("#datepicker").trigger("change");
+      if (getAge($scope.user.born) < 18) {
+        _addTutor($scope, $compile);
       }
       $scope.user.born = moment($scope.user.born).format('DD-MM-YYYY');
     }
@@ -69,7 +69,10 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
 
   // Birth Year change
   $("#datepicker").change(function() {
-    _addTutor($scope, $compile);
+    var date = moment($("#datepicker").val(),"DD-MM-YYYY").toDate();
+    if (getAge(date) < 18) {
+      _addTutor($scope, $compile);
+    }
   });
 
   // // In case use has not sport pre selected when sign in
@@ -106,7 +109,7 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     // PUT data
     $scope.user.born = moment($("#datepicker").val(), "DD-MM-YYYY").toISOString();
     $scope.user.id = $("#userId").val();
-    if($("#basic-player-form").valid()) {
+    if ($("#basic-player-form").valid()) {
       $http({
         method: 'PUT',
         url: '/user/basicinfo',
@@ -127,6 +130,8 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
   };
 
   var _addTutor = function(scope, compile) {
+    // Clean
+    $("#tutor").empty();
     angular.element(document.getElementById('tutor')).append(compile(
       '<div class="row">' +
       '<div class="col-sm-6">' +
@@ -135,7 +140,7 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
       '</div>' +
       '</div>' +
       '<div class="col-sm-6">' +
-      '<input class="form-group-modified-input" name="name_tutor" ng-model="user.tutor_name" type="text" required>' +
+      '<input class="form-group-modified-input" name="name_tutor" ng-model="user.tutor_name" type="text">' +
       '</div>' +
       '</div>' +
       '<div class="row">' +
@@ -145,7 +150,7 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
       '</div>' +
       '</div>' +
       '<div class="col-sm-6">' +
-      '<input class="form-group-modified-input" name="email_tutor" ng-model="user.tutor_email" type="email" required>' +
+      '<input class="form-group-modified-input" name="email_tutor" ng-model="user.tutor_email" type="email">' +
       '</div>' +
       '</div>' +
       '<div class="row">' +
@@ -155,7 +160,7 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
       '</div>' +
       '</div>' +
       '<div class="col-sm-6">' +
-      '<input class="form-group-modified-input" name="mdoel_tutor" ng-model="user.tutor_model" type="text" required>' +
+      '<input class="form-group-modified-input" name="mdoel_tutor" ng-model="user.tutor_model" type="text">' +
       '</div>' +
       '</div>'
     )(scope));

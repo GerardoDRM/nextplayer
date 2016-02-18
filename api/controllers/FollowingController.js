@@ -109,7 +109,8 @@ module.exports = {
             collection.find({
               _id: {
                 $in: followingList
-              }
+              },
+              email_verification: true
             }, {
               state: 1,
               name: 1,

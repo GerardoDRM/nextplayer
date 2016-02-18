@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>{{title}}</title>
+  <title>NextPlayers</title>
   <!-- Latest compiled and minified CSS -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,10 +69,10 @@
             <p> Email:info@nextplayers.mx </p>
           </div>
           <div class="col-xs-12 col-sm-4">
-            <p>NextPlayers.mx</p>
+            <a href="https://www.facebook.com/NextPlayersMX/?fref=ts"><p><img src="../images/social.svg" width="20px">NextPlayers.mx</p></a>
           </div>
           <div class="col-xs-12 col-sm-4">
-          <a style="color:white;" href="terms">  <p>Términos de privacidad y política</p> </a>
+          <a style="color:white;" href="/terms">  <p>Términos de privacidad y política</p> </a>
           </div>
         </div>
       </div>

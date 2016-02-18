@@ -1,5 +1,5 @@
 angular.module('UsersModule').controller('SearchController', ['$scope', '$http', '$q', '$compile', function($scope, $http, $q, $compile) {
-  $scope.sports = ["Fútbol americano", "Fútbol soccer", "Basquetball", "Tennis", "Atletismo", "Voleiball"];
+  $scope.sports = ["Fútbol americano", "Fútbol soccer", "Baloncesto", "Beisbol", "Fútbol rápido", "Voleibol Sala", "Voleibol Playa", "Taekwondo", "Tenis", "Tenis Mesa", "Atletismo", "Rugby", "Golf"];
   $scope.search = {};
   $scope.weight = {
     "w0": {
@@ -157,7 +157,7 @@ var createCardsProfle = function(compile, scope, profile_info) {
     '<div class="catalogue-image" style="height:180px ;' + photo + '"></div>' +
     '<p>' + checkForNulls(profile_info.name) + " " + checkForNulls(profile_info.lastname) + '</p>' +
     '<p>' + checkForNulls(profile_info.sport.title) + '</p>' +
-    '<img class="shield" style="top:45%;" src="../images/' + shield + '.png">' +
+    '<img class="shield" style="top:38%; width:40px;" src="../images/' + shield + '.png">' +
     '</div>'+
     '<p> Edad: ' + getAge(profile_info.born) + '</p>' +
     '<p> Altura: ' + checkForNulls(profile_info.sport.height) + '</p>' +
