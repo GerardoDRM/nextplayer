@@ -106,7 +106,7 @@
           </p>
         </div>
         <div class="col-sm-4 nike-img ">
-      
+
         </div>
       </div>
     </div>
@@ -174,8 +174,8 @@
           </h2>
           <p>
 
-            En Next Players estamos comprometidos a ayudar a atletas, coaches y equipos alcanzar su potencial. Facilitaremos la búsqueda de talento y conexión entre jugadores y reclutadores, con mayor alcance. Para contribuir a mejorar la calidad del nivel deportivo
-            en el pais, apoyaremos a atletas, coaches y equipos desarrollar sus aptitudes físicas y mentales.
+            En Next Players estamos comprometidos a ayudar atletas, coaches y equipos alcanzar su potencial. Facilitaremos la búsqueda de talento y conexión entre jugadores y reclutadores, con mayor alcance. Para contribuir a mejorar la calidad del nivel deportivo
+            en el país, apoyaremos a atletas, coaches y equipos a desarrollar sus aptitudes físicas y mentales.
           </p>
         </div>
         <div class="col-sm-6">

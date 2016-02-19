@@ -7,6 +7,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="description" content="En Next Players estamos comprometidos a ayudar atletas, coaches y equipos alcanzar su potencial. Facilitaremos la búsqueda de talento y conexión entre jugadores y reclutadores, con mayor alcance.">
+  <meta name="keywords" content="Next players, Nextplayers, reclutamiento deportivo, futbol americano, futbol soccer, basquetbol, becas deportivas, universidad, deporte universitario, atleta, beca">
+  <meta name="author" content="Craft Code">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <!--STYLES-->
   <link rel="stylesheet" href="/styles/importer.css">
@@ -65,17 +69,23 @@
       <div class="col-xs-12">
         <div class="row contact-foot">
           <div class="col-xs-12 col-sm-4">
-            <p>
-              Tel. 01 2222 61 90 30
-            </p>
+            <img src="../images/logoNext.jpg" width="60px">
             <p> Email:info@nextplayers.mx </p>
           </div>
           <div class="col-xs-12 col-sm-4">
-            <a style="color:white;" href="https://www.facebook.com/NextPlayersMX/?fref=ts" target="_blank"><p><img src="../images/social.svg" width="20px">NextPlayers.mx</p></a>
-            <p><a style="color:white;"  href="http://www.craftcode.rocks"  target="_blank"><img src="../images/craft.svg" width="65px">Powered by CraftCode</a></p>
+            <a style="color:white;" href="https://www.facebook.com/NextPlayersMX/?fref=ts" target="_blank">
+              <p>
+                <img src="../images/social.svg" width="20px">NextPlayers.mx</p>
+            </a>
+            <p>
+              <a style="color:white;" href="http://www.craftcode.rocks" target="_blank">
+                <img src="../images/craft.svg" width="65px">Powered by CraftCode</a>
+            </p>
           </div>
           <div class="col-xs-12 col-sm-4">
-          <a style="color:white;" href="/terms">  <p>Términos de privacidad y política</p> </a>
+            <a style="color:white;" href="/terms">
+              <p>Términos de privacidad y política</p>
+            </a>
           </div>
         </div>
       </div>
@@ -106,7 +116,6 @@
 
   <!--SCRIPTS END-->
   <script>
-
     $(document).ready(function() {
       // Clone select list data in a custom select list
       // Replicate info
@@ -179,7 +188,16 @@
         equalTo: "La Contraseña debe de ser la misma"
       });
       // Validate
-      $("#form-signup").validate();
+      $("#form-signup").validate({
+        rules: {
+          model: {
+            required: true
+          },
+          agree: {
+            required: true
+          }
+        }
+      });
       $("#form-login").validate();
       $("#form-contact").validate();
       $("#form-forgot").validate();
@@ -193,7 +211,7 @@
 
       $("#dialogSample").click(function() {
         $("#dialogSample").css({
-          opacity:0,
+          opacity: 0,
           "pointer-events": "none"
         });
       });
@@ -205,17 +223,15 @@
 
     // Sample profiles
     function showPreviewSample(model) {
-      if(model == "team") {
-        $("#dialogImgSample").attr("src","../images/perfil_muestra_equipo.jpg");
-      }
-      else if(model == "player") {
-        $("#dialogImgSample").attr("src","../images/perfil_muestra_jugador.jpg");
-      }
-      else if(model == "coach") {
-        $("#dialogImgSample").attr("src","../images/perfil_muestra_coach.jpg");
+      if (model == "team") {
+        $("#dialogImgSample").attr("src", "../images/perfil_muestra_equipo.jpg");
+      } else if (model == "player") {
+        $("#dialogImgSample").attr("src", "../images/perfil_muestra_jugador.jpg");
+      } else if (model == "coach") {
+        $("#dialogImgSample").attr("src", "../images/perfil_muestra_coach.jpg");
       }
       $("#dialogSample").css({
-        opacity:1,
+        opacity: 1,
         "pointer-events": "auto"
       });
     }

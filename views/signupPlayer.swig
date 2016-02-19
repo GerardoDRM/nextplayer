@@ -42,7 +42,8 @@
 
           <input type="submit" value="Registrarse" class="input-signup" placeholder="Registrarse">
           <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-          <p class="note-terms"> *Nota: Al registrarse usted esta aceptando los términos y condiciones </p>
+          <p class="note-terms">
+            <input type="checkbox" name="agree" /> *Nota: Acepto los <a href="/terms" style="color:white">términos y condiciones</a> </p>
         </div>
       </div>
 

@@ -107,7 +107,13 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     $scope.user.state = $("#states-list").val();
     $scope.user.country = $("#countries-list").val();
     // PUT data
-    $scope.user.born = moment($("#datepicker").val(), "DD-MM-YYYY").toISOString();
+    var birth = moment($("#datepicker").val(), "DD-MM-YYYY").toISOString();
+    var age = getAge($scope.user.born);
+    if(age < 8) {
+      addFeedback("Fecha de nacimiento incorrecta o formato de fecha inválido", 'error');
+      return;
+    }
+    $scope.user.born = birth;
     $scope.user.id = $("#userId").val();
     if ($("#basic-player-form").valid()) {
       $http({

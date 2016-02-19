@@ -1,7 +1,7 @@
 {% extends 'baseProfile.swig' %}
 {% block content %}
 <div ng-app="UsersModule" ng-controller="OrgPreviewController" ng-cloak>
-  <div class="carousel slide dissapear" style="height:500px;" data-ride="carousel" id="carousel-example-generic">
+  <div id="carousel" class="carousel slide dissapear" style="height:500px;" data-ride="carousel" id="carousel-example-generic">
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox" id="space-for-photos">
     </div>
@@ -46,7 +46,7 @@
             </p>
             <p class="body-paragraph-left">{{ org.details.email }}
             </p>
-            <p class="body-paragraph-left">{{ org.details.website }}</p>
+            <a href="{{ org.details.website }}"><p class="body-paragraph-left">{{ org.details.website }}</p></a>
           </div>
           <div class="exclusive-club">
 

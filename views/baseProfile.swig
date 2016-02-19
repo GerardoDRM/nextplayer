@@ -7,6 +7,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="En Next Players estamos comprometidos a ayudar atletas, coaches y equipos alcanzar su potencial. Facilitaremos la búsqueda de talento y conexión entre jugadores y reclutadores, con mayor alcance.">
+  <meta name="keywords" content="Next players, Nextplayers, reclutamiento deportivo, futbol americano, futbol soccer, basquetbol, becas deportivas, universidad, deporte universitario, atleta, beca">
+  <meta name="author" content="Craft Code">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <!--STYLES-->
   <link rel="stylesheet" href="/styles/importer.css">
@@ -68,9 +71,7 @@
       <div class="col-xs-12">
         <div class="row contact-foot">
           <div class="col-xs-12 col-sm-4">
-            <p>
-              Tel. 01 2222 61 90 30
-            </p>
+            <img src="../images/logoNext.jpg" width="60px">
             <p> Email:info@nextplayers.mx </p>
           </div>
           <div class="col-xs-12 col-sm-4">
@@ -132,6 +133,10 @@
 
   <script>
     $(document).ready(function() {
+      $('#carousel').carousel({
+        interval: 3000,
+        cycle: true
+      });
 
       // Clone select list data in a custom select list
       // Replicate info

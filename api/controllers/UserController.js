@@ -110,6 +110,7 @@ module.exports = {
           data.sports_list = [];
           data.details.organization_name = req.param("organization_name");
         } else {
+          if(role == "coach") data.model = req.param("model");
           data.sport = {
             title: req.param('sport')
           }
@@ -295,7 +296,7 @@ module.exports = {
               success: function(encryptedPassword) {
                 var user = results[0];
                 User.findOne({
-                  id: user._id
+                  id: user._id.toString()
                 }).exec(function findOneCB(err, userDB) {
                   userDB.encryptedPassword = encryptedPassword;
                   userDB.resetPasswordToken = null;
@@ -627,6 +628,7 @@ module.exports = {
   userFilters: function(req, res) {
     var search = req.param("search");
     var skip = req.param("skip");
+    var age_flag = false;
     // Init data search
     var data = {
       email_verification: true,
@@ -639,9 +641,11 @@ module.exports = {
     // Chage data
     search.sport !== undefined ? data["sport.title"] = search.sport : false;
     if (search.age !== undefined) {
-      var year = ((new Date()).getFullYear()) - search.age;
+      age_flag = true;
+      var year = ((new Date()).getFullYear()-1) - search.age;
       var start = moment([year, 1 - 1]).toISOString();
-      var end = moment(start).endOf('year').toISOString();
+      var nextYear = moment([year + 2, 1 - 1]).toISOString();
+      var end = moment(nextYear).endOf('year').toISOString();
       data["born"] = {
         $gte: start,
         $lt: end
@@ -674,6 +678,15 @@ module.exports = {
         "membership.level": -1
       }).toArray(function(err, results) {
         if (err) return res.serverError(err);
+        if(results.length > 0 && age_flag) {
+          var filter = [];
+          for(var i=0; i<results.length; i++) {
+            if(getAge(results[i].born) == search.age) {
+              filter.push(results[i]);
+            }
+          }
+          return res.ok(filter);
+        }// end age filter
         return res.ok(results);
       });
     });
@@ -1246,4 +1259,15 @@ var getCustomerCard = function(customer) {
 
 var stripeError = function(reason) {
   console.log(reason);
+}
+
+function getAge(date) {
+  var today = new Date();
+  var birthDate = new Date(date);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
 }

@@ -229,6 +229,7 @@ var updatePreview = function(i, url) {
     "display": "block",
     "background-image": "url(../" + match[0] + ")",
     "background-size": "cover",
+    "background-position": "center center",
     "background-repeat": "no-repeat"
   });
 }

@@ -13,6 +13,9 @@ angular.module('SignupModule').controller('SignupController', ['$scope', '$http'
       if (userModel == "organization") {
         data.organization_name = $scope.signupForm.organization_name;
       } else {
+        if(userModel == "coach") {
+          data.model = $("#modelCoach").val();
+        }
         data.sport = $('#select-sport').find('option:selected').val();
       }
       // Submit request to Sails.

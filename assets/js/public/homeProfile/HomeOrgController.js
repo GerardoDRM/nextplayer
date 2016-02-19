@@ -267,7 +267,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
     var commet = following.comment !== undefined ? following.comment : "No ha comentarios";
 
     angular.element(document.getElementById('space-for-following')).append(compile(
-      '<div class="col-sm-6">' +
+      '<div class="col-sm-6" style="height:250px;">' +
       '<div class="row profile-card no-margin">' +
       '<div class="col-xs-8 col-sm-4">' +
       '<a href="/profile/' + following._id + '\">' +

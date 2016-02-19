@@ -37,11 +37,19 @@
 
           <input type="email" class="input-signup" placeholder="Correo" name="email" ng-model="signupForm.email" required>
 
+          <select class="input-signup" name="model" id="modelCoach">
+            <option value="" selected="selected">Tipo de Coach</option>
+            <option value="Secundaria">Secundaria</option>
+            <option value="Preparatoria">Preparatoria</option>
+            <option value="Universidad">Universidad</option>
+            <option value="Profesional">Profesional</option>
+          </select>
+
           <input type="password" class="input-signup" placeholder="Contraseña" name="password" ng-model="signupForm.password" required>
 
           <input type="submit" value="Registrarse" class="input-signup">
           <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-              <p class="note-terms"> *Nota: Al registrarse usted esta aceptando los términos y condiciones </p>
+          <p class="note-terms"><input type="checkbox" name="agree"/> *Nota: Acepto los <a href="/terms" style="color:white">términos y condiciones</a> </p>
         </div>
       </div>
 

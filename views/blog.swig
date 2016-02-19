@@ -1,6 +1,6 @@
 {% extends 'baseProfile.swig' %}
 {% block content %}
-<div class="container" ng-controller="BlogController">
+<div class="container" ng-controller="BlogController" ng-cloak>
 
   <div class="row">
     <div class="col-sm-3 dissapear">

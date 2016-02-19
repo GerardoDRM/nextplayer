@@ -145,7 +145,7 @@ angular.module('UsersModule').controller('OrgPreviewController', ['$scope', '$ht
       '<div class="col-xs-5">' +
       '<p class="head-paragraph">' + staff.position + '</p>' +
       '<p class="body-paragraph-left">' + staff.name + '</p>' +
-      '<p class="body-paragraph-left">'+ staff.sport + '</p>' +
+      '<p class="body-paragraph-left">' + staff.sport + '</p>' +
       '</div>' +
       '</div>'
     )(scope));

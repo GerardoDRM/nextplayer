@@ -99,6 +99,7 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
 
     // Changing format Date
     if ($scope.user.born !== undefined || $scope.user.born != "") {
+      $scope.user.age = getAge($scope.user.born);
       $scope.user.born = moment($scope.user.born).format('DD-MM-YYYY');
     }
 

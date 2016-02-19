@@ -94,7 +94,7 @@ var createAchivement = function(i, compile, scope) {
     '</div>' +
     '</div>' +
     '<div class="col-sm-6">' +
-    '<select name="year" ng-model="org.a' + i + '.achiveYear" ng-options="n for n in [] | range:1960:2016" style="margin-bottom:10%;"></select>' +
+    '<select name="year" ng-model="org.a' + i + '.achiveYear" ng-options="n for n in [] | range:1940:2017" style="margin-bottom:10%;"></select>' +
     '</div>' +
     '</div>' +
     '<div class="row">' +

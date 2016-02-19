@@ -95,6 +95,17 @@
             <div class="row">
               <div class="col-xs-6">
                 <p>
+                  Edad
+                </p>
+              </div>
+              <div class="col-xs-6">
+                <p class="green-title">{{ user.age }} años
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <p>
                   Egreso de Secundaria
                 </p>
               </div>

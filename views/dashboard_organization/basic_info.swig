@@ -98,13 +98,13 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="exampleInputEmail2">Descripción
+            <label for="exampleInputEmail2">Descripción (max. 800 caracteres)
 
             </label>
           </div>
         </div>
         <div class="col-sm-6 countries-eff">
-          <textarea class="form-control" rows="8" style="background-color:#e9eaed; width:100%;" ng-model="organization.about"></textarea>
+          <textarea class="form-control" rows="8" maxlength="800" style="background-color:#e9eaed; width:100%;" ng-model="organization.about"></textarea>
         </div>
       </div>
     </div>

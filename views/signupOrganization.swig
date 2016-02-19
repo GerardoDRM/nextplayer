@@ -1,4 +1,5 @@
-{% extends 'base.swig' %} {% block content %}
+{% extends 'base.swig' %}
+{% block content %}
 <!--<div class="advisement">
 
 </div> -->
@@ -16,7 +17,7 @@
           </div>
         </div>
         <div class="col-sm-6 text-center ">
-          <input type="hidden" id="user-type" value="organization">
+          <input id="user-type" type="hidden" value="organization">
           <input class="input-signup" name="organization_name" ng-model="signupForm.organization_name" placeholder="Universidad / Equipo" required type="text">
 
           <input class="input-signup" name="name" ng-model="signupForm.name" placeholder="Nombre" required style="margin-top:30px" type="text">
@@ -29,8 +30,11 @@
 
           <input class="input-signup" type="submit" value="Registrarse">
 
-          <input name="_csrf" type="hidden" value="<%= _csrf %>" />
-              <p class="note-terms"> *Nota: Al registrarse usted esta aceptando los términos y condiciones </p>
+          <input name="_csrf" type="hidden" value="<%= _csrf %>"/>
+          <p class="note-terms"><input name="agree" type="checkbox"/>
+            *Nota: Acepto los
+            <a href="/terms" style="color:white">términos y condiciones</a>
+          </p>
         </div>
       </div>
 
@@ -73,8 +77,8 @@
 </div>
 
 <div class="more-info">
-  <p>!Reclutamiento Deportivo! Nextplayers es una plataforma donde vas a tener acceso a combines y a noticias de jugadores. Podrás buscar, filtrar y contactar talento deportivo. Se te brindará un acceso personalizado donde vas a estar actualizado del talento
-    que hay a nivel nacional e internacional. Lo mejor de todo, recibirás notificaciones en tiempo real de las actualizaciones del jugador que sigues.
+  <p>!Reclutamiento Deportivo! Nextplayers es una plataforma donde vas a tener acceso a combines y a noticias de jugadores. Podrás buscar, filtrar y contactar talento deportivo. Se te brindará un acceso personalizado donde vas a estar actualizado del
+    talento que hay a nivel nacional e internacional. Lo mejor de todo, recibirás notificaciones en tiempo real de las actualizaciones del jugador que sigues.
 
   </p>
 </div>
