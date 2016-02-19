@@ -150,7 +150,7 @@ var createCardsProfle = function(compile, scope, profile_info) {
   }
 
   angular.element(document.getElementById('space-for-profiles')).append(compile(
-    '<div class="col-xs-6 col-sm-4">' +
+    '<div class="col-xs-12 col-sm-4">' +
     '<a href="javascript:void(0)" ng-click="updateActive(\''+ profile_info._id + '\')">' +
     '<div class="card">' +
     elementFollowing +

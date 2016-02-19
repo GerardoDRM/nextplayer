@@ -450,8 +450,8 @@ textarea {
 .modalChat {
   display: none;
   z-index: 99;
-  width: 400px;
-  height: 800px;
+  width: 250px;
+  height: 70%;
   background-color: #FFF;
   top: 5%;
   position: fixed;
@@ -465,12 +465,15 @@ textarea {
       margin: 0;
       padding-left: 10px;
       width: 100%;
-      text-align: center; }
+      text-align: center;
+      font-size: 1.25em; }
     .modalChat .header span {
       font-size: 2em; }
+  .modalChat .inbox-container {
+    height: 100%; }
   .modalChat ul {
     width: 100%;
-    height: 700px;
+    height: 72%;
     list-style: none;
     padding: 0;
     overflow-y: scroll;
@@ -485,7 +488,7 @@ textarea {
       .modalChat ul.message-list li p {
         font-size: 1.125em; }
     .modalChat ul .message {
-      width: 300px;
+      width: 90%;
       height: auto;
       border: 2px solid #e9eaed;
       margin: 5px 0;
@@ -501,18 +504,26 @@ textarea {
         background-color: #9bee9d; }
   .modalChat .message-input {
     width: 100%;
-    height: 40px;
-    background-color: #e9eaed;
+    height: 50px;
+    background-color: #FFF;
     display: flex;
     justify-content: center;
-    margin-top: -15px; }
-    .modalChat .message-input input {
-      width: 95%;
+    margin-top: -15px;
+    position: absolute;
+    bottom: 0; }
+    .modalChat .message-input textarea {
+      width: 78%;
+      height: 50px;
       align-self: center;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       -ms-border-radius: 5px;
       border-radius: 5px; }
+    .modalChat .message-input a {
+      align-self: center; }
+      .modalChat .message-input a img {
+        width: 80%;
+        margin-left: 15px; }
 
 .feedback {
   padding: 0 100px;
@@ -529,9 +540,9 @@ textarea {
   display: none;
   font-family: 'Roboto', sans-serif; }
   .feedback h3 {
-    font-size: 32px; }
-  .feedback p {
     font-size: 22px; }
+  .feedback p {
+    font-size: 16; }
 
 .msg {
   background-color: #9bee9d;
@@ -588,7 +599,7 @@ textarea {
 
 .dialogSessions {
   background: #FFF;
-  width: 40%;
+  width: 90%;
   margin: 10% auto;
   padding: 10px;
   box-shadow: 12px 9px 25px #0A0A0A;
@@ -597,7 +608,8 @@ textarea {
   -ms-border-radius: 5px;
   border-radius: 5px; }
   .dialogSessions h1 {
-    font-weight: bold; }
+    font-weight: bold;
+    font-size: 1.375em; }
   .dialogSessions h4 {
     font-style: italic; }
   .dialogSessions form {
@@ -1196,6 +1208,7 @@ textarea {
 .middle-organization {
   background: url("../images/banners-05.jpg") no-repeat center;
   background-size: cover;
+  background-position: 50% 0;
   width: 100%;
   height: 450px; }
 
@@ -1240,6 +1253,8 @@ textarea {
 
 .prospects-description {
   height: 120px; }
+  .prospects-description h3 {
+    padding-left: 15px; }
 
 .green-header-title {
   background: #2ae92e;
@@ -1577,6 +1592,21 @@ textarea {
     display: none; }
 
   .container-team {
-    margin-top: -125px; } }
+    margin-top: -125px; }
+
+  .dialogSessions {
+    width: 40%; }
+    .dialogSessions h1 {
+      font-size: 2.25em; }
+
+  .feedback h3 {
+    font-size: 32px; }
+  .feedback p {
+    font-size: 22px; }
+
+  .modalChat {
+    width: 400px; }
+    .modalChat .header h2 {
+      font-size: 1.875em; } }
 
 /*# sourceMappingURL=main.css.map */

@@ -72,6 +72,7 @@ angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$h
         }
       }).then(function successCallback(response) {
         var contacts = response.data;
+        console.log(contacts);
         if (contacts !== undefined) {
           // Clean space
           $("#space-for-contacts").empty();
@@ -126,19 +127,33 @@ angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$h
       $("#inbox").hide(100);
       $("#roomName").html(name);
     }, function errorCallback(response) {});
+    // Update notification
+    $http({
+      method: 'PUT',
+      url: '/room/notification',
+      data: {
+        "viewer": $("#userId").val(),
+        "sender": id
+      }
+    }).then(function successCallback(response) {
+    }, function errorCallback(response) {});
   };
 
   $scope.sendMessage = function() {
-    // Send the private message
-    io.socket.post('/chat/private/' + $("#userId").val(), {
-      to: $scope.currentDestination,
-      msg: $scope.message
-    });
-    var message = {
-      id: $("#userId").val(),
-      content: $scope.message
-    };
-    createMessages($compile, $scope, message);
+    if($scope.message !== undefined) {
+      // Send the private message
+      io.socket.post('/chat/private/' + $("#userId").val(), {
+        to: $scope.currentDestination,
+        msg: $scope.message
+      });
+
+      var message = {
+        id: $("#userId").val(),
+        content: $scope.message
+      };
+      createMessages($compile, $scope, message);
+      $scope.message = undefined;
+    }
   }
 }]);
 
@@ -236,7 +251,7 @@ var createTeams = function(compile, scope, team) {
   var photo = match.length > 0 ? 'background: url(../' + match[0] + ') 50% 50% / cover no-repeat' : "";
 
   angular.element(document.getElementById('space-for-teams')).append(compile(
-    '<div class="col-xs-6 col-sm-4">' +
+    '<div class="col-xs-6 col-sm-4" style="height:195px;">' +
     '<a href="/profile/' + team._id + '">' +
     '<div class="card">' +
     '<div class="catalogue-image" style="' + photo + '"></div>' +

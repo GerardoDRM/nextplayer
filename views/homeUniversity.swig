@@ -1,6 +1,6 @@
 {% extends 'baseProfile.swig' %}
 {% block content %}
-<div ng-controller="HomeOrgController">
+<div ng-controller="HomeOrgController" ng-cloak>
   <div class="container">
     <div class="row container-inner-main">
       <div class="col-sm-3 no-padding">
@@ -36,61 +36,60 @@
               <a class="view-green--btn" href="javascript:void(0);" ng-click="getAccess()">Reclutar</a>
             </div>
             <div id="space-for-following"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- Sessions -->
-<div class="modalDialog" id="dialogSessions">
-  <div class="dialogSessions">
-    <h1>Sesiones:</h1>
-    <h4>
-      *Nota: Una vez que la session este activa, es necesario cerrar la sesion cuando esta sea desocupada, de lo contrario cada session tendra un limite de una hora.</h4>
-    <form>
-      <div class="row" id="space-for-access"></div>
-      <div class="save-button" style="text-align:center;">
-        <button class="input-signup" style="background:#2ae92e;" ng-click="updateSession()" style="margin-top: 18px;">Entrar</button>
-      </div>
-    </form>
+  <!-- Sessions -->
+  <div class="modalDialog" id="dialogSessions">
+    <div class="dialogSessions">
+      <h1>Sesiones:</h1>
+      <h4>
+        *Nota: Una vez que la session este activa, es necesario cerrar la sesion cuando esta sea desocupada, de lo contrario cada session tendra un limite de una hora.</h4>
+      <form>
+        <div class="row" id="space-for-access"></div>
+        <div class="save-button" style="text-align:center;">
+          <button class="input-signup" ng-click="updateSession()" style="background:#2ae92e;" style="margin-top: 18px;">Entrar</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
-<!-- Comments -->
-<div class="modalDialog" id="dialogComment">
-  <div class="dialogSessions">
-    <h1>Comenta sobre este prospecto:</h1>
-    <p>(Max. 200 caracteres)</p>
-    <form id="form-comment">
-    <textarea maxlength="200" placeholder="Escribe tu comentario" ng-model="comment" required></textarea>
-      <div class="save-button" style="text-align:center;">
-        <button class="input-signup" style="margin-top: 18px; background:#2ae92e;" ng-click="addComment()">Guardar</button>
-      </div>
-    </form>
+  <!-- Comments -->
+  <div class="modalDialog" id="dialogComment">
+    <div class="dialogSessions">
+      <h1>Comenta sobre este prospecto:</h1>
+      <p>(Max. 200 caracteres)</p>
+      <form id="form-comment">
+        <textarea maxlength="200" ng-model="comment" placeholder="Escribe tu comentario" required></textarea>
+        <div class="save-button" style="text-align:center;">
+          <button class="input-signup" ng-click="addComment()" style="margin-top: 18px; background:#2ae92e;">Guardar</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
-<a class="chat" id="button-chat" ng-click="showInbox($event)"></a>
+  <a class="chat" id="button-chat" ng-click="showInbox($event)"></a>
 
-<!-- Modal Chat -->
-<div class="modalChat" id="chat-structure">
-  <div class="inbox-container" id="inbox">
-    <div class="header">
-      <h2>Inbox</h2>
+  <!-- Modal Chat -->
+  <div class="modalChat" id="chat-structure">
+    <div class="inbox-container" id="inbox">
+      <div class="header">
+        <h2>Inbox</h2>
+      </div>
+      <ul class="message-list" id="space-for-contacts"></ul>
     </div>
-    <ul class="message-list" id="space-for-contacts">
-    </ul>
+    <div class="inbox-container" id="conversation">
+      <div class="header">
+        <span aria-hidden="true" class="glyphicon glyphicon-triangle-left" id="return-inbox" ng-click="showInbox($event)"></span>
+        <h2 id="roomName"></h2>
+      </div>
+      <ul id="messages-space"></ul>
+      <div class="message-input">
+        <textarea ng-model="message" placeholder="Escriba un mensaje"></textarea>
+        <a href="javascript:void(0);" ng-click="sendMessage()"><img src="../images/send.svg"></a>
+      </div>
+    </div>
   </div>
-  <div class="inbox-container" id="conversation">
-    <div class="header">
-      <span aria-hidden="true" class="glyphicon glyphicon-triangle-left" id="return-inbox" ng-click="showInbox($event)"></span>
-      <h2 id="roomName"></h2>
-    </div>
-    <ul id="messages-space">
-    </ul>
-    <div class="message-input">
-      <input type="text" ng-model="message" enter="sendMessage()"/>
-    </div>
-  </div>
-</div>
 </div>
 {% endblock content %}

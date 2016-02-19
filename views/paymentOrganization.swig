@@ -1,6 +1,6 @@
 {% extends 'baseProfile.swig' %}
 {% block content %}
-<div class="middle-organization">
+<div class="middle-organization" ng-cloak>
   <div class="container">
     <div class="row">
       <div class="col-sm-5 font-organization dissapear">

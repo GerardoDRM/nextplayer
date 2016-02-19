@@ -213,20 +213,34 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
       $("#inbox").hide(100);
       $("#roomName").html(name);
     }, function errorCallback(response) {});
+    // Update notification
+    $http({
+      method: 'PUT',
+      url: '/room/notification',
+      data: {
+        "viewer": $("#userId").val(),
+        "sender": id
+      }
+    }).then(function successCallback(response) {
+    }, function errorCallback(response) {});
   };
 
   $scope.sendMessage = function() {
-    // Send the private message
-    io.socket.post('/chat/private/' + $("#userId").val(), {
-      to: $scope.currentDestination,
-      msg: $scope.message
-    });
+    if($scope.message !== undefined) {
+      // Send the private message
+      io.socket.post('/chat/private/' + $("#userId").val(), {
+        to: $scope.currentDestination,
+        msg: $scope.message
+      });
 
-    var message = {
-      id: $("#userId").val(),
-      content: $scope.message
-    };
-    createMessages($compile, $scope, message);
+      var message = {
+        id: $("#userId").val(),
+        content: $scope.message
+      };
+      createMessages($compile, $scope, message);
+      $scope.message = undefined;
+    }
+
   }
 
 
@@ -255,7 +269,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
     angular.element(document.getElementById('space-for-following')).append(compile(
       '<div class="col-sm-6">' +
       '<div class="row profile-card no-margin">' +
-      '<div class="col-sm-4">' +
+      '<div class="col-xs-8 col-sm-4">' +
       '<a href="/profile/' + following._id + '\">' +
       '<div class="card">' +
       '<div class="catalogue-image" style="' + photo + '"></div>' +
@@ -266,19 +280,21 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
       '</div>' +
       '</a>' +
       '</div>' +
-      '<div class="col-sm-8">' +
+      '<div class="col-xs-12 col-sm-8">' +
       '<div class="row prospects-description">' +
       '<h3>' +
       'Añadido por:' +
       '</h3>' +
-      '<div class="col-sm-6 no-padding">' +
+      '<div class="col-xs-6">' +
       '<h4 style="margin:0;">' + following.recruiter + '</h4>' +
       '</div>' +
-      '<div class="col-sm-6" style="display:inline">' +
-      '<a ng-click=showCommentForm(\'' + following._id + '\',$event)><img alt="..." class="message-image" src="../images/comment.svg"></a>' +
-      '<a ng-click="showConversation(\'' + following._id + '\', \'' + name + '\')"><img alt="..." class="message-image" src="../images/mensage.svg"></a>' +
+      '<div class="col-xs-6" style="display:inline">' +
+      '<a ng-click=showCommentForm(\'' + following._id + '\',$event)><img alt="Comentar" class="message-image" src="../images/comment.svg"></a>' +
+      '<a ng-click="showConversation(\'' + following._id + '\', \'' + name + '\')"><img alt="Mensajes" class="message-image" src="../images/mensage.svg"></a>' +
       '</div>' +
+      '<div class="col-xs-12">' +
       '<p>' + commet + '</p>' +
+      '</div>' +
       '</div>' +
       '</div>' +
       '</div>' +

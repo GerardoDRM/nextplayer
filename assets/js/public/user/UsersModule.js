@@ -10,7 +10,7 @@ angular.module('UsersModule').directive("calendar", function() {
     x.datepicker({
       dateFormat: 'dd-mm-yy',
       changeYear: true,
-      yearRange: "1940:2016",
+      yearRange: "1940:2008",
       dayNamesMin: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
       monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 
@@ -18,6 +18,7 @@ angular.module('UsersModule').directive("calendar", function() {
     x.datepicker("setDate", currentDate);
   };
 });
+
 
 angular.module('UsersModule').filter('range', function() {
   return function(input, min, max) {
@@ -169,13 +170,20 @@ var createInbox = function(compile, scope, contact) {
   } else {
     name = contact.name + " " + contact.lastname;
   }
+
+  // Add Notification
+  var notification = "";
+  if(contact.viewed !== undefined) {
+    notification = "style='background:#70DA8B'";
+  }
+
   angular.element(document.getElementById('space-for-contacts')).append(compile(
-    '<li class="inbox-contact" ng-click="showConversation(\'' + contact._id + '\', \'' + name + '\')">' +
+    '<li class="inbox-contact" ng-click="showConversation(\'' + contact._id + '\', \'' + name + '\')" ' + notification + '>' +
     '<div class="row">' +
-    '<div class="col-sm-4">' +
+    '<div class="col-xs-4">' +
     '<img src="' + photo + '">' +
     '</div>' +
-    '<div class="col-sm-6">' +
+    '<div class="col-xs-6">' +
     '<p>' + name + '</p>' +
     '</div>' +
     '</div>' +

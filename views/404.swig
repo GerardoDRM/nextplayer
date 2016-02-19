@@ -50,14 +50,8 @@
 
       <div class="main">
         <h1>
-          Something's fishy here.
+          Lo sentimos esta ruta no existe
         </h1>
-      </div>
-
-      <div class="logo">
-        <a href="http://sailsjs.org">
-          <img src="http://sailsjs.org/images/logo.png">
-        </a>
       </div>
     </div>
 

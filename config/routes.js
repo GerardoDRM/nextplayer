@@ -124,6 +124,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'PUT /add/rooms': 'RoomsController.addRoom',
+  'PUT /room/notification': 'RoomsController.updateMessageStatus',
   'GET /user/subscription/:id': 'RoomsController.subscribeToMessages',
   'POST /chat/private/:id': 'RoomsController.privateMessage',
   'GET /myrooms/info': 'RoomsController.getInbox'

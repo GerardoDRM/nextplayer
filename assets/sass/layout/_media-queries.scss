@@ -159,4 +159,33 @@
   .container-team {
     margin-top: -125px;
   }
+
+  ///// Search ////////
+  // Moda Sessions
+  .dialogSessions {
+    width: 40%;
+    h1 {
+      font-size: em(36px);
+    }
+  }
+
+  // Feedback
+  .feedback {
+    h3 {
+      font-size: 32px;
+    }
+    p {
+      font-size: 22px;
+    }
+  }
+
+  //////////// CHAT MDOAL ///////////////
+  .modalChat {
+    width: 400px;
+    .header {
+      h2 {
+        font-size: em(30px);
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 {% extends 'baseProfile.swig' %}
 {% block content %}
-<div ng-app="UsersModule" ng-controller="OrgPreviewController">
+<div ng-app="UsersModule" ng-controller="OrgPreviewController" ng-cloak>
   <div class="carousel slide dissapear" style="height:500px;" data-ride="carousel" id="carousel-example-generic">
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox" id="space-for-photos">

@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="/styles/importer.css">
   <link rel="stylesheet" href="/styles/main.css">
   <!--STYLES END-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
 </head>
 
 <body>
@@ -69,7 +71,8 @@
             <p> Email:info@nextplayers.mx </p>
           </div>
           <div class="col-xs-12 col-sm-4">
-            <a href="https://www.facebook.com/NextPlayersMX/?fref=ts"><p><img src="../images/social.svg" width="20px">NextPlayers.mx</p></a>
+            <a style="color:white;" href="https://www.facebook.com/NextPlayersMX/?fref=ts" target="_blank"><p><img src="../images/social.svg" width="20px">NextPlayers.mx</p></a>
+            <p><a style="color:white;"  href="http://www.craftcode.rocks"  target="_blank"><img src="../images/craft.svg" width="65px">Powered by CraftCode</a></p>
           </div>
           <div class="col-xs-12 col-sm-4">
           <a style="color:white;" href="/terms">  <p>Términos de privacidad y política</p> </a>
@@ -85,8 +88,6 @@
       </div>
     </div>
   </footer>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
