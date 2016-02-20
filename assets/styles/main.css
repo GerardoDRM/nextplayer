@@ -1433,6 +1433,16 @@ textarea {
   left: 5%;
   background: #2ae92e; }
 
+.term-class h1 {
+  text-align: center;
+  font-weight: bold; }
+.term-class p {
+  text-align: left;
+  margin-bottom: 10px; }
+.term-class h2 {
+  text-align: center;
+  font-weight: bold; }
+
 /**
   * Buttons Partial SASS
   * This SASS file has all

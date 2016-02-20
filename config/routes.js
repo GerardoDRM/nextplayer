@@ -120,6 +120,7 @@ module.exports.routes = {
   'GET /contact' : {view: 'contact'},
   'GET /combines' : {view: 'combines'},
   'GET /terms' : {view: 'terms'},
+    'GET /privacity' : {view: 'privacity'},
   /***************************************************************************
   *                                                                          *
   * Chat routes socket IO.                                                   *

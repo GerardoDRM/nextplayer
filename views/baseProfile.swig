@@ -77,10 +77,12 @@
           </div>
           <div class="col-xs-12 col-sm-4">
             <a style="color:white;"  href="https://www.facebook.com/NextPlayersMX/?fref=ts"><p><img src="../images/social.svg" width="20px">NextPlayers.mx</p></a>
+              <a style="color:white;" href="https://twitter.com/nextplayersmx" target="_blank"><p><img src="../images/twitter.svg" width="20px">@NextPlayersMX</p></a>
             <p><a style="color:white;"  href="http://www.craftcode.rocks"  target="_blank"><img src="../images/craft.svg" width="65px">Powered by CraftCode</a></p>
           </div>
           <div class="col-xs-12 col-sm-4">
-            <a style="color:white;" href="/terms">  <p>Términos de privacidad y política</p> </a>
+          <a style="color:white;" href="/terms">  <p>Términos de uso</p> </a>
+            <a style="color:white;" href="/privacity">  <p>Aviso de privacidad</p> </a>
           </div>
         </div>
       </div>
