@@ -13,8 +13,15 @@ angular.module('UsersModule').controller('BasicInfoOrganization', ['$scope', '$h
     $scope.user = response.data["general"];
     $scope.organization = response.data["details"];
 
+    if($scope.organization.address !== undefined &&
+      $scope.organization.organization_name !== undefined &&
+      $scope.organization.email !== undefined &&
+      $scope.organization.about !== undefined) {
+        $("#basic_flag").val("1");
+      }
+
     var profile = $scope.user.profile_photo;
-    if(profile !== undefined) {
+    if (profile !== undefined) {
       var phrase = profile;
       var myRegexp = /uploads\/(.*)/;
       var match = myRegexp.exec(phrase);
@@ -31,29 +38,34 @@ angular.module('UsersModule').controller('BasicInfoOrganization', ['$scope', '$h
         "background-repeat": "no-repeat"
       });
     }
-    if($scope.user.state) $("#states-list").val($scope.user.state);
-  }, function errorCallback(response) {
-  });
+    if ($scope.user.state) $("#states-list").val($scope.user.state);
+  }, function errorCallback(response) {});
 
 
   $scope.update = function() {
-    // Adding state and Country
-    $scope.user.state = $("#states-list").val();
-    // PUT data
-    $scope.user.id = $("#userId").val();
-    $http({
-      method: 'PUT',
-      url: '/user/basicinfo',
-      data: {
-        "user": $scope.user,
-        "applicant": $scope.organization
-      }
-    }).then(function successCallback(response) {
-      if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
-      else{addFeedback("Tus datos han sido guardados exitosamente", 'success');}
-    }, function errorCallback(response) {
-      addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
-    });
+    if ($("#basic-org-form").valid()) {
+      // Adding state and Country
+      $scope.user.state = $("#states-list").val();
+      // PUT data
+      $scope.user.id = $("#userId").val();
+      $http({
+        method: 'PUT',
+        url: '/user/basicinfo',
+        data: {
+          "user": $scope.user,
+          "applicant": $scope.organization
+        }
+      }).then(function successCallback(response) {
+        if (response.data == 500) {
+          addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
+        } else {
+          addFeedback("Tus datos han sido guardados exitosamente", 'success');
+          $("#basic_flag").val(1)
+        }
+      }, function errorCallback(response) {
+        addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
+      });
+    }
   };
 
 }]);

@@ -20,7 +20,7 @@
       </div>
       <div class="col-sm-9 no-padding image-picture-two">
         <div class="col-sm-4 dissapear">
-          <img alt="..." class="icons-sport" src="../images/contador_temporal.png">
+          <img alt="..." class="icons-sport" id="change-sport">
         </div>
         <div class="col-sm-4">
           <div class="title">
@@ -36,97 +36,100 @@
     </div>
   </div>
   <div ng-cloak ng-controller="CoachInfoController">
-    <div class="coach-container no-margin--sides">
-      <div class="row coach-row">
-        <h3>
-          Información básica
-        </h3>
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group-modified">
-                <label >Nombre</label>
+      <div class="coach-container no-margin--sides">
+        <div class="row coach-row">
+        <form id="coach-form">
+          <h3>
+            Información básica
+          </h3>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group-modified">
+                  <label >Nombre</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input class="form-group-modified-input" name="name" ng-model="user.name" required type="text">
               </div>
             </div>
-            <div class="col-sm-6">
-              <input class="form-group-modified-input" name="name" ng-model="user.name" type="text">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group-modified">
-                <label >Apellido</label>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group-modified">
+                  <label >Apellido</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input class="form-group-modified-input" name="lastname" ng-model="user.lastname" required type="text">
               </div>
             </div>
-            <div class="col-sm-6">
-              <input class="form-group-modified-input" name="lastname" ng-model="user.lastname" type="text">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group-modified">
-                <label >País</label>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group-modified">
+                  <label >País</label>
+                </div>
+              </div>
+              <div class="col-sm-6 countries-eff">
+                <select id="country" name="country" required></select>
               </div>
             </div>
-            <div class="col-sm-6 countries-eff">
-              <select id="country" name="country"></select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group-modified">
-                <label >Estado</label>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group-modified">
+                  <label >Estado</label>
+                </div>
+              </div>
+              <div class="col-sm-6 countries-eff">
+                <select id="states" name="states" required></select>
               </div>
             </div>
-            <div class="col-sm-6 countries-eff">
-              <select id="states" name="states"></select>
-            </div>
-          </div>
 
-          <!-- End Firts Col-->
-        </div>
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group-modified">
-                <label>Fecha de nacimiento</label>
+            <!-- End Firts Col-->
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group-modified">
+                  <label>Fecha de nacimiento</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" required type="text">
               </div>
             </div>
-            <div class="col-sm-6">
-              <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" type="text">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group-modified">
+                  <label >Teléfono</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input class="form-group-modified-input" name="phone" ng-model="user.phone" type="text">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group-modified">
+                  <label >Video URL</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input class="video" type="hidden" value="1">
+                <div class="photo" ng-click="showVideoURL($event)">
+                  <img alt="..." src="../images/video.png"/>
+                </div>
+                <div class="photo-preview">
+                  <div class="video-container"></div>
+                  <a ng-click="deleteVideo($event)"></a>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group-modified">
-                <label >Teléfono</label>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <input class="form-group-modified-input" name="phone" ng-model="user.phone" type="text">
-
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group-modified">
-                <label >Video URL</label>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <input class="video" type="hidden" value="1">
-              <div class="photo" ng-click="showVideoURL($event)">
-                <img alt="..." src="../images/video.png"/>
-              </div>
-              <div class="photo-preview">
-                <div class="video-container"></div>
-                <a ng-click="deleteVideo($event)"></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- cd-tabs-content -->
-
+          <!-- cd-tabs-content -->
+          <p>
+            <strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén registrados</strong>
+          </form>
+        </p>
       </div>
     </div>
     <div id="space-for-experience"></div>
@@ -140,12 +143,16 @@
       <div class="dialogVideo">
         <h1>URL:</h1>
         <form id="video-form">
-          <input style="width:100%;" ng-model="video.url" required type="text"/>
+          <input ng-model="video.url" required style="width:100%;" type="text"/>
           <div>
-            <h3> Youtube </h3>
-            <img style="width: 100%;" src="../images/youtube3.png">
-            <h3> Hudl </h3>
-            <img style="width: 100%;" src="../images/holds.png">
+            <h3>
+              Youtube
+            </h3>
+            <img src="../images/youtube3.png" style="width: 100%;">
+            <h3>
+              Hudl
+            </h3>
+            <img src="../images/holds.png" style="width: 100%;">
           </div>
           <div class="save-button">
             <button class="input-signup" ng-click="storeVideo()">Guardar</button>
@@ -153,8 +160,8 @@
         </form>
       </div>
     </div>
+
   </div>
 </div>
-
 
 {% endblock content %}

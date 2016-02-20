@@ -62,20 +62,24 @@ module.exports = {
         _id: 1
       }).toArray(function(err, results) {
         if (err) return res.serverError(500);
-        var conversation = results[0]._id;
-        Rooms.findOne({id:conversation}, function foundRoom(err, room){
-          if (err || room === undefined) res.json(500);
-          var messages = room.messages;
-          for(var i=0; i<messages.length; i++) {
-            if(messages[i].id == user2) {
-              room.messages[i].viewed = 1;
+        if(results.length > 0) {
+          var conversation = results[0]._id;
+          Rooms.findOne({id:conversation}, function foundRoom(err, room){
+            if (err || room === undefined) res.json(500);
+            var messages = room.messages;
+            for(var i=0; i<messages.length; i++) {
+              if(messages[i].id == user2) {
+                room.messages[i].viewed = 1;
+              }
             }
-          }
-          room.save(function(error) {
-            if (error) res.json(500);
-            res.json(201);
+            room.save(function(error) {
+              if (error) res.json(500);
+              res.json(201);
+            });
           });
-        });
+        } else{
+          res.json(201);
+        }
       });
     });
   },
@@ -206,5 +210,20 @@ module.exports = {
         }
       }); // end rooms result
     }); // end native rooms
+  },
+
+  removeRoom: function(req, res) {
+    var org = req.param("org");
+    var user = req.param("user");
+    Rooms.native(function(err, collection) {
+      if (err) return res.serverError(500);
+      collection.remove({
+        org_id: org,
+        user_id: user
+      }, function(err) {
+        if(err) res.json(500);
+        res.json(201);
+      });
+    });
   }
 };

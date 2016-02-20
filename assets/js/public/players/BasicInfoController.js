@@ -15,6 +15,15 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     $scope.user.id = $("#userId").val();
     $scope.player = response.data["details"];
     $scope.status = response.data["status"];
+
+    if($scope.user.born !== undefined &&
+      $scope.player.school !== undefined &&
+      $scope.player.schoolGrade !== undefined &&
+      $scope.player.schoolYear !== undefined && $("countries-list").val() != "") {
+        $("#basic_flag").val("1");
+      }
+
+
     if ($scope.status == 1) {
       $("#club-message").css({
         "display": "none"
@@ -128,6 +137,7 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
           addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
         } else {
           addFeedback("Tus datos han sido guardados exitosamente", 'success');
+          $("#basic_flag").val("1");
         }
       }, function errorCallback(response) {
         addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');

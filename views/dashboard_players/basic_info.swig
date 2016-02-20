@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="name" ng-model="user.name" type="text">
+          <input class="form-group-modified-input" name="name" ng-model="user.name" type="text" required>
         </div>
       </div>
       <div class="row">
@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="lastname" ng-model="user.lastname" type="text">
+          <input class="form-group-modified-input" name="lastname" ng-model="user.lastname" type="text" required>
         </div>
       </div>
       <div class="row">
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="col-sm-6 countries-eff">
-          <select id="states-list" name="states"></select>
+          <select id="states-list" name="states" required></select>
         </div>
       </div>
       <div class="row">
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="col-sm-6 countries-eff">
-          <select id="countries-list" name="country"></select>
+          <select id="countries-list" name="country" required></select>
         </div>
       </div>
       <div class="row">
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" type="text">
+          <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" type="text" required>
         </div>
       </div>
       <div id="tutor"></div>
@@ -62,7 +62,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="school" ng-model="player.school" type="text">
+          <input class="form-group-modified-input" name="school" ng-model="player.school" type="text" required>
         </div>
       </div>
       <div class="row">
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="grade" ng-model="player.schoolGrade" step="0.01" type="number">
+          <input class="form-group-modified-input" name="grade" ng-model="player.schoolGrade" step="0.01" type="number" required>
         </div>
       </div>
       <div class="row">
@@ -86,7 +86,7 @@
         </div>
       </div>
       <div class="col-sm-6 countries-eff">
-        <select name="year" ng-model="player.schoolYear" ng-options="n for n in [] | range:2005:2020" style="margin-bottom:10%;"></select>
+        <select name="year" ng-model="player.schoolYear" ng-options="n for n in [] | range:2005:2020" style="margin-bottom:10%;" required></select>
       </div>
     </div>
     <div class="row">
@@ -100,6 +100,7 @@
       </div>
     </div>
   </div>
+  <p><strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén registrados</strong></p>
 </form>
 <div class="save-button">
   <button class="input-signup" ng-click="update()">Guardar</button>

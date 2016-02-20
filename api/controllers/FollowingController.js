@@ -95,7 +95,7 @@ module.exports = {
           var followingList = [];
           var follow = results[0].following;
           var flag_org = false;
-          if ("name" in follow[0] || "coment" in follow[0]) {
+          if (follow.length > 0 && ("name" in follow[0] || "coment" in follow[0])) {
             for (var i = 0; i < follow.length; i++) {
               followingList[i] = follow[i].id;
             }
@@ -150,7 +150,7 @@ module.exports = {
 
         }, {
           $set: {
-             "following.$.comment" : comment
+            "following.$.comment": comment
           }
         },
         function(err) {
@@ -160,4 +160,25 @@ module.exports = {
     });
   },
 
+  removeFollowing: function(req, res) {
+    var user = new ObjectId(req.param("user"));
+    var following = new ObjectId(req.param("following"));
+
+    Following.native(function(err, collection) {
+      if (err) return res.serverError(500);
+      collection.update({
+          user_id: user
+        }, {
+          $pull: {
+            following: {
+              id: following
+            }
+          }
+        },
+        function(err) {
+          if (err) res.json(500);
+          res.json(201);
+        });
+    });
+  }
 };

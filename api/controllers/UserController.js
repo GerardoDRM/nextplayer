@@ -20,7 +20,7 @@ var ObjectId = require('mongodb').ObjectID;
     Here we are configuring our SMTP Server details.
     STMP is mail server which is responsible for sending and recieving email.
 */
-var smtpTransport = nodemailer.createTransport('smtps://gerardo.bw@gmail.com:gerileboLTD@smtp.gmail.com');
+var smtpTransport = nodemailer.createTransport('smtps://info@nextplayers.mx:reclutamiento2015@vps.webhostmex.com');
 var rand, mailOptions, host, link;
 
 module.exports = {
@@ -136,7 +136,7 @@ module.exports = {
           link = "http://" + req.get('host') + "/verify?id=" + newUser.id;
           // setup e-mail data with unicode symbols
           mailOptions = {
-            from: 'Nextplayers 👥 <gerardo.bw@gmail.com>', // sender address
+            from: 'Nextplayers 👥 <info@nextplayers.mx>', // sender address
             to: newUser.email, // list of receivers
             subject: 'Hola Por favor confirma tu email ✔', // Subject line
             html: 'Hola,<br> Da click en el siguiente link para validar tu email.<br><a href="' + link + '">Click para validar</a>' // html body
@@ -227,7 +227,7 @@ module.exports = {
         link = "http://" + req.get('host') + "/reset/" + token;
         // setup e-mail data with unicode symbols
         mailOptions = {
-          from: 'Nextplayers 👥 <gerardo.bw@gmail.com>', // sender address
+          from: 'Nextplayers 👥 <info@nextplayers.mx>', // sender address
           to: user.email, // list of receivers
           subject: 'Password reset ✔', // Subject line
           html: 'Hola, tu estas recibiendo este email debido a que tu o alguien mas ha realizado una peticion para' +
@@ -318,7 +318,7 @@ module.exports = {
         link = "http://" + req.get('host') + "/reset/" + token;
         // setup e-mail data with unicode symbols
         mailOptions = {
-          from: 'Nextplayers 👥 <gerardo.bw@gmail.com>', // sender address
+          from: 'Nextplayers 👥 <info@nextplayers.mx>', // sender address
           to: user.email, // list of receivers
           subject: 'Password reset ✔', // Subject line
           html: 'Hola, tu password ha sido cambiado exitosamente.'
@@ -409,7 +409,11 @@ module.exports = {
     User.native(function(err, collection) {
       if (err) return res.serverError(err);
       collection.find({
-        role: "organization"
+        role: "organization",
+        email_verification: true,
+        profile_photo : {$exists: true},
+        "details.about" : {$exists: true},
+        "details.organization_name" : {$exists: true}
       }, {
         _id: 1,
         "details.organization_name": 1,
@@ -632,6 +636,10 @@ module.exports = {
     // Init data search
     var data = {
       email_verification: true,
+      name: {$exists: true},
+      lastname: {$exists: true},
+      born: {$exists: true},
+      profile_photo: {$exists: true},
       $or: [{
         role: "player"
       }, {
@@ -639,6 +647,10 @@ module.exports = {
       }]
     };
     // Chage data
+    if (search.model !== undefined) {
+      delete data.$or;
+      data.role = search.model;
+    }
     search.sport !== undefined ? data["sport.title"] = search.sport : false;
     if (search.age !== undefined) {
       age_flag = true;
@@ -1057,7 +1069,7 @@ module.exports = {
     }).exec(function findOneCB(err, userDB) {
       if (err || userDB === undefined) res.json(500);
       else {
-        userDB.details.access[session].active = Date.now() + 3600000; // 1 hour;
+        userDB.details.access[session].active = Date.now() + 480000; // 8 min;
         userDB.details.access[session].status = 1;
         userDB.save(function(error) {
           if (error) res.json(500);
@@ -1182,7 +1194,6 @@ module.exports = {
       else {
         var specificFile = process.cwd() + userDB.details.staff[position].path;
         userDB.details.staff.splice(position, 1);
-        console.log(userDB.details.staff);
         // Delete File
         // Remove physical file from directory
         fs.unlink(specificFile, (err) => {

@@ -93,5 +93,25 @@ module.exports = {
         }
       });
     });
+  },
+
+  removeFollowed: function(req, res) {
+    var user = new ObjectId(req.param("user"));
+    var followed = new ObjectId(req.param("followed"));
+
+    Followed.native(function(err, collection) {
+      if (err) return res.serverError(500);
+      collection.update({
+          user_id: user
+        }, {
+          $pull: {
+            followed: followed
+          }
+        },
+        function(err) {
+          if (err) res.json(500);
+          res.json(201);
+        });
+    });
   }
 };

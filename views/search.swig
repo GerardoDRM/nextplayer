@@ -9,6 +9,12 @@
       <div class="inner-block" style="height:650px">
         <div class="filter">
           <h2 style="text-align:center">Filtros</h2>
+          <p>Tipo</p>
+          <select ng-model="search.model" searchreader>
+            <option value="">n/a</option>
+            <option value="player">Jugador</option>
+            <option value="coach">Coach</option>
+          </select>
           <p>Deporte</p>
           <select ng-model="search.sport" searchreader>
             <option value="">n/a</option>

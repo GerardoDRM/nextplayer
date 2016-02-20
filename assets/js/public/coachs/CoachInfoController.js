@@ -30,16 +30,16 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
       $scope.user.born = moment($scope.user.born).format('DD-MM-YYYY');
     }
     var experienceList = response.data["details"].experience;
-    if(experienceList !== undefined) {
+    if (experienceList !== undefined) {
       for (var i = 0; i < experienceList.length; i++) {
         // Check template in use
-        if($("#space-for-experience").length > 0) createExperience(i, $compile, $scope);
+        if ($("#space-for-experience").length > 0) createExperience(i, $compile, $scope);
         $scope.count++;
         $scope.coach["e" + i] = experienceList[i];
       }
     }
     // Adding video
-    if (response.data["details"].video !== undefined) {
+    if (response.data["details"].video !== undefined && typeof response.data["details"].video == "string") {
       $scope.video = response.data["details"].video;
       var iframe = checkVideoProvider($scope.video);
 
@@ -64,7 +64,7 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
 
     // Adding Profile Photo
     var profile = $scope.user.profile_photo;
-    if(profile !== undefined) {
+    if (profile !== undefined) {
       var phrase = profile;
       var myRegexp = /uploads\/(.*)/;
       var match = myRegexp.exec(phrase);
@@ -82,50 +82,55 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
       });
     }
     // Adding country and state
-    if($scope.user.country !== undefined) {
+    if ($scope.user.country !== undefined) {
       $("#country").val($scope.user.country);
       $("#country").trigger('change');
     }
-    if($scope.user.state !== undefined) $("#states").val($scope.user.state);
+    if ($scope.user.state !== undefined) $("#states").val($scope.user.state);
 
     // Adding global sport
-    $("#userSport").val($scope.user.sport);
-  }, function errorCallback(response) {
-  });
+    showSport($scope.user.sport_name);
+    $("#userSport").val($scope.user.sport_name);
+  }, function errorCallback(response) {});
 
   $scope.update = function() {
-    var experienceList = [];
-    for (var experience in $scope.coach) {
-      experienceList.push($scope.coach[experience]);
-    }
-    var exp = {
-      "experience": experienceList,
-      "video": $scope.video
-    };
-    // Adding state and Country
-    $scope.user.state = $("#states").val();
-    $scope.user.country = $("#country").val();
-    // PUT data
-    $scope.user.born = moment($("#datepicker").val(), "DD-MM-YYYY").toISOString();
-    $scope.user.id = $("#userId").val();
-    $http({
-      method: 'PUT',
-      url: '/user/basicinfo',
-      data: {
-        "user": $scope.user,
-        "applicant": exp
+    if ($("#coach-form").valid()) {
+      var experienceList = [];
+      for (var experience in $scope.coach) {
+        experienceList.push($scope.coach[experience]);
       }
-    }).then(function successCallback(response) {
-      if(response.data == 500) {addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');}
-      else{addFeedback("Tus datos han sido almacenados exitosamente", 'success');}
-    }, function errorCallback(response) {
-      ddFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
-    });
+      var exp = {
+        "experience": experienceList,
+        "video": $scope.video.url
+      };
+      // Adding state and Country
+      $scope.user.state = $("#states").val();
+      $scope.user.country = $("#country").val();
+      // PUT data
+      $scope.user.born = moment($("#datepicker").val(), "DD-MM-YYYY").toISOString();
+      $scope.user.id = $("#userId").val();
+      $http({
+        method: 'PUT',
+        url: '/user/basicinfo',
+        data: {
+          "user": $scope.user,
+          "applicant": exp
+        }
+      }).then(function successCallback(response) {
+        if (response.data == 500) {
+          addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
+        } else {
+          addFeedback("Tus datos han sido almacenados exitosamente", 'success');
+        }
+      }, function errorCallback(response) {
+        ddFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
+      });
+    }
   };
 
   $scope.storeVideo = function() {
     if ($("#video-form").valid()) {
-      var iframe = checkVideoProvider($scope.video);
+      var iframe = checkVideoProvider($scope.video.url);
       if (iframe != 500) {
         // Change UI preview video
         var videoContainer = $scope.elementVideo;
@@ -151,7 +156,8 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
   };
 
   $scope.showVideoURL = function($event) {
-    $scope.elementVideo = $event.target;
+    $scope.selectedVideo = $($event.target).is("img") ? $($event.target).parent().prev().val() :$($event.target).prev().val();
+    $scope.elementVideo = $($event.target).is("img") ? $($event.target).parent()[0] : $event.target;
     $("#dialogVideo").css({
       "opacity": 1,
       "pointer-events": "auto"

@@ -241,8 +241,39 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
       $scope.message = undefined;
     }
 
-  }
-
+  };
+  // Delete chat and following
+  $scope.deleteFollowing = function(id, $event) {
+    // Delete from DOM
+    $($event.target).parent().remove();
+    $scope.followers_delete = $http({
+      method: 'PUT',
+      url: '/followed/remove',
+      data: {
+        "followed": $("#userId").val(),
+        "user": id
+      }
+    });
+    $scope.following_delete = $http({
+      method: 'PUT',
+      url: '/following/remove',
+      data: {
+        "user": $("#userId").val(),
+        "following": id
+      }
+    });
+    $scope.conversation_delete = $http({
+      method: 'DELETE',
+      url: '/room',
+      data: {
+        "org": $("#userId").val(),
+        "user": id
+      }
+    });
+    $q.all([$scope.followers_delete, $scope.following_delete, $scope.conversation_delete]).then(function(results) {
+      addFeedback("Se han realizado los cambios en tu roster", "success");
+    });
+  };
 
   var _createFollowing = function(compile, scope, following) {
     var profile = following.profile_photo;
@@ -268,6 +299,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
 
     angular.element(document.getElementById('space-for-following')).append(compile(
       '<div class="col-sm-6" style="height:250px;">' +
+      '<a class="anchor-coach" style="color:red;" href="javascript:void(0);" ng-click="deleteFollowing(\'' + following._id + '\',$event);">- Remover de Prospectos</a>' +
       '<div class="row profile-card no-margin">' +
       '<div class="col-xs-8 col-sm-4">' +
       '<a href="/profile/' + following._id + '\">' +
@@ -334,7 +366,6 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
 
 // Create Access rows
 var createAccessOpt = function(i, compile, scope, access) {
-  console.log(access.active, Date.now());
   var disabled = "";
   if (access.status !== undefined && access.status == 1 && access.active >= Date.now()) {
     disabled = "disabled"

@@ -60,6 +60,7 @@
   <input type="hidden" value="<%= message.preview_id %>" id="previewId">
   <input type="hidden" value="<%=message.session%>" id="session" />
   <input type="hidden" value="<%=message.recruiter_name%>" id="recruiter" />
+  <input type="hidden" value="0" id="basic_flag"/>
 
   <!-- Feedback -->
   <div id="feedback" class="feedback">
@@ -202,6 +203,7 @@
       var tabContentWrapper = $('.cd-tabs-content');
       // This action will change the content for each tab
       tabItems.on("click", function(event) {
+        if($("#basic_flag").val() == 0) return;
         var selectedItem = $(this);
         if (!selectedItem.hasClass('selected')) {
           var selectedTab = selectedItem.data('content'),
@@ -235,6 +237,28 @@
       $("#staffForm").validate();
       // Validate Comment
       $("#form-comment").validate();
+
+      $("#basic-player-form").validate({
+        rules: {
+          'country': {
+            required: true
+          }
+        },
+      });
+      $("#basic-org-form").validate({
+        rules: {
+          'country': {
+            required: true
+          }
+        },
+      });
+      $("#basic-coach-form").validate({
+        rules: {
+          'country': {
+            required: true
+          }
+        },
+      });
 
 
       // Chat UI animation

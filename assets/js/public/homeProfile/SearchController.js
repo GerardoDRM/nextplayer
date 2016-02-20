@@ -38,7 +38,7 @@ angular.module('UsersModule').controller('SearchController', ['$scope', '$http',
     }
   };
   $scope.skip = 0;
-  $scope.filter = {sport:undefined, age: undefined, range: {}};
+  $scope.filter = {model:undefined, sport:undefined, age: undefined, range: {}};
   $scope.following_list = [];
 
   $scope.searchFilter = $http({
@@ -148,23 +148,29 @@ var createCardsProfle = function(compile, scope, profile_info) {
   if(scope.following_list.indexOf(profile_info._id) > -1) {
     elementFollowing = "<div class='following-card'>Siguiendo</div>";
   }
-
+  var heightP = "";
+  var weightP = "";
+  if(profile_info.role == "player") {
+    heightP = "Altura: " + checkForNulls(profile_info.sport.height);
+    weightP = 'Peso: ' + checkForNulls(profile_info.sport.weight);
+  }
+  var template = '<div class="col-xs-12 col-sm-4" style="height:380px;">' +
+      '<a href="javascript:void(0)" ng-click="updateActive(\''+ profile_info._id + '\')">' +
+      '<div class="card">' +
+      elementFollowing +
+      '<div class="catalogue-image" style="height:180px ;' + photo + '"></div>' +
+      '<p>' + checkForNulls(profile_info.name) + " " + checkForNulls(profile_info.lastname) + '</p>' +
+      '<p>' + checkForNulls(profile_info.sport.title) + '</p>' +
+      '<img class="shield" style="top:38%; width:40px;" src="../images/' + shield + '.png">' +
+      '</div>'+
+      '<p> Edad: ' + getAge(profile_info.born) + '</p>' +
+      '<p> Estado: ' + checkForNulls(profile_info.state) + '</p>' +
+      '<p>' + heightP + '<p>' +
+      '<p>' + weightP + '<p>' +
+      '</a>' +
+      '</div>';
   angular.element(document.getElementById('space-for-profiles')).append(compile(
-    '<div class="col-xs-12 col-sm-4">' +
-    '<a href="javascript:void(0)" ng-click="updateActive(\''+ profile_info._id + '\')">' +
-    '<div class="card">' +
-    elementFollowing +
-    '<div class="catalogue-image" style="height:180px ;' + photo + '"></div>' +
-    '<p>' + checkForNulls(profile_info.name) + " " + checkForNulls(profile_info.lastname) + '</p>' +
-    '<p>' + checkForNulls(profile_info.sport.title) + '</p>' +
-    '<img class="shield" style="top:38%; width:40px;" src="../images/' + shield + '.png">' +
-    '</div>'+
-    '<p> Edad: ' + getAge(profile_info.born) + '</p>' +
-    '<p> Altura: ' + checkForNulls(profile_info.sport.height) + '</p>' +
-    '<p> Peso: ' + checkForNulls(profile_info.sport.weight) + '</p>' +
-    '<p> Estado: ' + checkForNulls(profile_info.state) + '</p>' +
-    '</a>' +
-    '</div>'
+    template
   )(scope));
 }
 
@@ -176,6 +182,7 @@ angular.module('UsersModule').directive("searchreader", ['$http','$compile', fun
       element.bind("change", function(changeEvent) {
         var search = scope.search;
         // Add values
+        scope.filter.model = (search.model !== undefined && search.model != "") ? search.model : undefined;
         scope.filter.sport = (search.sport !== undefined && search.sport != "") ? search.sport : undefined;
         scope.filter.age = (search.age !== undefined && search.age != null) ? search.age : undefined;
         // Weight and Height //

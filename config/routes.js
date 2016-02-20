@@ -115,6 +115,8 @@ module.exports.routes = {
   'GET /following/:id': 'FollowingController.getFollowing',
   'PUT /followed': 'FollowedController.followed',
   'GET /followed/:id': 'FollowedController.getFollowed',
+  'PUT /followed/remove': 'FollowedController.removeFollowed',
+  'PUT /following/remove': 'FollowingController.removeFollowing',
   'GET /contact' : {view: 'contact'},
   'GET /combines' : {view: 'combines'},
   'GET /terms' : {view: 'terms'},
@@ -124,6 +126,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'PUT /add/rooms': 'RoomsController.addRoom',
+  'DELETE /room': 'RoomsController.removeRoom',
   'PUT /room/notification': 'RoomsController.updateMessageStatus',
   'GET /user/subscription/:id': 'RoomsController.subscribeToMessages',
   'POST /chat/private/:id': 'RoomsController.privateMessage',
