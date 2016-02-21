@@ -1162,6 +1162,7 @@ module.exports = {
       if (err || userDB === undefined) res.json(500);
       else {
         var path = process.cwd();
+        console.log(path);
         if (photo.model == "gallery") {
           var position = photo.position;
           path += userDB.details.gallery[position];
@@ -1172,6 +1173,7 @@ module.exports = {
         }
         // Remove physical file from directory
         fs.unlink(path, (err) => {
+          console.log(err);
           if (err) throw res.json(500);
           userDB.save(function(error) {
             if (error) res.json(500);

@@ -1443,6 +1443,10 @@ textarea {
   text-align: center;
   font-weight: bold; }
 
+.comments-blog {
+  height: 400px;
+  overflow-y: auto; }
+
 /**
   * Buttons Partial SASS
   * This SASS file has all

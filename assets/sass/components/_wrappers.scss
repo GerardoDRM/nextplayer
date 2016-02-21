@@ -919,7 +919,6 @@
   color: white;
   margin-top: 10px;
 }
-
 // New video notification
 .new-video {
   padding: 2px;
@@ -928,13 +927,10 @@
   left: 5%;
   background: $green;
 }
-
 .term-class {
-
   h1 {
     text-align: center;
     font-weight: bold;
-
   }
   p {
     text-align: left;
@@ -944,4 +940,9 @@
     text-align: center;
     font-weight: bold;
   }
+}
+// Blog Comments
+.comments-blog {
+  height: 400px;
+  overflow-y: auto;
 }

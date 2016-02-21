@@ -10,7 +10,7 @@ var moment = require('moment');
 
 module.exports = {
 
-  blog : function(req, res) {
+  blog: function(req, res) {
     // If not logged in, show the public view.
     if (!req.session.me) {
       return res.view('index');
@@ -27,10 +27,11 @@ module.exports = {
     Blog.native(function(err, collection) {
       if (err) return res.serverError(err);
       collection.find({
-				date: {
-          $gte: start.toDate(),
-          $lt: end.toDate()
-        }
+        $or: [{
+          date: {$gte: start.toISOString(), $lt: end.toISOString()}
+        }, {
+          date: {$gte: start.toDate(), $lt: end.toDate()}
+        }]
       }, {
         comments: 0
       }).toArray(function(err, results) {
@@ -57,7 +58,7 @@ module.exports = {
   },
 
   addComment: function(req, res) {
-		var post = req.param("id");
+    var post = req.param("id");
     var comment = req.param("comment");
     Blog.findOne({
       id: post
@@ -74,7 +75,7 @@ module.exports = {
             "author": name,
             "content": comment.content
           };
-          if(blogDB.comments === undefined) blogDB.comments = [];
+          if (blogDB.comments === undefined) blogDB.comments = [];
           blogDB.comments.push(data);
           // Update Info
           blogDB.save(function(error) {

@@ -362,7 +362,6 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
     )(scope));
   }
 }]);
-db.blog.insertOne({title:"\"5 Tips para tener un Perfil Efectivo\"", author:"NextPlayers", date:new Date(), content:"<div style='text-align=center;'><a href='/blog'><img src='../images/welcome.jpg' width='50%'/></a></div>"})
 
 // Create Access rows
 var createAccessOpt = function(i, compile, scope, access) {

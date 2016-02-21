@@ -27,7 +27,7 @@
       <div class="save-button" style="text-align:right;">
         <button class="input-signup" ng-click="postComment()" style="margin-top:-2px; margin-bottom:10px;">Publicar</button>
       </div>
-      <div class="row" id="space-for-comments">
+      <div class="row" id="space-for-comments" class="comments-blog">
 
       </div>
     </div>
