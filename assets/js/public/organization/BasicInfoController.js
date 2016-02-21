@@ -20,6 +20,8 @@ angular.module('UsersModule').controller('BasicInfoOrganization', ['$scope', '$h
         $("#basic_flag").val("1");
       }
 
+    
+
     var profile = $scope.user.profile_photo;
     if (profile !== undefined) {
       var phrase = profile;

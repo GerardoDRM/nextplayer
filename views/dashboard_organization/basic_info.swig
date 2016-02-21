@@ -113,4 +113,11 @@
   <div class="save-button">
     <button class="input-signup" ng-click="update()">Guardar</button>
   </div>
+
+  <div class="modalDialogBasic" id="responsive-basic">
+    <div class="dialogSampleBasic">
+        <img alt="..." src="../images/equipo_escudo.png">
+    </div>
+  </div>
+
 </div>

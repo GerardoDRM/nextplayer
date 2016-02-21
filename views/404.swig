@@ -45,7 +45,9 @@
   <body>
 
     <div class="fourohfour">
-      <div class="ocean">
+      <div class="ocean" style="background:black;" >
+        <a class="navbar-brand" href="/">
+          <img class="logo" style="width:70%; margin-top:0;" alt="Brand" src="../images/logo.png"> </a>
       </div>
 
       <div class="main">

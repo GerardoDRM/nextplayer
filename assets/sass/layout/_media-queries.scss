@@ -8,12 +8,6 @@
 /*Media Queries*/
 @include mq($brk-less-lg) {}
 @include mq($brk-less-md) {}
-@include mq($brk-less-max-sm) {
-  .special-two-col {
-    float: left;
-    width: 45%;
-  }
-}
 @include mq($brk-less-sm) {
   .midtern-header {
     h1 {
@@ -188,4 +182,21 @@
       }
     }
   }
+  .modalDialogBasic {
+
+    display: none;
+
+  }
+}
+@include mq($brk-less-max-md) {
+  .navbar-default {
+    height: 10.25em;
+  }
+}
+@include mq($brk-less-max-sm) {
+  .special-two-col {
+    float: left;
+    width: 45%;
+  }
+
 }

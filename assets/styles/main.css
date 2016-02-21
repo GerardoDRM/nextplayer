@@ -577,6 +577,22 @@ textarea {
   pointer-events: none;
   overflow: auto; }
 
+.modalDialogBasic {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  -o-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  background: #2ae92e;
+  z-index: 5;
+  display: block;
+  pointer-events: none;
+  overflow: auto; }
+
 .dialogVideo {
   padding: 5%;
   position: relative;
@@ -606,6 +622,15 @@ textarea {
   z-index: 99;
   margin: 12% auto;
   width: 60%; }
+
+.dialogSampleBasic {
+  text-align: center;
+  position: relative;
+  z-index: 99;
+  margin: 12% auto;
+  width: 60%; }
+  .dialogSampleBasic img {
+    width: 90%; }
 
 .dialogSessions {
   background: #FFF;
@@ -1507,10 +1532,6 @@ textarea {
   * on media queries, just include and functions
 **/
 /*Media Queries*/
-@media (max-width: 768px) and (min-width: 500px) {
-  .special-two-col {
-    float: left;
-    width: 45%; } }
 @media (min-width: 768px) {
   .midtern-header h1 {
     font-size: 4em; }
@@ -1633,6 +1654,16 @@ textarea {
   .modalChat {
     width: 400px; }
     .modalChat .header h2 {
-      font-size: 1.875em; } }
+      font-size: 1.875em; }
+
+  .modalDialogBasic {
+    display: none; } }
+@media (max-width: 992px) and (min-width: 768px) {
+  .navbar-default {
+    height: 10.25em; } }
+@media (max-width: 768px) and (min-width: 500px) {
+  .special-two-col {
+    float: left;
+    width: 45%; } }
 
 /*# sourceMappingURL=main.css.map */

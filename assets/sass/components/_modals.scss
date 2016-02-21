@@ -145,6 +145,15 @@
   pointer-events: none;
   overflow: auto;
 }
+.modalDialogBasic {
+  @include position(fixed, true, 0);
+  @include transition(opacity 400ms ease-in);
+  background: $green;
+  z-index: 5;
+  display: block;
+  pointer-events: none;
+  overflow: auto;
+}
 .dialogVideo {
   padding: 5%;
   position: relative;
@@ -173,10 +182,21 @@
 }
 // Modal Preview samples
 .dialogSample {
+
   position: relative;
   z-index: 99;
   margin: 12% auto;
   width: 60%;
+}
+.dialogSampleBasic {
+  text-align: center;
+  position: relative;
+  z-index: 99;
+  margin: 12% auto;
+  width: 60%;
+  img {
+    width: 90%;
+  }
 }
 // Moda Sessions
 .dialogSessions {
