@@ -254,13 +254,13 @@ footer {
   height: 350px; }
 
 .carousel-images-dos {
-  background: url("../images/slide_2.jpg") no-repeat center;
+  background: url("../images/welcome.jpg") no-repeat center 16%;
   background-size: cover;
   width: 100%;
   height: 350px; }
 
 .carousel-images-tres {
-  background: url("../images/slide_3.jpg") no-repeat center;
+  background: url("../images/banners-01.jpg") no-repeat center;
   background-size: cover;
   width: 100%;
   height: 350px; }

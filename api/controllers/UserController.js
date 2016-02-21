@@ -6,7 +6,7 @@
  */
 var passport = require('passport');
 var stripe = require("stripe")(
-  "sk_test_uXFg6L2zyI568ZpmaAZbIJfZ"
+  "sk_live_fNHtUm55ReBOFwjFReAGTM8l"
 );
 var moment = require('moment');
 const fs = require('fs');
@@ -20,7 +20,7 @@ var ObjectId = require('mongodb').ObjectID;
     Here we are configuring our SMTP Server details.
     STMP is mail server which is responsible for sending and recieving email.
 */
-var smtpTransport = nodemailer.createTransport('smtps://info@nextplayers.mx:reclutamiento2015@vps.webhostmex.com');
+var smtpTransport = nodemailer.createTransport('smtps://contacto@nextplayers.mx:reclu2016@smtp.gmail.com');
 var rand, mailOptions, host, link;
 
 module.exports = {
@@ -71,13 +71,22 @@ module.exports = {
     User.findOne({
       id: req.param("user")
     }, function foundUser(err, user) {
-      if (err || user === undefined) return res.json({status:500});
-      if (!user) return res.json({status:500});
-      if(user.role == "organization") {
+      if (err || user === undefined) return res.json({
+        status: 500
+      });
+      if (!user) return res.json({
+        status: 500
+      });
+      if (user.role == "organization") {
         User.watch(req);
-        res.json({status:201, message:"User socket"});
+        res.json({
+          status: 201,
+          message: "User socket"
+        });
       } else {
-        res.json({status:201});
+        res.json({
+          status: 201
+        });
       }
     });
   },
@@ -110,7 +119,7 @@ module.exports = {
           data.sports_list = [];
           data.details.organization_name = req.param("organization_name");
         } else {
-          if(role == "coach") data.model = req.param("model");
+          if (role == "coach") data.model = req.param("model");
           data.sport = {
             title: req.param('sport')
           }
@@ -136,7 +145,7 @@ module.exports = {
           link = "http://" + req.get('host') + "/verify?id=" + newUser.id;
           // setup e-mail data with unicode symbols
           mailOptions = {
-            from: 'Nextplayers 👥 <info@nextplayers.mx>', // sender address
+            from: 'Nextplayers 👥 <contacto@nextplayers.mx>', // sender address
             to: newUser.email, // list of receivers
             subject: 'Hola Por favor confirma tu email ✔', // Subject line
             html: 'Hola,<br> Da click en el siguiente link para validar tu email.<br><a href="' + link + '">Click para validar</a>' // html body
@@ -179,22 +188,18 @@ module.exports = {
   },
 
   verify: function(req, res) {
-    if ((req.protocol + "://" + req.get('host')) == ("http://localhost:1337")) {
-      // Try to look up user using the provided email address
-      User.findOne({
-        id: req.param('id')
-      }, function foundUser(err, user) {
-        if (err) return res.negotiate(err);
-        if (!user || user === undefined) return res.notFound();
-        user.email_verification = true;
-        user.save(function(error) {
-          if (error) res.json(500);
-          res.redirect('/login');
-        });
+    // Try to look up user using the provided email address
+    User.findOne({
+      id: req.param('id')
+    }, function foundUser(err, user) {
+      if (err) return res.negotiate(err);
+      if (!user || user === undefined) return res.notFound();
+      user.email_verification = true;
+      user.save(function(error) {
+        if (error) res.json(500);
+        res.redirect('/login');
       });
-    } else {
-      res.end("<h1>Request is from unknown source");
-    }
+    });
   },
 
   forgot: function(req, res) {
@@ -227,7 +232,7 @@ module.exports = {
         link = "http://" + req.get('host') + "/reset/" + token;
         // setup e-mail data with unicode symbols
         mailOptions = {
-          from: 'Nextplayers 👥 <info@nextplayers.mx>', // sender address
+          from: 'Nextplayers 👥 <contacto@nextplayers.mx>', // sender address
           to: user.email, // list of receivers
           subject: 'Password reset ✔', // Subject line
           html: 'Hola, tu estas recibiendo este email debido a que tu o alguien mas ha realizado una peticion para' +
@@ -318,7 +323,7 @@ module.exports = {
         link = "http://" + req.get('host') + "/reset/" + token;
         // setup e-mail data with unicode symbols
         mailOptions = {
-          from: 'Nextplayers 👥 <info@nextplayers.mx>', // sender address
+          from: 'Nextplayers 👥 <contacto@nextplayers.mx>', // sender address
           to: user.email, // list of receivers
           subject: 'Password reset ✔', // Subject line
           html: 'Hola, tu password ha sido cambiado exitosamente.'
@@ -411,9 +416,15 @@ module.exports = {
       collection.find({
         role: "organization",
         email_verification: true,
-        profile_photo : {$exists: true},
-        "details.about" : {$exists: true},
-        "details.organization_name" : {$exists: true}
+        profile_photo: {
+          $exists: true
+        },
+        "details.about": {
+          $exists: true
+        },
+        "details.organization_name": {
+          $exists: true
+        }
       }, {
         _id: 1,
         "details.organization_name": 1,
@@ -636,10 +647,18 @@ module.exports = {
     // Init data search
     var data = {
       email_verification: true,
-      name: {$exists: true},
-      lastname: {$exists: true},
-      born: {$exists: true},
-      profile_photo: {$exists: true},
+      name: {
+        $exists: true
+      },
+      lastname: {
+        $exists: true
+      },
+      born: {
+        $exists: true
+      },
+      profile_photo: {
+        $exists: true
+      },
       $or: [{
         role: "player"
       }, {
@@ -654,7 +673,7 @@ module.exports = {
     search.sport !== undefined ? data["sport.title"] = search.sport : false;
     if (search.age !== undefined) {
       age_flag = true;
-      var year = ((new Date()).getFullYear()-1) - search.age;
+      var year = ((new Date()).getFullYear() - 1) - search.age;
       var start = moment([year, 1 - 1]).toISOString();
       var nextYear = moment([year + 2, 1 - 1]).toISOString();
       var end = moment(nextYear).endOf('year').toISOString();
@@ -690,15 +709,15 @@ module.exports = {
         "membership.level": -1
       }).toArray(function(err, results) {
         if (err) return res.serverError(err);
-        if(results.length > 0 && age_flag) {
+        if (results.length > 0 && age_flag) {
           var filter = [];
-          for(var i=0; i<results.length; i++) {
-            if(getAge(results[i].born) == search.age) {
+          for (var i = 0; i < results.length; i++) {
+            if (getAge(results[i].born) == search.age) {
               filter.push(results[i]);
             }
           }
           return res.ok(filter);
-        }// end age filter
+        } // end age filter
         return res.ok(results);
       });
     });

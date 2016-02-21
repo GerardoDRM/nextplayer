@@ -11,6 +11,7 @@
   <meta name="description" content="En Next Players estamos comprometidos a ayudar atletas, coaches y equipos alcanzar su potencial. Facilitaremos la búsqueda de talento y conexión entre jugadores y reclutadores, con mayor alcance.">
   <meta name="keywords" content="Next players, Nextplayers, reclutamiento deportivo, futbol americano, futbol soccer, basquetbol, becas deportivas, universidad, deporte universitario, atleta, beca">
   <meta name="author" content="Craft Code">
+  <meta name="google-site-verification" content="7LHxZHxFVPqkEVQBl3BkEF9t4H_XeyTOe_uj0a_1w2A" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <!--STYLES-->
   <link rel="stylesheet" href="/styles/importer.css">
@@ -70,7 +71,7 @@
         <div class="row contact-foot">
           <div class="col-xs-12 col-sm-4">
             <img src="../images/logoNext.jpg" width="60px">
-            <p> Email:info@nextplayers.mx </p>
+            <p> Email:contacto@nextplayers.mx </p>
           </div>
           <div class="col-xs-12 col-sm-4">
             <a style="color:white;" href="https://www.facebook.com/NextPlayersMX/?fref=ts" target="_blank"><p><img src="../images/social.svg" width="20px">NextPlayers.mx</p></a>

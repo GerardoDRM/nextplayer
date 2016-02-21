@@ -46,7 +46,7 @@
             </p>
             <p class="body-paragraph-left">{{ org.details.email }}
             </p>
-            <a href="http://{{ org.details.website }}" target="_blank"><p class="body-paragraph-left">{{ org.details.website }}</p></a>
+            <a href="http://{{ org.details.website }}" target="_blank" style="color:blue;"><p class="body-paragraph-left">{{ org.details.website }}</p></a>
           </div>
           <div class="exclusive-club">
 

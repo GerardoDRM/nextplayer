@@ -74,6 +74,7 @@ module.exports = {
             "author": name,
             "content": comment.content
           };
+          if(blogDB.comments === undefined) blogDB.comments = [];
           blogDB.comments.push(data);
           // Update Info
           blogDB.save(function(error) {

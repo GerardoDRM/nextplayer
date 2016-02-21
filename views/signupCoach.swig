@@ -49,8 +49,9 @@
 
           <input type="submit" value="Registrarse" class="input-signup">
           <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-          <p class="note-terms"><input type="checkbox" name="agree"/> *Nota: Acepto los <a href="/terms" style="color:white">términos y condiciones</a> </p>
-        </div>
+          <p class="note-terms"><input name="agree" type="checkbox"/>
+          <input type="checkbox" name="agree" /> *Nota: Acepto <a href="/terms" style="color:#40E0D0">términos de uso</a> y he leído el <a href="/privacity" style="color:#40E0D0">aviso de privacidad</a> </p>
+         </div>
       </div>
 
     </div>
