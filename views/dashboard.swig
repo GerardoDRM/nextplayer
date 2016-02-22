@@ -58,7 +58,7 @@
             </h3>
           </a>
         </li>
-        <li class="dissapear">
+        <li>
           <a class="menu-click" data-content="sports" href="javascript:void(0)" id="sports-btn">
             <h3>
               Deporte</h3>
@@ -70,7 +70,7 @@
               Galería</h3>
           </a>
         </li>
-        <li class="dissapear">
+        <li>
           <a class="menu-click" data-content="exclusive" href="javascript:void(0)" id="exclusive-btn">
             <h3>
               Beneficios Playes Club

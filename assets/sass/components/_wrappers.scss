@@ -611,7 +611,7 @@
       li {
         list-style-type: none;
         border-bottom: 1px solid $gray-material;
-        height: 75px;
+        height: 90px;
         .row {
           height: 100%;
           .col-xs-4 {
@@ -620,9 +620,10 @@
         }
         img {
           width: 100%;
-          height: 100%;
+          height: 90%;
         }
         p {
+          margin: 0;
           font-size: em(18px);
           &.title {
             font-weight: bold;

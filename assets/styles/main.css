@@ -13,7 +13,7 @@
   * This SASS file has all the functions used
   * on the partials.
 **/
-@import url("http://fonts.googleapis.com/css?family=Open+Sans|Yeseva+One");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Yeseva+One");
 /**
   * Mixin Partial SASS
   * This SASS file make groups of CSS declarations
@@ -441,7 +441,7 @@ textarea {
   position: absolute;
   left: 0;
   top: 0;
-  width: 40px; }
+  width: 60px; }
 
 /**
   * Modals Partial SASS
@@ -577,6 +577,22 @@ textarea {
   pointer-events: none;
   overflow: auto; }
 
+.modalDialogBasic {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  -o-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  background: #2ae92e;
+  z-index: 5;
+  display: none;
+  pointer-events: auto;
+  overflow: auto; }
+
 .dialogVideo {
   padding: 5%;
   position: relative;
@@ -606,6 +622,15 @@ textarea {
   z-index: 99;
   margin: 12% auto;
   width: 60%; }
+
+.dialogSampleBasic {
+  text-align: center;
+  position: relative;
+  z-index: 99;
+  margin: 12% auto;
+  width: 60%; }
+  .dialogSampleBasic img {
+    width: 90%; }
 
 .dialogSessions {
   background: #FFF;
@@ -1154,15 +1179,16 @@ textarea {
       .container-inner-main .interest-team ul li {
         list-style-type: none;
         border-bottom: 1px solid #e9eaed;
-        height: 75px; }
+        height: 90px; }
         .container-inner-main .interest-team ul li .row {
           height: 100%; }
           .container-inner-main .interest-team ul li .row .col-xs-4 {
             height: 100%; }
         .container-inner-main .interest-team ul li img {
           width: 100%;
-          height: 100%; }
+          height: 90%; }
         .container-inner-main .interest-team ul li p {
+          margin: 0;
           font-size: 1.125em; }
           .container-inner-main .interest-team ul li p.title {
             font-weight: bold; }
@@ -1511,10 +1537,6 @@ textarea {
   * on media queries, just include and functions
 **/
 /*Media Queries*/
-@media (max-width: 768px) and (min-width: 500px) {
-  .special-two-col {
-    float: left;
-    width: 45%; } }
 @media (min-width: 768px) {
   .midtern-header h1 {
     font-size: 4em; }
@@ -1638,5 +1660,12 @@ textarea {
     width: 400px; }
     .modalChat .header h2 {
       font-size: 1.875em; } }
+@media (max-width: 992px) and (min-width: 768px) {
+  .navbar-default {
+    height: 10.25em; } }
+@media (max-width: 768px) and (min-width: 500px) {
+  .special-two-col {
+    float: left;
+    width: 45%; } }
 
 /*# sourceMappingURL=main.css.map */

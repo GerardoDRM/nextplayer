@@ -57,14 +57,14 @@
                 Galería</h3>
             </a>
           </li>
-          <li class="dissapear">
+          <li>
             <a class="menu-click" data-content="achievements" href="javascript:void(0)" id="achievements-btn">
               <h3>
                 Logros
               </h3>
             </a>
           </li>
-          <li class="dissapear">
+          <li>
             <a class="menu-click" data-content="access" href="javascript:void(0)" id="access-btn">
               <h3>
                 Accesos

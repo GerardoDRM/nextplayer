@@ -122,7 +122,6 @@ angular.module('UsersModule').controller('SearchController', ['$scope', '$http',
         "session":  $("#session").val()
       }
     }).then(function successCallback(response) {
-      console.log(response);
       window.location = "/profile/" + id + "?session=" + $("#session").val();
     }, function errorCallback(response) {
     });
@@ -133,7 +132,7 @@ angular.module('UsersModule').controller('SearchController', ['$scope', '$http',
 var createCardsProfle = function(compile, scope, profile_info) {
   var profile = profile_info.profile_photo;
   var match = [];
-  if (profile !== undefined) {
+  if (profile !== undefined && profile != null) {
     var phrase = profile;
     var myRegexp = /uploads\/(.*)/;
     match = myRegexp.exec(phrase);

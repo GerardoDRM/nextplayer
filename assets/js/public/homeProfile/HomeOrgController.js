@@ -279,7 +279,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
     var profile = following.profile_photo;
     var match = [];
     var name;
-    if (profile !== undefined) {
+    if (profile !== undefined && profile != null) {
       var phrase = profile;
       var myRegexp = /uploads\/(.*)/;
       match = myRegexp.exec(phrase);
@@ -337,7 +337,7 @@ angular.module('UsersModule').controller('HomeOrgController', ['$scope', '$http'
   var _createFollowers = function(compile, scope, follower) {
     var profile = follower.profile_photo;
     var match = [];
-    if (profile !== undefined) {
+    if (profile !== undefined && profile != null) {
       var phrase = profile;
       var myRegexp = /uploads\/(.*)/;
       match = myRegexp.exec(phrase);

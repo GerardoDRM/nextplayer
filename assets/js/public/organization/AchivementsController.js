@@ -71,7 +71,6 @@ angular.module('UsersModule').controller('AchivementsController', ['$scope', '$h
         addFeedback("Se ha removido un logro", "success");
         $("#achievements-btn").trigger("click");
       }, function errorCallback(response) {
-        console.log(response);
       });
     }
     // Delete from list and update status

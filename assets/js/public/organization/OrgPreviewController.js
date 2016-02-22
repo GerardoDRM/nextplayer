@@ -85,7 +85,7 @@ angular.module('UsersModule').controller('OrgPreviewController', ['$scope', '$ht
 
       // Update Profile Photo
       var profile = $scope.org.profile_photo;
-      if (profile !== undefined || profile != null) updatePhotoView($("#profilePhoto"), profile);
+      if (profile !== undefined && profile != null) updatePhotoView($("#profilePhoto"), profile);
 
     },
     function errorCallback(response) {

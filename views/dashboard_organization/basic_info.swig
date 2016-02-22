@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="name" ng-model="user.name" type="text" required>
+          <input class="form-group-modified-input" name="name" ng-model="user.name" required type="text">
         </div>
       </div>
       <div class="row">
@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="lastname" ng-model="user.lastname" type="text" required>
+          <input class="form-group-modified-input" name="lastname" ng-model="user.lastname" required type="text">
         </div>
       </div>
       <div class="row">
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="job" ng-model="user.job" type="text" required>
+          <input class="form-group-modified-input" name="job" ng-model="user.job" required type="text">
         </div>
       </div>
       <div class="row">
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="city" ng-model="organization.city" type="text" required>
+          <input class="form-group-modified-input" name="city" ng-model="organization.city" required type="text">
         </div>
       </div>
       <div class="row">
@@ -58,23 +58,23 @@
           </div>
         </div>
         <div class="col-sm-6 countries-eff">
-          <input class="form-group-modified-input" name="address" ng-model="organization.address" type="text" required>
+          <input class="form-group-modified-input" name="address" ng-model="organization.address" required type="text">
         </div>
       </div>
 
       <!-- End Firts Col-->
     </div>
     <div class="col-sm-12 col-md-6">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group-modified">
-          <label>Nombre de Universidad / Equipo</label>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group-modified">
+            <label>Nombre de Universidad / Equipo</label>
+          </div>
+        </div>
+        <div class="col-sm-6 countries-eff">
+          <input class="form-group-modified-input" name="org" ng-model="organization.organization_name" required type="text">
         </div>
       </div>
-      <div class="col-sm-6 countries-eff">
-        <input class="form-group-modified-input" name="org" ng-model="organization.organization_name" type="text" required>
-      </div>
-    </div>
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group-modified">
@@ -82,7 +82,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="website" ng-model="organization.website" type="text" required>
+          <input class="form-group-modified-input" name="website" ng-model="organization.website" required type="text">
         </div>
       </div>
       <div class="row">
@@ -92,7 +92,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="email" ng-model="organization.email" type="email" required>
+          <input class="form-group-modified-input" name="email" ng-model="organization.email" required type="email">
         </div>
       </div>
       <div class="row">
@@ -104,13 +104,25 @@
           </div>
         </div>
         <div class="col-sm-6 countries-eff">
-          <textarea class="form-control" rows="8" maxlength="800" style="background-color:#e9eaed; width:100%;" ng-model="organization.about" required></textarea>
+          <textarea class="form-control" maxlength="800" ng-model="organization.about" required rows="8" style="background-color:#e9eaed; width:100%;"></textarea>
         </div>
       </div>
     </div>
-    <p><strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén registrados</strong></p>
+    <div class="col-sm-12">
+      <h3>
+        <strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén completos</strong>
+      </h3>
+    </div>
   </form>
   <div class="save-button">
     <button class="input-signup" ng-click="update()">Guardar</button>
   </div>
+
+  <div class="modalDialogBasic" id="responsive-basic">
+    <div class="dialogSampleBasic">
+      <img alt="..." src="../images/equipo_escudo.png">
+      <h2>Para poder ver la información completa de tu perfil, por favor accede desde tu computadora</h2>
+    </div>
+  </div>
+
 </div>

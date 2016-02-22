@@ -36,8 +36,8 @@
     </div>
   </div>
   <div ng-cloak ng-controller="CoachInfoController">
-      <div class="coach-container no-margin--sides">
-        <div class="row coach-row">
+    <div class="coach-container no-margin--sides">
+      <div class="row coach-row">
         <form id="coach-form">
           <h3>
             Información básica
@@ -126,10 +126,12 @@
             </div>
           </div>
           <!-- cd-tabs-content -->
-          <p>
-            <strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén registrados</strong>
-          </form>
-        </p>
+          <div class="col-sm-12">
+            <h3>
+            <strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén completos</strong>
+            </h3>
+          </div>
+        </form>
       </div>
     </div>
     <div id="space-for-experience"></div>

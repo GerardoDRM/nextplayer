@@ -72,7 +72,6 @@ angular.module('UsersModule').controller('HomeProfileController', ['$scope', '$h
         }
       }).then(function successCallback(response) {
         var contacts = response.data;
-        console.log(contacts);
         if (contacts !== undefined) {
           // Clean space
           $("#space-for-contacts").empty();
@@ -172,7 +171,7 @@ var createFollowing = function(compile, scope, following) {
   var profile = following.profile_photo;
   var match = [];
   var name;
-  if (profile !== undefined) {
+  if (profile !== undefined && profile != null) {
     var phrase = profile;
     var myRegexp = /uploads\/(.*)/;
     match = myRegexp.exec(phrase);
@@ -207,7 +206,7 @@ var createFollowers = function(compile, scope, follower) {
   var profile = follower.profile_photo;
   var match = [];
   var name;
-  if (profile !== undefined) {
+  if (profile !== undefined && profile != null) {
     var phrase = profile;
     var myRegexp = /uploads\/(.*)/;
     match = myRegexp.exec(phrase);
@@ -242,7 +241,7 @@ var createFollowers = function(compile, scope, follower) {
 var createTeams = function(compile, scope, team) {
   var profile = team.profile_photo;
   var match = [];
-  if (profile !== undefined) {
+  if (profile !== undefined && profile != null) {
     var phrase = profile;
     var myRegexp = /uploads\/(.*)/;
     match = myRegexp.exec(phrase);

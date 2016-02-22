@@ -42,6 +42,7 @@
       </div>
     </div>
     <div class="col-sm-8" id="profile-experience"></div>
+    <div class="col-sm-4"></div>
     <div class="col-sm-8">
       <div class="video-profile">
         <h1 class="head-body border-top-column">

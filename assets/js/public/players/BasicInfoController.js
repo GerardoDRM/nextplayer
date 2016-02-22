@@ -11,6 +11,13 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
       "user": $("#userId").val()
     }
   }).then(function successCallback(response) {
+    if(mobilecheck()) {
+      $("#responsive-basic").css({"display":"block"});
+      setTimeout(function(){
+         $("#responsive-basic").css({"display":"none"});
+       }, 5000);
+    }
+
     $scope.user = response.data["general"];
     $scope.user.id = $("#userId").val();
     $scope.player = response.data["details"];
@@ -38,7 +45,7 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
     }
 
     var profile = $scope.user.profile_photo;
-    if (profile !== undefined) {
+    if (profile !== undefined && profile != null) {
       var phrase = profile;
       var myRegexp = /uploads\/(.*)/;
       var match = myRegexp.exec(phrase);
@@ -55,6 +62,8 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
         "background-repeat": "no-repeat"
       });
     }
+
+
 
     // Adding country and state
     if ($scope.user.country !== undefined) {

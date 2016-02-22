@@ -416,9 +416,6 @@ module.exports = {
       collection.find({
         role: "organization",
         email_verification: true,
-        profile_photo: {
-          $exists: true
-        },
         "details.about": {
           $exists: true
         },
@@ -654,9 +651,6 @@ module.exports = {
         $exists: true
       },
       born: {
-        $exists: true
-      },
-      profile_photo: {
         $exists: true
       },
       $or: [{
@@ -922,12 +916,15 @@ module.exports = {
           if (staff.file_photo != "") {
             if (staff["file_photo"].status == 1) {
               // Create Image Path
-              path += moment().toISOString().replace(/[^a-zA-Z0-9]/g, '') + ".jpg";
+              var filename = moment().toISOString().replace(/[^a-zA-Z0-9]/g, '') + ".jpg";
+              path += filename;
               absolutePath += path;
               // Create Image File
               fs.writeFile(absolutePath, staff["file_photo"].file, 'base64', function(err) {
                 if (err) return res.json(500);
               });
+              var tempLocation = process.cwd() + '/.tmp/public/uploads/' + filename;
+              fs.writeFile(tempLocation, staff["file_photo"].file, 'base64');
             } else if (staff["file_photo"].status == 0) {
               path = staff["file_photo"].file;
             }
@@ -1032,21 +1029,24 @@ module.exports = {
   uploadImage: function(req, res) {
     var model = req.param('model');
     var user = req.param("user");
-    var photo = req.file('file');
+    var photo = req.param('file');
     // Using async for better organization on promises
     async.waterfall([
       function(done) {
-        photo.upload({
-          dirname: process.cwd() + '/assets/uploads/'
-        }, function whenDone(err, uploadedFiles) {
-          // // If no files were uploaded, respond with an error.
-          if (uploadedFiles.length === 0) {
-            err = true;
-          }
-          done(err, uploadedFiles);
+        var absolutePath = process.cwd();
+        var path = '/assets/uploads/';
+        // Create Image Path
+        var filename = moment().toISOString().replace(/[^a-zA-Z0-9]/g, '') + ".jpg";
+        path += filename;
+        absolutePath += path;
+        // Create Image File
+        fs.writeFile(absolutePath, photo, 'base64', function(err) {
+          var tempLocation = process.cwd() + '/.tmp/public/uploads/' + filename;
+          fs.writeFile(tempLocation, photo, 'base64');
+          done(err, absolutePath);
         });
       },
-      function(uploadedFiles, done) {
+      function(uploadedFile, done) {
         // Get user and update info
         User.findOne({
           id: user
@@ -1055,7 +1055,7 @@ module.exports = {
             res.json(500);
           } else {
             // Image path
-            var phrase = uploadedFiles[0].fd;
+            var phrase = uploadedFile;
             var myRegexp = /\/assets\/uploads\/(.*)/;
             var match = myRegexp.exec(phrase);
             // Check image model
@@ -1162,18 +1162,16 @@ module.exports = {
       if (err || userDB === undefined) res.json(500);
       else {
         var path = process.cwd();
-        console.log(path);
         if (photo.model == "gallery") {
           var position = photo.position;
           path += userDB.details.gallery[position];
           userDB.details.gallery[position] = undefined;
         } else if (photo.model == "profile") {
           path += userDB.profile_photo;
-          userDB.profile_photo = undefined;
+          userDB.profile_photo = null;
         }
         // Remove physical file from directory
         fs.unlink(path, (err) => {
-          console.log(err);
           if (err) throw res.json(500);
           userDB.save(function(error) {
             if (error) res.json(500);

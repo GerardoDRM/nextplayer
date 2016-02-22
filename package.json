@@ -6,7 +6,10 @@
   "keywords": [],
   "dependencies": {
     "async": "^1.5.2",
+    "connect-mongo": "0.8.2",
+    "connect-redis": "3.0.2",
     "ejs": "~0.8.4",
+    "express-session": "^1.13.0",
     "grunt": "0.4.2",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-coffee": "~0.10.1",

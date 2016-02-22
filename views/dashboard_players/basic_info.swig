@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="name" ng-model="user.name" type="text" required>
+          <input class="form-group-modified-input" name="name" ng-model="user.name" required type="text">
         </div>
       </div>
       <div class="row">
@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="lastname" ng-model="user.lastname" type="text" required>
+          <input class="form-group-modified-input" name="lastname" ng-model="user.lastname" required type="text">
         </div>
       </div>
       <div class="row">
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" type="text" required>
+          <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" required type="text">
         </div>
       </div>
       <div id="tutor"></div>
@@ -62,7 +62,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="school" ng-model="player.school" type="text" required>
+          <input class="form-group-modified-input" name="school" ng-model="player.school" required type="text">
         </div>
       </div>
       <div class="row">
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input class="form-group-modified-input" name="grade" ng-model="player.schoolGrade" step="0.01" type="number" required>
+          <input class="form-group-modified-input" name="grade" ng-model="player.schoolGrade" required step="0.01" type="number">
         </div>
       </div>
       <div class="row">
@@ -86,7 +86,7 @@
         </div>
       </div>
       <div class="col-sm-6 countries-eff">
-        <select name="year" ng-model="player.schoolYear" ng-options="n for n in [] | range:2005:2020" style="margin-bottom:10%;" required></select>
+        <select name="year" ng-model="player.schoolYear" ng-options="n for n in [] | range:2005:2020" required style="margin-bottom:10%;"></select>
       </div>
     </div>
     <div class="row">
@@ -100,9 +100,21 @@
       </div>
     </div>
   </div>
-  <p><strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén registrados</strong></p>
+  <div class="col-sm-12">
+    <h3>
+      <strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén completos</strong>
+    </h3>
+  </div>
 </form>
 <div class="save-button">
   <button class="input-signup" ng-click="update()">Guardar</button>
 </div>
+
+<div class="modalDialogBasic" id="responsive-basic">
+  <div class="dialogSampleBasic">
+    <img alt="..." src="../images/equipo_escudo.png">
+    <h2>Para poder ver la información completa de tu perfil, por favor accede desde tu computadora</h2>
+  </div>
+</div>
+
 </div>

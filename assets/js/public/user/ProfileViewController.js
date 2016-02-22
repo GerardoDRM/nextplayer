@@ -138,7 +138,7 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
 
       // Create gallery
       var gallery = $scope.user.details.gallery;
-      if (gallery !== undefined) {
+      if (profile !== undefined && profile != null) {
         for (var i = 0; i < counterPhotos; i++) {
           var phrase = gallery[i];
           if (phrase != null) {
