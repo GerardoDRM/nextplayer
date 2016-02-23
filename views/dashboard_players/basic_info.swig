@@ -48,7 +48,15 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" required type="text">
+          <select class="form-group-modified-input form-date" name="born-day" ng-model="born.day" ng-options="n for n in [] | range:1:32">
+            <option value="">dd</option>
+          </select>
+          <select class="form-group-modified-input form-date" name="born-month" ng-model="born.month" ng-options="n for n in [] | range:1:13">
+            <option value="">mm</option>
+          </select>
+          <select class="form-group-modified-input form-date" name="born-year" ng-model="born.year" required ng-options="n for n in [] | range:1980:2009" id="born">
+            <option value="">yyyy</option>
+          </select>
         </div>
       </div>
       <div id="tutor"></div>
@@ -105,15 +113,15 @@
       <strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén completos</strong>
     </h3>
   </div>
+  <div class="col-sm-12 save-button">
+    <button class="input-signup" ng-click="update()">Guardar</button>
+  </div>
 </form>
-<div class="save-button">
-  <button class="input-signup" ng-click="update()">Guardar</button>
-</div>
 
 <div class="modalDialogBasic" id="responsive-basic">
   <div class="dialogSampleBasic">
     <img alt="..." src="../images/equipo_escudo.png">
-    <h2>Para poder ver la información completa de tu perfil, por favor accede desde tu computadora</h2>
+    <h2>Para subir tu Foto de perfil, imágenes o Vídeos por favor inicia sesión en una computadora.</h2>
   </div>
 </div>
 

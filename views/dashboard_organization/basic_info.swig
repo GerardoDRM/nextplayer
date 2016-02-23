@@ -110,7 +110,7 @@
     </div>
     <div class="col-sm-12">
       <h3>
-        <strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén completos</strong>
+        <strong>*NOTA: Tu perfil no será publicado hasta que tus datos básicos estén completos.</strong>
       </h3>
     </div>
   </form>
@@ -121,7 +121,7 @@
   <div class="modalDialogBasic" id="responsive-basic">
     <div class="dialogSampleBasic">
       <img alt="..." src="../images/equipo_escudo.png">
-      <h2>Para poder ver la información completa de tu perfil, por favor accede desde tu computadora</h2>
+      <h2>Para subir tu Foto de perfil, imágenes o Vídeos por favor inicia sesión en una computadora.</h2>
     </div>
   </div>
 

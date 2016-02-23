@@ -14,7 +14,7 @@ angular.module('UsersModule').controller('BasicInfoOrganization', ['$scope', '$h
       $("#responsive-basic").css({"display":"block"});
       setTimeout(function(){
          $("#responsive-basic").css({"display":"none"});
-       }, 5000);
+       }, 8000);
     }
     $scope.user = response.data["general"];
     $scope.organization = response.data["details"];

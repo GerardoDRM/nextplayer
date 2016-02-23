@@ -1,6 +1,7 @@
 angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$http', '$compile', function($scope, $http, $compile) {
   $scope.user = {};
   $scope.coach = {};
+  $scope.born = {};
   $scope.count = 0;
   populateCountries("country", "states");
 
@@ -27,7 +28,10 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
     $scope.user = response.data["general"];
     // Date Format
     if ($scope.user.born !== undefined) {
-      $scope.user.born = moment($scope.user.born).format('DD-MM-YYYY');
+      var born = moment($scope.user.born)._d;
+      $scope.born.day = born.getDate();
+      $scope.born.month = born.getMonth() + 1;
+      $scope.born.year = born.getFullYear();
     }
     var experienceList = response.data["details"].experience;
     if (experienceList !== undefined) {
@@ -94,6 +98,19 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
   }, function errorCallback(response) {});
 
   $scope.update = function() {
+    if($scope.born.day !== undefined && $scope.born.month !== undefined && $scope.born.day != null && $scope.born.month != null) {
+      var birth = new Date($scope.born.year, $scope.born.month - 1, $scope.born.day).toISOString();
+      var age = getAge(birth);
+      if(age < 8) {
+        addFeedback("Fecha de nacimiento incorrecta o formato de fecha inválido", 'error');
+        return;
+      }
+    }
+    else {
+      addFeedback("Fecha de nacimiento incorrecta o formato de fecha inválido", 'error');
+      return;
+    }
+
     if ($("#coach-form").valid()) {
       var experienceList = [];
       for (var experience in $scope.coach) {
@@ -107,7 +124,7 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
       $scope.user.state = $("#states").val();
       $scope.user.country = $("#country").val();
       // PUT data
-      $scope.user.born = moment($("#datepicker").val(), "DD-MM-YYYY").toISOString();
+      $scope.user.born = birth;
       $scope.user.id = $("#userId").val();
       $http({
         method: 'PUT',

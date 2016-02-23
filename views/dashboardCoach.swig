@@ -94,7 +94,15 @@
                 </div>
               </div>
               <div class="col-sm-6">
-                <input calendar class="form-group-modified-input" id="datepicker" name="born" ng-model="user.born" required type="text">
+                <select class="form-group-modified-input form-date" name="born-day" ng-model="born.day" ng-options="n for n in [] | range:1:32">
+                  <option value="">dd</option>
+                </select>
+                <select class="form-group-modified-input form-date" name="born-month" ng-model="born.month" ng-options="n for n in [] | range:1:13">
+                  <option value="">mm</option>
+                </select>
+                <select class="form-group-modified-input form-date" name="born-year" ng-model="born.year" required ng-options="n for n in [] | range:1940:1995" id="born">
+                  <option value="">yyyy</option>
+                </select>
               </div>
             </div>
             <div class="row">

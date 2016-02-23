@@ -328,6 +328,11 @@
   margin-bottom: 5%;
   width: 100%;
 }
+
+.form-date {
+  width: 55px;
+  padding: 0;
+}
 ///////////// PHOTO PROFILE //////////
 .middle-image {
   @extend %no-margin;

@@ -1,24 +1,5 @@
 angular.module('UsersModule', []);
 
-
-
-//Directive for adding buttons on click that show an alert on click
-angular.module('UsersModule').directive("calendar", function() {
-  return function(scope, element, attrs) {
-    var x = $(element);
-    var currentDate = new Date();
-    x.datepicker({
-      dateFormat: 'dd-mm-yy',
-      changeYear: true,
-      yearRange: "1940:2008",
-      dayNamesMin: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-      monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-
-    });
-  };
-});
-
-
 angular.module('UsersModule').filter('range', function() {
   return function(input, min, max) {
     min = parseInt(min); //Make string input int

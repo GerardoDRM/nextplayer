@@ -4,6 +4,7 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
   $scope.user = {};
   $scope.player = {};
   $scope.sport = {};
+  $scope.born = {};
   $http({
     method: 'GET',
     url: '/user/basicinfo',
@@ -15,7 +16,7 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
       $("#responsive-basic").css({"display":"block"});
       setTimeout(function(){
          $("#responsive-basic").css({"display":"none"});
-       }, 5000);
+       }, 8000);
     }
 
     $scope.user = response.data["general"];
@@ -41,7 +42,10 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
       if (getAge($scope.user.born) < 18) {
         _addTutor($scope, $compile);
       }
-      $scope.user.born = moment($scope.user.born).format('DD-MM-YYYY');
+      var born = moment($scope.user.born)._d;
+      $scope.born.day = born.getDate();
+      $scope.born.month = born.getMonth() + 1;
+      $scope.born.year = born.getFullYear();
     }
 
     var profile = $scope.user.profile_photo;
@@ -86,10 +90,12 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
   }, function errorCallback(response) {});
 
   // Birth Year change
-  $("#datepicker").change(function() {
-    var date = moment($("#datepicker").val(),"DD-MM-YYYY").toDate();
-    if (getAge(date) < 18) {
-      _addTutor($scope, $compile);
+  $("#born").change(function() {
+    if($scope.born.day !== undefined && $scope.born.month !== undefined) {
+      var date = new Date($scope.born.year, $scope.born.month - 1, $scope.born.day).toISOString();
+      if (getAge(date) < 18) {
+        _addTutor($scope, $compile);
+      }
     }
   });
 
@@ -121,19 +127,25 @@ angular.module('UsersModule').controller('BasicInfoController', ['$scope', '$htt
   // };
 
   $scope.update = function() {
-    // Adding state and Country
-    $scope.user.state = $("#states-list").val();
-    $scope.user.country = $("#countries-list").val();
-    // PUT data
-    var birth = moment($("#datepicker").val(), "DD-MM-YYYY").toISOString();
-    var age = getAge($scope.user.born);
-    if(age < 8) {
+    if($scope.born.day !== undefined && $scope.born.month !== undefined && $scope.born.day != null && $scope.born.month != null) {
+      var birth = new Date($scope.born.year, $scope.born.month - 1, $scope.born.day).toISOString();
+      var age = getAge(birth);
+      if(age < 8) {
+        addFeedback("Fecha de nacimiento incorrecta o formato de fecha inválido", 'error');
+        return;
+      }
+    }
+    else {
       addFeedback("Fecha de nacimiento incorrecta o formato de fecha inválido", 'error');
       return;
     }
-    $scope.user.born = birth;
-    $scope.user.id = $("#userId").val();
+    // PUT data
     if ($("#basic-player-form").valid()) {
+      $scope.user.id = $("#userId").val();
+      // Adding state and Country
+      $scope.user.state = $("#states-list").val();
+      $scope.user.country = $("#countries-list").val();
+      $scope.user.born = birth;
       $http({
         method: 'PUT',
         url: '/user/basicinfo',
