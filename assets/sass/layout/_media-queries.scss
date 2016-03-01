@@ -165,7 +165,7 @@
 
   // Feedback
   .feedback {
-    padding: 0 80px
+    padding: 0 80px;
     h3 {
       font-size: 32px;
     }
@@ -182,6 +182,10 @@
         font-size: em(30px);
       }
     }
+  }
+  // profile-view
+  .input-profile {
+    display: block;
   }
 }
 @include mq($brk-less-max-md) {

@@ -21,7 +21,7 @@ angular.module('SignupModule').controller('SignupController', ['$scope', '$http'
       // Submit request to Sails.
     $http.post('/signup', data)
       .then(function onSuccess(sailsResponse) {
-        addFeedback('Tú usuario ha sido creado, por favor verifica tu email', 'success');
+        window.location = "/checkemail";
       })
       .catch(function onError(sailsResponse) {
         addFeedback('Este email ya esta ocupado por algún otro usuario, intente con uno diferente', 'error');

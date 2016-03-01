@@ -1,4 +1,4 @@
-angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$http', '$compile' ,'$q', function($scope, $http, $compile, $q) {
+angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$http', '$compile', '$q', function($scope, $http, $compile, $q) {
   $scope.user = {};
   $scope.coach = {};
   $scope.flag_views = false;
@@ -40,8 +40,7 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
         "viewer": $("#userId").val(),
         "user": $("#previewId").val()
       }
-    }).then(function successCallback(response) {
-    }, function errorCallback(response) {});
+    }).then(function successCallback(response) {}, function errorCallback(response) {});
   };
 
   // ChecK if user is looking for his own profile
@@ -53,13 +52,14 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
       display: "none"
     });
     // Just if it is an active recruiter
-    if($("#recruiter").val() !== undefined && $("#recruiter").val() != ""){
+    if ($("#recruiter").val() !== undefined && $("#recruiter").val() != "") {
       $("#follow1").css({
         display: "block"
       });
       $("#follow2").css({
         display: "block"
       });
+
     } else {
       $("#follow1").css({
         display: "none"
@@ -67,6 +67,7 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
       $("#follow2").css({
         display: "none"
       });
+
     }
     // Add View to User
     $scope.viewer();
@@ -119,9 +120,22 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
         $("#exclusiveViews").css({
           "display": "block"
         });
+        $("#space-for-views").css({
+          "display": "block"
+        });
         $scope.views();
+      } else if((status == 0 || status === undefined) && $scope.flag_views) {
+        $("#exclusiveViews").css({
+          "display": "block"
+        });
+        $("#space-for-views").css({
+          "display": "none"
+        });
       } else {
         $("#exclusiveViews").css({
+          "display": "none"
+        });
+        $("#space-for-views").css({
           "display": "none"
         });
       }
@@ -138,7 +152,7 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
 
       // Create gallery
       var gallery = $scope.user.details.gallery;
-      if (profile !== undefined && profile != null) {
+      if (gallery !== undefined && gallery.length > 0) {
         for (var i = 0; i < counterPhotos; i++) {
           var phrase = gallery[i];
           if (phrase != null) {
@@ -148,6 +162,7 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
           }
         }
       }
+
       // Create Videos
       var videos = $scope.user.details.videos;
       if (videos !== undefined) {
@@ -170,14 +185,14 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
       }
       // Create Videos
       var video = $scope.user.details.video;
-      if (video !== undefined) {
+      if (video !== undefined && video != null) {
         var videoEmbed = checkVideoProvider(video);
         _createGalleryContainer($compile, $scope, "video", videoEmbed);
       }
     }
 
     // Adding global sport
-    if($scope.user.sport.title !== undefined){
+    if ($scope.user.sport.title !== undefined) {
       showSport($scope.user.sport.title);
     }
 
@@ -237,7 +252,7 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
 
     angular.element(document.getElementById("space-for-views")).append(compile(
       '<div class="col-xs-4 col-sm-3">' +
-      '<a href="/profile/'+ view._id +'" style="background: transparent;">' +
+      '<a href="/profile/' + view._id + '" style="background: transparent;">' +
       '<div class="profile-photos-slide-exclusive" ' + url + '></div></a>' +
       '</div>'
     )(scope));
@@ -265,8 +280,10 @@ angular.module('UsersModule').controller('ProfileViewController', ['$scope', '$h
 
 var updatePhotoView = function(element, url) {
   var phrase = url;
-  var myRegexp = /uploads\/(.*)/;
-  var match = myRegexp.exec(phrase);
+  if (phrase != null && phrase !== undefined) {
+    var myRegexp = /uploads\/(.*)/;
+    var match = myRegexp.exec(phrase);
+  }
 
   $(element).css({
     "display": "block",
@@ -285,7 +302,7 @@ var createProfileExperience = function(i, compile, scope) {
     '<div class="col-sm-12">' +
     '<h2 class="head-title">Experiencia</h2>' +
     '<div class="row">' +
-    '<div class="col-xs-2">' +
+    '<div class="col-xs-3">' +
     '<p>Equipo</p>' +
     '</div>' +
     '<div class="col-xs-9">' +
@@ -293,7 +310,7 @@ var createProfileExperience = function(i, compile, scope) {
     '</div>' +
     '</div>' +
     '<div class="row">' +
-    '<div class="col-xs-2">' +
+    '<div class="col-xs-3">' +
     '<p>Fechas</p>' +
     '</div>' +
     '<div class="col-xs-9">' +
@@ -301,7 +318,7 @@ var createProfileExperience = function(i, compile, scope) {
     '</div>' +
     '</div>' +
     '<div class="row">' +
-    '<div class="col-xs-2">' +
+    '<div class="col-xs-3">' +
     '<p>Posición</p>' +
     '</div>' +
     '<div class="col-xs-9">' +

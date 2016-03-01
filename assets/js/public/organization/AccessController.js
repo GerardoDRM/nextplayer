@@ -3,6 +3,8 @@ angular.module('UsersModule').controller('AccessController', ['$scope', '$http',
   $scope.count = 0;
 
   $("#access-btn").click(function() {
+    $scope.count = 0;
+    $scope.access = {};
     // Clean space
     $("#space-for-access").empty();
     $http({
@@ -45,6 +47,7 @@ angular.module('UsersModule').controller('AccessController', ['$scope', '$http',
         addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
       } else {
         addFeedback("Tus datos han sido almacenados exitosamente", 'success');
+        $("#access-btn").trigger('click');
       }
     }, function errorCallback(response) {
       addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');

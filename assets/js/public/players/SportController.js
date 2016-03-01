@@ -1,5 +1,5 @@
 angular.module('UsersModule').controller('SportController', ['$scope', '$http', '$compile', function($scope, $http, $compile) {
-  $scope.americanFootball = ["Quarterback", "Linebacker", "Runningback", "Safety", "Wide receiver", "Cornerback", "Tight Endt", "Línea ofensivo", "Línea defensivo", "Pateador"];
+  $scope.americanFootball = ["Quarterback", "Linebacker", "Runningback", "Safety", "Wide receiver", "Cornerback", "Tight End", "Línea ofensivo", "Línea defensivo", "Pateador"];
   $scope.soccer = ["Portero", "Lateral Izquierdo", "Lateral Derecho", "Central", "Medio de Contención", "Mediocampista", "Extremo Izquierdo", "Extremo Derecho", "Enganche", "Centro Delantero"];
   $scope.volleyball = ["Acomodador", "Esquina", "Central", "Zaguero", "Libero"];
   $scope.basketball = ["Base", "Escolta", "Alero", "Ala-Pivot", "Pivot"];

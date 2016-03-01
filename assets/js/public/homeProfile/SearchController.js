@@ -160,7 +160,7 @@ var createCardsProfle = function(compile, scope, profile_info) {
       '<div class="catalogue-image" style="height:180px ;' + photo + '"></div>' +
       '<p>' + checkForNulls(profile_info.name) + " " + checkForNulls(profile_info.lastname) + '</p>' +
       '<p>' + checkForNulls(profile_info.sport.title) + '</p>' +
-      '<img class="shield" style="top:38%; width:40px;" src="../images/' + shield + '.png">' +
+      '<img class="shield" style="top:35%; width:40px;" src="../images/' + shield + '.png">' +
       '</div>'+
       '<p> Edad: ' + getAge(profile_info.born) + '</p>' +
       '<p> Estado: ' + checkForNulls(profile_info.state) + '</p>' +

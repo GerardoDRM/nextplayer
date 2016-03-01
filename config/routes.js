@@ -120,7 +120,7 @@ module.exports.routes = {
   'GET /contact' : {view: 'contact'},
   'GET /combines' : {view: 'combines'},
   'GET /terms' : {view: 'terms'},
-    'GET /privacity' : {view: 'privacity'},
+  'GET /privacity' : {view: 'privacity'},
   /***************************************************************************
   *                                                                          *
   * Chat routes socket IO.                                                   *
@@ -131,7 +131,8 @@ module.exports.routes = {
   'PUT /room/notification': 'RoomsController.updateMessageStatus',
   'GET /user/subscription/:id': 'RoomsController.subscribeToMessages',
   'POST /chat/private/:id': 'RoomsController.privateMessage',
-  'GET /myrooms/info': 'RoomsController.getInbox'
+  'GET /myrooms/info': 'RoomsController.getInbox',
+  'GET /checkemail': {view: 'checkEmail'}
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

@@ -86,9 +86,9 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="exampleInputEmail2">Año de ingreso
+            <label for="exampleInputEmail2">Año de Graduación
               <br>
-              de secundaria
+              de la Secundaria
             </br>
           </label>
         </div>

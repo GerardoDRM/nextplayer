@@ -4,6 +4,9 @@ angular.module('UsersModule').controller('AchivementsController', ['$scope', '$h
   $scope.count = 0;
 
   $("#achievements-btn").click(function() {
+    $scope.user = {};
+    $scope.org = {};
+    $scope.count = 0;
     // Clean space
     $("#space-for-achivements").empty();
     $http({
@@ -49,6 +52,7 @@ angular.module('UsersModule').controller('AchivementsController', ['$scope', '$h
         addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');
       } else {
         addFeedback("Tus datos han sido almacenados exitosamente", 'success');
+        $("#achievements-btn").trigger('click');
       }
     }, function errorCallback(response) {
       addFeedback("Se ha presentado un error, por favor vuelva a intentarlo", 'error');

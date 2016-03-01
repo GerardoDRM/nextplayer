@@ -46,7 +46,7 @@
     <div class="dialogSessions">
       <h1>Sesiones:</h1>
       <h4>
-        *Nota: Una vez que la session este activa, es necesario cerrar la sesion cuando esta sea desocupada, de lo contrario cada session tendra un limite de una hora.</h4>
+        *Nota: Una vez que la sesión este activa, es necesario cerrar la sesión cuando esta sea desocupada, de lo contrario cada sesión tendra un límite de 10 minutos.</h4>
       <form>
         <div class="row" id="space-for-access"></div>
         <div class="save-button" style="text-align:center;">

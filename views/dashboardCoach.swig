@@ -153,7 +153,7 @@
       <div class="dialogVideo">
         <h1>URL:</h1>
         <form id="video-form">
-          <input ng-model="video.url" required style="width:100%;" type="text"/>
+          <input ng-model="video" required style="width:100%;" type="text"/>
           <div>
             <h3>
               Youtube

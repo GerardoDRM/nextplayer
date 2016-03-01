@@ -19,6 +19,36 @@
   <!--STYLES END-->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 
+  <!-- Facebook Pixel Code -->
+  <script>
+    ! function(f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window,
+      document, 'script', '//connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '1396521313988762');
+    fbq('track', "PageView");
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1396521313988762&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Facebook Pixel Code -->
+
+
 </head>
 
 <body>
@@ -74,13 +104,26 @@
             <p> Email:contacto@nextplayers.mx </p>
           </div>
           <div class="col-xs-12 col-sm-4">
-            <a style="color:white;" href="https://www.facebook.com/NextPlayersMX/?fref=ts" target="_blank"><p><img src="../images/social.svg" width="20px">NextPlayers.mx</p></a>
-              <a style="color:white;" href="https://twitter.com/nextplayersmx" target="_blank"><p><img src="../images/twitter.svg" width="20px">@NextPlayersMX</p></a>
-            <p><a style="color:white;"  href="http://www.craftcode.rocks"  target="_blank"><img src="../images/craft.svg" width="65px">Powered by CraftCode</a></p>
+            <a style="color:white;" href="https://www.facebook.com/NextPlayersMX/?fref=ts" target="_blank">
+              <p>
+                <img src="../images/social.svg" width="20px">NextPlayers.mx</p>
+            </a>
+            <a style="color:white;" href="https://twitter.com/nextplayersmx" target="_blank">
+              <p>
+                <img src="../images/twitter.svg" width="20px">@NextPlayersMX</p>
+            </a>
+            <p>
+              <a style="color:white;" href="http://www.craftcode.rocks" target="_blank">
+                <img src="../images/craft.png" width="65px">Powered by CraftCode</a>
+            </p>
           </div>
           <div class="col-xs-12 col-sm-4">
-          <a style="color:white;" href="/terms">  <p>Términos de uso</p> </a>
-            <a style="color:white;" href="/privacity">  <p>Aviso de privacidad</p> </a>
+            <a style="color:white;" href="/terms">
+              <p>Términos de uso</p>
+            </a>
+            <a style="color:white;" href="/privacity">
+              <p>Aviso de privacidad</p>
+            </a>
           </div>
         </div>
       </div>

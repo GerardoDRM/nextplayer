@@ -64,7 +64,7 @@
 
 <div class="midtern-header">
   <h1>
-    BIENVENIDO A NEXTPLAYERS!
+    ¡BIENVENIDO A NEXTPLAYERS!
   </h1>
   <p>
     la única plataforma de reclutamiento deportivo en México
@@ -173,16 +173,14 @@
             MISIÓN
           </h2>
           <p>
-
-            En Next Players estamos comprometidos a ayudar atletas, coaches y equipos alcanzar su potencial. Facilitaremos la búsqueda de talento y conexión entre jugadores y reclutadores, con mayor alcance. Para contribuir a mejorar la calidad del nivel deportivo
-            en el país, apoyaremos a atletas, coaches y equipos a desarrollar sus aptitudes físicas y mentales.
+            En Next Players estamos comprometidos a ayudar atletas, coaches y equipos alcanzar su potencial. Facilitaremos la búsqueda de talento y conexión entre jugadores y reclutadores con mayor alcance para contribuir a mejorar la calidad del nivel deportivo en el país. Apoyaremos a atletas, coaches y equipos a desarrollar sus aptitudes físicas y mentales.
           </p>
         </div>
         <div class="col-sm-6">
           <h2>
             VISIÓN
           </h2>
-          <p>En Next Players queremos ser una plataforma innovadora que está al tanto de las nuevas tendencias tecnológicas y deportivas para lograr ser una empresa reconocida a nivel mundial en reclutamiento deportivo.
+          <p>Seremos una plataforma innovadora que está al tanto de las nuevas tendencias tecnológicas y deportivas para lograr ser una empresa reconocida a nivel mundial en el reclutamiento deportivo.
           </p>
         </div>
       </div>

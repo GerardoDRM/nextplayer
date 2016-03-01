@@ -411,6 +411,7 @@ textarea {
     text-align: center; }
 
 .input-profile {
+  display: none;
   font-weight: bold;
   width: auto;
   position: absolute;
@@ -1215,6 +1216,7 @@ textarea {
   border-top: 1px solid; }
 
 .exclusive-club {
+  display: none;
   clear: both; }
 
 .head-body-bottom {
@@ -1656,15 +1658,19 @@ textarea {
       font-size: 2.25em; }
 
   .feedback {
-    padding: 0 80px h3;
-      padding-font-size: 32px; }
+    padding: 0 80px; }
+    .feedback h3 {
+      font-size: 32px; }
     .feedback p {
       font-size: 22px; }
 
   .modalChat {
     width: 400px; }
     .modalChat .header h2 {
-      font-size: 1.875em; } }
+      font-size: 1.875em; }
+
+  .input-profile {
+    display: block; } }
 @media (max-width: 992px) and (min-width: 768px) {
   .navbar-default {
     height: 10.25em; } }

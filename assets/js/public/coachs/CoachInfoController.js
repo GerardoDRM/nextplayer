@@ -63,12 +63,12 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
       );
 
     } else {
-      $scope.video = {};
+      $scope.video = null;
     }
 
     // Adding Profile Photo
     var profile = $scope.user.profile_photo;
-    if (profile !== undefined) {
+    if (profile !== undefined && profile != null) {
       var phrase = profile;
       var myRegexp = /uploads\/(.*)/;
       var match = myRegexp.exec(phrase);
@@ -98,15 +98,14 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
   }, function errorCallback(response) {});
 
   $scope.update = function() {
-    if($scope.born.day !== undefined && $scope.born.month !== undefined && $scope.born.day != null && $scope.born.month != null) {
+    if ($scope.born.day !== undefined && $scope.born.month !== undefined && $scope.born.day != null && $scope.born.month != null) {
       var birth = new Date($scope.born.year, $scope.born.month - 1, $scope.born.day).toISOString();
       var age = getAge(birth);
-      if(age < 8) {
+      if (age < 8) {
         addFeedback("Fecha de nacimiento incorrecta o formato de fecha inválido", 'error');
         return;
       }
-    }
-    else {
+    } else {
       addFeedback("Fecha de nacimiento incorrecta o formato de fecha inválido", 'error');
       return;
     }
@@ -118,8 +117,9 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
       }
       var exp = {
         "experience": experienceList,
-        "video": $scope.video.url
+        "video": $scope.video
       };
+      console.log($scope.video);
       // Adding state and Country
       $scope.user.state = $("#states").val();
       $scope.user.country = $("#country").val();
@@ -147,7 +147,7 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
 
   $scope.storeVideo = function() {
     if ($("#video-form").valid()) {
-      var iframe = checkVideoProvider($scope.video.url);
+      var iframe = checkVideoProvider($scope.video);
       if (iframe != 500) {
         // Change UI preview video
         var videoContainer = $scope.elementVideo;
@@ -173,7 +173,7 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
   };
 
   $scope.showVideoURL = function($event) {
-    $scope.selectedVideo = $($event.target).is("img") ? $($event.target).parent().prev().val() :$($event.target).prev().val();
+    $scope.selectedVideo = $($event.target).is("img") ? $($event.target).parent().prev().val() : $($event.target).prev().val();
     $scope.elementVideo = $($event.target).is("img") ? $($event.target).parent()[0] : $event.target;
     $("#dialogVideo").css({
       "opacity": 1,
@@ -191,7 +191,8 @@ angular.module('UsersModule').controller('CoachInfoController', ['$scope', '$htt
       "display": "none"
     });
     // Clean
-    $scope.video = {};
+    $scope.video = null;
+    console.log($scope.video);
 
   };
 
@@ -251,10 +252,8 @@ var createExperience = function(i, compile, scope) {
 angular.module('UsersModule').directive("experience", function($compile) {
   return function(scope, element, attrs) {
     element.bind("click", function() {
-      if (scope.count < 5) {
-        createExperience(scope.count, $compile, scope);
-        scope.count++;
-      }
+      createExperience(scope.count, $compile, scope);
+      scope.count++;
     });
   };
 });
